@@ -67,3 +67,29 @@
 .dropdown-divider {
     border-color: #cd7b05;
 }
+
+.home {
+    margin-top: 56px;
+}
+.home .valores {
+    text-align: center;
+    color: #fff;
+    background: #005b95;
+    padding: 40px 20px;
+    font-size: 1.3rem;
+}
+.home .interfaz {
+    background: #fff;
+    text-align: center;
+    color: #666666;
+    padding: 40px 20px;
+    font-size: 1.3rem;
+}
+.home .interfaz h2 {
+    margin-bottom: 40px;
+    line-height: 1;
+}
+.home .interfaz h2 span {
+    color: #e67319;
+    display: block;
+}

@@ -88,6 +88,44 @@
             <div class="container-fluid">
                 <web-index></web-index>
             </div>
+
+            @if(Auth::user())
+                <div class="container-fluid">
+                    <web-index></web-index>
+                </div>
+            @else
+                <div class="container-fluid home">
+                    <div class="row">
+                        <div class="col">
+                            slide
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 valores">
+                            <h2>Valor 1</h3>
+                            <p>Explicar los valores agregados</p>
+                            <img src="/img/icon-star.svg">
+                        </div>
+                        <div class="col-md-4 valores">
+                            <h2>Valor 2</h3>
+                            <p>Explicar los valores agregados</p>
+                            <img src="/img/icon-star.svg">
+                        </div>
+                        <div class="col-md-4 valores">
+                            <h2>Valor 3</h3>
+                            <p>Explicar los valores agregados</p>
+                            <img src="/img/icon-star.svg">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col interfaz">
+                            <h2><span>Interfaz</span>Un sistema</h3>
+                            <p>Descubra cómo Permutado.com muestra potenciales clientes que buscan y tienen todo tipo de inmuebles a negociar en un sistema perfecto para encontrar fácil y rapidamente los resultados del próximo negocio.</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
         </div>
 
         <script

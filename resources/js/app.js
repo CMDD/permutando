@@ -22,7 +22,8 @@ Vue.component("maps", require("./web/Maps.vue"));
 //Perfil
 Vue.component("publicaciones", require("./perfil/Publicaciones.vue"));
 Vue.component("inmueble-detalle", require("./perfil/Detalle.vue"));
-Vue.component("publicar-casa", require("./perfil/publicar/Casa.vue"));
+Vue.component("publicar-inmueble", require("./perfil/publicar/Index.vue"));
+Vue.component("formulario-casa", require("./perfil/publicar/Casa.vue"));
 
 let router = new Router({
     routes: [

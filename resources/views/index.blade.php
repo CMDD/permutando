@@ -7,7 +7,7 @@
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <title>Permutando</title>
+        <title>Permutado</title>
         <link
             rel="stylesheet"
             href="css/bootstrap.min.css"
@@ -35,7 +35,7 @@
             <div class="map"></div>
 
             <nav class="navbar navbar-expand-lg navbar-dark">
-                <a class="navbar-brand mx-3" href="#">Permutando</a>
+                <a class="navbar-brand mx-3" href="#">Permutado</a>
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -53,7 +53,7 @@
                 >
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Productos</a>
+                            <a class="nav-link" href="/perfil-publicar">Tengo</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Clientes</a>

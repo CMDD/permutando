@@ -12,8 +12,19 @@ use Illuminate\Support\Collection as Collection;
 class InmuebleController extends Controller
 {
     public function store(Request $request){
-        $inmueble = new Inmueble();
-        return $inmueble->crear($request);
+
+        switch ($request->tipo_inmueble) {
+            case 'Casa':
+                $inmueble = new Inmueble();
+                return $inmueble->storeCasa($request);
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+
+        return $request->userId;
     }
     public function detalle($id){
         $inmueble = Inmueble::find($id);

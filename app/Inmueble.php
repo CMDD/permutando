@@ -38,11 +38,15 @@ class Inmueble extends Model
           return $this->hasMany('App\Modo');
      }
 
+     
+
      public function crear($request){
         $inmueble =new Inmueble();
         $inmueble->tipo_publicacion = $request->tipo_publicacion;
         $inmueble->tipo_inmueble = $request->tipo_inmueble;
+
         $inmueble->estado = $request->tipo_publicacion;
+        
         $inmueble->ciudad = $request->ciudad;
         $inmueble->barrio = $request->barrio;
         $inmueble->direccion = $request->direccion;
@@ -136,5 +140,58 @@ class Inmueble extends Model
              $mascotas->save();
         }
         return 200;
+    }
+
+
+    public function storeCasa($request){
+   
+     return $request;
+
+     // $inmueble =new Inmueble();
+     // $inmueble->tipo_publicacion = $request->tipo_publicacion;
+     // $inmueble->tipo_inmueble = $request->tipo_inmueble;
+     // $inmueble->estado = $request->tipo_publicacion;
+     
+     // $inmueble->departamento = $request->departamento;
+     // $inmueble->ciudad = $request->ciudad;
+     // $inmueble->departamento_id = $request->departamento;
+     // $inmueble->ciudad_id = $request->ciudad;
+
+     // $inmueble->barrio = $request->barrio;
+     // $inmueble->direccion = $request->direccion;
+     // $inmueble->estrato = $request->estrato;
+     // $inmueble->area = $request->area;
+     // $inmueble->habitaciones = $request->habitaciones;
+     // $inmueble->banos = $request->banos;
+     // $inmueble->balcon = (boolean)$request->balcon;
+     // $inmueble->terraza = (boolean)$request->terraza;
+     // $inmueble->parqueadero = (boolean)$request->parqueadero;
+     // $inmueble->porteria = $request->porteria;
+     // $inmueble->caracteristicas = $request->caracteristica;
+     // $inmueble->valor = $request->valor;
+
+          //User
+          // $user = User::find($request->userId);
+          // $inmueble->user_id = $user->id;
+          // $inmueble->username = $user->name;
+          // $inmueble->useremail = $user->email;
+          // $inmueble->usertel = $user->tel;
+
+     // if($request->file('image')){
+     //      $inmueble->imagen = $request->file('image')->store('imagenes');
+     //  }
+     
+     // $inmueble->save();
+
+
+
+     // foreach ((array)$request->zonas as $item) {
+     //      $zona = new Zonas();
+     //       $zona->nombre = $item;
+     //       $zona->inmueble_id = $inmueble->id;
+     //       $zona->save();
+
+     //  }
+     // return "llegando";
     }
 }

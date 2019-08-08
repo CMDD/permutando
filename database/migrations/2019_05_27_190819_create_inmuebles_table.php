@@ -19,24 +19,45 @@ class CreateInmueblesTable extends Migration
             $table->string('tipo_publicacion')->nullable();
             $table->string('tipo_inmueble')->nullable();
             $table->string('estado')->nullable();
-            $table->string('video')->nullable();
+            $table->text('caracteristicas')->nullable();
 
+            // Casa - Apartamento
+            $table->string('video')->nullable();
+            $table->string('area')->nullable();
+            $table->string('departamento')->nullable();
             $table->string('ciudad')->nullable();
             $table->string('barrio')->nullable();
             $table->string('direccion')->nullable();
             $table->string('estrato')->nullable();
 
-            $table->string('area')->nullable();
+            
+            //Bodega
+            $table->string('carga_psi')->nullable();
+            $table->string('capacidad_luz')->nullable();
+            $table->boolean('parque_industrial')->nullable();
             $table->string('habitaciones')->nullable();
             $table->string('banos')->nullable();
+            //Lote
+            $table->string('topografia')->nullable();
+            $table->string('vias')->nullable();
+
+            // Oficina
+            $table->string('espacio')->nullable();
+
+            // Edificio
+            $table->string('area_construida')->nullable();
+            $table->string('area_lote')->nullable();
+            $table->string('pisos')->nullable();
+            $table->boolean('ascensor')->nullable();
 
             $table->boolean('balcon')->nullable();
             $table->boolean('terraza')->nullable();
             $table->boolean('parqueadero')->nullable();
             $table->string('porteria')->nullable();
-            $table->text('caracteristicas')->nullable();
+            $table->string('patio')->nullable();
+           
             $table->string('valor')->nullable();
-            $table->string('mas_informacion')->nullable();
+            $table->text('mas_informacion')->nullable();
             $table->string('imagen')->nullable();
             // Usuario
             $table->string('username')->nullable();

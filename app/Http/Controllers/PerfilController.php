@@ -12,4 +12,9 @@ class PerfilController extends Controller
         return Inmueble::where('user_id',$id)->get();
 
     }
+
+    public function detalle($id){
+        $inmueble = Inmueble::find($id);
+        return view('perfil.detalle')->with('inmueble',$inmueble);
+    }
 }

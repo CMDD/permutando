@@ -28,11 +28,13 @@
         />
 
         <link rel="stylesheet" href="/css/app.css" />
+        <link rel="stylesheet" href="/css/slick.css" />
     </head>
 
     <body>
         <div id="app">
-            <div class="map"></div>
+
+            <!--<div class="map"></div>-->
 
             <nav class="navbar navbar-expand-lg navbar-dark">
                 <a class="navbar-brand mx-3" href="#">Permutado</a>
@@ -96,31 +98,109 @@
             @else
                 <div class="container-fluid home">
                     <div class="row">
-                        <div class="col">
-                            slide
+                        <div class="col p-0">
+                            <div class="slide">
+                                <div style="background-image:url('/img/img-slide-01.jpg');">
+                                    <div class="box">
+                                        <h2>El momento de hacer tu primer negocio</h2>
+                                        <a class="btn" href="#">Más información</a>
+                                    </div>
+                                </div>
+                                <div style="background-image:url('/img/img-slide-01.jpg');">
+                                    <div class="box">
+                                        <h2>El momento de hacer tu primer negocio</h2>
+                                        <a class="btn" href="#">Más información</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4 valores">
-                            <h2>Valor 1</h3>
+                    <div class="row justify-content-center valores">
+                        <div class="col-md-4 col-lg-3">
+                            <h2>Valor 1</h2>
                             <p>Explicar los valores agregados</p>
                             <img src="/img/icon-star.svg">
                         </div>
-                        <div class="col-md-4 valores">
-                            <h2>Valor 2</h3>
+                        <div class="col-md-4 col-lg-3">
+                            <h2>Valor 2</h2>
                             <p>Explicar los valores agregados</p>
                             <img src="/img/icon-star.svg">
                         </div>
-                        <div class="col-md-4 valores">
-                            <h2>Valor 3</h3>
+                        <div class="col-md-4 col-lg-3">
+                            <h2>Valor 3</h2>
                             <p>Explicar los valores agregados</p>
                             <img src="/img/icon-star.svg">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col interfaz">
-                            <h2><span>Interfaz</span>Un sistema</h3>
+                    <div class="row justify-content-center interfaz">
+                        <div class="col-12 col-lg-9">
+                            <h2><span>Interfaz</span>Un sistema</h2>
                             <p>Descubra cómo Permutado.com muestra potenciales clientes que buscan y tienen todo tipo de inmuebles a negociar en un sistema perfecto para encontrar fácil y rapidamente los resultados del próximo negocio.</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center workday">
+                        <div class="col-md-6 col-lg-4 align-self-center">
+                            <h2>Sube tu propuesta o busca una en segundos</h2>
+                            <p>Workday ayuda a organizaciones de todos los sectores a triunfar. Tanto si su organización es una mediana empresa como si figura en la lista Fortune 50, nuestro sistema cloud le permite conocer su organización y su negocio a fondo y le ofrece la agilidad necesaria para adaptarse al cambio.</p>
+                        </div>
+                        <div class="col-md-6 col-lg-5 align-self-center">
+                            <img src="/img/pc.png">
+                        </div>
+                    </div>
+                    <div class="row links">
+                        <div class="col-md-6 orange">
+                            <img src="/img/icon-busco.png">
+                            <h2>¿Buscas una propuesta?</h2>
+                            <p>Selecciona los inmuebles que te interesan y comieza una negociación.</p>
+                            <a href="#" class="btn">Busco</a>
+                        </div>
+                        <div class="col-md-6 white">
+                            <img src="/img/icon-vendo.png">
+                            <h2>¿Tienes una propuesta?</h2>
+                            <p>Sube tus inmuebles y comieza una negociación.</p>
+                            <a href="#" class="btn">Tengo</a>
+                        </div>
+                    </div>
+                    <div class="row footer">
+                        <div class="col-12">
+                            <img class="logo" src="/img/logo-footer.png">
+                            <hr>
+                        </div>
+                        <div class="col-md-12 col-lg-2 align-self-center">
+                            <h2>UBICACIÓN</h2>
+                        </div>
+                        <div class="col-md-6 col-lg-3 align-self-center">
+                            <div class="box">
+                                <div class="datos-img"><img src="/img/icon-phone.png" ></div>
+                                <div class="datos-txt">
+                                (+57 1) 8059372 - (+57 1) 8058061<br>
+                                (+57 1) 300 890 13 11 - (+57 1) 317 471 40 15
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 align-self-center">
+                            <div class="box">
+                                <div class="datos-img"><img src="/img/icon-place.png" ></div>
+                                <div class="datos-txt">
+                                Calle 98 # 22 - 64 Ofc 814. Bogotá D.C. <br>
+                                Colombia - Sur América
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-4 align-self-center">
+                            <div class="box">
+                                <div class="datos-img"><img src="/img/icon-email.png" ></div>
+                                <div class="datos-txt">
+                                asistencia@firsoftsa.com, juridico@firsoftsa.com, financiera@firsoftsa.com, proyectos@firsoftsa.com, serviciosgenerales@firsoftsa.com
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-2 align-self-center">
+                            <h2>SÍGUENOS</h2>
+                        </div>
+                        <div class="col-md-6 col-lg-3 align-self-center">
+                            <a href="#" class="social"><img src="/img/icon-facebook.png" ></a>
+                            <a href="#" class="social"><img src="/img/icon-instagram.png" ></a>
                         </div>
                     </div>
                 </div>
@@ -148,6 +228,16 @@
         ></script>
         <script src="js/app.js"></script>
 
-        <script></script>
+<script src="/js/slick.min.js"></script>
+<script>
+    $('.slide').slick({
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        adaptiveHeight: true,
+        accessibility: false
+    });
+</script>
+
     </body>
 </html>

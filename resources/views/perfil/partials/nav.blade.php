@@ -25,7 +25,7 @@
         <li>
             <a href="/perfil-mis-publicaciones" class="">Mis publicaciones</a>
         </li>
-        <li><a href="#">Mis mensajes</a></li>
+        <li><a href="/perfil-mensajes">Mis mensajes</a></li>
         
         <!-- <li><a href="#">Mis alertas</a></li>
         <li><a href="#">Crear Alertas</a></li> -->

@@ -18,14 +18,14 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
         if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
-        return Redirect::to('/');
+        return Redirect::to('/perfil-publicar');
       }
         return Redirect::to('/');
     }
 
     public function autenticar(Request $request){
       if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
-        return back();
+        return Redirect::to('/perfil-publicar');
       }
       return back();
     }

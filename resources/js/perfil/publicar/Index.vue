@@ -459,7 +459,10 @@ toastr.options = {
   timeOut: "10000"
   // "progressBar": true,
 };
-var userId = document.getElementById("userId").value;
+if (document.getElementById("userId")) {
+  var userId = document.getElementById("userId").value;
+} else {
+}
 export default {
   data() {
     return {

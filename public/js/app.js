@@ -27872,7 +27872,6 @@ var app = new Vue({
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
 window._ = __webpack_require__(19);
 window.Popper = __webpack_require__(21).default;
 
@@ -27884,7 +27883,6 @@ window.Popper = __webpack_require__(21).default;
 
 try {
   window.$ = window.jQuery = __webpack_require__(5);
-
   //require('bootstrap');
 } catch (e) {}
 
@@ -27896,7 +27894,7 @@ try {
 
 window.axios = __webpack_require__(22);
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -27907,9 +27905,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common["X-CSRF-TOKEN"] = token.content;
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error("CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token");
 }
 
 /**
@@ -69516,7 +69514,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-var userId = document.getElementById("userId").value;
+if (document.getElementById("userId")) {
+  var userId = document.getElementById("userId").value;
+} else {}
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -69720,7 +69721,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.slick-prev, .slick-next {\n    z-index: 1;\n    font-size: 0;\n    line-height: 0;\n    position: absolute;\n    top: 50%;\n    display: block;\n    width: 40px;\n    height: 40px;\n    padding: 0;\n    -webkit-transform: translate(0, -50%);\n    transform: translate(0, -50%);\n    cursor: pointer;\n    color: transparent;\n    border: none;\n    outline: none;\n    background: transparent;\n}\n.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {\n    color: transparent;\n    outline: none;\n    background: transparent;\n}\n.slick-prev {\n    left: 10px;\n}\n[dir='rtl'] .slick-prev {\n    right: 10px;\n    left: auto;\n}\n.slick-next {\n    right: 10px;\n}\n[dir='rtl'] .slick-next {\n    right: auto;\n    left: 10px;\n}\n.slick-prev:after,\n.slick-prev:before,\n.slick-next:after,\n.slick-next:before {\n    content: '';\n    position: absolute;\n    top: 0; left: 0; bottom: 0; right: 0;\n    background-position: center;\n    background-size: cover;\n    background-repeat: no-repeat;\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n}\n.slick-prev:after, .slick-next:after { opacity: 0;\n}\n.slick-prev:hover:after, .slick-next:hover:after { opacity: 1;\n}\n.slick-prev:hover:before, .slick-next:hover:before { opacity: 0;\n}\n.slick-prev.slick-disabled:before, .slick-next.slick-disabled:before { opacity: .5;\n}\n.slick-prev.slick-disabled:hover:after, .slick-next.slick-disabled:hover:after { opacity: 0;\n}\n.slick-prev:before,\n[dir='rtl'] .slick-next:before {\n    background-image: url(\"data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8,14.813c-3.763,0-6.813-3.052-6.813-6.813c0-3.763,3.051-6.813,6.813-6.813 c3.764,0,6.813,3.05,6.813,6.813C14.813,11.763,11.764,14.813,8,14.813z M5.953,7.999l2.078,2.719h0.657L6.607,7.999l2.08-2.717 H8.031L5.953,7.999z'/%3E%3C/svg%3E\");\n}\n.slick-prev:after,\n[dir='rtl'] .slick-next:after {\n    background-image: url(\"data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8.031,10.718L5.953,7.999l2.078-2.717h0.656l-2.08,2.717l2.081,2.719H8.031z'/%3E%3C/svg%3E\");\n}\n.slick-next:before,\n[dir='rtl'] .slick-prev:before {\n    background-image: url(\"data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8,14.813c-3.763,0-6.813-3.052-6.813-6.813c0-3.763,3.051-6.813,6.813-6.813 c3.764,0,6.813,3.05,6.813,6.813C14.813,11.763,11.764,14.813,8,14.813z M8,5.282H7.345l2.079,2.717l-2.08,2.719H8l2.078-2.719 L8,5.282z'/%3E%3C/svg%3E\");\n}\n.slick-next:after,\n[dir='rtl'] .slick-prev:after {\n    background-image: url(\"data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8,10.718H7.344l2.08-2.719L7.345,5.282H8l2.078,2.717L8,10.718z'/%3E%3C/svg%3E\");\n}\n.gallery img {\n    width:100%;\n}\n.box {\n    background: #fff;\n    max-width: 1000px;\n    -webkit-box-shadow: 3px 3px 3px #cccccc;\n    box-shadow: 3px 3px 3px #cccccc;\n    border-radius: 20px;\n    padding:20px;\n    margin: auto;\n}\n.box .info h3 {\n    font-size: 1.5rem;\n    color: #005b95;\n    border-bottom: 1px solid #ccc;\n    padding: 20px 0;\n    margin-bottom: 30px;\n}\n.box .info .desc {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin-bottom: 30px;\n}\n.box .info .desc > div {\n    -webkit-box-flex: 0;\n        -ms-flex: 0 0 50%;\n            flex: 0 0 50%;\n}\n.box .desc span {\n    display: block;\n    margin-bottom: 5px;\n}\n.box .form h4 {\n    margin:20px 0;\n}\n.box .form-control {\n    margin-bottom: 10px;\n}\n.box .btn {\n    color: #fff;\n    background: #f19100;\n    padding: .2rem 1rem;\n}\n.box .btn:hover {\n    color: rgba(255, 255, 255, 0.7);\n}\n.box .form {\n    border-top:1px solid #ccc;\n}\n@media (min-width: 992px) {\n.box .form {\n        border:0;\n        border-left:1px solid #ccc;\n}\n.box .form h4 {\n        margin:0 0 20px 0;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.slick-prev,\n.slick-next {\n  z-index: 1;\n  font-size: 0;\n  line-height: 0;\n  position: absolute;\n  top: 50%;\n  display: block;\n  width: 40px;\n  height: 40px;\n  padding: 0;\n  -webkit-transform: translate(0, -50%);\n  transform: translate(0, -50%);\n  cursor: pointer;\n  color: transparent;\n  border: none;\n  outline: none;\n  background: transparent;\n}\n.slick-prev:hover,\n.slick-prev:focus,\n.slick-next:hover,\n.slick-next:focus {\n  color: transparent;\n  outline: none;\n  background: transparent;\n}\n.slick-prev {\n  left: 10px;\n}\n[dir=\"rtl\"] .slick-prev {\n  right: 10px;\n  left: auto;\n}\n.slick-next {\n  right: 10px;\n}\n[dir=\"rtl\"] .slick-next {\n  right: auto;\n  left: 10px;\n}\n.slick-prev:after,\n.slick-prev:before,\n.slick-next:after,\n.slick-next:before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background-position: center;\n  background-size: cover;\n  background-repeat: no-repeat;\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n}\n.slick-prev:after,\n.slick-next:after {\n  opacity: 0;\n}\n.slick-prev:hover:after,\n.slick-next:hover:after {\n  opacity: 1;\n}\n.slick-prev:hover:before,\n.slick-next:hover:before {\n  opacity: 0;\n}\n.slick-prev.slick-disabled:before,\n.slick-next.slick-disabled:before {\n  opacity: 0.5;\n}\n.slick-prev.slick-disabled:hover:after,\n.slick-next.slick-disabled:hover:after {\n  opacity: 0;\n}\n.slick-prev:before,\n[dir=\"rtl\"] .slick-next:before {\n  background-image: url(\"data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8,14.813c-3.763,0-6.813-3.052-6.813-6.813c0-3.763,3.051-6.813,6.813-6.813 c3.764,0,6.813,3.05,6.813,6.813C14.813,11.763,11.764,14.813,8,14.813z M5.953,7.999l2.078,2.719h0.657L6.607,7.999l2.08-2.717 H8.031L5.953,7.999z'/%3E%3C/svg%3E\");\n}\n.slick-prev:after,\n[dir=\"rtl\"] .slick-next:after {\n  background-image: url(\"data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8.031,10.718L5.953,7.999l2.078-2.717h0.656l-2.08,2.717l2.081,2.719H8.031z'/%3E%3C/svg%3E\");\n}\n.slick-next:before,\n[dir=\"rtl\"] .slick-prev:before {\n  background-image: url(\"data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8,14.813c-3.763,0-6.813-3.052-6.813-6.813c0-3.763,3.051-6.813,6.813-6.813 c3.764,0,6.813,3.05,6.813,6.813C14.813,11.763,11.764,14.813,8,14.813z M8,5.282H7.345l2.079,2.717l-2.08,2.719H8l2.078-2.719 L8,5.282z'/%3E%3C/svg%3E\");\n}\n.slick-next:after,\n[dir=\"rtl\"] .slick-prev:after {\n  background-image: url(\"data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8,10.718H7.344l2.08-2.719L7.345,5.282H8l2.078,2.717L8,10.718z'/%3E%3C/svg%3E\");\n}\n.gallery img {\n  width: 100%;\n}\n.box {\n  background: #fff;\n  max-width: 1000px;\n  -webkit-box-shadow: 3px 3px 3px #cccccc;\n  box-shadow: 3px 3px 3px #cccccc;\n  border-radius: 20px;\n  padding: 20px;\n  margin: auto;\n}\n.box .info h3 {\n  font-size: 1.5rem;\n  color: #005b95;\n  border-bottom: 1px solid #ccc;\n  padding: 20px 0;\n  margin-bottom: 30px;\n}\n.box .info .desc {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  margin-bottom: 30px;\n}\n.box .info .desc > div {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 50%;\n          flex: 0 0 50%;\n}\n.box .desc span {\n  display: block;\n  margin-bottom: 5px;\n}\n.box .form h4 {\n  margin: 20px 0;\n}\n.box .form-control {\n  margin-bottom: 10px;\n}\n.box .btn {\n  color: #fff;\n  background: #f19100;\n  padding: 0.2rem 1rem;\n}\n.box .btn:hover {\n  color: rgba(255, 255, 255, 0.7);\n}\n.box .form {\n  border-top: 1px solid #ccc;\n}\n@media (min-width: 992px) {\n.box .form {\n    border: 0;\n    border-left: 1px solid #ccc;\n}\n.box .form h4 {\n    margin: 0 0 20px 0;\n}\n}\n", ""]);
 
 // exports
 
@@ -69785,8 +69786,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-var userId = document.getElementById("userId").value;
+if (document.getElementById("userId")) {
+  var userId = document.getElementById("userId").value;
+} else {}
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -69858,27 +69877,30 @@ var staticRenderFns = [
                     _c("div", [
                       _c("span", [
                         _c("strong", [_vm._v("Área:")]),
-                        _vm._v(" 3 Area mts"),
+                        _vm._v(" 3 Area mts\n                  "),
                         _c("sup", [_vm._v("2")])
                       ]),
                       _vm._v(" "),
                       _c("span", [
                         _c("strong", [_vm._v("Habitaciones:")]),
-                        _vm._v(" 1")
+                        _vm._v(" 1\n                ")
                       ]),
-                      _c("strong", [_vm._v("Baños:")]),
-                      _vm._v(" 3")
+                      _vm._v(" "),
+                      _c("span", [
+                        _c("strong", [_vm._v("Baños:")]),
+                        _vm._v(" 3\n                ")
+                      ])
                     ]),
                     _vm._v(" "),
                     _c("div", [
                       _c("span", [
                         _c("strong", [_vm._v("Valor:")]),
-                        _vm._v(" $12344545")
+                        _vm._v(" $12344545\n                ")
                       ]),
                       _vm._v(" "),
                       _c("span", [
                         _c("strong", [_vm._v("Barrio:")]),
-                        _vm._v(" minuto de dios")
+                        _vm._v(" minuto de dios\n                ")
                       ])
                     ])
                   ]),
@@ -70502,7 +70524,9 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
   timeOut: "10000"
   // "progressBar": true,
 };
-var userId = document.getElementById("userId").value;
+if (document.getElementById("userId")) {
+  var userId = document.getElementById("userId").value;
+} else {}
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -73101,7 +73125,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-var userId = document.getElementById("userId").value;
+if (document.getElementById("userId")) {
+  var userId = document.getElementById("userId").value;
+} else {}
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {

@@ -8,7 +8,10 @@
   </div>
 </template>
 <script>
-var userId = document.getElementById("userId").value;
+if (document.getElementById("userId")) {
+  var userId = document.getElementById("userId").value;
+} else {
+}
 export default {
   data() {
     return {

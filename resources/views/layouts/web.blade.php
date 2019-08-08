@@ -34,10 +34,10 @@
     <body>
         <div id="app">
             <!--<div class="map"></div>-->
-
+           
             @include('partials.nav')
 
-            <!-- @include('partials.registro') -->
+            @include('partials.registro')
 
             <!-- @if(Auth::user())
                 <div class="container-fluid">

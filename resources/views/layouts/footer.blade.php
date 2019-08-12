@@ -1,4 +1,5 @@
-<div class="row footer">
+<div class="container-fluid">
+    <div class="row footer">
         <div class="col-12">
             <img class="logo" src="/img/logo-footer.png" />
             <hr />
@@ -42,3 +43,4 @@
             <a href="#" class="social"><img src="/img/icon-instagram.png"/></a>
         </div>
     </div>
+</div>

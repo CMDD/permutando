@@ -65,6 +65,115 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -371,115 +480,6 @@ module.exports = {
   extend: extend,
   trim: trim
 };
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
 
 
 /***/ }),
@@ -11431,7 +11431,7 @@ return jQuery;
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var normalizeHeaderName = __webpack_require__(26);
 
 var DEFAULT_CONTENT_TYPE = {
@@ -11743,7 +11743,7 @@ process.umask = function() { return 0; };
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var settle = __webpack_require__(27);
 var buildURL = __webpack_require__(29);
 var parseHeaders = __webpack_require__(30);
@@ -27771,7 +27771,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(76)
 /* template */
@@ -27818,7 +27818,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(17);
-module.exports = __webpack_require__(91);
+module.exports = __webpack_require__(94);
 
 
 /***/ }),
@@ -27851,7 +27851,7 @@ Vue.component("publicaciones", __webpack_require__(15));
 Vue.component("inmueble-detalle", __webpack_require__(78));
 Vue.component("publicar-inmueble", __webpack_require__(83));
 Vue.component("formulario-casa", __webpack_require__(88));
-Vue.component("perfil-mensajes", __webpack_require__(103));
+Vue.component("perfil-mensajes", __webpack_require__(91));
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: [{
@@ -47696,7 +47696,7 @@ module.exports = __webpack_require__(23);
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var bind = __webpack_require__(7);
 var Axios = __webpack_require__(25);
 var defaults = __webpack_require__(6);
@@ -47783,7 +47783,7 @@ function isSlowBuffer (obj) {
 
 
 var defaults = __webpack_require__(6);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var InterceptorManager = __webpack_require__(34);
 var dispatchRequest = __webpack_require__(35);
 
@@ -47868,7 +47868,7 @@ module.exports = Axios;
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -47948,7 +47948,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -48021,7 +48021,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 // Headers whose duplicates are ignored by node
 // c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -48081,7 +48081,7 @@ module.exports = function parseHeaders(headers) {
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -48199,7 +48199,7 @@ module.exports = btoa;
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -48259,7 +48259,7 @@ module.exports = (
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 function InterceptorManager() {
   this.handlers = [];
@@ -48318,7 +48318,7 @@ module.exports = InterceptorManager;
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var transformData = __webpack_require__(36);
 var isCancel = __webpack_require__(11);
 var defaults = __webpack_require__(6);
@@ -48411,7 +48411,7 @@ module.exports = function dispatchRequest(config) {
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 /**
  * Transform the data for a request or a response
@@ -63474,7 +63474,7 @@ if (inBrowser && window.Vue) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(47)
 /* template */
@@ -63707,7 +63707,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(50)
 /* template */
@@ -63944,7 +63944,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(53)
 /* template */
@@ -64063,7 +64063,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(56)
 /* template */
@@ -67407,7 +67407,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(60)
 }
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(63)
 /* template */
@@ -68652,7 +68652,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(66)
 /* template */
@@ -68911,7 +68911,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(69)
 /* template */
@@ -69287,7 +69287,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(72)
 }
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(74)
 /* template */
@@ -69644,7 +69644,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(79)
 }
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(81)
 /* template */
@@ -69973,7 +69973,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(84)
 }
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(86)
 /* template */
@@ -72943,7 +72943,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(89)
 /* template */
@@ -73047,35 +73047,22 @@ if (false) {
 
 /***/ }),
 /* 91 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 92 */,
-/* 93 */,
-/* 94 */,
-/* 95 */,
-/* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(106)
+}
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(104)
+var __vue_script__ = __webpack_require__(92)
 /* template */
-var __vue_template__ = __webpack_require__(105)
+var __vue_template__ = __webpack_require__(93)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -73110,11 +73097,157 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 104 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73152,7 +73285,7 @@ if (document.getElementById("userId")) {
 });
 
 /***/ }),
-/* 105 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73174,6 +73307,98 @@ var staticRenderFns = [
           _c("div", { staticClass: "col" }, [
             _c("span", [_vm._v("Mis Mensajes")])
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row subtitle" }, [
+          _c("div", { staticClass: "col" }, [
+            _c("span", [_vm._v("Permuta entre: Terry y yo")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row msg" }, [
+          _c("div", { staticClass: "col-md-3 list" }, [
+            _c("div", { staticClass: "user" }, [
+              _c("div", { staticClass: "img" }),
+              _c("div", { staticClass: "info" }, [
+                _c("span", { staticClass: "name" }, [_vm._v("Terry Gonzales")]),
+                _c("span", { staticClass: "type" }, [_vm._v("Permuta")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "user active" }, [
+              _c("div", { staticClass: "img" }),
+              _c("div", { staticClass: "info" }, [
+                _c("span", { staticClass: "name" }, [_vm._v("Terry Gonzales")]),
+                _c("span", { staticClass: "type" }, [_vm._v("Permuta")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "user" }, [
+              _c("div", { staticClass: "img" }),
+              _c("div", { staticClass: "info" }, [
+                _c("span", { staticClass: "name" }, [_vm._v("Terry Gonzales")]),
+                _c("span", { staticClass: "type" }, [_vm._v("Permuta")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "user" }, [
+              _c("div", { staticClass: "img" }),
+              _c("div", { staticClass: "info" }, [
+                _c("span", { staticClass: "name" }, [_vm._v("Terry Gonzales")]),
+                _c("span", { staticClass: "type" }, [_vm._v("Permuta")])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-9 chat" }, [
+            _c("div", { staticClass: "from" }, [
+              _c("span", [_vm._v("T")]),
+              _vm._v("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "to" }, [
+              _c("span", [_vm._v("Yo")]),
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nisl lectus, lobortis interdum arcu vel, mattis elementum ex. Cras posuere, ligula in fermentum tincidunt, erat metus finibus massa, ac mollis nulla ex a leo. Ut tempus tortor sit amet consectetur vulputate."
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "from" }, [
+              _c("span", [_vm._v("T")]),
+              _vm._v(
+                "lobortis interdum arcu vel, mattis elementum ex. Cras posuere, ligula in fermentum tincidunt, erat metus finibus massa, ac mollis nulla ex a leo. Ut tempus tortor sit amet consectetur vulputate."
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "to" }, [
+              _c("span", [_vm._v("Yo")]),
+              _vm._v("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "from" }, [
+              _c("span", [_vm._v("T")]),
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nisl lectus, lobortis interdum arcu vel, mattis elementum ex. Cras posuere, ligula in fermentum tincidunt, erat metus finibus massa, ac mollis nulla ex a leo. Ut tempus tortor sit amet consectetur vulputate."
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "to" }, [
+              _c("span", [_vm._v("Yo")]),
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nisl lectus, lobortis interdum arcu vel, mattis elementum ex. Cras posuere, ligula in fermentum tincidunt, erat metus finibus massa, ac mollis nulla ex a leo. Ut tempus tortor sit amet consectetur vulputate."
+              )
+            ]),
+            _vm._v(" "),
+            _c("form", { staticClass: "send" }, [
+              _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "text" }
+              }),
+              _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
+                _vm._v("Enviar")
+              ])
+            ])
+          ])
         ])
       ]
     )
@@ -73187,6 +73412,63 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-567b0a2e", module.exports)
   }
 }
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(107);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("470a8796", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-567b0a2e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Mensajes.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-567b0a2e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Mensajes.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.map {\n    display:none;\n}\nhtml, body, #app, .container-fluid, .container-fluid >div {\n    height:100%;\n}\n.msg {\n    height:calc(100vh - 6rem)\n}\n.msg .list {\n    background:#edeeed;\n    overflow-y: auto;\n    height: 100%;\n    padding:0;\n    -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n            box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n    z-index: 1;\n}\n.msg .list .user {\n    display: block;\n    padding: 15px 10%;\n    cursor:pointer;\n}\n.msg .list .user.active, .msg .list .user:hover {\n    background: #dae2e7;\n}\n.msg .user .img {\n    display: inline-block;\n    vertical-align: middle;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    background: #005c96;\n}\n.msg .user .info {\n    display: inline-block;\n    vertical-align: middle;\n    width: calc(100% - 50px);\n    padding-left: 20px;\n}\n.msg .info span {\n    display: block;\n    color: #005c96;\n    letter-spacing: 1px;\n}\n.msg .info span.type {\n    font-weight: 700;\n    font-size: .8rem;\n}\n.msg .chat {\n    background:#fff;\n    overflow-y: auto;\n    height: 100%;\n    position:relative;\n}\n.msg .chat .from, .msg .chat .to {\n    display:block;\n    position:relative;\n    margin:30px;\n    padding:30px;\n    border-radius: 10px;\n}\n.msg .chat .from span, .msg .chat .to span {\n    position: absolute;\n    width: 48px;\n    line-height: 40px;\n    background: #e67319;\n    color: #fff;\n    text-align: center;\n    top: -20px;\n    left: -20px;\n    border-radius: 50%;\n    border: 4px solid #fff;\n    font-weight: 700;\n}\n.msg .chat .from span {\n    background: #005c96;\n}\n.msg .chat .from {\n    background: #b0cbe1;\n    color: #386386;\n}\n.msg .chat .to {\n    background: #fbd8af;\n    color: #8e663a;\n}\n.msg .chat .send {\n    margin: 30px 30px 60px 30px;\n}\n.msg .send input {\n    display: inline-block;\n    vertical-align: middle;\n    border-color: #e67319;\n    border-radius: 5px 0 0 5px;\n    width: calc(100% - 100px);\n}\n.msg .send input:focus {\n    -webkit-box-shadow:none;\n            box-shadow:none;\n}\n.msg .send .btn {\n    display: inline-block;\n    vertical-align: middle;\n    width: 100px;\n    background: #e67319;\n    color: #fff;\n    border-radius: 0 5px 5px 0;\n}\n.msg .send .btn:hover {\n    color: rgba(255, 255, 255, 0.6);\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

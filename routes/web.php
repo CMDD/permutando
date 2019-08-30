@@ -35,6 +35,10 @@ Route::get('perfil-mensajes',function(){
     return view("perfil.mensajes");
 });
 
+Route::get('perfil-buscar',function(){
+    return view('perfil.busco.index');
+});
+
 //Contacto
 Route::post('contacto','ContactoController@contacto');
 Route::get('contacto',function(){

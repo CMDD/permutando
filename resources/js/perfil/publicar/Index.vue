@@ -19,13 +19,14 @@
           <div class="f1-step active">
             <div class="f1-step-icon">1</div>
           </div>
+
           <div class="f1-step">
             <div class="f1-step-icon">2</div>
           </div>
-          <!-- 
+
           <div class="f1-step">
             <div class="f1-step-icon">3</div>
-          </div>-->
+          </div>
         </div>
 
         <fieldset>
@@ -364,8 +365,13 @@
             <div class="form-field w50">
               <div class="my-select">
                 <span>Departamento</span>
-                <select v-model="form.departamento">
-                  <option>--</option>
+                <select v-model="form.departamento" @change="getCiudades()">
+                  <option value>Selecione...</option>
+                  <option
+                    v-bind:value="departamento.id"
+                    v-for="departamento in departamentos"
+                    :key="departamento.id"
+                  >{{departamento.nombre}}</option>
                 </select>
               </div>
             </div>
@@ -374,7 +380,11 @@
               <div class="my-select">
                 <span>Ciudad / Municipio</span>
                 <select v-model="form.ciudad">
-                  <option>--</option>
+                  <option
+                    v-bind:value="ciudad.id"
+                    v-for="ciudad in ciudades"
+                    :key="ciudad.id"
+                  >{{ciudad.nombre}}</option>
                 </select>
               </div>
             </div>
@@ -429,7 +439,7 @@
             <div class="form-field">
               <span>Imágenes</span>
               <div class="image">
-                <input type="file" id="file" ref="file" @change="img" class="inputfile" />
+                <input type="file" id="file2" ref="file2" class="inputfile" />
                 <label for="file">Subir imagen</label>
                 <small>Máximo 6 imágenes</small>
               </div>
@@ -443,7 +453,22 @@
           </div>
           <div class="f1-buttons">
             <button type="button" class="btn btn-prev">Anterior</button>
+            <button type="button" class="btn btn-next">Siguiente</button>
+          </div>
+        </fieldset>
 
+        <fieldset>
+          <h4>Permuto</h4>
+          <div class="form-group more" v-if="form.tipoPublicacion === 'Permuto'">
+            <div class="form-field w100">
+              <div class="my-text">
+                <span>Permutando</span>
+                <input v-model="form.video" type="text" />
+              </div>
+            </div>
+          </div>
+          <div class="f1-buttons">
+            <button type="button" class="btn btn-prev">Anterior</button>
             <button type="submit" v-if="enviando" class="btn btn-submit">Finalizar</button>
             <button type="button" v-else class="btn btn-submit">Enviando...</button>
           </div>
@@ -468,6 +493,8 @@ export default {
     return {
       userId: userId,
       enviando: true,
+      departamentos: [],
+      ciudades: [],
       form: {
         tipoPublicacion: "",
         tipoInmueble: "",
@@ -505,7 +532,7 @@ export default {
         educativo: [],
         gastronomia: [],
         mascotas: [],
-        image: "",
+        imagePrincipal: "",
         estrato: "",
         departamento: "",
         ciudad: "",
@@ -515,11 +542,12 @@ export default {
       }
     };
   },
-  created() {},
+  created() {
+    this.getDepartamentos();
+  },
   methods: {
     img(event) {
-      this.form.image = this.$refs.file.files[0];
-      console.log(this.form.image);
+      this.form.imagePrincipal = this.$refs.file.files[0];
     },
     storeInmueble() {
       this.enviando = false;
@@ -559,7 +587,7 @@ export default {
       fd.append("habitaciones", this.form.habitaciones);
       fd.append("banos", this.form.banos);
       fd.append("balcon", this.form.balcon);
-      fd.append("image", this.form.image);
+      fd.append("image", this.form.imagePrincipal);
       fd.append("terraza", this.form.terraza);
       fd.append("porteria", this.form.porteria);
       fd.append("parqueadero", this.form.parqueadero);
@@ -609,6 +637,18 @@ export default {
           // }
           toastr.success("Inmueble subido correctamente");
         });
+    },
+
+    getDepartamentos() {
+      axios.get("/api/departamentos").then(res => {
+        this.departamentos = res.data;
+      });
+    },
+    getCiudades() {
+      axios.get("/api/ciudades/" + this.form.departamento).then(res => {
+        this.ciudades = res.data;
+        console.log(res.data);
+      });
     }
   }
 };

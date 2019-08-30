@@ -34,5 +34,9 @@ Route::get('inmuebles-map','InmuebleController@listaMap');
 
 //Perfil
 Route::get('mis-inmuebles/{id}','PerfilController@misInmuebles');
+Route::post('busco-index','Perfil\BuscoController@buscoIndex');
 
+//Departamentos
+Route::get('departamentos','DepartamentoController@index');
+Route::get('ciudades/{id}','DepartamentoController@ciudades');
 

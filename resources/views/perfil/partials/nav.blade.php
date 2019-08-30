@@ -22,6 +22,14 @@
                 <li><a href="#">Bodega</a></li>
             </ul> -->
         </li>
+        <li><a href="/perfil-buscar">Buscar Inmueble</a>
+            <!-- <ul>
+                <li><a href="/perfil-publicar">Casa</a></li>
+                <li><a href="/perfil-publicar">Apartamento</a></li>
+                <li><a href="/perfil-publicar-oficina">Oficina</a></li>
+                <li><a href="#">Bodega</a></li>
+            </ul> -->
+        </li>
         <li>
             <a href="/perfil-mis-publicaciones" class="">Mis publicaciones</a>
         </li>

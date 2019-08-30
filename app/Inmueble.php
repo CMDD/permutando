@@ -8,6 +8,8 @@ use App\Inmueble;
 use App\Zonas;
 use App\Viveres;
 use App\Transporte;
+use App\Departamento;
+use App\Ciudad;
 use Illuminate\Session\Middleware\StartSession;
 // use App\Entretenimiento;
 class Inmueble extends Model
@@ -144,54 +146,55 @@ class Inmueble extends Model
 
 
     public function storeCasa($request){
+     $departamento = Departamento::find((int)$request->departamento);
+     $ciudad = Ciudad::find((int)$request->ciudad);
    
-     return $request;
-
-     // $inmueble =new Inmueble();
-     // $inmueble->tipo_publicacion = $request->tipo_publicacion;
-     // $inmueble->tipo_inmueble = $request->tipo_inmueble;
-     // $inmueble->estado = $request->tipo_publicacion;
+     $inmueble =new Inmueble();
+     $inmueble->tipo_publicacion = $request->tipo_publicacion;
+     $inmueble->tipo_inmueble = $request->tipo_inmueble;
+     $inmueble->estado = $request->tipo_publicacion;
      
-     // $inmueble->departamento = $request->departamento;
-     // $inmueble->ciudad = $request->ciudad;
-     // $inmueble->departamento_id = $request->departamento;
-     // $inmueble->ciudad_id = $request->ciudad;
+     $inmueble->departamento = $departamento->nombre;
+     $inmueble->ciudad = $ciudad->nombre;
 
-     // $inmueble->barrio = $request->barrio;
-     // $inmueble->direccion = $request->direccion;
-     // $inmueble->estrato = $request->estrato;
-     // $inmueble->area = $request->area;
-     // $inmueble->habitaciones = $request->habitaciones;
-     // $inmueble->banos = $request->banos;
-     // $inmueble->balcon = (boolean)$request->balcon;
-     // $inmueble->terraza = (boolean)$request->terraza;
-     // $inmueble->parqueadero = (boolean)$request->parqueadero;
-     // $inmueble->porteria = $request->porteria;
-     // $inmueble->caracteristicas = $request->caracteristica;
-     // $inmueble->valor = $request->valor;
+     $inmueble->departamento_id = $request->departamento;
+     $inmueble->ciudad_id = $request->ciudad;
 
-          //User
-          // $user = User::find($request->userId);
-          // $inmueble->user_id = $user->id;
-          // $inmueble->username = $user->name;
-          // $inmueble->useremail = $user->email;
-          // $inmueble->usertel = $user->tel;
+     $inmueble->barrio = $request->barrio;
+     $inmueble->direccion = $request->direccion;
+     $inmueble->estrato = $request->estrato;
+     $inmueble->area = $request->area;
+     $inmueble->habitaciones = $request->habitaciones;
+     $inmueble->banos = $request->banos;
+     $inmueble->balcon = (boolean)$request->balcon;
+     $inmueble->terraza = (boolean)$request->terraza;
+     $inmueble->parqueadero = (boolean)$request->parqueadero;
+     $inmueble->porteria = $request->porteria;
+     $inmueble->caracteristicas = $request->caracteristica;
+     $inmueble->valor = $request->valor;
 
-     // if($request->file('image')){
-     //      $inmueble->imagen = $request->file('image')->store('imagenes');
-     //  }
+          // User
+          $user = User::find($request->userId);
+          $inmueble->user_id = $user->id;
+          $inmueble->username = $user->name;
+          $inmueble->useremail = $user->email;
+          $inmueble->usertel = $user->tel;
+
+     if($request->file('image')){
+          $inmueble->imagen = $request->file('image')->store('imagenes');
+      }
      
-     // $inmueble->save();
+     $inmueble->save();
 
 
 
-     // foreach ((array)$request->zonas as $item) {
-     //      $zona = new Zonas();
-     //       $zona->nombre = $item;
-     //       $zona->inmueble_id = $inmueble->id;
-     //       $zona->save();
+     foreach ((array)$request->zonas as $item) {
+          $zona = new Zonas();
+           $zona->nombre = $item;
+           $zona->inmueble_id = $inmueble->id;
+           $zona->save();
 
-     //  }
-     // return "llegando";
+      }
+     return "llegando";
     }
 }

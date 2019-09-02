@@ -81,12 +81,22 @@
     *word-spacing: -0.43em;
     text-rendering: optimizespeed;
 }
-.form-group .form-field {
+.form-group .form-field, .form-group h5 {
     display: inline-block;
     zoom: 1;
     *display: inline;
     letter-spacing: normal;
     word-spacing: normal;
+}
+.form-group h5 {
+    margin-left: 2%;
+    color: #005b95;
+    border-bottom: 2px solid;
+    padding-bottom: 5px;
+    display: block;
+    letter-spacing: 1px;
+}
+.form-group .form-field {
     vertical-align: bottom;
     text-rendering: auto;
     width: 29.333%;
@@ -95,11 +105,33 @@
     padding-bottom: 5px;
     color: #005b95;
 }
+.form-group.generator .add, .form-group.generator .group-efectivo .btn {
+    float: none;
+    margin: 0;
+    color: #fff;
+    background: #f19100;
+}
+.form-group.generator .add:hover, .form-group.generator .group-efectivo .btn:hover {
+    background: #005b95;
+}
+.form-group.generator .form-field {
+    border-bottom: 0;
+    margin-top: 0;
+}
 .form-group .form-field.w2 {
     width: 62.666%;
 }
+.form-group .form-field.w35 {
+    width: 31%;
+}
 .form-group .form-field.w50 {
     width: 46%;
+}
+.form-group .form-field.w65 {
+    width: 61%;
+}
+.form-group .form-field.w100 {
+    width: 96%;
 }
 .form-group.list .form-field, .form-group.more .form-field {
     width: 21%;
@@ -120,6 +152,7 @@
 
 .my-radio span, .my-select span, .my-text span, .my-checkbox span {
     flex: 1;
+    margin-right: 15px;
 }
 .form-group.list span, .form-group.more span {
     border-bottom: 2px solid #005b95;
@@ -140,6 +173,11 @@
 }
 .form-group .form-field.w50 .my-text input {
     max-width: 200px;
+}
+.form-group .form-field.w100 .my-text input,
+.form-group .form-field.w35 .my-text input,
+.form-group .form-field.w65 .my-text input {
+    max-width: none;
 }
 .my-radio input[type=radio] {
     display:none;
@@ -275,7 +313,7 @@
 
 .image {
     display: block;
-    margin-top: 20px;
+    margin-top: 15px;
     position: relative;
 }
 .image .inputfile {

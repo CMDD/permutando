@@ -7,7 +7,7 @@
         <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
     <div class="row title">
       <div class="col">
-        <span>Detalle de Inmueble</span>
+        <span>Editar  Inmueble</span>
       </div>
     </div>
     <div class="row inmuebles">

@@ -39,6 +39,11 @@ Route::get('perfil-buscar',function(){
     return view('perfil.busco.index');
 });
 
+//  Inmueble
+Route::get('inmueble-editar',function(){
+    return view('perfil.editar');
+});
+
 //Contacto
 Route::post('contacto','ContactoController@contacto');
 Route::get('contacto',function(){

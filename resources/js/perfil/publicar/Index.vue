@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="box">
-      <form role="form" @submit.prevent="storeInmueble" class="f1">
+      <form role="form" @submit.prevent="storeInmueble" class="f1" enctype="multipart/form-data">
         <div class="f1-steps">
           <div class="f1-progress">
             <div
@@ -437,9 +437,10 @@
               </div>
             </div>
             <div class="form-field w50">
-              <span>Imágenes</span><small>(Máximo 6 imágenes)</small>
+              <span>Imágenes...</span>
+              <small>(Máximo 6 imágenes)</small>
               <div class="image">
-                <input type="file" id="file2" ref="file2" class="inputfile" />
+                <input type="file" ref="file2" multiple @change="filesChange" />
                 <label for="file">Subir imagen</label>
               </div>
             </div>
@@ -460,49 +461,49 @@
           <h4>Permuto</h4>
           <div class="form-group" v-if="form.tipoPublicacion === 'Permuto'">
             <div class="form-field w100">
-                <div class="my-text">
-                    <span>Valor del inmueble</span>
-                    <input type="text" />
-                </div>
+              <div class="my-text">
+                <span>Valor del inmueble</span>
+                <input type="text" />
+              </div>
             </div>
           </div>
-            <div class="form-group generator" v-if="form.tipoPublicacion === 'Permuto'">
-                <h5>¿Qué bienes ofrecerías?</h5>
-                <div class="group-generator">
-                    <div class="form-field w65">
-                        <span>Bien #1</span>
-                        <div class="my-text">
-                            <input type="text" />
-                        </div>
-                    </div>
-                    <div class="form-field w35">
-                        <span>Valor del bien</span>
-                        <div class="my-text">
-                            <input type="text" />
-                        </div>
-                    </div>
+          <div class="form-group generator" v-if="form.tipoPublicacion === 'Permuto'">
+            <h5>¿Qué bienes ofrecerías?</h5>
+            <div class="group-generator">
+              <div class="form-field w65">
+                <span>Bien #1</span>
+                <div class="my-text">
+                  <input type="text" />
                 </div>
-                <div class="form-field w50">
-                    <a href="#" class="btn add">Agregar más bienes</a>
+              </div>
+              <div class="form-field w35">
+                <span>Valor del bien</span>
+                <div class="my-text">
+                  <input type="text" />
                 </div>
-                <div class="form-field w50">
-                    <div class="my-text text-right">
-                        <span>Valor total</span>
-                        <input type="text" />
-                    </div>
-                </div>
-                <div class="group-efectivo">
-                    <div class="form-field w50">
-                        <a href="#" class="btn">Efectivo</a>
-                    </div>
-                    <div class="form-field w50">
-                        <div class="my-text text-right">
-                            <span>Valor</span>
-                            <input type="text" />
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+            <div class="form-field w50">
+              <a href="#" class="btn add">Agregar más bienes</a>
+            </div>
+            <div class="form-field w50">
+              <div class="my-text text-right">
+                <span>Valor total</span>
+                <input type="text" />
+              </div>
+            </div>
+            <div class="group-efectivo">
+              <div class="form-field w50">
+                <a href="#" class="btn">Efectivo</a>
+              </div>
+              <div class="form-field w50">
+                <div class="my-text text-right">
+                  <span>Valor</span>
+                  <input type="text" />
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="f1-buttons">
             <button type="button" class="btn btn-prev">Anterior</button>
             <button type="submit" v-if="enviando" class="btn btn-submit">Finalizar</button>
@@ -569,6 +570,7 @@ export default {
         gastronomia: [],
         mascotas: [],
         imagePrincipal: "",
+        imagenes: [],
         estrato: "",
         departamento: "",
         ciudad: "",
@@ -583,7 +585,12 @@ export default {
   },
   methods: {
     img(event) {
+      console.log(event);
+
       this.form.imagePrincipal = this.$refs.file.files[0];
+    },
+    filesChange(e) {
+      this.form.imagenes = e.target.files;
     },
     storeInmueble() {
       this.enviando = false;
@@ -615,6 +622,9 @@ export default {
       for (var i = 0; i < this.form.tipo_construccion.length; i++) {
         fd.append("tipo_construccion[]", this.form.tipo_construccion[i]);
       }
+      for (var i = 0; i < this.form.imagenes.length; i++) {
+        fd.append("imagenes[]", this.form.imagenes[i]);
+      }
       // for (var i = 0; i < this.modo.length; i++) {
       //      fd.append('modos[]',this.modo[i]);
       // }
@@ -624,6 +634,7 @@ export default {
       fd.append("banos", this.form.banos);
       fd.append("balcon", this.form.balcon);
       fd.append("image", this.form.imagePrincipal);
+      fd.append("imagenes", this.form.imagenes);
       fd.append("terraza", this.form.terraza);
       fd.append("porteria", this.form.porteria);
       fd.append("parqueadero", this.form.parqueadero);

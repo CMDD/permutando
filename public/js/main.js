@@ -1,9 +1,8 @@
 var $ = jQuery;
 
-$(document).ready(function () {
-    
+$(document).ready(function() {
     // Checkbox único
-    $(document).on('click', '.unique', function () {
+    $(document).on("click", ".unique", function() {
         var $box = $(this);
         if ($box.is(":checked")) {
             var group = "input:checkbox[name='" + $box.attr("name") + "']";
@@ -13,33 +12,31 @@ $(document).ready(function () {
             $box.prop("checked", false);
         }
     });
-    
-    $('.showto').on('click', 'input, select', function () {
 
+    $(".showto").on("click", "input, select", function() {
         var id = $(this).attr("show");
 
-        $('.content .box:not(.resultados-' + id +')').fadeOut( 300, function() {
-            $('.resultados-' + id).hide().fadeIn();
+        $(".content .box:not(.resultados-" + id + ")").fadeOut(300, function() {
+            $(".resultados-" + id)
+                .hide()
+                .fadeIn();
         });
-
     });
 
-
-
-    $('.title').on('click', 'input', function () {
-        
-        $('.title').removeClass('active');
-        $('.fields').slideUp(400, function(){
-            $(this).find('input').prop("checked", false);
+    $(".title").on("click", "input", function() {
+        $(".title").removeClass("active");
+        $(".fields").slideUp(400, function() {
+            $(this)
+                .find("input")
+                .prop("checked", false);
         });
-        
-        var title = $(this).parents('.title');
-        
+
+        var title = $(this).parents(".title");
+
         if ($(this).is(":checked")) {
-            title.addClass('active');
+            title.addClass("active");
             title.next().slideDown();
         }
-        
     });
 
     // $('.estado, .buscador').on('click', 'input', function () {
@@ -47,7 +44,7 @@ $(document).ready(function () {
     //     hide_res('resultados-' + id);
     //     show_res('resultados-' + id);
     // });
-/*
+    /*
     function show_res(id) {
         id = id === undefined ? 'content .box' : id;
         $('.' + id).fadeIn();
@@ -58,27 +55,40 @@ $(document).ready(function () {
         $('.' + id).fadeOut();
     }*/
 
-    $( '.image .inputfile' ).each( function() {
-        var label = $(this).next('label');
-        $(this).on( 'change', function( e ) {
-            var fileName = '';
-            if( e.target.value ) {
-                fileName = e.target.value.split( '\\' ).pop();
-                label.html(fileName);
-            }
-        });
-    });
+    // $(".image .inputfile").each(function() {
+    //     var label = $(this).next("label");
+    //     $(this).on("change", function(e) {
+    //         var fileName = "";
+    //         if (e.target.value) {
+    //             fileName = e.target.value.split("\\").pop();
+    //             label.html(fileName);
+    //         }
+    //     });
+    // });
 
-    $('.filter').on('click', 'input', function () {
-
-        if ($(this).attr('id') == 'lista') {
-            $(this).parent().parent().find('.list').slideDown();
-            $(this).parent().parent().find('.list-map').slideUp();
+    $(".filter").on("click", "input", function() {
+        if ($(this).attr("id") == "lista") {
+            $(this)
+                .parent()
+                .parent()
+                .find(".list")
+                .slideDown();
+            $(this)
+                .parent()
+                .parent()
+                .find(".list-map")
+                .slideUp();
         } else {
-            $(this).parent().parent().find('.list-map').slideDown();
-            $(this).parent().parent().find('.list').slideUp();
+            $(this)
+                .parent()
+                .parent()
+                .find(".list-map")
+                .slideDown();
+            $(this)
+                .parent()
+                .parent()
+                .find(".list")
+                .slideUp();
         }
-
     });
-
 });

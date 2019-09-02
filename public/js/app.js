@@ -27818,7 +27818,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(17);
-module.exports = __webpack_require__(107);
+module.exports = __webpack_require__(101);
 
 
 /***/ }),
@@ -27854,8 +27854,8 @@ Vue.component("formulario-casa", __webpack_require__(88));
 Vue.component("perfil-mensajes", __webpack_require__(91));
 Vue.component("perfil-busco", __webpack_require__(96));
 //Mensajes
-Vue.component("mensajes-lista", __webpack_require__(101));
-Vue.component("mensajes-detalle", __webpack_require__(104));
+Vue.component("mensajes-lista", __webpack_require__(113));
+Vue.component("mensajes-detalle", __webpack_require__(116));
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: [{
@@ -69517,6 +69517,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 if (document.getElementById("userId")) {
   var userId = document.getElementById("userId").value;
@@ -69573,7 +69574,7 @@ var render = function() {
               _c("div", { staticClass: "box" }, [
                 _c("div", {
                   staticClass: "image",
-                  staticStyle: { "background-image": "url(img/img-demo.jpg)" }
+                  staticStyle: { "background-image": "url({img/img-demo.jpg})" }
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "content" }, [
@@ -69604,9 +69605,16 @@ var render = function() {
                       _vm._v("$" + _vm._s(inmueble.valor))
                     ]),
                     _vm._v(" "),
-                    _c("a", { attrs: { href: "/perfil-detalle/1" } }, [
-                      _vm._v("Ver")
-                    ])
+                    _c(
+                      "a",
+                      { attrs: { href: "/perfil-detalle/" + inmueble.id } },
+                      [_vm._v("Ver")]
+                    ),
+                    _c(
+                      "a",
+                      { attrs: { href: "/perfil-detalle/" + inmueble.id } },
+                      [_vm._v("Editar")]
+                    )
                   ])
                 ])
               ])
@@ -70582,6 +70590,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -70637,6 +70646,7 @@ if (document.getElementById("userId")) {
         gastronomia: [],
         mascotas: [],
         imagePrincipal: "",
+        imagenes: [],
         estrato: "",
         departamento: "",
         ciudad: "",
@@ -70652,7 +70662,12 @@ if (document.getElementById("userId")) {
 
   methods: {
     img: function img(event) {
+      console.log(event);
+
       this.form.imagePrincipal = this.$refs.file.files[0];
+    },
+    filesChange: function filesChange(e) {
+      this.form.imagenes = e.target.files;
     },
     storeInmueble: function storeInmueble() {
       var _this = this;
@@ -70686,6 +70701,9 @@ if (document.getElementById("userId")) {
       for (var i = 0; i < this.form.tipo_construccion.length; i++) {
         fd.append("tipo_construccion[]", this.form.tipo_construccion[i]);
       }
+      for (var i = 0; i < this.form.imagenes.length; i++) {
+        fd.append("imagenes[]", this.form.imagenes[i]);
+      }
       // for (var i = 0; i < this.modo.length; i++) {
       //      fd.append('modos[]',this.modo[i]);
       // }
@@ -70695,6 +70713,7 @@ if (document.getElementById("userId")) {
       fd.append("banos", this.form.banos);
       fd.append("balcon", this.form.balcon);
       fd.append("image", this.form.imagePrincipal);
+      fd.append("imagenes", this.form.imagenes);
       fd.append("terraza", this.form.terraza);
       fd.append("porteria", this.form.porteria);
       fd.append("parqueadero", this.form.parqueadero);
@@ -70780,7 +70799,7 @@ var render = function() {
           "form",
           {
             staticClass: "f1",
-            attrs: { role: "form" },
+            attrs: { role: "form", enctype: "multipart/form-data" },
             on: {
               submit: function($event) {
                 $event.preventDefault()
@@ -72909,14 +72928,15 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w50" }, [
-                  _c("span", [_vm._v("Imágenes")]),
+                  _c("span", [_vm._v("Imágenes...")]),
+                  _vm._v(" "),
                   _c("small", [_vm._v("(Máximo 6 imágenes)")]),
                   _vm._v(" "),
                   _c("div", { staticClass: "image" }, [
                     _c("input", {
                       ref: "file2",
-                      staticClass: "inputfile",
-                      attrs: { type: "file", id: "file2" }
+                      attrs: { type: "file", multiple: "" },
+                      on: { change: _vm.filesChange }
                     }),
                     _vm._v(" "),
                     _c("label", { attrs: { for: "file" } }, [
@@ -73358,7 +73378,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.map {\n    display: none;\n}\nhtml,\nbody,\n#app,\n.container-fluid,\n.container-fluid > div {\n    height: 100%;\n}\n.msg {\n    height: calc(100vh - 6rem);\n}\n.msg .list {\n    background: #edeeed;\n    overflow-y: auto;\n    height: 100%;\n    padding: 0;\n    -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n            box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n    z-index: 1;\n}\n.msg .list .user {\n    display: block;\n    padding: 15px 10%;\n    cursor: pointer;\n}\n.msg .list .user.active,\n.msg .list .user:hover {\n    background: #dae2e7;\n}\n.msg .user .img {\n    display: inline-block;\n    vertical-align: middle;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    background: #005c96;\n}\n.msg .user .info {\n    display: inline-block;\n    vertical-align: middle;\n    width: calc(100% - 50px);\n    padding-left: 20px;\n}\n.msg .info span {\n    display: block;\n    color: #005c96;\n    letter-spacing: 1px;\n}\n.msg .info span.type {\n    font-weight: 700;\n    font-size: 0.8rem;\n}\n.msg .chat {\n    background: #fff;\n    overflow-y: auto;\n    height: 100%;\n    position: relative;\n}\n.msg .chat .from,\n.msg .chat .to {\n    display: block;\n    position: relative;\n    margin: 30px;\n    padding: 30px;\n    border-radius: 10px;\n}\n.msg .chat .from span,\n.msg .chat .to span {\n    position: absolute;\n    width: 48px;\n    line-height: 40px;\n    background: #e67319;\n    color: #fff;\n    text-align: center;\n    top: -20px;\n    left: -20px;\n    border-radius: 50%;\n    border: 4px solid #fff;\n    font-weight: 700;\n}\n.msg .chat .from span {\n    background: #005c96;\n}\n.msg .chat .from {\n    background: #b0cbe1;\n    color: #386386;\n}\n.msg .chat .to {\n    background: #fbd8af;\n    color: #8e663a;\n}\n.msg .chat .send {\n    margin: 30px 30px 60px 30px;\n}\n.msg .send input {\n    display: inline-block;\n    vertical-align: middle;\n    border-color: #e67319;\n    border-radius: 5px 0 0 5px;\n    width: calc(100% - 100px);\n}\n.msg .send input:focus {\n    -webkit-box-shadow: none;\n            box-shadow: none;\n}\n.msg .send .btn {\n    display: inline-block;\n    vertical-align: middle;\n    width: 100px;\n    background: #e67319;\n    color: #fff;\n    border-radius: 0 5px 5px 0;\n}\n.msg .send .btn:hover {\n    color: rgba(255, 255, 255, 0.6);\n}\n", ""]);
+exports.push([module.i, "\n.map {\n  display: none;\n}\nhtml,\nbody,\n#app,\n.container-fluid,\n.container-fluid > div {\n  height: 100%;\n}\n.msg {\n  height: calc(100vh - 6rem);\n}\n.msg .list {\n  background: #edeeed;\n  overflow-y: auto;\n  height: 100%;\n  padding: 0;\n  -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n          box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n  z-index: 1;\n}\n.msg .list .user {\n  display: block;\n  padding: 15px 10%;\n  cursor: pointer;\n}\n.msg .list .user.active,\n.msg .list .user:hover {\n  background: #dae2e7;\n}\n.msg .user .img {\n  display: inline-block;\n  vertical-align: middle;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background: #005c96;\n}\n.msg .user .info {\n  display: inline-block;\n  vertical-align: middle;\n  width: calc(100% - 50px);\n  padding-left: 20px;\n}\n.msg .info span {\n  display: block;\n  color: #005c96;\n  letter-spacing: 1px;\n}\n.msg .info span.type {\n  font-weight: 700;\n  font-size: 0.8rem;\n}\n.msg .chat {\n  background: #fff;\n  overflow-y: auto;\n  height: 100%;\n  position: relative;\n}\n.msg .chat .from,\n.msg .chat .to {\n  display: block;\n  position: relative;\n  margin: 30px;\n  padding: 30px;\n  border-radius: 10px;\n}\n.msg .chat .from span,\n.msg .chat .to span {\n  position: absolute;\n  width: 48px;\n  line-height: 40px;\n  background: #e67319;\n  color: #fff;\n  text-align: center;\n  top: -20px;\n  left: -20px;\n  border-radius: 50%;\n  border: 4px solid #fff;\n  font-weight: 700;\n}\n.msg .chat .from span {\n  background: #005c96;\n}\n.msg .chat .from {\n  background: #b0cbe1;\n  color: #386386;\n}\n.msg .chat .to {\n  background: #fbd8af;\n  color: #8e663a;\n}\n.msg .chat .send {\n  margin: 30px 30px 60px 30px;\n}\n.msg .send input {\n  display: inline-block;\n  vertical-align: middle;\n  border-color: #e67319;\n  border-radius: 5px 0 0 5px;\n  width: calc(100% - 100px);\n}\n.msg .send input:focus {\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n.msg .send .btn {\n  display: inline-block;\n  vertical-align: middle;\n  width: 100px;\n  background: #e67319;\n  color: #fff;\n  border-radius: 0 5px 5px 0;\n}\n.msg .send .btn:hover {\n  color: rgba(255, 255, 255, 0.6);\n}\n", ""]);
 
 // exports
 
@@ -73388,28 +73408,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 if (document.getElementById("userId")) {
-    var userId = document.getElementById("userId").value;
+  var userId = document.getElementById("userId").value;
 } else {}
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            userId: userId,
-            inmuebles: []
-        };
-    },
-    created: function created() {
-        this.getInmuebles();
-    },
+  data: function data() {
+    return {
+      userId: userId,
+      inmuebles: []
+    };
+  },
+  created: function created() {
+    this.getInmuebles();
+  },
 
-    methods: {
-        getInmuebles: function getInmuebles() {
-            var _this = this;
+  methods: {
+    getInmuebles: function getInmuebles() {
+      var _this = this;
 
-            axios.get("api/mis-inmuebles/" + this.userId).then(function (res) {
-                _this.inmuebles = res.data;
-            });
-        }
+      axios.get("api/mis-inmuebles/" + this.userId).then(function (res) {
+        _this.inmuebles = res.data;
+      });
     }
+  }
 });
 
 /***/ }),
@@ -73426,7 +73446,7 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "row subtitle" }),
       _vm._v(" "),
       _c("mensajes-lista", { attrs: { userId: _vm.userId } })
     ],
@@ -73440,16 +73460,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row title" }, [
       _c("div", { staticClass: "col" }, [_c("span", [_vm._v("Mis Mensajes")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row subtitle" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("span", [_vm._v("Permuta entre: Terry y yo")])
-      ])
     ])
   }
 ]
@@ -73972,14 +73982,31 @@ if (false) {
 
 /***/ }),
 /* 101 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(102)
+var __vue_script__ = __webpack_require__(114)
 /* template */
-var __vue_template__ = __webpack_require__(103)
+var __vue_template__ = __webpack_require__(115)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74018,7 +74045,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 102 */
+/* 114 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74069,7 +74096,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 103 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74125,15 +74152,15 @@ if (false) {
 }
 
 /***/ }),
-/* 104 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(105)
+var __vue_script__ = __webpack_require__(117)
 /* template */
-var __vue_template__ = __webpack_require__(106)
+var __vue_template__ = __webpack_require__(118)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74172,7 +74199,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 105 */
+/* 117 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74208,7 +74235,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 106 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74240,12 +74267,6 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-bf030c3c", module.exports)
   }
 }
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

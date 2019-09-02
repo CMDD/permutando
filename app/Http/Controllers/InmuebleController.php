@@ -27,8 +27,9 @@ class InmuebleController extends Controller
         return $request->userId;
     }
     public function detalle($id){
+    
         $inmueble = Inmueble::find($id);
-        return view('admin.inmueble.detalle')->with('inmueble',$inmueble);
+        return view('admin.inmueble.detalle')->with('inmueble');
 
     }
 

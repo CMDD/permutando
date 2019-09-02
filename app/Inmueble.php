@@ -195,6 +195,13 @@ class Inmueble extends Model
            $zona->save();
 
       }
+     foreach ((array)$request->imagenes as $item) {
+           $imagen = new Image();
+           $imagen->image = $item->store('imagenes');
+           $imagen->inmueble_id = $inmueble->id;
+           $imagen->save();
+
+      }
      return "llegando";
     }
 }

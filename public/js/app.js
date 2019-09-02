@@ -70761,6 +70761,20 @@ if (document.getElementById("userId")) {
   }
 });
 
+$(document).on('click', '.generator .add', function () {
+
+  var num = $('.group-generator').length + 1;
+
+  var ids = $(this).parent().attr('data-option'),
+      box_html = $('<div class="group-generator"><div class="form-field w65"><span>Bien #' + num + '</span><div class="my-text"><input type="text" name="bien-' + num + '" /></div></div><div class="form-field w35"><span>Valor del bien</span><div class="my-text"><input type="text" /></div></div></div>');
+
+  box_html.hide();
+  $(this).parent().before(box_html);
+  box_html.fadeIn('fast');
+
+  return false;
+});
+
 /***/ }),
 /* 87 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -73542,7 +73556,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.mapa {\n  height: 500px;\n}\n.title-map {\n  color: rgb(102, 100, 100);\n  font-size: 15px;\n  font-weight: bold;\n  margin: 0% 0% 4% 0%;\n}\n.valor-map {\n  color: rgb(102, 100, 100);\n  font-size: 12px;\n}\n", ""]);
+exports.push([module.i, "\n.modo {\n        background: #fff;\n        display: inline-block;\n        vertical-align: middle;\n        border-radius: 10px;\n        padding: 5px 10px 5px;\n        line-height: 1.5;\n}\n.modo label {\n        margin: 0 5px;\n}\n.mapa {\n  height: calc(100vh - 3rem);\n}\n.title-map {\n  color: rgb(102, 100, 100);\n  font-size: 15px;\n  font-weight: bold;\n  margin: 0% 0% 4% 0%;\n}\n.valor-map {\n  color: rgb(102, 100, 100);\n  font-size: 12px;\n}\n", ""]);
 
 // exports
 
@@ -73553,6 +73567,14 @@ exports.push([module.i, "\n.mapa {\n  height: 500px;\n}\n.title-map {\n  color: 
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73716,146 +73738,34 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "accion-buscar" }, [
-        _c(
-          "form",
-          {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.getInmueble()
+      _c("div", { staticClass: "row accion-buscar" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-10" }, [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.getInmueble()
+                }
               }
-            }
-          },
-          [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.busco.tipo,
-                    expression: "busco.tipo"
-                  }
-                ],
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.busco,
-                      "tipo",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { value: "" } }, [_vm._v("Que buscas?")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Apartamento" } }, [
-                  _vm._v("Apartamento")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Casa" } }, [_vm._v("Casa")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Bodega" } }, [
-                  _vm._v("Bodega")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Lote" } }, [_vm._v("Lote")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Oficina" } }, [
-                  _vm._v("Oficina")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Edificio" } }, [
-                  _vm._v("Edificio")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Casa Lote" } }, [
-                  _vm._v("Casa Lote")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Quinta" } }, [
-                  _vm._v("Quinta")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Finca" } }, [_vm._v("Finca")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Hacienda" } }, [
-                  _vm._v("Hacienda")
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.busco.en,
-                    expression: "busco.en"
-                  }
-                ],
-                attrs: { required: "" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.busco,
-                      "en",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { value: "" } }, [_vm._v("En...?")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Arriendo" } }, [
-                  _vm._v("Arriendo")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Venta" } }, [_vm._v("Venta")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Permuto" } }, [
-                  _vm._v("Permuta")
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.busco.departamento,
-                    expression: "busco.departamento"
-                  }
-                ],
-                attrs: { required: "" },
-                on: {
-                  change: [
-                    function($event) {
+            },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.busco.tipo,
+                      expression: "busco.tipo"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
                       var $$selectedVal = Array.prototype.filter
                         .call($event.target.options, function(o) {
                           return o.selected
@@ -73866,81 +73776,211 @@ var render = function() {
                         })
                       _vm.$set(
                         _vm.busco,
-                        "departamento",
+                        "tipo",
                         $event.target.multiple
                           ? $$selectedVal
                           : $$selectedVal[0]
                       )
-                    },
-                    function($event) {
-                      return _vm.getCiudades()
                     }
-                  ]
-                }
-              },
-              [
-                _c("option", { attrs: { value: "" } }, [
-                  _vm._v("Departamento")
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.departamentos, function(dep) {
-                  return _c(
-                    "option",
-                    { key: dep.id, domProps: { value: dep.id } },
-                    [_vm._v(_vm._s(dep.nombre))]
-                  )
-                })
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.busco.ciudad,
-                    expression: "busco.ciudad"
                   }
-                ],
-                attrs: { required: "" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.busco,
-                      "ciudad",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("Que buscas?")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Apartamento" } }, [
+                    _vm._v("Apartamento")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Casa" } }, [_vm._v("Casa")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Bodega" } }, [
+                    _vm._v("Bodega")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Lote" } }, [_vm._v("Lote")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Oficina" } }, [
+                    _vm._v("Oficina")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Edificio" } }, [
+                    _vm._v("Edificio")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Casa Lote" } }, [
+                    _vm._v("Casa Lote")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Quinta" } }, [
+                    _vm._v("Quinta")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Finca" } }, [
+                    _vm._v("Finca")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Hacienda" } }, [
+                    _vm._v("Hacienda")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.busco.en,
+                      expression: "busco.en"
+                    }
+                  ],
+                  attrs: { required: "" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.busco,
+                        "en",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [_vm._v("En...?")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Arriendo" } }, [
+                    _vm._v("Arriendo")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Venta" } }, [
+                    _vm._v("Venta")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Permuto" } }, [
+                    _vm._v("Permuta")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.busco.departamento,
+                      expression: "busco.departamento"
+                    }
+                  ],
+                  attrs: { required: "" },
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.busco,
+                          "departamento",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      function($event) {
+                        return _vm.getCiudades()
+                      }
+                    ]
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("Departamento")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.departamentos, function(dep) {
+                    return _c(
+                      "option",
+                      { key: dep.id, domProps: { value: dep.id } },
+                      [_vm._v(_vm._s(dep.nombre))]
                     )
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.busco.ciudad,
+                      expression: "busco.ciudad"
+                    }
+                  ],
+                  attrs: { required: "" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.busco,
+                        "ciudad",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
                   }
-                }
-              },
-              [
-                _c("option", { attrs: { value: "" } }, [_vm._v("Ciudad")]),
-                _vm._v(" "),
-                _vm._l(_vm.ciudades, function(ciudad) {
-                  return _c(
-                    "option",
-                    { key: ciudad.id, domProps: { value: ciudad.id } },
-                    [_vm._v(_vm._s(ciudad.nombre))]
-                  )
-                })
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c("button", { attrs: { type: "submit" } }, [_vm._v("Buscar")])
-          ]
-        )
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [_vm._v("Ciudad")]),
+                  _vm._v(" "),
+                  _vm._l(_vm.ciudades, function(ciudad) {
+                    return _c(
+                      "option",
+                      { key: ciudad.id, domProps: { value: ciudad.id } },
+                      [_vm._v(_vm._s(ciudad.nombre))]
+                    )
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
+                _vm._v("Buscar")
+              ])
+            ]
+          )
+        ])
       ])
     ]
   )
@@ -73952,6 +73992,24 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row title" }, [
       _c("div", { staticClass: "col" }, [_c("span", [_vm._v("Buscar")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("div", { staticClass: "modo" }, [
+        _c("label", [
+          _c("input", { attrs: { type: "radio", name: "modo", checked: "" } }),
+          _vm._v(" Mapa")
+        ]),
+        _vm._v(" "),
+        _c("label", [
+          _c("input", { attrs: { type: "radio", name: "modo" } }),
+          _vm._v(" Lista")
+        ])
+      ])
     ])
   }
 ]

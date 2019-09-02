@@ -38,7 +38,7 @@
         <!-- <li><a href="#">Mis alertas</a></li>
         <li><a href="#">Crear Alertas</a></li> -->
         <li>
-            <a href="#" class="">Cerrar sesión</a>
+            <a href="/logout" class="">Cerrar sesión</a>
         </li>
     </ul>
 </div>

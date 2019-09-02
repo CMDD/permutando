@@ -18,6 +18,9 @@ class CreateMensajesTable extends Migration
             $table->integer('from')->unsigned()->nullable();
             $table->integer('to')->unsigned()->nullable();
             $table->integer('inmueble')->unsigned()->nullable();
+            $table->string('nombre')->nullable();
+            $table->string('tel')->nullable();
+            $table->string('email')->nullable(); 
             $table->text('mensaje')->nullable();      
             $table->timestamps();
         });

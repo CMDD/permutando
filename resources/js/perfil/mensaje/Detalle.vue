@@ -1,7 +1,11 @@
 <template>
-  <div class="col-md-9 chat"  v-if="mensaje.mensaje">
-    <div class="from" >
-      <span>T</span>{{mensaje.mensaje}}
+  <div class="col-md-9 chat" v-if="mensaje.mensaje">
+    <div class="from">
+      <span>M</span>
+      <p>Nombre: {{mensaje.nombre}}</p>
+      <p>Télefono: {{mensaje.tel}}</p>
+      <p>Email: {{mensaje.email}}</p>
+      <p>Mensaje:{{mensaje.mensaje}}</p>
     </div>
     <!-- <div class="to">
       <span>Yo</span>Lorem ipsum dolor sit amet, consectetur
@@ -9,20 +13,18 @@
       vel, mattis elementum ex. Cras posuere, ligula in fermentum
       tincidunt, erat metus finibus massa, ac mollis nulla ex a
       leo. Ut tempus tortor sit amet consectetur vulputate.
-    </div> -->
-    <form class="send"><input type="text" class="form-control" /><button type="submit" class="btn">Enviar</button>
-    </form>
+    </div>-->
+    <!-- <form class="send"><input type="text" class="form-control" /><button type="submit" class="btn">Enviar</button>
+    </form>-->
   </div>
 </template>
 
 <script>
 export default {
-    props: ["mensaje"],
+  props: ["mensaje"],
   data() {
-    return {
-    };
+    return {};
   },
-  created() {
-  },
+  created() {}
 };
 </script>

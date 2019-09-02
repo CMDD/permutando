@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 use App\Mail\Contacto;
 use Mail;
 use App\Mensaje;
+use Auth;
 
 class ContactoController extends Controller
 {
     public function contacto(Request $request){
         $mensaje = new Mensaje();
-        $mensaje->from = 2;
+        $mensaje->from = Auth::User()->id;
         $mensaje->to = $request->to;
         $mensaje->inmueble = $request->inmueble;
         $mensaje->mensaje = $request->mensaje;
+        $mensaje->nombre = $request->nombre;
+        $mensaje->tel = $request->tel;
+        $mensaje->email = $request->email;
         $mensaje->save();
         dd($request->inmueble);
 

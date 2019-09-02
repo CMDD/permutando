@@ -73325,7 +73325,13 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "col-12 col-md-8 col-lg-9 col-xl-10 content" },
-    [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("mensajes-lista")],
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("mensajes-lista", { attrs: { userId: _vm.userId } })
+    ],
     1
   )
 }
@@ -73951,6 +73957,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['userId'],
     data: function data() {
         return {
             mensajes: [],
@@ -73958,6 +73965,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     created: function created() {
+        console.log(this.user);
         this.getMensajes();
     },
 
@@ -73972,7 +73980,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getMensajes: function getMensajes() {
             var _this2 = this;
 
-            axios.get("api/mensajes/" + 1).then(function (res) {
+            axios.get("api/mensajes/" + this.userId).then(function (res) {
                 _this2.mensajes = res.data;
             });
         }
@@ -74010,9 +74018,9 @@ var render = function() {
               _c("div", { staticClass: "img" }),
               _c("div", { staticClass: "info" }, [
                 _c("span", { staticClass: "name" }, [
-                  _vm._v(_vm._s(mensaje.from))
+                  _vm._v(_vm._s(mensaje.nombre))
                 ]),
-                _c("span", { staticClass: "type" }, [_vm._v("Permuta")])
+                _c("span", { staticClass: "type" }, [_vm._v("Mensaje")])
               ])
             ]
           )
@@ -74105,6 +74113,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["mensaje"],
@@ -74125,27 +74137,20 @@ var render = function() {
   return _vm.mensaje.mensaje
     ? _c("div", { staticClass: "col-md-9 chat" }, [
         _c("div", { staticClass: "from" }, [
-          _c("span", [_vm._v("T")]),
-          _vm._v(_vm._s(_vm.mensaje.mensaje) + "\n  ")
-        ]),
-        _vm._v(" "),
-        _vm._m(0)
+          _c("span", [_vm._v("M")]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
+        ])
       ])
     : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", { staticClass: "send" }, [
-      _c("input", { staticClass: "form-control", attrs: { type: "text" } }),
-      _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
-        _vm._v("Enviar")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

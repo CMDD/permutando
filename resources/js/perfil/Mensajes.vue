@@ -11,7 +11,7 @@
             </div>
         </div>
 
-        <mensajes-lista></mensajes-lista>
+        <mensajes-lista :userId="userId"></mensajes-lista>
     </div>
 </template>
 
@@ -21,6 +21,7 @@
     } else {
     }
     export default {
+        
         data() {
             return {
                 userId: userId,

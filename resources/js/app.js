@@ -26,6 +26,9 @@ Vue.component("publicar-inmueble", require("./perfil/publicar/Index.vue"));
 Vue.component("formulario-casa", require("./perfil/publicar/Casa.vue"));
 Vue.component("perfil-mensajes", require("./perfil/Mensajes.vue"));
 Vue.component("perfil-busco", require("./perfil/busco/index.vue"));
+//Mensajes
+Vue.component("mensajes-lista", require("./perfil/mensaje/Lista.vue"));
+Vue.component("mensajes-detalle", require("./perfil/mensaje/Detalle.vue"));
 
 let router = new Router({
     routes: [

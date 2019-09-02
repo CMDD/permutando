@@ -40,3 +40,7 @@ Route::post('busco-index','Perfil\BuscoController@buscoIndex');
 Route::get('departamentos','DepartamentoController@index');
 Route::get('ciudades/{id}','DepartamentoController@ciudades');
 
+// Mensajes
+Route::get('mensajes/{id}','Mensaje\MensajeController@getMensajes');
+Route::get('mensaje/{id}','Mensaje\MensajeController@getMensaje');
+

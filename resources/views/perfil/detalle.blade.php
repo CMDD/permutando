@@ -47,6 +47,8 @@
                         <input type="text" class="form-control" name="nombre" placeholder="Nombre">
                         <input type="text" class="form-control" name="tel" placeholder="Teléfono/Celular">
                         <input type="email" class="form-control" name="email" placeholder="Email">
+                        <input type="hidden" class="form-control" name="to" value="{{$inmueble->user_id}}">
+                        <input type="hidden" class="form-control" name="inmueble" value="{{$inmueble->id}}">
                         <textarea class="form-control" name="mensaje" placeholder="Mensaje"></textarea>
                         <button type="submit" class="btn">Enviar</button>
                     </form>

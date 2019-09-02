@@ -428,23 +428,22 @@
 
         <fieldset>
           <h4>Más información</h4>
-          <div class="form-group more">
-            <div class="form-field">
+          <div class="form-group">
+            <div class="form-field w50">
               <span>Imagen Principal</span>
               <div class="image">
                 <input type="file" id="file" ref="file" @change="img" class="inputfile" />
                 <label for="file">Subir</label>
               </div>
             </div>
-            <div class="form-field">
-              <span>Imágenes</span>
+            <div class="form-field w50">
+              <span>Imágenes</span><small>(Máximo 6 imágenes)</small>
               <div class="image">
                 <input type="file" id="file2" ref="file2" class="inputfile" />
                 <label for="file">Subir imagen</label>
-                <small>Máximo 6 imágenes</small>
               </div>
             </div>
-            <div class="form-field w100">
+            <div class="form-field w50">
               <div class="my-text">
                 <span>Url Video</span>
                 <input v-model="form.video" type="text" />
@@ -459,14 +458,51 @@
 
         <fieldset>
           <h4>Permuto</h4>
-          <div class="form-group more" v-if="form.tipoPublicacion === 'Permuto'">
+          <div class="form-group" v-if="form.tipoPublicacion === 'Permuto'">
             <div class="form-field w100">
-              <div class="my-text">
-                <span>Permutando</span>
-                <input v-model="form.video" type="text" />
-              </div>
+                <div class="my-text">
+                    <span>Valor del inmueble</span>
+                    <input type="text" />
+                </div>
             </div>
           </div>
+            <div class="form-group generator" v-if="form.tipoPublicacion === 'Permuto'">
+                <h5>¿Qué bienes ofrecerías?</h5>
+                <div class="group-generator">
+                    <div class="form-field w65">
+                        <span>Bien #1</span>
+                        <div class="my-text">
+                            <input type="text" />
+                        </div>
+                    </div>
+                    <div class="form-field w35">
+                        <span>Valor del bien</span>
+                        <div class="my-text">
+                            <input type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field w50">
+                    <a href="#" class="btn add">Agregar más bienes</a>
+                </div>
+                <div class="form-field w50">
+                    <div class="my-text text-right">
+                        <span>Valor total</span>
+                        <input type="text" />
+                    </div>
+                </div>
+                <div class="group-efectivo">
+                    <div class="form-field w50">
+                        <a href="#" class="btn">Efectivo</a>
+                    </div>
+                    <div class="form-field w50">
+                        <div class="my-text text-right">
+                            <span>Valor</span>
+                            <input type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
           <div class="f1-buttons">
             <button type="button" class="btn btn-prev">Anterior</button>
             <button type="submit" v-if="enviando" class="btn btn-submit">Finalizar</button>

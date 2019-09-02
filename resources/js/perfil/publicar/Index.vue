@@ -699,6 +699,22 @@ export default {
     }
   }
 };
+
+$(document).on('click', '.generator .add', function(){
+
+    var num = $('.group-generator').length + 1;
+
+    var ids = $(this).parent().attr('data-option'),
+        box_html = $('<div class="group-generator"><div class="form-field w65"><span>Bien #'+ num +'</span><div class="my-text"><input type="text" name="bien-'+ num +'" /></div></div><div class="form-field w35"><span>Valor del bien</span><div class="my-text"><input type="text" /></div></div></div>');
+
+    box_html.hide();
+    $(this).parent().before(box_html);
+    box_html.fadeIn('fast');
+
+    return false;
+
+});
+
 </script>
 
 <style>

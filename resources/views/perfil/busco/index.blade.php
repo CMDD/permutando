@@ -23,6 +23,9 @@
         text-align: center;
         right: 1rem;
     }
+    .accion-buscar form {
+        display: flex;
+    }
     .accion-buscar select {
         -webkit-appearance: button;
         -webkit-border-radius: 2px;
@@ -41,16 +44,17 @@
         padding: 5px 16px 5px 10px;
         text-overflow: ellipsis;
         white-space: nowrap;
-        min-width: 200px;
+        flex: 1;
         line-height: 1.5;
         vertical-align: middle;
         display: inline-block;
+        margin-right: 10px;
     }
     .accion-buscar .btn {
         background: #005b95;
         color: #fff;
-         border-radius: 50px;
-        margin-left: 10px;
+        border-radius: 50px;
+        flex: 0 0 auto;
     }
     .accion-buscar .btn:hover {
         background: #e67319;

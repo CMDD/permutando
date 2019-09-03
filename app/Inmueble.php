@@ -11,6 +11,7 @@ use App\Transporte;
 use App\Departamento;
 use App\Ciudad;
 use App\Bien;
+use App\User;
 use Illuminate\Session\Middleware\StartSession;
 // use App\Entretenimiento;
 class Inmueble extends Model
@@ -40,81 +41,73 @@ class Inmueble extends Model
      public function modos() {
           return $this->hasMany('App\Modo');
      }
+     public function construccion() {
+          return $this->hasMany('App\Construccion');
+     }
 
      
-    public function storeCasa($request){
+    public function store($request,$id){
+
      $departamento = Departamento::find((int)$request->departamento);
      $ciudad = Ciudad::find((int)$request->ciudad);
    
-     $inmueble =new Inmueble();
+     $inmueble = Inmueble::find($id);
      $inmueble->tipo_publicacion = $request->tipo_publicacion;
      $inmueble->tipo_inmueble = $request->tipo_inmueble;
      $inmueble->estado = $request->tipo_publicacion;
      $inmueble->recibo_efectivo = $request->recibo_efectivo;
-     
+     $inmueble->video = $request->video;
+     $inmueble->area = $request->area;
      $inmueble->departamento = $departamento->nombre;
      $inmueble->ciudad = $ciudad->nombre;
-
      $inmueble->departamento_id = $request->departamento;
      $inmueble->ciudad_id = $request->ciudad;
-
      $inmueble->barrio = $request->barrio;
      $inmueble->direccion = $request->direccion;
-     $inmueble->estrato = $request->estrato;
-     $inmueble->area = $request->area;
-     $inmueble->habitaciones = $request->habitaciones;
-     $inmueble->banos = $request->banos;
-     $inmueble->balcon = (boolean)$request->balcon;
-     $inmueble->terraza = (boolean)$request->terraza;
-     $inmueble->parqueadero = (boolean)$request->parqueadero;
-     $inmueble->porteria = $request->porteria;
      $inmueble->caracteristicas = $request->caracteristica;
      $inmueble->valor = $request->valor;
-
-          // User
-          $user = User::find($request->userId);
-          $inmueble->user_id = $user->id;
-          $inmueble->username = $user->name;
-          $inmueble->useremail = $user->email;
-          $inmueble->usertel = $user->tel;
-
      if($request->file('image')){
           $inmueble->imagen = $request->file('image')->store('imagenes');
-      }
-     
+     }
+     // User
+     $user = User::find((int)$request->userId);
+     $inmueble->user_id = $user->id;
+     $inmueble->username = $user->name;
+     $inmueble->useremail = $user->email;
+     $inmueble->usertel = $user->tel;
+
      $inmueble->save();
+     
 
-
-
-     foreach ((array)$request->zonas as $item) {
-          $zona = new Zonas();
-           $zona->nombre = $item;
-           $zona->inmueble_id = $inmueble->id;
-           $zona->save();
-
-      }
-     foreach ((array)$request->imagenes as $item) {
-           $imagen = new Image();
-           $imagen->image = $item->store('imagenes');
-           $imagen->inmueble_id = $inmueble->id;
-           $imagen->save();
-
-      }
-     foreach ((array)$request->bienes as $item) {
-
-           $bien = new Bien();
-           $bien->bien = $item;
-           $bien->inmueble_id = $inmueble->id;
-           $bien->save();
-           foreach ((array)$request->valor_bien as $item) {
-
-               $bien = Bien::find($bien->id);
-               $bien->valor = $item;
-               $bien->save();
-               break;
-
+     if ($request->imagenes) {
+          foreach ((array)$request->imagenes as $item) {
+               $imagen = new Image();
+               $imagen->image = $item->store('imagenes');
+               $imagen->inmueble_id = $inmueble->id;
+               $imagen->save();
+     
           }
-      }
-     return "llegando";
+     }
+     
+
+     if ( $request->tipo_publicacion == "Permuto") {
+          $indicador=0;
+          foreach ((array)$request->bienes as $item) {
+     
+                $bien = new Bien();
+                $bien->bien = $item;
+                $bien->inmueble_id = $inmueble->id;
+                $bien->save();
+     
+               $bien = Bien::find($bien->id);
+               $bien->valor = $request->valor_bien[$indicador];
+               $bien->save();
+               $indicador = $indicador +1;
+              
+           }
+     }
+
+
+
     }
 }

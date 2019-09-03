@@ -6,7 +6,13 @@
       </div>
     </div>
     <div class="box">
-      <form role="form" @submit.prevent="storeInmueble" class="f1" enctype="multipart/form-data">
+      <form
+        name="myform"
+        role="form"
+        @submit.prevent="storeInmueble"
+        class="f1"
+        enctype="multipart/form-data"
+      >
         <div class="f1-steps">
           <div class="f1-progress">
             <div
@@ -87,7 +93,7 @@
                   Area Lote
                   <!-- <sup>2</sup> -->
                 </span>
-                <input v-model="form.area" type="text" />
+                <input v-model="form.area_lote" type="text" />
               </div>
             </div>
             <div
@@ -100,7 +106,7 @@
                   Area Construida
                   <!-- <sup>2</sup> -->
                 </span>
-                <input v-model="form.area" type="text" />
+                <input v-model="form.area_construida" type="text" />
               </div>
             </div>
             <div
@@ -148,10 +154,19 @@
                   <input
                     type="checkbox"
                     v-model="form.tipo_construccion"
+                    value="Parqueadero descubierto"
+                    id="zonas_9"
+                  />
+                  <label for="zonas_9">Parqueadero descubierto</label>
+                  <input
+                    type="checkbox"
+                    v-model="form.tipo_construccion"
                     value="Pozo séptico"
                     id="zonas_6"
                   />
                   <label for="zonas_6">Pozo séptico</label>
+                </div>
+                <div class="form-col">
                   <input
                     type="checkbox"
                     v-model="form.tipo_construccion"
@@ -159,6 +174,13 @@
                     id="zonas_7"
                   />
                   <label for="zonas_7">Alcantarillado</label>
+                  <input
+                    type="checkbox"
+                    v-model="form.tipo_construccion"
+                    value="Zonas deportivas"
+                    id="zonas_8"
+                  />
+                  <label for="zonas_8">Zonas deportivas</label>
                 </div>
               </div>
             </div>
@@ -167,7 +189,7 @@
               <div class="my-select">
                 <span>Espacio</span>
                 <select v-model="form.espacio">
-                  <option>Seleccione..</option>
+                  <option value>Seleccione..</option>
                   <option value="Abierto">Abierto</option>
                   <option value="Cerrado">Cerrado</option>
                 </select>
@@ -192,20 +214,18 @@
             </div>
 
             <div class="form-field w50" v-if="form.tipoInmueble == 'Lote' ">
-              <div class="my-select">
+              <div class="my-text">
                 <span>Topografía</span>
-                <select v-model="form.topografia">
-                  <option>Seleccione..</option>
-                  <option value>....</option>
-                </select>
+                <input v-model="form.topografia" type="text" />
               </div>
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Lote' ">
               <div class="my-select">
                 <span>Vías</span>
                 <select v-model="form.vias">
-                  <option>Seleccione..</option>
-                  <option value>....</option>
+                  <option value>Seleccione...</option>
+                  <option value="Pavimentada">Pavimentada</option>
+                  <option value="Destapada">Destapada</option>
                 </select>
               </div>
             </div>
@@ -213,7 +233,7 @@
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-text">
                 <span>Capacidad carga (PSI)</span>
-                <input v-model="form.capacidad_carga_psi" type="text" />
+                <input v-model="form.carga_psi" type="text" />
               </div>
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
@@ -400,7 +420,10 @@
                 <input v-model="form.direccion" type="text" />
               </div>
             </div>
-            <div class="form-field" v-if="form.tipoInmueble == 'Casa' ">
+            <div
+              class="form-field"
+              v-if="form.tipoInmueble == 'Casa' || form.tipoInmueble == 'Apartamento' "
+            >
               <div class="my-select">
                 <span>Estrato</span>
                 <select v-model="form.estrato">
@@ -554,7 +577,7 @@ export default {
         //Bodega
         parque_industrial: "",
         capacidad_luz: "",
-        capacidad_carga_psi: "",
+        carga_psi: "",
         habitaciones: "",
         // Lote
         topografia: "",
@@ -563,6 +586,9 @@ export default {
         espacio: "",
         // Edificio
         ascensor: "",
+        area_construida: "",
+        area_lote: "",
+        pisos: "",
         // Quinta - Casa Lote - Finca - Hacienda
         tipo_construccion: [],
 
@@ -690,6 +716,22 @@ export default {
       fd.append("tipo_inmueble", this.form.tipoInmueble);
       fd.append("recibo_efectivo", this.form.recibo_efectivo);
 
+      // Bodega
+      fd.append("carga_psi", this.form.carga_psi);
+      fd.append("capacidad_luz", this.form.capacidad_luz);
+      fd.append("parque_industrial", this.form.parque_industrial);
+
+      // Lote
+      fd.append("topografia", this.form.topografia);
+      fd.append("vias", this.form.vias);
+      //Oficina
+      fd.append("espacio", this.form.espacio);
+      //Edificio
+      fd.append("area_construida", this.form.area_construida);
+      fd.append("ascensor", this.form.ascensor);
+      fd.append("area_lote", this.form.area_lote);
+      fd.append("pisos", this.form.pisos);
+
       axios
         .post("api/store-inmueble", fd, {
           headers: {
@@ -721,6 +763,8 @@ export default {
           //   mascotas:'',
           // }
           toastr.success("Inmueble subido correctamente");
+          window.location.href =
+            "http://localhost:8000/perfil-mis-publicaciones";
         });
     },
 
@@ -732,7 +776,6 @@ export default {
     getCiudades() {
       axios.get("/api/ciudades/" + this.form.departamento).then(res => {
         this.ciudades = res.data;
-        console.log(res.data);
       });
     }
   }

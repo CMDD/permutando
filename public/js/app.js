@@ -70592,6 +70592,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -70630,7 +70653,7 @@ if (document.getElementById("userId")) {
         //Bodega
         parque_industrial: "",
         capacidad_luz: "",
-        capacidad_carga_psi: "",
+        carga_psi: "",
         habitaciones: "",
         // Lote
         topografia: "",
@@ -70639,6 +70662,9 @@ if (document.getElementById("userId")) {
         espacio: "",
         // Edificio
         ascensor: "",
+        area_construida: "",
+        area_lote: "",
+        pisos: "",
         // Quinta - Casa Lote - Finca - Hacienda
         tipo_construccion: [],
 
@@ -70770,6 +70796,22 @@ if (document.getElementById("userId")) {
       fd.append("tipo_inmueble", this.form.tipoInmueble);
       fd.append("recibo_efectivo", this.form.recibo_efectivo);
 
+      // Bodega
+      fd.append("carga_psi", this.form.carga_psi);
+      fd.append("capacidad_luz", this.form.capacidad_luz);
+      fd.append("parque_industrial", this.form.parque_industrial);
+
+      // Lote
+      fd.append("topografia", this.form.topografia);
+      fd.append("vias", this.form.vias);
+      //Oficina
+      fd.append("espacio", this.form.espacio);
+      //Edificio
+      fd.append("area_construida", this.form.area_construida);
+      fd.append("ascensor", this.form.ascensor);
+      fd.append("area_lote", this.form.area_lote);
+      fd.append("pisos", this.form.pisos);
+
       axios.post("api/store-inmueble", fd, {
         headers: {
           "Content-Type": "multipart/form-data"
@@ -70799,6 +70841,7 @@ if (document.getElementById("userId")) {
         //   mascotas:'',
         // }
         __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Inmueble subido correctamente");
+        window.location.href = "http://localhost:8000/perfil-mis-publicaciones";
       });
     },
     getDepartamentos: function getDepartamentos() {
@@ -70813,7 +70856,6 @@ if (document.getElementById("userId")) {
 
       axios.get("/api/ciudades/" + this.form.departamento).then(function (res) {
         _this3.ciudades = res.data;
-        console.log(res.data);
       });
     }
   }
@@ -70851,7 +70893,11 @@ var render = function() {
           "form",
           {
             staticClass: "f1",
-            attrs: { role: "form", enctype: "multipart/form-data" },
+            attrs: {
+              name: "myform",
+              role: "form",
+              enctype: "multipart/form-data"
+            },
             on: {
               submit: function($event) {
                 $event.preventDefault()
@@ -71059,18 +71105,22 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.area,
-                              expression: "form.area"
+                              value: _vm.form.area_lote,
+                              expression: "form.area_lote"
                             }
                           ],
                           attrs: { type: "text" },
-                          domProps: { value: _vm.form.area },
+                          domProps: { value: _vm.form.area_lote },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.$set(_vm.form, "area", $event.target.value)
+                              _vm.$set(
+                                _vm.form,
+                                "area_lote",
+                                $event.target.value
+                              )
                             }
                           }
                         })
@@ -71096,18 +71146,22 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.area,
-                              expression: "form.area"
+                              value: _vm.form.area_construida,
+                              expression: "form.area_construida"
                             }
                           ],
                           attrs: { type: "text" },
-                          domProps: { value: _vm.form.area },
+                          domProps: { value: _vm.form.area_construida },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.$set(_vm.form, "area", $event.target.value)
+                              _vm.$set(
+                                _vm.form,
+                                "area_construida",
+                                $event.target.value
+                              )
                             }
                           }
                         })
@@ -71424,6 +71478,64 @@ var render = function() {
                             ],
                             attrs: {
                               type: "checkbox",
+                              value: "Parqueadero descubierto",
+                              id: "zonas_9"
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.form.tipo_construccion)
+                                ? _vm._i(
+                                    _vm.form.tipo_construccion,
+                                    "Parqueadero descubierto"
+                                  ) > -1
+                                : _vm.form.tipo_construccion
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.form.tipo_construccion,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "Parqueadero descubierto",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "tipo_construccion",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "tipo_construccion",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.form, "tipo_construccion", $$c)
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "zonas_9" } }, [
+                            _vm._v("Parqueadero descubierto")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.tipo_construccion,
+                                expression: "form.tipo_construccion"
+                              }
+                            ],
+                            attrs: {
+                              type: "checkbox",
                               value: "Pozo séptico",
                               id: "zonas_6"
                             },
@@ -71469,8 +71581,10 @@ var render = function() {
                           _vm._v(" "),
                           _c("label", { attrs: { for: "zonas_6" } }, [
                             _vm._v("Pozo séptico")
-                          ]),
-                          _vm._v(" "),
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-col" }, [
                           _c("input", {
                             directives: [
                               {
@@ -71527,6 +71641,64 @@ var render = function() {
                           _vm._v(" "),
                           _c("label", { attrs: { for: "zonas_7" } }, [
                             _vm._v("Alcantarillado")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.tipo_construccion,
+                                expression: "form.tipo_construccion"
+                              }
+                            ],
+                            attrs: {
+                              type: "checkbox",
+                              value: "Zonas deportivas",
+                              id: "zonas_8"
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.form.tipo_construccion)
+                                ? _vm._i(
+                                    _vm.form.tipo_construccion,
+                                    "Zonas deportivas"
+                                  ) > -1
+                                : _vm.form.tipo_construccion
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.form.tipo_construccion,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "Zonas deportivas",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "tipo_construccion",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "tipo_construccion",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.form, "tipo_construccion", $$c)
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "zonas_8" } }, [
+                            _vm._v("Zonas deportivas")
                           ])
                         ])
                       ])
@@ -71570,7 +71742,9 @@ var render = function() {
                             }
                           },
                           [
-                            _c("option", [_vm._v("Seleccione..")]),
+                            _c("option", { attrs: { value: "" } }, [
+                              _vm._v("Seleccione..")
+                            ]),
                             _vm._v(" "),
                             _c("option", { attrs: { value: "Abierto" } }, [
                               _vm._v("Abierto")
@@ -71675,48 +71849,33 @@ var render = function() {
                 _vm._v(" "),
                 _vm.form.tipoInmueble == "Lote"
                   ? _c("div", { staticClass: "form-field w50" }, [
-                      _c("div", { staticClass: "my-select" }, [
+                      _c("div", { staticClass: "my-text" }, [
                         _c("span", [_vm._v("Topografía")]),
                         _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.topografia,
-                                expression: "form.topografia"
-                              }
-                            ],
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.form,
-                                  "topografia",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.topografia,
+                              expression: "form.topografia"
                             }
-                          },
-                          [
-                            _c("option", [_vm._v("Seleccione..")]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "" } }, [
-                              _vm._v("....")
-                            ])
-                          ]
-                        )
+                          ],
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.form.topografia },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "topografia",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
                       ])
                     ])
                   : _vm._e(),
@@ -71758,10 +71917,16 @@ var render = function() {
                             }
                           },
                           [
-                            _c("option", [_vm._v("Seleccione..")]),
-                            _vm._v(" "),
                             _c("option", { attrs: { value: "" } }, [
-                              _vm._v("....")
+                              _vm._v("Seleccione...")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Pavimentada" } }, [
+                              _vm._v("Pavimentada")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Destapada" } }, [
+                              _vm._v("Destapada")
                             ])
                           ]
                         )
@@ -71779,12 +71944,12 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.capacidad_carga_psi,
-                              expression: "form.capacidad_carga_psi"
+                              value: _vm.form.carga_psi,
+                              expression: "form.carga_psi"
                             }
                           ],
                           attrs: { type: "text" },
-                          domProps: { value: _vm.form.capacidad_carga_psi },
+                          domProps: { value: _vm.form.carga_psi },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -71792,7 +71957,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.form,
-                                "capacidad_carga_psi",
+                                "carga_psi",
                                 $event.target.value
                               )
                             }
@@ -72838,7 +73003,8 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm.form.tipoInmueble == "Casa"
+                _vm.form.tipoInmueble == "Casa" ||
+                _vm.form.tipoInmueble == "Apartamento"
                   ? _c("div", { staticClass: "form-field" }, [
                       _c("div", { staticClass: "my-select" }, [
                         _c("span", [_vm._v("Estrato")]),

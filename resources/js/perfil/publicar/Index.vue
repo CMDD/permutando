@@ -462,34 +462,35 @@
           <div class="form-group" v-if="form.tipoPublicacion === 'Permuto'">
             <div class="form-field w100">
               <div class="my-text">
-                <span>Valor del inmueble</span>
-                <input type="text" />
+                <span>Valor del inmueble</span>$
+                <input type="text" v-model="form.valor" />
               </div>
             </div>
           </div>
           <div class="form-group generator" v-if="form.tipoPublicacion === 'Permuto'">
-            <h5>¿Qué bienes ofrecerías?</h5>
+            <h5>¿Por qué bienes lo permutarías?</h5>
             <div class="group-generator">
               <div class="form-field w65">
                 <span>Bien #1</span>
                 <div class="my-text">
-                  <input type="text" />
+                  <input type="text" id="bien1" />
                 </div>
               </div>
               <div class="form-field w35">
                 <span>Valor del bien</span>
                 <div class="my-text">
-                  <input type="text" />
+                  <input type="number" id="valor_bien1" />
                 </div>
               </div>
             </div>
+
             <div class="form-field w50">
-              <a href="#" class="btn add">Agregar más bienes</a>
+              <a href="#" @click="addBien" class="btn add">Agregar más bienes</a>
             </div>
             <div class="form-field w50">
               <div class="my-text text-right">
                 <span>Valor total</span>
-                <input type="text" />
+                <input type="text" v-model="valorTotal" />
               </div>
             </div>
             <div class="group-efectivo">
@@ -497,9 +498,9 @@
                 <a href="#" class="btn">Efectivo</a>
               </div>
               <div class="form-field w50">
-                <div class="my-text text-right">
-                  <span>Valor</span>
-                  <input type="text" />
+                <div class="my-text text-right" v-if="active">
+                  <span>Recibo en efectivo</span>
+                  <input type="text" v-model="form.recibo_efectivo" />
                 </div>
               </div>
             </div>
@@ -528,11 +529,17 @@ if (document.getElementById("userId")) {
 export default {
   data() {
     return {
+      indicador: 1,
+      active: false,
+      valorTotal: 0,
       userId: userId,
       enviando: true,
       departamentos: [],
       ciudades: [],
       form: {
+        bienes: [],
+        valor_bien: [],
+        recibo_efectivo: "",
         tipoPublicacion: "",
         tipoInmueble: "",
         //   Casa - Apartamento
@@ -584,6 +591,30 @@ export default {
     this.getDepartamentos();
   },
   methods: {
+    addBien() {
+      let bien = document.getElementById(`bien` + this.indicador).value;
+      let valor_bien = document.getElementById(`valor_bien` + this.indicador)
+        .value;
+
+      this.form.bienes.push(bien);
+      this.form.valor_bien.push(valor_bien);
+      bien = "";
+      valor_bien = "";
+
+      this.indicador = this.indicador + 1;
+
+      var result = this.form.valor_bien.map(function(x) {
+        return parseInt(x, 10);
+      });
+      const reducer = (accumulator, currentValue) => accumulator + currentValue;
+      this.valorTotal = result.reduce(reducer);
+      var val = parseInt(this.form.valor) / 2 + 1;
+      if (this.valorTotal > val) {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
+    },
     img(event) {
       console.log(event);
 
@@ -597,6 +628,12 @@ export default {
       let fd = new FormData();
       for (var i = 0; i < this.form.zonas.length; i++) {
         fd.append("zonas[]", this.form.zonas[i]);
+      }
+      for (var i = 0; i < this.form.bienes.length; i++) {
+        fd.append("bienes[]", this.form.bienes[i]);
+      }
+      for (var i = 0; i < this.form.valor_bien.length; i++) {
+        fd.append("valor_bien[]", this.form.valor_bien[i]);
       }
       for (var i = 0; i < this.form.transporte.length; i++) {
         fd.append("transporte[]", this.form.transporte[i]);
@@ -651,6 +688,7 @@ export default {
       fd.append("video", this.form.video);
       fd.append("tipo_publicacion", this.form.tipoPublicacion);
       fd.append("tipo_inmueble", this.form.tipoInmueble);
+      fd.append("recibo_efectivo", this.form.recibo_efectivo);
 
       axios
         .post("api/store-inmueble", fd, {
@@ -700,21 +738,30 @@ export default {
   }
 };
 
-$(document).on('click', '.generator .add', function(){
+$(document).on("click", ".generator .add", function() {
+  var num = $(".group-generator").length + 1;
 
-    var num = $('.group-generator').length + 1;
+  var ids = $(this)
+      .parent()
+      .attr("data-option"),
+    box_html = $(
+      '<div class="group-generator"><div class="form-field w65"><span>Bien #' +
+        num +
+        '</span><div class="my-text"><input type="text" id="bien' +
+        num +
+        '"   /></div></div><div class="form-field w35"><span>Valor del bien</span><div class="my-text"><input type="number" id="valor_bien' +
+        num +
+        '"  /></div></div></div>'
+    );
 
-    var ids = $(this).parent().attr('data-option'),
-        box_html = $('<div class="group-generator"><div class="form-field w65"><span>Bien #'+ num +'</span><div class="my-text"><input type="text" name="bien-'+ num +'" /></div></div><div class="form-field w35"><span>Valor del bien</span><div class="my-text"><input type="text" /></div></div></div>');
+  box_html.hide();
+  $(this)
+    .parent()
+    .before(box_html);
+  box_html.fadeIn("fast");
 
-    box_html.hide();
-    $(this).parent().before(box_html);
-    box_html.fadeIn('fast');
-
-    return false;
-
+  return false;
 });
-
 </script>
 
 <style>

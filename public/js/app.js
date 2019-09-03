@@ -27818,7 +27818,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(17);
-module.exports = __webpack_require__(101);
+module.exports = __webpack_require__(107);
 
 
 /***/ }),
@@ -27854,8 +27854,8 @@ Vue.component("formulario-casa", __webpack_require__(88));
 Vue.component("perfil-mensajes", __webpack_require__(91));
 Vue.component("perfil-busco", __webpack_require__(96));
 //Mensajes
-Vue.component("mensajes-lista", __webpack_require__(113));
-Vue.component("mensajes-detalle", __webpack_require__(116));
+Vue.component("mensajes-lista", __webpack_require__(101));
+Vue.component("mensajes-detalle", __webpack_require__(104));
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: [{
@@ -70591,6 +70591,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -70604,11 +70605,17 @@ if (document.getElementById("userId")) {
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      indicador: 1,
+      active: false,
+      valorTotal: 0,
       userId: userId,
       enviando: true,
       departamentos: [],
       ciudades: [],
       form: {
+        bienes: [],
+        valor_bien: [],
+        recibo_efectivo: "",
         tipoPublicacion: "",
         tipoInmueble: "",
         //   Casa - Apartamento
@@ -70661,6 +70668,31 @@ if (document.getElementById("userId")) {
   },
 
   methods: {
+    addBien: function addBien() {
+      var bien = document.getElementById("bien" + this.indicador).value;
+      var valor_bien = document.getElementById("valor_bien" + this.indicador).value;
+
+      this.form.bienes.push(bien);
+      this.form.valor_bien.push(valor_bien);
+      bien = "";
+      valor_bien = "";
+
+      this.indicador = this.indicador + 1;
+
+      var result = this.form.valor_bien.map(function (x) {
+        return parseInt(x, 10);
+      });
+      var reducer = function reducer(accumulator, currentValue) {
+        return accumulator + currentValue;
+      };
+      this.valorTotal = result.reduce(reducer);
+      var val = parseInt(this.form.valor) / 2 + 1;
+      if (this.valorTotal > val) {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
+    },
     img: function img(event) {
       console.log(event);
 
@@ -70676,6 +70708,12 @@ if (document.getElementById("userId")) {
       var fd = new FormData();
       for (var i = 0; i < this.form.zonas.length; i++) {
         fd.append("zonas[]", this.form.zonas[i]);
+      }
+      for (var i = 0; i < this.form.bienes.length; i++) {
+        fd.append("bienes[]", this.form.bienes[i]);
+      }
+      for (var i = 0; i < this.form.valor_bien.length; i++) {
+        fd.append("valor_bien[]", this.form.valor_bien[i]);
       }
       for (var i = 0; i < this.form.transporte.length; i++) {
         fd.append("transporte[]", this.form.transporte[i]);
@@ -70730,6 +70768,7 @@ if (document.getElementById("userId")) {
       fd.append("video", this.form.video);
       fd.append("tipo_publicacion", this.form.tipoPublicacion);
       fd.append("tipo_inmueble", this.form.tipoInmueble);
+      fd.append("recibo_efectivo", this.form.recibo_efectivo);
 
       axios.post("api/store-inmueble", fd, {
         headers: {
@@ -70780,16 +70819,15 @@ if (document.getElementById("userId")) {
   }
 });
 
-$(document).on('click', '.generator .add', function () {
+$(document).on("click", ".generator .add", function () {
+  var num = $(".group-generator").length + 1;
 
-  var num = $('.group-generator').length + 1;
-
-  var ids = $(this).parent().attr('data-option'),
-      box_html = $('<div class="group-generator"><div class="form-field w65"><span>Bien #' + num + '</span><div class="my-text"><input type="text" name="bien-' + num + '" /></div></div><div class="form-field w35"><span>Valor del bien</span><div class="my-text"><input type="text" /></div></div></div>');
+  var ids = $(this).parent().attr("data-option"),
+      box_html = $('<div class="group-generator"><div class="form-field w65"><span>Bien #' + num + '</span><div class="my-text"><input type="text" id="bien' + num + '"   /></div></div><div class="form-field w35"><span>Valor del bien</span><div class="my-text"><input type="number" id="valor_bien' + num + '"  /></div></div></div>');
 
   box_html.hide();
   $(this).parent().before(box_html);
-  box_html.fadeIn('fast');
+  box_html.fadeIn("fast");
 
   return false;
 });
@@ -72994,20 +73032,117 @@ var render = function() {
               _c("h4", [_vm._v("Permuto")]),
               _vm._v(" "),
               _vm.form.tipoPublicacion === "Permuto"
-                ? _c("div", { staticClass: "form-group" }, [_vm._m(5)])
+                ? _c("div", { staticClass: "form-group" }, [
+                    _c("div", { staticClass: "form-field w100" }, [
+                      _c("div", { staticClass: "my-text" }, [
+                        _c("span", [_vm._v("Valor del inmueble")]),
+                        _vm._v("$\n              "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.valor,
+                              expression: "form.valor"
+                            }
+                          ],
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.form.valor },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "valor", $event.target.value)
+                            }
+                          }
+                        })
+                      ])
+                    ])
+                  ])
                 : _vm._e(),
               _vm._v(" "),
               _vm.form.tipoPublicacion === "Permuto"
                 ? _c("div", { staticClass: "form-group generator" }, [
-                    _c("h5", [_vm._v("¿Qué bienes ofrecerías?")]),
+                    _c("h5", [_vm._v("¿Por qué bienes lo permutarías?")]),
                     _vm._v(" "),
-                    _vm._m(6),
+                    _vm._m(5),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _c("div", { staticClass: "form-field w50" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn add",
+                          attrs: { href: "#" },
+                          on: { click: _vm.addBien }
+                        },
+                        [_vm._v("Agregar más bienes")]
+                      )
+                    ]),
                     _vm._v(" "),
-                    _vm._m(8),
+                    _c("div", { staticClass: "form-field w50" }, [
+                      _c("div", { staticClass: "my-text text-right" }, [
+                        _c("span", [_vm._v("Valor total")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.valorTotal,
+                              expression: "valorTotal"
+                            }
+                          ],
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.valorTotal },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.valorTotal = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _vm._m(9)
+                    _c("div", { staticClass: "group-efectivo" }, [
+                      _vm._m(6),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-field w50" }, [
+                        _vm.active
+                          ? _c("div", { staticClass: "my-text text-right" }, [
+                              _c("span", [_vm._v("Recibo en efectivo")]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.recibo_efectivo,
+                                    expression: "form.recibo_efectivo"
+                                  }
+                                ],
+                                attrs: { type: "text" },
+                                domProps: { value: _vm.form.recibo_efectivo },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      "recibo_efectivo",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ])
+                          : _vm._e()
+                      ])
+                    ])
                   ])
                 : _vm._e(),
               _vm._v(" "),
@@ -73117,24 +73252,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-field w100" }, [
-      _c("div", { staticClass: "my-text" }, [
-        _c("span", [_vm._v("Valor del inmueble")]),
-        _vm._v(" "),
-        _c("input", { attrs: { type: "text" } })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "group-generator" }, [
       _c("div", { staticClass: "form-field w65" }, [
         _c("span", [_vm._v("Bien #1")]),
         _vm._v(" "),
         _c("div", { staticClass: "my-text" }, [
-          _c("input", { attrs: { type: "text" } })
+          _c("input", { attrs: { type: "text", id: "bien1" } })
         ])
       ]),
       _vm._v(" "),
@@ -73142,7 +73265,7 @@ var staticRenderFns = [
         _c("span", [_vm._v("Valor del bien")]),
         _vm._v(" "),
         _c("div", { staticClass: "my-text" }, [
-          _c("input", { attrs: { type: "text" } })
+          _c("input", { attrs: { type: "number", id: "valor_bien1" } })
         ])
       ])
     ])
@@ -73152,40 +73275,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-field w50" }, [
-      _c("a", { staticClass: "btn add", attrs: { href: "#" } }, [
-        _vm._v("Agregar más bienes")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-field w50" }, [
-      _c("div", { staticClass: "my-text text-right" }, [
-        _c("span", [_vm._v("Valor total")]),
-        _vm._v(" "),
-        _c("input", { attrs: { type: "text" } })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "group-efectivo" }, [
-      _c("div", { staticClass: "form-field w50" }, [
-        _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
-          _vm._v("Efectivo")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-field w50" }, [
-        _c("div", { staticClass: "my-text text-right" }, [
-          _c("span", [_vm._v("Valor")]),
-          _vm._v(" "),
-          _c("input", { attrs: { type: "text" } })
-        ])
+      _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
+        _vm._v("Efectivo")
       ])
     ])
   }
@@ -74040,31 +74131,14 @@ if (false) {
 
 /***/ }),
 /* 101 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */,
-/* 109 */,
-/* 110 */,
-/* 111 */,
-/* 112 */,
-/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(114)
+var __vue_script__ = __webpack_require__(102)
 /* template */
-var __vue_template__ = __webpack_require__(115)
+var __vue_template__ = __webpack_require__(103)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74103,7 +74177,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 114 */
+/* 102 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74154,7 +74228,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 115 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74210,15 +74284,15 @@ if (false) {
 }
 
 /***/ }),
-/* 116 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(117)
+var __vue_script__ = __webpack_require__(105)
 /* template */
-var __vue_template__ = __webpack_require__(118)
+var __vue_template__ = __webpack_require__(106)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74257,7 +74331,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 117 */
+/* 105 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74293,7 +74367,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 118 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74325,6 +74399,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-bf030c3c", module.exports)
   }
 }
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

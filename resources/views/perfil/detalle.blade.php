@@ -5,10 +5,84 @@
         @include('perfil.partials.nav')
         <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
             <div class="row title">
-            <div class="col">
-                <span>Detalle de Inmueble</span>
+                <div class="col">
+                    <span>Detalle de Inmueble</span>
+                </div>
             </div>
-            </div>   
+            <form>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-6 col-xl-5 p-4">
+                    <div class="gallery mb-3">
+                        <div><img src="http://permutando.test/img/bg-map.jpg"></div>
+                        <div><img src="http://permutando.test/img/bg-map.jpg"></div>
+                    </div>
+                    <div class="group"><h4 class="mr-3">Casa en permuta</h4><a href="#" class="btn">Ver video</a></div>
+                </div>
+                <div class="col-md-6 col-xl-5 p-4">
+                    <div class="group mb-5"><a href="#" class="btn" data-toggle="modal" data-target="#contactModal">Contactar</a><button class="btn inv">Guardar</button></div>
+                    <h4>Permuto por</h4>
+                    <div class="group"><span>Bien</span><input type="text"></div>
+                    <div class="group"><span>Bien</span><input type="text"></div>
+                    <div class="group"><span>Bien</span><input type="text"></div>
+                    <div class="group"><span>Efectivo</span><input type="text"></div>
+                    <div class="group justify-content-end"><a href="#" class="btn">Permutar</a></div>
+                </div>
+                <div class="col-md-6 col-xl-5 p-4">
+                    <div class="group"><span>Valor</span><input type="text"></div>
+                    <div class="group"><span>Area</span><input type="text"></div>
+                    <div class="group"><span>Baños</span><input type="text"></div>
+                    <div class="group"><span>Municipio</span><input type="text"></div>
+                    <div class="group"><span>Dirección</span><input type="text"></div>
+                </div>
+                <div class="col-md-6 col-xl-5 p-4">
+                    <div class="group"><span>Parqueadero</span><input type="text"></div>
+                    <div class="group"><span>Estrato</span><input type="text"></div>
+                    <div class="group"><span>Balcon</span><input type="text"></div>
+                    <div class="group"><span>Habitaciones</span><input type="text"></div>
+                    <div class="group"><span>Localidad</span><input type="text"></div>
+                </div>
+                <div class="col-md-6 col-xl-5 p-4">
+                    <div class="group">
+                        <span>Zonas comunes</span>
+                        <div class="checks">
+                            <label><input type="checkbox">Piscina</label>
+                            <label><input type="checkbox">Salón comunal</label>
+                            <label><input type="checkbox">Gimnasio</label>
+                            <label><input type="checkbox">Salón comunal</label>
+                            <label><input type="checkbox">Gimnasio</label>
+                            <label><input type="checkbox">Piscina</label>
+                            <label><input type="checkbox">BBQ</label>
+                            <label><input type="checkbox">Gimnasio</label>
+                            <label><input type="checkbox">Piscina</label>
+                            <label><input type="checkbox">Gimnasio</label>
+                            <label><input type="checkbox">Salón comunal</label>
+                        </div>
+                    </div>
+                    <div class="group full">
+                        <span class="mb-3">Características</span>
+                        <textarea></textarea>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-5 p-4">
+
+                </div>
+            </div>
+            </form>
+            <div id="contactModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4>Contactar</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Información de contacto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -101,9 +175,68 @@
     background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8,10.718H7.344l2.08-2.719L7.345,5.282H8l2.078,2.717L8,10.718z'/%3E%3C/svg%3E");
 }
 
-.gallery img {
-    width:100%;
-}
+        .gallery img {
+            width:100%;
+        }
+
+        .group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .group input[type=text], .group textarea {
+            flex: 0 0 50%;
+            margin: 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            background: #f1f1f1;
+            min-width: 0;
+        }
+        .group input[type=text]:focus, .group textarea:focus {
+            outline: none;
+        }
+        .group .checks {
+            flex: 0 0 50%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .group label {
+            white-space: nowrap;
+            flex: 0 0 50%;
+        }
+        .group input[type=checkbox] {
+            margin-right: 5px;
+        }
+        .group.full {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .group.full >* {
+            flex: 0 0 100%;
+        }
+        h4 {
+            color: #005b95;
+        }
+        .btn, .btn.inv:hover  {
+            color: #fff;
+            border-radius: 50px;
+            background-color: #f19100;
+        }
+        .group .btn.inv {
+            color: #fff;
+            background-color: #005b95;
+            flex: 0 0 48%;
+        }
+        .btn:hover {
+            color: #fff;
+            background-color: #005b95;
+        }
+        .group .btn {
+            flex: 0 0 50%;
+        }
+
+
 .box {
     background: #fff;
     max-width: 1000px;

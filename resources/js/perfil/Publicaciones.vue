@@ -13,7 +13,7 @@
         :key="inmueble.id"
       >
         <div class="box">
-          <div class="image" style="background-image:url()"></div>
+          <div class="image" v-bind:style="{ backgroundImage: 'url(' + '/' + inmueble.imagen+')' }"></div>
           <div class="content">
             <div class="name">
               <h4>{{inmueble.tipo}}</h4>

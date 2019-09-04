@@ -102,7 +102,7 @@ class InmuebleController extends Controller
                 break;
         }
 
-        return $request->userId;
+        return $inmueble->id;
     }
     public function detalle($id){
     

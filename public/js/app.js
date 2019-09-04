@@ -69574,7 +69574,7 @@ var render = function() {
               _c("div", { staticClass: "box" }, [
                 _c("div", {
                   staticClass: "image",
-                  staticStyle: { "background-image": "url({img/img-demo.jpg})" }
+                  staticStyle: { "background-image": "url()" }
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "content" }, [
@@ -69610,6 +69610,7 @@ var render = function() {
                       { attrs: { href: "/perfil-detalle/" + inmueble.id } },
                       [_vm._v("Ver")]
                     ),
+                    _vm._v(" "),
                     _c(
                       "a",
                       { attrs: { href: "/perfil-detalle/" + inmueble.id } },
@@ -70841,7 +70842,7 @@ if (document.getElementById("userId")) {
         //   mascotas:'',
         // }
         __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Inmueble subido correctamente");
-        window.location.href = "http://localhost:8000/perfil-mis-publicaciones";
+        window.location.href = "http://localhost:8000/perfil-detalle/" + res.data;
       });
     },
     getDepartamentos: function getDepartamentos() {
@@ -73952,8 +73953,8 @@ if (document.getElementById("userId")) {
       geocoder = new google.maps.Geocoder();
       var infowindow = new google.maps.InfoWindow();
       map = new google.maps.Map(document.getElementById("mymap"), {
-        center: { lat: 4.60971, lng: -74.08175 },
-        zoom: 10
+        center: { lat: 4.5318681, lng: -74.297333 },
+        zoom: 7
       });
 
       var _loop = function _loop(index) {

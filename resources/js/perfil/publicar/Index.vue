@@ -763,8 +763,7 @@ export default {
           //   mascotas:'',
           // }
           toastr.success("Inmueble subido correctamente");
-          window.location.href =
-            "http://localhost:8000/perfil-mis-publicaciones";
+          window.location.href = `http://localhost:8000/perfil-detalle/${res.data}`;
         });
     },
 

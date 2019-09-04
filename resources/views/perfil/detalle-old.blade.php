@@ -1,15 +1,64 @@
 @extends('perfil.layout')
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-end">
+<div class="map"></div>
+    <div class="container-fluid">
+        <div class="row justify-content-end">
         @include('perfil.partials.nav')
         <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
-            <div class="row title">
-            <div class="col">
-                <span>Detalle de Inmueble</span>
+    <div class="row title">
+      <div class="col">
+        <span>Detalle de Inmueble</span>
+      </div>
+    </div>
+    <div class="row inmuebles">
+        <div class="col box">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="gallery">
+                    <div><img src="/{{$inmueble->imagen}}"></div>
+                        @foreach($imagenes as $i)
+                    <div><img src="/{{$i->image}}"></div>
+                        @endforeach
+                        
+                    </div>
+                    <div class="info">
+                        <h3>{{$inmueble->tipo_inmueble}}</h3>
+                        <div class="desc">
+                            <div>
+                                <span><strong>Área:</strong> {{$inmueble->area}} Area mts<sup>2</sup></span>
+                                <span><strong>Habitaciones:</strong> {{$inmueble->habitaciones}}</span>
+                                <span><strong>Baños:</strong> 3</span>
+                            </div>
+                            <div>
+                                <span><strong>Valor:</strong> ${{$inmueble->valor}}</span>
+                                <span><strong>Barrio:</strong> {{$inmueble->barrio}}</span>
+                            </div>
+                        </div>
+                        <div class="more">
+                            <strong>Caracteristicas:</strong>
+                            <p>{{$inmueble->caracteristicas}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 form">
+                    <form method="Post" action="/contacto" >
+                    {!!csrf_field()!!}
+                        <h4>Contactar</h4>
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                        <input type="text" class="form-control" name="tel" placeholder="Teléfono/Celular">
+                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        <input type="hidden" class="form-control" name="to" value="{{$inmueble->user_id}}">
+                        <input type="hidden" class="form-control" name="inmueble" value="{{$inmueble->id}}">
+                        <textarea class="form-control" name="mensaje" placeholder="Mensaje"></textarea>
+                        <button type="submit" class="btn">Enviar</button>
+                    </form>
+                </div>
             </div>
-            </div>   
+            
         </div>
+    </div>
+  </div>
     </div>
 </div>
 @stop

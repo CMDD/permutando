@@ -104,8 +104,8 @@ export default {
       geocoder = new google.maps.Geocoder();
       var infowindow = new google.maps.InfoWindow();
       map = new google.maps.Map(document.getElementById("mymap"), {
-        center: { lat: 4.60971, lng: -74.08175 },
-        zoom: 10
+        center: { lat: 4.5318681, lng: -74.297333},
+        zoom: 7
       });
       for (let index = 0; index < direcciones.length; index++) {
         geocoder.geocode(

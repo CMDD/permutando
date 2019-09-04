@@ -13,7 +13,7 @@
         :key="inmueble.id"
       >
         <div class="box">
-          <div class="image" style=background-image:url({img/img-demo.jpg})></div>
+          <div class="image" style="background-image:url()"></div>
           <div class="content">
             <div class="name">
               <h4>{{inmueble.tipo}}</h4>
@@ -26,8 +26,8 @@
             <div class="group">
               <div class="item meters">{{inmueble.area}} m2</div>
               <div class="item price">${{inmueble.valor}}</div>
-              <a :href="'/perfil-detalle/' + inmueble.id">Ver</a><a :href="'/perfil-detalle/' + inmueble.id">Editar</a>
-              
+              <a :href="'/perfil-detalle/' + inmueble.id">Ver</a>
+              <a :href="'/perfil-detalle/' + inmueble.id">Editar</a>
             </div>
           </div>
         </div>

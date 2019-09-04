@@ -31,7 +31,10 @@
             </ul> -->
         </li>
         <li>
-            <a href="/perfil-mis-publicaciones" class="">Mis publicaciones</a>
+                <a href="/perfil-mis-publicaciones" class="">Mis publicaciones</a>
+            </li>
+        <li>
+            <a href="/perfil-mis-publicaciones" class="">Mis inmuebles contactados</a>
         </li>
         <li><a href="/perfil-mensajes">Mis mensajes</a></li>
         

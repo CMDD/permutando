@@ -619,11 +619,12 @@ export default {
   methods: {
     addBien() {
       let bien = document.getElementById(`bien` + this.indicador).value;
+
       let valor_bien = document.getElementById(`valor_bien` + this.indicador)
         .value;
 
       this.form.bienes.push(bien);
-      this.form.valor_bien.push(valor_bien);
+      this.form.valor_bien.push(valor_bien.replace(".", ""));
       bien = "";
       valor_bien = "";
 
@@ -776,6 +777,10 @@ export default {
       axios.get("/api/ciudades/" + this.form.departamento).then(res => {
         this.ciudades = res.data;
       });
+    },
+    formatPrice(value) {
+      let val = (value / 1).toFixed(0).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
   }
 };

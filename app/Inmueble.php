@@ -55,7 +55,7 @@ class Inmueble extends Model
      $inmueble->tipo_publicacion = $request->tipo_publicacion;
      $inmueble->tipo_inmueble = $request->tipo_inmueble;
      $inmueble->estado = $request->tipo_publicacion;
-     $inmueble->recibo_efectivo = $request->recibo_efectivo;
+     $inmueble->recibo_efectivo = str_replace ( ".", "",$request->recibo_efectivo);
      $inmueble->video = $request->video;
      $inmueble->area = $request->area;
      $inmueble->departamento = $departamento->nombre;
@@ -65,7 +65,7 @@ class Inmueble extends Model
      $inmueble->barrio = $request->barrio;
      $inmueble->direccion = $request->direccion;
      $inmueble->caracteristicas = $request->caracteristica;
-     $inmueble->valor = $request->valor;
+     $inmueble->valor = str_replace ( ".", "", $request->valor);
      if($request->file('image')){
           $inmueble->imagen = $request->file('image')->store('imagenes');
      }

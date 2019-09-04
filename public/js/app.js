@@ -69518,6 +69518,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 if (document.getElementById("userId")) {
   var userId = document.getElementById("userId").value;
@@ -69542,6 +69545,10 @@ if (document.getElementById("userId")) {
         _this.inmuebles = res.data;
         console.log(_this.inmuebles);
       });
+    },
+    formatPrice: function formatPrice(value) {
+      var val = (value / 1).toFixed(0).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
   }
 });
@@ -69584,40 +69591,30 @@ var render = function() {
                     _c("h4", [_vm._v(_vm._s(inmueble.tipo))])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "group" }, [
-                    _c("div", { staticClass: "item rooms" }, [
-                      _vm._v(_vm._s(inmueble.habitaciones) + " Habitaciones")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item bath" }, [
-                      _vm._v(_vm._s(inmueble.banos) + " baños")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item garage" }, [
-                      _vm._v(_vm._s(inmueble.parqueadero) + " parqueaderos")
-                    ])
-                  ]),
+                  _vm._m(1, true),
                   _vm._v(" "),
                   _c("div", { staticClass: "group" }, [
                     _c("div", { staticClass: "item meters" }, [
-                      _vm._v(_vm._s(inmueble.area) + " m2")
+                      _vm._v("Bogotá")
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "item price" }, [
-                      _vm._v("$" + _vm._s(inmueble.valor))
+                      _vm._v("$" + _vm._s(_vm.formatPrice(30000000)))
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "a",
-                      { attrs: { href: "/perfil-detalle/" + inmueble.id } },
-                      [_vm._v("Ver")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      { attrs: { href: "/perfil-detalle/" + inmueble.id } },
-                      [_vm._v("Editar")]
-                    )
+                    _c("div", [
+                      _c(
+                        "a",
+                        { attrs: { href: "/perfil-detalle/" + inmueble.id } },
+                        [_vm._v("Ver")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        { attrs: { href: "/perfil-detalle/" + inmueble.id } },
+                        [_vm._v("Editar")]
+                      )
+                    ])
                   ])
                 ])
               ])
@@ -69638,6 +69635,16 @@ var staticRenderFns = [
       _c("div", { staticClass: "col" }, [
         _c("span", [_vm._v("Mis publicaciones")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "group" }, [
+      _c("div", { staticClass: "item price" }, [_vm._v("Casa")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "item price" }, [_vm._v("Permuto")])
     ])
   }
 ]
@@ -70370,10 +70377,11 @@ if (document.getElementById("userId")) {
   methods: {
     addBien: function addBien() {
       var bien = document.getElementById("bien" + this.indicador).value;
+
       var valor_bien = document.getElementById("valor_bien" + this.indicador).value;
 
       this.form.bienes.push(bien);
-      this.form.valor_bien.push(valor_bien);
+      this.form.valor_bien.push(valor_bien.replace(".", ""));
       bien = "";
       valor_bien = "";
 
@@ -70531,6 +70539,10 @@ if (document.getElementById("userId")) {
       axios.get("/api/ciudades/" + this.form.departamento).then(function (res) {
         _this3.ciudades = res.data;
       });
+    },
+    formatPrice: function formatPrice(value) {
+      var val = (value / 1).toFixed(0).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
   }
 });

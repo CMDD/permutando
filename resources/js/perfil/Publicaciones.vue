@@ -19,15 +19,18 @@
               <h4>{{inmueble.tipo}}</h4>
             </div>
             <div class="group">
-              <div class="item rooms">{{inmueble.habitaciones}} Habitaciones</div>
-              <div class="item bath">{{inmueble.banos}} baños</div>
-              <div class="item garage">{{inmueble.parqueadero}} parqueaderos</div>
+              <div class="item price">Casa</div>
+              <div class="item price">Permuto</div>
+              <!-- <div class="item bath">{{inmueble.banos}} baños</div> -->
+              <!-- <div class="item garage">{{inmueble.parqueadero}} parqueaderos</div> -->
             </div>
             <div class="group">
-              <div class="item meters">{{inmueble.area}} m2</div>
-              <div class="item price">${{inmueble.valor}}</div>
-              <a :href="'/perfil-detalle/' + inmueble.id">Ver</a>
-              <a :href="'/perfil-detalle/' + inmueble.id">Editar</a>
+              <div class="item meters">Bogotá</div>
+              <div class="item price">${{formatPrice(30000000)}}</div>
+              <div>
+                <a :href="'/perfil-detalle/' + inmueble.id">Ver</a>
+                <a :href="'/perfil-detalle/' + inmueble.id">Editar</a>
+              </div>
             </div>
           </div>
         </div>
@@ -57,6 +60,10 @@ export default {
         this.inmuebles = res.data;
         console.log(this.inmuebles);
       });
+    },
+    formatPrice(value) {
+      let val = (value / 1).toFixed(0).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
   }
 };

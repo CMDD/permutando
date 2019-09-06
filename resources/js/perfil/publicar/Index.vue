@@ -438,7 +438,7 @@
                 </select>
               </div>
             </div>
-            <textarea v-model="form.caracteristica" placeholder="Otras características"></textarea>
+            <textarea v-model="form.caracteristicas" placeholder="Otras características"></textarea>
             <div class="form-field value">
               <span>Valor: $</span>
               <input type="text" v-model="form.valor" />
@@ -609,7 +609,8 @@ export default {
         ciudad: "",
         barrio: "",
         direccion: "",
-        video: ""
+        video: "",
+        caracteristicas: ""
       }
     };
   },
@@ -722,6 +723,7 @@ export default {
       fd.append("tipo_publicacion", this.form.tipoPublicacion);
       fd.append("tipo_inmueble", this.form.tipoInmueble);
       fd.append("recibo_efectivo", this.form.recibo_efectivo);
+      fd.append("caracteristicas", this.form.caracteristicas);
 
       // Bodega
       fd.append("carga_psi", this.form.carga_psi);

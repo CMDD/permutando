@@ -29,7 +29,7 @@
             <a href="#" class="btn" data-toggle="modal" data-target="#contactModal">Contactar</a>
             <button v-if="!editar" class="btn inv">
               <span v-if="actualizando">Actualizando...</span>
-              <span v-else>Actualizar</span>
+              <span v-else @click="actualizar()">Actualizar</span>
             </button>
 
             <div v-if="editar">
@@ -478,12 +478,7 @@
             </button>
           </div>
           <div class="modal-body row">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/85MppyLJHz0"
-              allowfullscreen
-            ></iframe>
+            <iframe width="560" height="315" src allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -530,6 +525,13 @@ export default {
     },
     actualizar() {
       this.actualizando = true;
+      this.form.departamento = this.inmueble.departamento_id;
+      this.form.userId = this.inmueble.user_id;
+      axios.post("/api/editar-inmueble", this.form).then(res => {
+        console.log(res.data);
+        this.actualizando = false;
+        this.editar = true;
+      });
     },
     activarEdicion() {
       this.editar = false;

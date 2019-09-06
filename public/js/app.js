@@ -70240,11 +70240,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["inmueble", "user"],
@@ -70286,23 +70281,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       console.log(this.contacto);
     },
     actualizar: function actualizar() {
+      var _this2 = this;
+
       this.actualizando = true;
+      this.form.departamento = this.inmueble.departamento_id;
+      this.form.userId = this.inmueble.user_id;
+      axios.post("/api/editar-inmueble", this.form).then(function (res) {
+        console.log(res.data);
+        _this2.actualizando = false;
+        _this2.editar = true;
+      });
     },
     activarEdicion: function activarEdicion() {
       this.editar = false;
     },
     getBienes: function getBienes() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/bienes/" + this.inmueble.id).then(function (res) {
-        _this2.bienes = res.data;
+        _this3.bienes = res.data;
       });
     },
     getImagenes: function getImagenes() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get("/api/imagenes/" + 2).then(function (res) {
-        _this3.imagenes = res.data;
+        _this4.imagenes = res.data;
         setTimeout(function () {
           $(".row").find(".gallery").slick({
             infinite: true,
@@ -70393,7 +70397,17 @@ var render = function() {
                 ? _c("button", { staticClass: "btn inv" }, [
                     _vm.actualizando
                       ? _c("span", [_vm._v("Actualizando...")])
-                      : _c("span", [_vm._v("Actualizar")])
+                      : _c(
+                          "span",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.actualizar()
+                              }
+                            }
+                          },
+                          [_vm._v("Actualizar")]
+                        )
                   ])
                 : _vm._e(),
               _vm._v(" "),
@@ -72305,7 +72319,7 @@ var staticRenderFns = [
                 attrs: {
                   width: "560",
                   height: "315",
-                  src: "https://www.youtube.com/embed/85MppyLJHz0",
+                  src: "",
                   allowfullscreen: ""
                 }
               })
@@ -73034,7 +73048,8 @@ if (document.getElementById("userId")) {
         ciudad: "",
         barrio: "",
         direccion: "",
-        video: ""
+        video: "",
+        caracteristicas: ""
       }
     };
   },
@@ -73151,6 +73166,7 @@ if (document.getElementById("userId")) {
       fd.append("tipo_publicacion", this.form.tipoPublicacion);
       fd.append("tipo_inmueble", this.form.tipoInmueble);
       fd.append("recibo_efectivo", this.form.recibo_efectivo);
+      fd.append("caracteristicas", this.form.caracteristicas);
 
       // Bodega
       fd.append("carga_psi", this.form.carga_psi);
@@ -75440,18 +75456,18 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.form.caracteristica,
-                      expression: "form.caracteristica"
+                      value: _vm.form.caracteristicas,
+                      expression: "form.caracteristicas"
                     }
                   ],
                   attrs: { placeholder: "Otras características" },
-                  domProps: { value: _vm.form.caracteristica },
+                  domProps: { value: _vm.form.caracteristicas },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.form, "caracteristica", $event.target.value)
+                      _vm.$set(_vm.form, "caracteristicas", $event.target.value)
                     }
                   }
                 }),

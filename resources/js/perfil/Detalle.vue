@@ -5,24 +5,26 @@
         <div class="col-md-6 col-xl-5 p-4">
           <div class="gallery mb-3" id="carousel">
             <div>
-                <a class="image-link" href="/img/img-demo.jpg" style="background-image:url(/img/img-demo.jpg)"></a>
-                <!--<img :src="'/'+inmueble.imagen" />-->
+              <a
+                class="image-link"
+                :href="'/'+inmueble.imagen"
+                v-bind:style="{ backgroundImage: 'url(' + '/' + inmueble.imagen+')' }"
+              ></a>
+              <!--<img :src="'/'+inmueble.imagen" />-->
             </div>
 
-            <div>
-                <a class="image-link" href="/img/img-demo.jpg" style="background-image:url(/img/img-demo.jpg)"></a>
+            <div v-for="image in imagenes" :key="image.id">
+              <a
+                class="image-link"
+                :href="'/'+image.image"
+                v-bind:style="{ backgroundImage: 'url(' + '/' + image.image+')' }"
+              ></a>
             </div>
           </div>
-            <a class="video-link" href="https://www.youtube.com/watch?v=_9HofM72SLs" >VIDEO</a>
+          <!-- <a class="video-link" href="https://www.youtube.com/watch?v=_9HofM72SLs">VIDEO</a> -->
           <div class="group">
             <h4 class="mr-3">{{inmueble.tipo_inmueble}} - {{inmueble.tipo_publicacion}}</h4>
-            <a
-              v-if="form.video"
-              href="#"
-              class="btn"
-              data-toggle="modal"
-              data-target="#videoModal"
-            >Ver video</a>
+            <a v-if="form.video" :href="inmueble.video" class="btn video-link">Ver video</a>
           </div>
         </div>
 
@@ -528,6 +530,7 @@ export default {
     actualizar() {
       this.actualizando = true;
       this.form.departamento = this.inmueble.departamento_id;
+      this.form.ciudad = this.inmueble.ciudad_id;
       this.form.userId = this.inmueble.user_id;
       axios.post("/api/editar-inmueble", this.form).then(res => {
         console.log(res.data);
@@ -547,6 +550,13 @@ export default {
       axios.get("/api/imagenes/" + 2).then(res => {
         this.imagenes = res.data;
         setTimeout(function() {
+          $(".image-link").magnificPopup({
+            type: "image",
+            gallery: {
+              enabled: true
+            }
+          });
+          $(".video-link").magnificPopup({ type: "iframe" });
           $(".row")
             .find(".gallery")
             .slick({
@@ -568,12 +578,12 @@ export default {
 </script>
 
 <style>
-    .gallery a.image-link {
-        height: 350px;
-        display: block;
-        background-size: cover;
-        background-position: center;
-    }
+.gallery a.image-link {
+  height: 350px;
+  display: block;
+  background-size: cover;
+  background-position: center;
+}
 
 .my-radio input[type="radio"] {
   display: none;

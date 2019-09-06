@@ -69741,7 +69741,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.gallery a.image-link {\n        height: 350px;\n        display: block;\n        background-size: cover;\n        background-position: center;\n}\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.form input {\n  margin-top: 3%;\n}\n.form textarea {\n  margin-top: 3%;\n}\n.btn-enviar {\n  margin-top: 2%;\n  width: 100%;\n}\n.btn-eliminar {\n  background-color: #a71e1e !important;\n}\n.box-contact {\n  margin: auto;\n}\n.text-contac {\n  font-size: 27px;\n  color: #7db227;\n}\n", ""]);
+exports.push([module.i, "\n.gallery a.image-link {\n  height: 350px;\n  display: block;\n  background-size: cover;\n  background-position: center;\n}\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.form input {\n  margin-top: 3%;\n}\n.form textarea {\n  margin-top: 3%;\n}\n.btn-enviar {\n  margin-top: 2%;\n  width: 100%;\n}\n.btn-eliminar {\n  background-color: #a71e1e !important;\n}\n.box-contact {\n  margin: auto;\n}\n.text-contac {\n  font-size: 27px;\n  color: #7db227;\n}\n", ""]);
 
 // exports
 
@@ -69752,6 +69752,8 @@ exports.push([module.i, "\n.gallery a.image-link {\n        height: 350px;\n    
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -70287,6 +70289,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       this.actualizando = true;
       this.form.departamento = this.inmueble.departamento_id;
+      this.form.ciudad = this.inmueble.ciudad_id;
       this.form.userId = this.inmueble.user_id;
       axios.post("/api/editar-inmueble", this.form).then(function (res) {
         console.log(res.data);
@@ -70310,6 +70313,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get("/api/imagenes/" + 2).then(function (res) {
         _this4.imagenes = res.data;
         setTimeout(function () {
+          $(".image-link").magnificPopup({
+            type: "image",
+            gallery: {
+              enabled: true
+            }
+          });
+          $(".video-link").magnificPopup({ type: "iframe" });
           $(".row").find(".gallery").slick({
             infinite: true,
             speed: 300,
@@ -70339,15 +70349,33 @@ var render = function() {
     _c("form", [
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-          _vm._m(0),
-          _vm._v(" "),
           _c(
-            "a",
-            {
-              staticClass: "video-link",
-              attrs: { href: "https://www.youtube.com/watch?v=_9HofM72SLs" }
-            },
-            [_vm._v("VIDEO")]
+            "div",
+            { staticClass: "gallery mb-3", attrs: { id: "carousel" } },
+            [
+              _c("div", [
+                _c("a", {
+                  staticClass: "image-link",
+                  style: {
+                    backgroundImage: "url(" + "/" + _vm.inmueble.imagen + ")"
+                  },
+                  attrs: { href: "/" + _vm.inmueble.imagen }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.imagenes, function(image) {
+                return _c("div", { key: image.id }, [
+                  _c("a", {
+                    staticClass: "image-link",
+                    style: {
+                      backgroundImage: "url(" + "/" + image.image + ")"
+                    },
+                    attrs: { href: "/" + image.image }
+                  })
+                ])
+              })
+            ],
+            2
           ),
           _vm._v(" "),
           _c("div", { staticClass: "group" }, [
@@ -70363,12 +70391,8 @@ var render = function() {
               ? _c(
                   "a",
                   {
-                    staticClass: "btn",
-                    attrs: {
-                      href: "#",
-                      "data-toggle": "modal",
-                      "data-target": "#videoModal"
-                    }
+                    staticClass: "btn video-link",
+                    attrs: { href: _vm.inmueble.video }
                   },
                   [_vm._v("Ver video")]
                 )
@@ -70469,7 +70493,7 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _vm._m(1)
+                  _vm._m(0)
                 ],
                 2
               )
@@ -71031,13 +71055,13 @@ var render = function() {
                     _vm._v("Gimnasio\n            ")
                   ]),
                   _vm._v(" "),
+                  _vm._m(1),
+                  _vm._v(" "),
                   _vm._m(2),
                   _vm._v(" "),
                   _vm._m(3),
                   _vm._v(" "),
-                  _vm._m(4),
-                  _vm._v(" "),
-                  _vm._m(5)
+                  _vm._m(4)
                 ])
               ])
             ])
@@ -71835,6 +71859,8 @@ var render = function() {
                 _c("span", [_vm._v("Tipo de Construccion")]),
                 _vm._v(" "),
                 _c("div", { staticClass: "checks" }, [
+                  _vm._m(5),
+                  _vm._v(" "),
                   _vm._m(6),
                   _vm._v(" "),
                   _vm._m(7),
@@ -71842,8 +71868,6 @@ var render = function() {
                   _vm._m(8),
                   _vm._v(" "),
                   _vm._m(9),
-                  _vm._v(" "),
-                  _vm._m(10),
                   _vm._v(" "),
                   _c("label", [
                     _c("input", {
@@ -71893,11 +71917,11 @@ var render = function() {
                     _vm._v("Casa\n            ")
                   ]),
                   _vm._v(" "),
+                  _vm._m(10),
+                  _vm._v(" "),
                   _vm._m(11),
                   _vm._v(" "),
-                  _vm._m(12),
-                  _vm._v(" "),
-                  _vm._m(13)
+                  _vm._m(12)
                 ])
               ])
             ])
@@ -71921,7 +71945,7 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(14),
+            _vm._m(13),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body row" }, [
               _c("div", { staticClass: "col-md-6 form" }, [
@@ -72111,36 +72135,10 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(15)
+    _vm._m(14)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "gallery mb-3", attrs: { id: "carousel" } },
-      [
-        _c("div", [
-          _c("a", {
-            staticClass: "image-link",
-            staticStyle: { "background-image": "url(/img/img-demo.jpg)" },
-            attrs: { href: "/img/img-demo.jpg" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("a", {
-            staticClass: "image-link",
-            staticStyle: { "background-image": "url(/img/img-demo.jpg)" },
-            attrs: { href: "/img/img-demo.jpg" }
-          })
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -72430,7 +72428,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.content .box {\n  background: #fff;\n  max-width: 900px;\n  -webkit-box-shadow: 3px 3px 3px #cccccc;\n          box-shadow: 3px 3px 3px #cccccc;\n  border-radius: 20px;\n  padding: 20px;\n  padding: 20px;\n  margin: 50px auto;\n}\n.mini small {\n        -webkit-box-flex: 0;\n            -ms-flex: 0 0 auto;\n                flex: 0 0 auto;\n        margin: 0 5px;\n}\n.form-group .my-text.mini input[type=\"text\"] {\n        max-width: 90px;\n        text-align: center;\n}\n    \n", ""]);
+exports.push([module.i, "\n.content .box {\n  background: #fff;\n  max-width: 900px;\n  -webkit-box-shadow: 3px 3px 3px #cccccc;\n          box-shadow: 3px 3px 3px #cccccc;\n  border-radius: 20px;\n  padding: 20px;\n  padding: 20px;\n  margin: 50px auto;\n}\n.mini small {\n        -webkit-box-flex: 0;\n            -ms-flex: 0 0 auto;\n                flex: 0 0 auto;\n        margin: 0 5px;\n}\n.form-group .my-text.mini input[type=\"text\"] {\n        max-width: 90px;\n        text-align: center;\n}\n\n", ""]);
 
 // exports
 
@@ -73185,6 +73183,7 @@ if (document.getElementById("userId")) {
       fd.append("habitaciones", this.form.habitaciones);
       fd.append("banos", this.form.banos);
       fd.append("balcon", this.form.balcon);
+      fd.append("patio", this.form.patio);
       fd.append("image", this.form.imagePrincipal);
       fd.append("imagenes", this.form.imagenes);
       fd.append("terraza", this.form.terraza);

@@ -61,7 +61,7 @@ class Inmueble extends Model
     
      $inmueble->area = $request->area;
 
-     if($departamento->ciudad and $request->departamento ){
+     if($request->ciudad and $request->departamento ){
      $inmueble->departamento = $departamento->nombre;
      $inmueble->ciudad = $ciudad->nombre;
      $inmueble->departamento_id = $request->departamento;

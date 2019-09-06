@@ -740,6 +740,7 @@ export default {
       fd.append("habitaciones", this.form.habitaciones);
       fd.append("banos", this.form.banos);
       fd.append("balcon", this.form.balcon);
+      fd.append("patio", this.form.patio);
       fd.append("image", this.form.imagePrincipal);
       fd.append("imagenes", this.form.imagenes);
       fd.append("terraza", this.form.terraza);

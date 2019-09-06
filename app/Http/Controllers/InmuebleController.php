@@ -31,6 +31,7 @@ class InmuebleController extends Controller
                 $inmueble->porteria = $request->porteria;
                 $inmueble->caracteristicas = $request->caracteristica;
                 $inmueble->valor = $request->valor;
+                $inmueble->patio = $request->patio;
                 $inmueble->save();
                 foreach ((array)$request->zonas as $item) {
                      $zona = new Zonas();
@@ -118,6 +119,7 @@ class InmuebleController extends Controller
                 $inmueble->terraza = (boolean)$request->terraza;
                 $inmueble->parqueadero = (boolean)$request->parqueadero;
                 $inmueble->porteria = $request->porteria;
+                $inmueble->patio = $request->patio;
                 
                 $inmueble->valor = $request->valor;
                 $inmueble->save();

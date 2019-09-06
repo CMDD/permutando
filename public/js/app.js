@@ -72428,7 +72428,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.content .box {\n  background: #fff;\n  max-width: 900px;\n  -webkit-box-shadow: 3px 3px 3px #cccccc;\n          box-shadow: 3px 3px 3px #cccccc;\n  border-radius: 20px;\n  padding: 20px;\n  padding: 20px;\n  margin: 50px auto;\n}\n.mini small {\n        -webkit-box-flex: 0;\n            -ms-flex: 0 0 auto;\n                flex: 0 0 auto;\n        margin: 0 5px;\n}\n.form-group .my-text.mini input[type=\"text\"] {\n        max-width: 90px;\n        text-align: center;\n}\n\n", ""]);
+exports.push([module.i, "\n.content .box {\n  background: #fff;\n  max-width: 900px;\n  -webkit-box-shadow: 3px 3px 3px #cccccc;\n          box-shadow: 3px 3px 3px #cccccc;\n  border-radius: 20px;\n  padding: 20px;\n  padding: 20px;\n  margin: 50px auto;\n}\n.mini small {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  margin: 0 5px;\n}\n.form-group .my-text.mini input[type=\"text\"] {\n  max-width: 90px;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -72992,7 +72992,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -73127,9 +73137,9 @@ if (document.getElementById("userId")) {
         if (e.target.value) {
           var num = e.srcElement.files.length;
           if (num > 1) {
-            label.html(num + ' adjuntos');
+            label.html(num + " adjuntos");
           } else {
-            label.html(num + ' adjunto');
+            label.html(num + " adjunto");
           }
         }
       });
@@ -73250,7 +73260,7 @@ if (document.getElementById("userId")) {
         //   mascotas:'',
         // }
         __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Inmueble subido correctamente");
-        window.location.href = "http://localhost:8000/perfil-detalle/" + res.data;
+        window.location.href = "http://permutado.com/perfil-detalle/" + res.data;
       });
     },
     getDepartamentos: function getDepartamentos() {
@@ -75819,7 +75829,9 @@ var staticRenderFns = [
       _c("span", [_vm._v("Área")]),
       _vm._v(" "),
       _c("input", { attrs: { type: "text", placeholder: "Ancho" } }),
+      _vm._v(" "),
       _c("small", [_vm._v("x")]),
+      _vm._v(" "),
       _c("input", { attrs: { type: "text", placeholder: "Fondo" } })
     ])
   },
@@ -75831,7 +75843,9 @@ var staticRenderFns = [
       _c("span", [_vm._v("Altura")]),
       _vm._v(" "),
       _c("input", { attrs: { type: "text", placeholder: "" } }),
+      _vm._v(" "),
       _c("small", [_vm._v("x")]),
+      _vm._v(" "),
       _c("input", { attrs: { type: "text", placeholder: "" } })
     ])
   },

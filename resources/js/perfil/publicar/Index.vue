@@ -232,13 +232,17 @@
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-text mini">
                 <span>Área</span>
-                <input type="text" placeholder="Ancho" /><small>x</small><input type="text" placeholder="Fondo" />
+                <input type="text" placeholder="Ancho" />
+                <small>x</small>
+                <input type="text" placeholder="Fondo" />
               </div>
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-text mini">
                 <span>Altura</span>
-                <input type="text" placeholder="" /><small>x</small><input type="text" placeholder="" />
+                <input type="text" placeholder />
+                <small>x</small>
+                <input type="text" placeholder />
               </div>
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
@@ -474,7 +478,14 @@
               <span>Imágenes...</span>
               <small>(Máximo 6 imágenes)</small>
               <div class="image">
-                <input type="file" id="file2" class="inputfile" ref="file2" multiple @change="filesChange" />
+                <input
+                  type="file"
+                  id="file2"
+                  class="inputfile"
+                  ref="file2"
+                  multiple
+                  @change="filesChange"
+                />
                 <label for="file2">Subir imagen</label>
               </div>
             </div>
@@ -550,9 +561,6 @@
   </div>
 </template>
 <script>
-
-
-
 import toastr from "toastr";
 toastr.options = {
   closeButton: true,
@@ -665,33 +673,32 @@ export default {
     },
     img(event) {
       console.log(event);
-        $(".image #file").each(function() {
-            var label = $(this).next("label");
-             var fileName = "";
-             if (event.target.value) {
-                 fileName = event.target.value.split("\\").pop();
-                 label.html(fileName);
-             }
-        });
+      $(".image #file").each(function() {
+        var label = $(this).next("label");
+        var fileName = "";
+        if (event.target.value) {
+          fileName = event.target.value.split("\\").pop();
+          label.html(fileName);
+        }
+      });
 
       this.form.imagePrincipal = this.$refs.file.files[0];
     },
     filesChange(e) {
       this.form.imagenes = e.target.files;
-        console.log(e);
-        $(".image #file2").each(function() {
-            var label = $(this).next("label");
-             var fileName = "";
-             if (e.target.value) {
-                let num = e.srcElement.files.length;
-                if ( num > 1 ) {
-                    label.html( num + ' adjuntos');
-                } else {
-                    label.html( num + ' adjunto');
-                }
-             }
-        });
-
+      console.log(e);
+      $(".image #file2").each(function() {
+        var label = $(this).next("label");
+        var fileName = "";
+        if (e.target.value) {
+          let num = e.srcElement.files.length;
+          if (num > 1) {
+            label.html(num + " adjuntos");
+          } else {
+            label.html(num + " adjunto");
+          }
+        }
+      });
     },
     storeInmueble() {
       this.enviando = false;
@@ -809,7 +816,7 @@ export default {
           //   mascotas:'',
           // }
           toastr.success("Inmueble subido correctamente");
-          window.location.href = `http://localhost:8000/perfil-detalle/${res.data}`;
+          window.location.href = `http://permutado.com/perfil-detalle/${res.data}`;
         });
     },
 
@@ -866,13 +873,12 @@ $(document).on("click", ".generator .add", function() {
   padding: 20px;
   margin: 50px auto;
 }
-    .mini small {
-        flex: 0 0 auto;
-        margin: 0 5px;
-    }
-    .form-group .my-text.mini input[type="text"] {
-        max-width: 90px;
-        text-align: center;
-    }
-
+.mini small {
+  flex: 0 0 auto;
+  margin: 0 5px;
+}
+.form-group .my-text.mini input[type="text"] {
+  max-width: 90px;
+  text-align: center;
+}
 </style>

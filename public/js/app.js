@@ -70437,12 +70437,12 @@ var render = function() {
                     _vm._l(_vm.bienes, function(bien) {
                       return _c("div", { key: bien.id, staticClass: "group" }, [
                         _c("input", {
-                          attrs: { type: "text" },
+                          attrs: { type: "text", disabled: _vm.editar },
                           domProps: { value: bien.bien }
                         }),
                         _vm._v(" "),
                         _c("input", {
-                          attrs: { type: "text" },
+                          attrs: { type: "text", disabled: _vm.editar },
                           domProps: { value: bien.valor }
                         })
                       ])
@@ -70452,7 +70452,7 @@ var render = function() {
                       _c("span", [_vm._v("Efectivo")]),
                       _vm._v(" "),
                       _c("input", {
-                        attrs: { type: "text" },
+                        attrs: { type: "text", disabled: _vm.editar },
                         domProps: { value: _vm.inmueble.recibo_efectivo }
                       })
                     ]),
@@ -72097,7 +72097,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-6 box-contact" }, [
+              _c("div", { staticClass: "col-md-6 box-contact text-center" }, [
                 !_vm.contact
                   ? _c("img", {
                       attrs: { src: "/img/perfil-logo.png", alt: "" }

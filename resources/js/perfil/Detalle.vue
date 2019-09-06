@@ -50,13 +50,13 @@
           <div v-if="form.recibo_efectivo">
             <h4>Permuto por</h4>
             <div class="group" v-for="bien in bienes" :key="bien.id">
-              <input type="text" v-bind:value="bien.bien" />
-              <input type="text" v-bind:value="bien.valor" />
+              <input type="text" :disabled="editar" v-bind:value="bien.bien" />
+              <input type="text" :disabled="editar" v-bind:value="bien.valor" />
             </div>
 
             <div class="group">
               <span>Efectivo</span>
-              <input type="text" v-bind:value="inmueble.recibo_efectivo" />
+              <input type="text" :disabled="editar" v-bind:value="inmueble.recibo_efectivo" />
             </div>
             <div class="group justify-content-end">
               <a href="#" class="btn">Permutar</a>
@@ -460,7 +460,7 @@
                 </button>
               </form>
             </div>
-            <div class="col-md-6 box-contact">
+            <div class="col-md-6 box-contact text-center">
               <img v-if="!contact" src="/img/perfil-logo.png" alt />
               <p v-else class="text-contac">"Se ha enviado correctamente"</p>
             </div>

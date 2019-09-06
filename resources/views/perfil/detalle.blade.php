@@ -117,9 +117,15 @@
             margin: 0;
             padding: 5px;
             border: 1px solid #ccc;
-            background: #f1f1f1;
+            background: #fff;
             min-width: 0;
         }
+        .group input[type=text]:disabled, .group textarea:disabled {
+            
+            background: #f1f1f1;
+            
+        }
+
         .group input[type=text]:focus, .group textarea:focus {
             outline: none;
         }

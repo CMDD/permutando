@@ -14,7 +14,7 @@ class ContactoController extends Controller
     public function contacto(Request $request){
         $mensaje = new Mensaje();
         $mensaje->from = Auth::User()->id;
-        $mensaje->to = $request->to;
+        $mensaje->to = (int)$request->to;
         $mensaje->inmueble = $request->inmueble;
         $mensaje->mensaje = $request->mensaje;
         $mensaje->nombre = $request->nombre;
@@ -29,8 +29,8 @@ class ContactoController extends Controller
         // $contactado->save();
 
 
-        Mail::to('jhon54plex@hotmail.com','John Alvaro')
-        ->send(new Contacto($request));
+        // Mail::to('jhon54plex@hotmail.com','John Alvaro')
+        // ->send(new Contacto($request));
         return 200;
     }
 }

@@ -16,8 +16,13 @@
                 <div class="col-12 col-lg-8">
                     <div class="gallery">
                     <div><img src="/{{$inmueble->imagen}}"></div>
+
                         @foreach($imagenes as $i)
-                    <div><img src="/{{$i->image}}"></div>
+
+                        <div>
+                            <img src="/{{$i->image}}">
+                        </div>
+
                         @endforeach
                         
                     </div>

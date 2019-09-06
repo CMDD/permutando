@@ -9,80 +9,7 @@
                     <span>Detalle de Inmueble</span>
                 </div>
             </div>
-            <form>
-            <div class="row justify-content-center align-items-center">
-                <div class="col-md-6 col-xl-5 p-4">
-                    <div class="gallery mb-3">
-                        <div><img src="http://permutando.test/img/bg-map.jpg"></div>
-                        <div><img src="http://permutando.test/img/bg-map.jpg"></div>
-                    </div>
-                    <div class="group"><h4 class="mr-3">Casa en permuta</h4><a href="#" class="btn">Ver video</a></div>
-                </div>
-                <div class="col-md-6 col-xl-5 p-4">
-                    <div class="group mb-5"><a href="#" class="btn" data-toggle="modal" data-target="#contactModal">Contactar</a><button class="btn inv">Guardar</button></div>
-                    <h4>Permuto por</h4>
-                    <div class="group"><span>Bien</span><input type="text"></div>
-                    <div class="group"><span>Bien</span><input type="text"></div>
-                    <div class="group"><span>Bien</span><input type="text"></div>
-                    <div class="group"><span>Efectivo</span><input type="text"></div>
-                    <div class="group justify-content-end"><a href="#" class="btn">Permutar</a></div>
-                </div>
-                <div class="col-md-6 col-xl-5 p-4">
-                    <div class="group"><span>Valor</span><input type="text"></div>
-                    <div class="group"><span>Area</span><input type="text"></div>
-                    <div class="group"><span>Baños</span><input type="text"></div>
-                    <div class="group"><span>Municipio</span><input type="text"></div>
-                    <div class="group"><span>Dirección</span><input type="text"></div>
-                </div>
-                <div class="col-md-6 col-xl-5 p-4">
-                    <div class="group"><span>Parqueadero</span><input type="text"></div>
-                    <div class="group"><span>Estrato</span><input type="text"></div>
-                    <div class="group"><span>Balcon</span><input type="text"></div>
-                    <div class="group"><span>Habitaciones</span><input type="text"></div>
-                    <div class="group"><span>Localidad</span><input type="text"></div>
-                </div>
-                <div class="col-md-6 col-xl-5 p-4">
-                    <div class="group">
-                        <span>Zonas comunes</span>
-                        <div class="checks">
-                            <label><input type="checkbox">Piscina</label>
-                            <label><input type="checkbox">Salón comunal</label>
-                            <label><input type="checkbox">Gimnasio</label>
-                            <label><input type="checkbox">Salón comunal</label>
-                            <label><input type="checkbox">Gimnasio</label>
-                            <label><input type="checkbox">Piscina</label>
-                            <label><input type="checkbox">BBQ</label>
-                            <label><input type="checkbox">Gimnasio</label>
-                            <label><input type="checkbox">Piscina</label>
-                            <label><input type="checkbox">Gimnasio</label>
-                            <label><input type="checkbox">Salón comunal</label>
-                        </div>
-                    </div>
-                    <div class="group full">
-                        <span class="mb-3">Características</span>
-                        <textarea></textarea>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-5 p-4">
-
-                </div>
-            </div>
-            </form>
-            <div id="contactModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4>Contactar</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Información de contacto</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <inmueble-detalle :inmueble="{{$inmueble}}" :user="{{auth::user()->id}}"></inmueble-detalle>
         </div>
     </div>
 </div>
@@ -298,12 +225,12 @@
 @push('scripts')
     <script src="/js/slick.min.js"></script>
     <script>
-        $('.gallery').slick({
-            infinite: true,
-            speed: 300,
-            slidesToShow: 1,
-            adaptiveHeight: true,
-            accessibility: false
-        });
+        // $('.gallery').slick({
+        //     infinite: true,
+        //     speed: 300,
+        //     slidesToShow: 1,
+        //     adaptiveHeight: true,
+        //     accessibility: false
+        // });
     </script>
 @endpush

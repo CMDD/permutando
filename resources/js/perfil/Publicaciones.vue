@@ -19,14 +19,14 @@
               <h4>{{inmueble.tipo}}</h4>
             </div>
             <div class="group">
-              <div class="item price">Casa</div>
-              <div class="item price">Permuto</div>
+              <div class="item price">{{inmueble.tipo_inmueble}}</div>
+              <div class="item price">{{inmueble.tipo_publicacion}}</div>
               <!-- <div class="item bath">{{inmueble.banos}} baños</div> -->
               <!-- <div class="item garage">{{inmueble.parqueadero}} parqueaderos</div> -->
             </div>
             <div class="group">
-              <div class="item meters">Bogotá</div>
-              <div class="item price">${{formatPrice(30000000)}}</div>
+              <div class="item meters">{{inmueble.ciudad}}</div>
+              <div class="item price">${{formatPrice(inmueble.valor)}}</div>
               <div>
                 <a :href="'/perfil-detalle/' + inmueble.id">Ver</a>
                 <a :href="'/perfil-detalle/' + inmueble.id">Editar</a>

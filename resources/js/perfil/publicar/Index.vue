@@ -111,7 +111,7 @@
             </div>
             <div
               class="form-field w2"
-              v-if="form.tipoInmueble == 'Edificio' || form.tipoInmueble == 'Casa Lote' 
+              v-if="form.tipoInmueble == 'Casa Lote' 
             || form.tipoInmueble == 'Quinta' || form.tipoInmueble == 'Finca' || form.tipoInmueble == 'Hacienda'"
             >
               <div class="my-checkbox">
@@ -502,7 +502,7 @@
               <div class="form-field w35">
                 <span>Valor del bien</span>
                 <div class="my-text">
-                  <input type="number" id="valor_bien1" />
+                  <input type="text" id="valor_bien1" />
                 </div>
               </div>
             </div>
@@ -614,6 +614,8 @@ export default {
     };
   },
   created() {
+    console.log("100.000.000.65".replace(/[.]/g, ""));
+
     this.getDepartamentos();
   },
   methods: {
@@ -624,7 +626,8 @@ export default {
         .value;
 
       this.form.bienes.push(bien);
-      this.form.valor_bien.push(valor_bien.replace(".", ""));
+      this.form.valor_bien.push(valor_bien.replace(/[.]/g, ""));
+
       bien = "";
       valor_bien = "";
 
@@ -635,7 +638,10 @@ export default {
       });
       const reducer = (accumulator, currentValue) => accumulator + currentValue;
       this.valorTotal = result.reduce(reducer);
-      var val = parseInt(this.form.valor) / 2 + 1;
+
+      var fvalor = this.form.valor.replace(/[.]/g, "");
+      var val = parseInt(fvalor) / 2;
+      console.log(val);
       if (this.valorTotal > val) {
         this.active = true;
       } else {
@@ -796,7 +802,7 @@ $(document).on("click", ".generator .add", function() {
         num +
         '</span><div class="my-text"><input type="text" id="bien' +
         num +
-        '"   /></div></div><div class="form-field w35"><span>Valor del bien</span><div class="my-text"><input type="number" id="valor_bien' +
+        '"   /></div></div><div class="form-field w35"><span>Valor del bien</span><div class="my-text"><input type="text" id="valor_bien' +
         num +
         '"  /></div></div></div>'
     );

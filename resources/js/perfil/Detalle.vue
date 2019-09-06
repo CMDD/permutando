@@ -1,66 +1,452 @@
 <template>
-  <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
-    <div class="row title">
-      <div class="col">
-        <span>Detalle de Inmueble</span>
-      </div>
-    </div>
-    <div class="row inmuebles">
-      <div class="col box">
-        <div class="row">
-          <div class="col-12 col-lg-8">
-            <div class="gallery">
-              <div>
-                <img src="/img/img-demo.jpg" />
-              </div>
-              <div>
-                <img src="/img/img-demo.jpg" />
-              </div>
-              <div>
-                <img src="/img/img-demo.jpg" />
-              </div>
+  <div>
+    <form>
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 col-xl-5 p-4">
+          <div class="gallery mb-3" id="carousel">
+            <div>
+              <img :src="'/'+inmueble.imagen" />
             </div>
-            <div class="info">
-              <h3>Casa en (minuto de dios)</h3>
-              <div class="desc">
-                <div>
-                  <span>
-                    <strong>Área:</strong> 3 Area mts
-                    <sup>2</sup>
-                  </span>
-                  <span>
-                    <strong>Habitaciones:</strong> 1
-                  </span>
-                  <span>
-                    <strong>Baños:</strong> 3
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <strong>Valor:</strong> $12344545
-                  </span>
-                  <span>
-                    <strong>Barrio:</strong> minuto de dios
-                  </span>
-                </div>
-              </div>
-              <div class="more">
-                <strong>Caracteristicas:</strong>
-                <p>asasd</p>
-                <strong>Mas información:</strong>
-                <p>asdasd</p>
-              </div>
+
+            <div>
+              <img src="/img/img-demo.jpg" />
             </div>
           </div>
-          <div class="col-12 col-lg-4 form">
-            <form>
-              <h4>Contactar</h4>
-              <input type="text" class="form-control" placeholder="Nombre" />
-              <input type="text" class="form-control" placeholder="Teléfono/Celular" />
-              <input type="email" class="form-control" placeholder="Email" />
-              <textarea class="form-control" placeholder="Mensaje"></textarea>
-              <button type="submit" class="btn">Enviar</button>
-            </form>
+          <div class="group">
+            <h4 class="mr-3">{{inmueble.tipo_inmueble}} - {{inmueble.tipo_publicacion}}</h4>
+            <a v-if="form.video" href="#" class="btn">Ver video</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-5 p-4">
+          <div class="group mb-5">
+            <a href="#" class="btn" data-toggle="modal" data-target="#contactModal">Contactar</a>
+            <button v-if="!editar" class="btn inv">
+              <span v-if="actualizando">Actualizando...</span>
+              <span v-else>Actualizar</span>
+            </button>
+
+            <div v-if="editar">
+              <button
+                class="btn inv"
+                v-if="inmueble.user_id === user"
+                @click="activarEdicion"
+              >Editar</button>
+            </div>
+            <div v-if="editar">
+              <button
+                class="btn inv btn-eliminar"
+                v-if="inmueble.user_id === user"
+                @click="activarEdicion"
+              >Eliminar</button>
+            </div>
+          </div>
+          <div v-if="form.recibo_efectivo">
+            <h4>Permuto por</h4>
+            <div class="group" v-for="bien in bienes" :key="bien.id">
+              <input type="text" v-bind:value="bien.bien" />
+              <input type="text" v-bind:value="bien.valor" />
+            </div>
+
+            <div class="group">
+              <span>Efectivo</span>
+              <input type="text" v-bind:value="inmueble.recibo_efectivo" />
+            </div>
+            <div class="group justify-content-end">
+              <a href="#" class="btn">Permutar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-5 p-4">
+          <div class="group">
+            <span>Valor</span>
+            <input type="text" :disabled="editar" v-model="form.valor" />
+          </div>
+
+          <div class="group">
+            <span>Dirección</span>
+            <input type="text" :disabled="editar" v-model="form.direccion" />
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-5 p-4">
+          <div class="group">
+            <span>Ciudad/Municipio</span>
+            <input type="text" :disabled="editar" v-model="form.ciudad" />
+          </div>
+          <div class="group">
+            <span>Barrio</span>
+            <input type="text" :disabled="editar" v-model="form.barrio" />
+          </div>
+        </div>
+
+        <!-- Casa/Apatamento -->
+        <div
+          class="col-md-6 col-xl-5 p-4"
+          v-if="form.tipo_inmueble == 'Casa' || form.tipo_inmueble == 'Apartamento'"
+        >
+          <div class="group">
+            <span>Area m2</span>
+            <input type="text" :disabled="editar" v-model="form.area" />
+          </div>
+          <div class="group">
+            <span>Baños</span>
+            <input type="text" :disabled="editar" v-model="form.banos" />
+          </div>
+          <div class="group">
+            <span>Habitaciones</span>
+            <input type="text" :disabled="editar" v-model="form.habitaciones" />
+          </div>
+
+          <div class="group">
+            <span>Estrato</span>
+            <input type="text" :disabled="editar" v-model="form.estrato" />
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 col-xl-5 p-4"
+          v-if="form.tipo_inmueble == 'Casa' || form.tipo_inmueble == 'Apartamento'"
+        >
+          <div class="group">
+            <span>Balcon</span>
+            <div class="my-radio">
+              <input type="radio" v-model="form.balcon" value="1" id="balcon_1" />
+              <label for="balcon_1">Si</label>
+              <input type="radio" v-model="form.balcon" value="0" id="balcon_0" />
+              <label for="balcon_0" class="no">No</label>
+            </div>
+          </div>
+          <div class="group">
+            <span>Patio</span>
+            <div class="my-radio">
+              <input type="radio" v-model="form.patio" value="1" id="patio_1" />
+              <label for="patio_1">Si</label>
+              <input type="radio" v-model="form.patio" value="0" id="patio_0" />
+              <label for="patio_0" class="no">No</label>
+            </div>
+          </div>
+          <div class="group">
+            <span>Terraza</span>
+            <div class="my-radio">
+              <input type="radio" v-model="form.terraza" value="1" id="terraza_1" />
+              <label for="terraza_1">Si</label>
+              <input type="radio" v-model="form.terraza" value="0" id="terraza_0" />
+              <label for="terraza_0" class="no">No</label>
+            </div>
+          </div>
+
+          <div class="group">
+            <span>Parqueadero</span>
+            <div class="my-radio">
+              <input type="radio" v-model="form.parqueadero" value="1" id="parqueadero_1" />
+              <label for="parqueadero_1">Si</label>
+              <input type="radio" v-model="form.parqueadero" value="0" id="parqueadero_0" />
+              <label for="parqueadero_0" class="no">No</label>
+            </div>
+          </div>
+          <div class="group">
+            <span>Portería</span>
+            <div class="my-radio">
+              <input type="radio" v-model="form.porteria" value="12h" id="porteria_12" />
+              <label for="porteria_12">12H</label>
+              <input type="radio" v-model="form.porteria" value="24h" id="porteria_24" checked />
+              <label for="porteria_24">24H</label>
+              <input type="radio" v-model="form.porteria" value="no" id="porteria_0" checked />
+              <label for="porteria_0" class="no">No</label>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 col-xl-5 p-4"
+          v-if="form.tipo_inmueble == 'Casa' || form.tipo_inmueble == 'Apartamento'"
+        >
+          <div class="group">
+            <span>Zonas comunes</span>
+            <div class="checks">
+              <label>
+                <input type="checkbox" v-model="inmueble.zonas" />Gimnasio
+              </label>
+              <label>
+                <input type="checkbox" />Zonas húmedas
+              </label>
+              <label>
+                <input type="checkbox" />BBQ
+              </label>
+              <label>
+                <input type="checkbox" />Parques para niños
+              </label>
+
+              <label>
+                <input type="checkbox" />Salón comunal
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fin  Casa/Apatamento -->
+
+        <div class="col-md-6 col-xl-5 p-4" v-if="inmueble.tipo_inmueble == 'Bodega'">
+          <div class="group">
+            <span>Area Frente</span>
+            <input type="text" :disabled="editar" v-model="form.capacidad_luz" />
+          </div>
+          <div class="group">
+            <span>Altura Frente</span>
+            <input type="text" :disabled="editar" v-model="form.capacidad_luz" />
+          </div>
+
+          <div class="group">
+            <span>Capacidad Luz</span>
+            <input type="text" :disabled="editar" v-model="form.capacidad_luz" />
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-5 p-4" v-if="inmueble.tipo_inmueble == 'Bodega'">
+          <div class="group">
+            <span>Area Fondo</span>
+            <input type="text" :disabled="editar" v-model="form.capacidad_luz" />
+          </div>
+          <div class="group">
+            <span>Altura Fondo</span>
+            <input type="text" :disabled="editar" v-model="form.capacidad_luz" />
+          </div>
+          <div class="group">
+            <span>Capacidad Carga (PSI)</span>
+            <input type="text" :disabled="editar" v-model="form.carga_psi" />
+          </div>
+          <div class="group">
+            <span>Parque Industrial</span>
+            <div class="my-radio">
+              <input
+                type="radio"
+                v-model="form.parque_industrial"
+                value="1"
+                id="parque_industrial_1"
+              />
+              <label for="parque_industrial_1">Si</label>
+              <input
+                type="radio"
+                v-model="form.parque_industrial"
+                value="0"
+                id="parque_industrial_0"
+              />
+              <label for="parque_industrial_0" class="no">No</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lote -->
+        <div class="col-md-6 col-xl-5 p-4" v-if="inmueble.tipo_inmueble == 'Lote'">
+          <div class="group">
+            <span>Area mts2</span>
+            <input type="text" :disabled="editar" v-model="form.area" />
+          </div>
+          <div class="group">
+            <span>Vías</span>
+            <input type="text" :disabled="editar" v-model="form.vias" />
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-5 p-4" v-if="inmueble.tipo_inmueble == 'Lote'">
+          <div class="group">
+            <span>Topografía</span>
+            <input type="text" :disabled="editar" v-model="form.topografia" />
+          </div>
+        </div>
+        <!-- Fin Lote -->
+        <!-- Oficina -->
+        <div class="col-md-6 col-xl-5 p-4" v-if="inmueble.tipo_inmueble == 'Oficina'">
+          <div class="group">
+            <span>Area mts2</span>
+            <input type="text" :disabled="editar" v-model="form.area" />
+          </div>
+          <div class="group">
+            <span>Espacio</span>
+            <input type="text" :disabled="editar" v-model="form.espacio" />
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-5 p-4" v-if="inmueble.tipo_inmueble == 'Oficina'">
+          <div class="group">
+            <span>Portería</span>
+            <div class="my-radio">
+              <input type="radio" v-model="form.porteria" value="12h" id="porteria_12" />
+              <label for="porteria_12">12H</label>
+              <input type="radio" v-model="form.porteria" value="24h" id="porteria_24" checked />
+              <label for="porteria_24">24H</label>
+              <input type="radio" v-model="form.porteria" value="no" id="porteria_0" checked />
+              <label for="porteria_0" class="no">No</label>
+            </div>
+          </div>
+          <div class="group">
+            <span>Parqueadero</span>
+            <div class="my-radio">
+              <input type="radio" v-model="form.parqueadero" value="1" id="parque_industrial_1" />
+              <label for="parque_industrial_1">Si</label>
+              <input type="radio" v-model="form.parqueadero" value="0" id="parque_industrial_0" />
+              <label for="parque_industrial_0" class="no">No</label>
+            </div>
+          </div>
+        </div>
+        <!-- Oficina -->
+
+        <!-- Edificio -->
+        <div class="col-md-6 col-xl-5 p-4" v-if="inmueble.tipo_inmueble == 'Edificio'">
+          <div class="group">
+            <span>Area Lote</span>
+            <input type="text" :disabled="editar" v-model="form.area_lote" />
+          </div>
+          <div class="group">
+            <span>Area Contruida</span>
+            <input type="text" :disabled="editar" v-model="form.area_construida" />
+          </div>
+          <div class="group">
+            <span>Numero de Pisos</span>
+            <input type="text" :disabled="editar" v-model="form.pisos" />
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-5 p-4" v-if="inmueble.tipo_inmueble == 'Edificio'">
+          <!-- <div class="group">
+            <span>Portería</span>
+            <div class="my-radio">
+              <input type="radio" v-model="form.porteria" value="12h" id="porteria_12" />
+              <label for="porteria_12">12H</label>
+              <input type="radio" v-model="form.porteria" value="24h" id="porteria_24" checked />
+              <label for="porteria_24">24H</label>
+              <input type="radio" v-model="form.porteria" value="no" id="porteria_0" checked />
+              <label for="porteria_0" class="no">No</label>
+            </div>
+          </div>-->
+          <div class="group">
+            <span>Parqueadero</span>
+            <div class="my-radio">
+              <input type="radio" v-model="form.parqueadero" value="1" id="parqueadero_1" />
+              <label for="parqueadero_1">Si</label>
+              <input type="radio" v-model="form.parqueadero" value="0" id="parqueadero_0" />
+              <label for="parqueadero_0" class="no">No</label>
+            </div>
+          </div>
+          <div class="group">
+            <span>Ascensor</span>
+            <div class="my-radio">
+              <input type="radio" v-model="form.ascensor" value="1" id="ascensor_1" />
+              <label for="ascensor_1">Si</label>
+              <input type="radio" v-model="form.ascensor" value="0" id="ascensor_0" />
+              <label for="ascensor_0" class="no">No</label>
+            </div>
+          </div>
+        </div>
+        <!-- Fin  Edificio -->
+
+        <!-- Casa Lote - Quinta - Finca - Hacienda  -->
+        <div
+          class="col-md-6 col-xl-5 p-4"
+          v-if="inmueble.tipo_inmueble == 'Casa Lote' || inmueble.tipo_inmueble == 'Quinta'"
+        >
+          <div class="group">
+            <span>Area Lote</span>
+            <input type="text" :disabled="editar" v-model="form.area_lote" />
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 col-xl-5 p-4"
+          v-if="inmueble.tipo_inmueble == 'Casa Lote' || inmueble.tipo_inmueble == 'Quinta'"
+        >
+          <div class="group">
+            <span>Area Contruida</span>
+            <input type="text" :disabled="editar" v-model="form.area_construida" />
+          </div>
+        </div>
+        <!-- Fin  Edificio -->
+
+        <div class="col-md-6 col-xl-5 p-4">
+          <div class="group">
+            <span class="mb-3">Características</span>
+            <textarea rows="6" :disabled="editar" v-model="form.caracteristicas"></textarea>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 col-xl-5 p-4"
+          v-if="form.tipo_inmueble == 'Casa Lote' || form.tipo_inmueble == 'Quinta'"
+        >
+          <div class="group">
+            <span>Tipo de Construccion</span>
+            <div class="checks">
+              <label>
+                <input type="checkbox" checked />Parqueadero cubierto
+              </label>
+              <label>
+                <input type="checkbox" />Parqueadero descubierto
+              </label>
+              <label>
+                <input type="checkbox" checked />Pozo séptico
+              </label>
+              <label>
+                <input type="checkbox" />Alcantarillado
+              </label>
+              <label>
+                <input type="checkbox" />Zonas deportivas
+              </label>
+              <label>
+                <input type="checkbox" v-model="inmueble.zonas" />Casa
+              </label>
+              <label>
+                <input type="checkbox" checked />Bodega
+              </label>
+              <label>
+                <input type="checkbox" />Piscina
+              </label>
+              <label>
+                <input type="checkbox" />Kiosko
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-5 p-4"></div>
+      </div>
+    </form>
+    <div id="contactModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Contactar</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body row">
+            <div class="col-md-6 form">
+              <form @submit.prevent="contactar">
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="contacto.nombre"
+                  placeholder="Nombre"
+                />
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="contacto.tel"
+                  placeholder="Teléfono/Celular"
+                />
+                <input
+                  type="email"
+                  class="form-control"
+                  v-model="contacto.email"
+                  placeholder="Email"
+                />
+                <input type="hidden" class="form-control" v-model="contacto.to" />
+                <input type="hidden" class="form-control" v-model="contacto.inmueble" />
+                <textarea class="form-control" v-model="contacto.mensaje" placeholder="Mensaje"></textarea>
+                <button type="submit" class="btn btn-enviar">Enviar</button>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <p>Se ha enviado correctamente</p>
+            </div>
           </div>
         </div>
       </div>
@@ -69,191 +455,103 @@
 </template>
 
 <script>
-if (document.getElementById("userId")) {
-  var userId = document.getElementById("userId").value;
-} else {
-}
 export default {
+  props: ["inmueble", "user"],
   data() {
     return {
-      userId: userId,
-      inmuebles: []
+      actualizando: false,
+      editar: true,
+      bienes: [],
+      imagenes: [],
+      form: this.inmueble,
+      contacto: {
+        to: this.inmueble.user_id,
+        inmueble: this.inmueble.id
+      }
     };
   },
-  created() {},
+  created() {
+    this.getBienes();
+    this.getImagenes();
+  },
   methods: {
-    getInmuebles() {
-      axios.get("api/mis-inmuebles/" + this.userId).then(res => {
-        this.inmuebles = res.data;
-        console.log(this.inmuebles);
+    contactar() {
+      axios.post("/contacto", this.contacto).then(res => {
+        console.log(res.data);
       });
+      console.log(this.contacto);
+    },
+    actualizar() {
+      this.actualizando = true;
+    },
+    activarEdicion() {
+      this.editar = false;
+    },
+    getBienes() {
+      axios.get("/api/bienes/" + this.inmueble.id).then(res => {
+        this.bienes = res.data;
+      });
+    },
+    getImagenes() {
+      axios.get("/api/imagenes/" + 2).then(res => {
+        this.imagenes = res.data;
+        setTimeout(function() {
+          $(".row")
+            .find(".gallery")
+            .slick({
+              infinite: true,
+              speed: 300,
+              slidesToShow: 1,
+              adaptiveHeight: true,
+              accessibility: false
+            });
+        }, 0);
+      });
+    },
+    formatPrice(value) {
+      let val = (value / 1).toFixed(0).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
   }
 };
 </script>
 
 <style>
-.slick-prev,
-.slick-next {
-  z-index: 1;
-  font-size: 0;
-  line-height: 0;
-  position: absolute;
-  top: 50%;
-  display: block;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  transform: translate(0, -50%);
+.my-radio input[type="radio"] {
+  display: none;
+}
+.my-radio input[type="radio"] + label {
+  flex: 0 0 auto;
+  text-align: center;
+  font-size: 0.65rem;
+  line-height: 32px;
+  font-weight: 600;
+  width: 32px;
+  margin: 0 3px;
+  border-radius: 50%;
+  background: #b9b9b9;
+  color: #fff;
   cursor: pointer;
-  color: transparent;
-  border: none;
-  outline: none;
-  background: transparent;
+  text-transform: uppercase;
+}
+.my-radio input[type="radio"]:checked + label {
+  background: #7db227;
+}
+.my-radio input[type="radio"]:checked + label.no {
+  background: #a71e1e;
 }
 
-.slick-prev:hover,
-.slick-prev:focus,
-.slick-next:hover,
-.slick-next:focus {
-  color: transparent;
-  outline: none;
-  background: transparent;
+.form input {
+  margin-top: 3%;
 }
-
-.slick-prev {
-  left: 10px;
+.form textarea {
+  margin-top: 3%;
 }
-
-[dir="rtl"] .slick-prev {
-  right: 10px;
-  left: auto;
-}
-
-.slick-next {
-  right: 10px;
-}
-
-[dir="rtl"] .slick-next {
-  right: auto;
-  left: 10px;
-}
-
-.slick-prev:after,
-.slick-prev:before,
-.slick-next:after,
-.slick-next:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.slick-prev:after,
-.slick-next:after {
-  opacity: 0;
-}
-.slick-prev:hover:after,
-.slick-next:hover:after {
-  opacity: 1;
-}
-.slick-prev:hover:before,
-.slick-next:hover:before {
-  opacity: 0;
-}
-.slick-prev.slick-disabled:before,
-.slick-next.slick-disabled:before {
-  opacity: 0.5;
-}
-.slick-prev.slick-disabled:hover:after,
-.slick-next.slick-disabled:hover:after {
-  opacity: 0;
-}
-
-.slick-prev:before,
-[dir="rtl"] .slick-next:before {
-  background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8,14.813c-3.763,0-6.813-3.052-6.813-6.813c0-3.763,3.051-6.813,6.813-6.813 c3.764,0,6.813,3.05,6.813,6.813C14.813,11.763,11.764,14.813,8,14.813z M5.953,7.999l2.078,2.719h0.657L6.607,7.999l2.08-2.717 H8.031L5.953,7.999z'/%3E%3C/svg%3E");
-}
-
-.slick-prev:after,
-[dir="rtl"] .slick-next:after {
-  background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8.031,10.718L5.953,7.999l2.078-2.717h0.656l-2.08,2.717l2.081,2.719H8.031z'/%3E%3C/svg%3E");
-}
-
-.slick-next:before,
-[dir="rtl"] .slick-prev:before {
-  background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8,14.813c-3.763,0-6.813-3.052-6.813-6.813c0-3.763,3.051-6.813,6.813-6.813 c3.764,0,6.813,3.05,6.813,6.813C14.813,11.763,11.764,14.813,8,14.813z M8,5.282H7.345l2.079,2.717l-2.08,2.719H8l2.078-2.719 L8,5.282z'/%3E%3C/svg%3E");
-}
-
-.slick-next:after,
-[dir="rtl"] .slick-prev:after {
-  background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M8,0.5C3.858,0.5,0.5,3.857,0.5,8c0,4.142,3.358,7.5,7.5,7.5c4.144,0,7.5-3.358,7.5-7.5 C15.5,3.857,12.144,0.5,8,0.5z M8,10.718H7.344l2.08-2.719L7.345,5.282H8l2.078,2.717L8,10.718z'/%3E%3C/svg%3E");
-}
-
-.gallery img {
+.btn-enviar {
+  margin-top: 2%;
   width: 100%;
 }
-.box {
-  background: #fff;
-  max-width: 1000px;
-  -webkit-box-shadow: 3px 3px 3px #cccccc;
-  box-shadow: 3px 3px 3px #cccccc;
-  border-radius: 20px;
-  padding: 20px;
-  margin: auto;
-}
-.box .info h3 {
-  font-size: 1.5rem;
-  color: #005b95;
-  border-bottom: 1px solid #ccc;
-  padding: 20px 0;
-  margin-bottom: 30px;
-}
-.box .info .desc {
-  display: flex;
-  margin-bottom: 30px;
-}
-.box .info .desc > div {
-  flex: 0 0 50%;
-}
-.box .desc span {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.box .form h4 {
-  margin: 20px 0;
-}
-.box .form-control {
-  margin-bottom: 10px;
-}
-.box .btn {
-  color: #fff;
-  background: #f19100;
-  padding: 0.2rem 1rem;
-}
-.box .btn:hover {
-  color: rgba(255, 255, 255, 0.7);
-}
-.box .form {
-  border-top: 1px solid #ccc;
-}
-@media (min-width: 992px) {
-  .box .form {
-    border: 0;
-    border-left: 1px solid #ccc;
-  }
-  .box .form h4 {
-    margin: 0 0 20px 0;
-  }
+.btn-eliminar {
+  background-color: #a71e1e !important;
 }
 </style>

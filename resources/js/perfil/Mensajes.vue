@@ -52,7 +52,7 @@ body,
   height: 100%;
 }
 .msg {
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 3rem);
 }
 .msg .list {
   background: #edeeed;

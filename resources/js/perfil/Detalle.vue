@@ -1,17 +1,19 @@
 <template>
   <div>
     <form>
-      <div class="row justify-content-center align-items-center">
+      <div class="row justify-content-center">
         <div class="col-md-6 col-xl-5 p-4">
           <div class="gallery mb-3" id="carousel">
             <div>
-              <img :src="'/'+inmueble.imagen" />
+                <a class="image-link" href="/img/img-demo.jpg" style="background-image:url(/img/img-demo.jpg)"></a>
+                <!--<img :src="'/'+inmueble.imagen" />-->
             </div>
 
             <div>
-              <img src="/img/img-demo.jpg" />
+                <a class="image-link" href="/img/img-demo.jpg" style="background-image:url(/img/img-demo.jpg)"></a>
             </div>
           </div>
+            <a class="video-link" href="https://www.youtube.com/watch?v=_9HofM72SLs" >VIDEO</a>
           <div class="group">
             <h4 class="mr-3">{{inmueble.tipo_inmueble}} - {{inmueble.tipo_publicacion}}</h4>
             <a
@@ -566,6 +568,13 @@ export default {
 </script>
 
 <style>
+    .gallery a.image-link {
+        height: 350px;
+        display: block;
+        background-size: cover;
+        background-position: center;
+    }
+
 .my-radio input[type="radio"] {
   display: none;
 }

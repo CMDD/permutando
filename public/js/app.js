@@ -69741,7 +69741,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.form input {\n  margin-top: 3%;\n}\n.form textarea {\n  margin-top: 3%;\n}\n.btn-enviar {\n  margin-top: 2%;\n  width: 100%;\n}\n.btn-eliminar {\n  background-color: #a71e1e !important;\n}\n.box-contact {\n  margin: auto;\n}\n.text-contac {\n  font-size: 27px;\n  color: #7db227;\n}\n", ""]);
+exports.push([module.i, "\n.gallery a.image-link {\n        height: 350px;\n        display: block;\n        background-size: cover;\n        background-position: center;\n}\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.form input {\n  margin-top: 3%;\n}\n.form textarea {\n  margin-top: 3%;\n}\n.btn-enviar {\n  margin-top: 2%;\n  width: 100%;\n}\n.btn-eliminar {\n  background-color: #a71e1e !important;\n}\n.box-contact {\n  margin: auto;\n}\n.text-contac {\n  font-size: 27px;\n  color: #7db227;\n}\n", ""]);
 
 // exports
 
@@ -69752,6 +69752,8 @@ exports.push([module.i, "\n.my-radio input[type=\"radio\"] {\n  display: none;\n
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -70335,1591 +70337,1574 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("form", [
-      _c(
-        "div",
-        { staticClass: "row justify-content-center align-items-center" },
-        [
-          _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-            _c(
-              "div",
-              { staticClass: "gallery mb-3", attrs: { id: "carousel" } },
-              [
-                _c("div", [
-                  _c("img", { attrs: { src: "/" + _vm.inmueble.imagen } })
-                ]),
-                _vm._v(" "),
-                _vm._m(0)
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "group" }, [
-              _c("h4", { staticClass: "mr-3" }, [
-                _vm._v(
-                  _vm._s(_vm.inmueble.tipo_inmueble) +
-                    " - " +
-                    _vm._s(_vm.inmueble.tipo_publicacion)
-                )
-              ]),
-              _vm._v(" "),
-              _vm.form.video
-                ? _c(
-                    "a",
-                    {
-                      staticClass: "btn",
-                      attrs: {
-                        href: "#",
-                        "data-toggle": "modal",
-                        "data-target": "#videoModal"
-                      }
-                    },
-                    [_vm._v("Ver video")]
-                  )
-                : _vm._e()
-            ])
-          ]),
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+          _vm._m(0),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-            _c("div", { staticClass: "group mb-5" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "btn",
-                  attrs: {
-                    href: "#",
-                    "data-toggle": "modal",
-                    "data-target": "#contactModal"
-                  }
-                },
-                [_vm._v("Contactar")]
-              ),
-              _vm._v(" "),
-              !_vm.editar
-                ? _c("button", { staticClass: "btn inv" }, [
-                    _vm.actualizando
-                      ? _c("span", [_vm._v("Actualizando...")])
-                      : _c(
-                          "span",
-                          {
-                            on: {
-                              click: function($event) {
-                                return _vm.actualizar()
-                              }
-                            }
-                          },
-                          [_vm._v("Actualizar")]
-                        )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.editar
-                ? _c("div", [
-                    _vm.inmueble.user_id === _vm.user
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "btn inv",
-                            on: { click: _vm.activarEdicion }
-                          },
-                          [_vm._v("Editar")]
-                        )
-                      : _vm._e()
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.editar
-                ? _c("div", [
-                    _vm.inmueble.user_id === _vm.user
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "btn inv btn-eliminar",
-                            on: { click: _vm.activarEdicion }
-                          },
-                          [_vm._v("Eliminar")]
-                        )
-                      : _vm._e()
-                  ])
-                : _vm._e()
+          _c(
+            "a",
+            {
+              staticClass: "video-link",
+              attrs: { href: "https://www.youtube.com/watch?v=_9HofM72SLs" }
+            },
+            [_vm._v("VIDEO")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "group" }, [
+            _c("h4", { staticClass: "mr-3" }, [
+              _vm._v(
+                _vm._s(_vm.inmueble.tipo_inmueble) +
+                  " - " +
+                  _vm._s(_vm.inmueble.tipo_publicacion)
+              )
             ]),
             _vm._v(" "),
-            _vm.form.recibo_efectivo
+            _vm.form.video
               ? _c(
-                  "div",
-                  [
-                    _c("h4", [_vm._v("Permuto por")]),
-                    _vm._v(" "),
-                    _vm._l(_vm.bienes, function(bien) {
-                      return _c("div", { key: bien.id, staticClass: "group" }, [
-                        _c("input", {
-                          attrs: { type: "text", disabled: _vm.editar },
-                          domProps: { value: bien.bien }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          attrs: { type: "text", disabled: _vm.editar },
-                          domProps: { value: bien.valor }
-                        })
-                      ])
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "group" }, [
-                      _c("span", [_vm._v("Efectivo")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        attrs: { type: "text", disabled: _vm.editar },
-                        domProps: { value: _vm.inmueble.recibo_efectivo }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(1)
-                  ],
-                  2
+                  "a",
+                  {
+                    staticClass: "btn",
+                    attrs: {
+                      href: "#",
+                      "data-toggle": "modal",
+                      "data-target": "#videoModal"
+                    }
+                  },
+                  [_vm._v("Ver video")]
                 )
+              : _vm._e()
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+          _c("div", { staticClass: "group mb-5" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn",
+                attrs: {
+                  href: "#",
+                  "data-toggle": "modal",
+                  "data-target": "#contactModal"
+                }
+              },
+              [_vm._v("Contactar")]
+            ),
+            _vm._v(" "),
+            !_vm.editar
+              ? _c("button", { staticClass: "btn inv" }, [
+                  _vm.actualizando
+                    ? _c("span", [_vm._v("Actualizando...")])
+                    : _c(
+                        "span",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.actualizar()
+                            }
+                          }
+                        },
+                        [_vm._v("Actualizar")]
+                      )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.editar
+              ? _c("div", [
+                  _vm.inmueble.user_id === _vm.user
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn inv",
+                          on: { click: _vm.activarEdicion }
+                        },
+                        [_vm._v("Editar")]
+                      )
+                    : _vm._e()
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.editar
+              ? _c("div", [
+                  _vm.inmueble.user_id === _vm.user
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn inv btn-eliminar",
+                          on: { click: _vm.activarEdicion }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    : _vm._e()
+                ])
               : _vm._e()
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-            _c("div", { staticClass: "group" }, [
-              _c("span", [_vm._v("Valor")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.valor,
-                    expression: "form.valor"
-                  }
-                ],
-                attrs: { type: "text", disabled: _vm.editar },
-                domProps: { value: _vm.form.valor },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "valor", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "group" }, [
-              _c("span", [_vm._v("Dirección")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.direccion,
-                    expression: "form.direccion"
-                  }
-                ],
-                attrs: { type: "text", disabled: _vm.editar },
-                domProps: { value: _vm.form.direccion },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "direccion", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-            _c("div", { staticClass: "group" }, [
-              _c("span", [_vm._v("Ciudad/Municipio")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.ciudad,
-                    expression: "form.ciudad"
-                  }
-                ],
-                attrs: { type: "text", disabled: _vm.editar },
-                domProps: { value: _vm.form.ciudad },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "ciudad", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "group" }, [
-              _c("span", [_vm._v("Barrio")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.barrio,
-                    expression: "form.barrio"
-                  }
-                ],
-                attrs: { type: "text", disabled: _vm.editar },
-                domProps: { value: _vm.form.barrio },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "barrio", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.form.tipo_inmueble == "Casa" ||
-          _vm.form.tipo_inmueble == "Apartamento"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Area m2")]),
+          _vm.form.recibo_efectivo
+            ? _c(
+                "div",
+                [
+                  _c("h4", [_vm._v("Permuto por")]),
                   _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.area,
-                        expression: "form.area"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.area },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "area", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Baños")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.banos,
-                        expression: "form.banos"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.banos },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "banos", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Habitaciones")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.habitaciones,
-                        expression: "form.habitaciones"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.habitaciones },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "habitaciones", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Estrato")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.estrato,
-                        expression: "form.estrato"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.estrato },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "estrato", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.form.tipo_inmueble == "Casa" ||
-          _vm.form.tipo_inmueble == "Apartamento"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Balcon")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "my-radio" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.balcon,
-                          expression: "form.balcon"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "1", id: "balcon_1" },
-                      domProps: { checked: _vm._q(_vm.form.balcon, "1") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "balcon", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "balcon_1" } }, [_vm._v("Si")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.balcon,
-                          expression: "form.balcon"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "0", id: "balcon_0" },
-                      domProps: { checked: _vm._q(_vm.form.balcon, "0") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "balcon", "0")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      { staticClass: "no", attrs: { for: "balcon_0" } },
-                      [_vm._v("No")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Patio")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "my-radio" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.patio,
-                          expression: "form.patio"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "1", id: "patio_1" },
-                      domProps: { checked: _vm._q(_vm.form.patio, "1") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "patio", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "patio_1" } }, [_vm._v("Si")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.patio,
-                          expression: "form.patio"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "0", id: "patio_0" },
-                      domProps: { checked: _vm._q(_vm.form.patio, "0") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "patio", "0")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      { staticClass: "no", attrs: { for: "patio_0" } },
-                      [_vm._v("No")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Terraza")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "my-radio" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.terraza,
-                          expression: "form.terraza"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "1", id: "terraza_1" },
-                      domProps: { checked: _vm._q(_vm.form.terraza, "1") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "terraza", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "terraza_1" } }, [
-                      _vm._v("Si")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.terraza,
-                          expression: "form.terraza"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "0", id: "terraza_0" },
-                      domProps: { checked: _vm._q(_vm.form.terraza, "0") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "terraza", "0")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      { staticClass: "no", attrs: { for: "terraza_0" } },
-                      [_vm._v("No")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Parqueadero")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "my-radio" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.parqueadero,
-                          expression: "form.parqueadero"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "1", id: "parqueadero_1" },
-                      domProps: { checked: _vm._q(_vm.form.parqueadero, "1") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "parqueadero", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "parqueadero_1" } }, [
-                      _vm._v("Si")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.parqueadero,
-                          expression: "form.parqueadero"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "0", id: "parqueadero_0" },
-                      domProps: { checked: _vm._q(_vm.form.parqueadero, "0") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "parqueadero", "0")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      { staticClass: "no", attrs: { for: "parqueadero_0" } },
-                      [_vm._v("No")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Portería")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "my-radio" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.porteria,
-                          expression: "form.porteria"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "12h", id: "porteria_12" },
-                      domProps: { checked: _vm._q(_vm.form.porteria, "12h") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "porteria", "12h")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "porteria_12" } }, [
-                      _vm._v("12H")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.porteria,
-                          expression: "form.porteria"
-                        }
-                      ],
-                      attrs: {
-                        type: "radio",
-                        value: "24h",
-                        id: "porteria_24",
-                        checked: ""
-                      },
-                      domProps: { checked: _vm._q(_vm.form.porteria, "24h") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "porteria", "24h")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "porteria_24" } }, [
-                      _vm._v("24H")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.porteria,
-                          expression: "form.porteria"
-                        }
-                      ],
-                      attrs: {
-                        type: "radio",
-                        value: "no",
-                        id: "porteria_0",
-                        checked: ""
-                      },
-                      domProps: { checked: _vm._q(_vm.form.porteria, "no") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "porteria", "no")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      { staticClass: "no", attrs: { for: "porteria_0" } },
-                      [_vm._v("No")]
-                    )
-                  ])
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.form.tipo_inmueble == "Casa" ||
-          _vm.form.tipo_inmueble == "Apartamento"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Zonas comunes")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "checks" }, [
-                    _c("label", [
+                  _vm._l(_vm.bienes, function(bien) {
+                    return _c("div", { key: bien.id, staticClass: "group" }, [
                       _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.inmueble.zonas,
-                            expression: "inmueble.zonas"
-                          }
-                        ],
-                        attrs: { type: "checkbox" },
-                        domProps: {
-                          checked: Array.isArray(_vm.inmueble.zonas)
-                            ? _vm._i(_vm.inmueble.zonas, null) > -1
-                            : _vm.inmueble.zonas
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.inmueble.zonas,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = null,
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.inmueble,
-                                    "zonas",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.inmueble,
-                                    "zonas",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
-                              }
-                            } else {
-                              _vm.$set(_vm.inmueble, "zonas", $$c)
-                            }
-                          }
-                        }
+                        attrs: { type: "text", disabled: _vm.editar },
+                        domProps: { value: bien.bien }
                       }),
-                      _vm._v("Gimnasio\n            ")
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _vm._m(4),
-                    _vm._v(" "),
-                    _vm._m(5)
-                  ])
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.inmueble.tipo_inmueble == "Bodega"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Area Frente")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { type: "text", disabled: _vm.editar },
+                        domProps: { value: bien.valor }
+                      })
+                    ])
+                  }),
                   _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.capacidad_luz,
-                        expression: "form.capacidad_luz"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.capacidad_luz },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Altura Frente")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.capacidad_luz,
-                        expression: "form.capacidad_luz"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.capacidad_luz },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Capacidad Luz")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.capacidad_luz,
-                        expression: "form.capacidad_luz"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.capacidad_luz },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.inmueble.tipo_inmueble == "Bodega"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Area Fondo")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.capacidad_luz,
-                        expression: "form.capacidad_luz"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.capacidad_luz },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Altura Fondo")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.capacidad_luz,
-                        expression: "form.capacidad_luz"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.capacidad_luz },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Capacidad Carga (PSI)")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.carga_psi,
-                        expression: "form.carga_psi"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.carga_psi },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "carga_psi", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Parque Industrial")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "my-radio" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.parque_industrial,
-                          expression: "form.parque_industrial"
-                        }
-                      ],
-                      attrs: {
-                        type: "radio",
-                        value: "1",
-                        id: "parque_industrial_1"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.form.parque_industrial, "1")
-                      },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "parque_industrial", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "parque_industrial_1" } }, [
-                      _vm._v("Si")
-                    ]),
+                  _c("div", { staticClass: "group" }, [
+                    _c("span", [_vm._v("Efectivo")]),
                     _vm._v(" "),
                     _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.parque_industrial,
-                          expression: "form.parque_industrial"
-                        }
-                      ],
-                      attrs: {
-                        type: "radio",
-                        value: "0",
-                        id: "parque_industrial_0"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.form.parque_industrial, "0")
-                      },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "parque_industrial", "0")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "no",
-                        attrs: { for: "parque_industrial_0" }
-                      },
-                      [_vm._v("No")]
-                    )
-                  ])
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.inmueble.tipo_inmueble == "Lote"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Area mts2")]),
+                      attrs: { type: "text", disabled: _vm.editar },
+                      domProps: { value: _vm.inmueble.recibo_efectivo }
+                    })
+                  ]),
                   _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.area,
-                        expression: "form.area"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.area },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "area", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Vías")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.vias,
-                        expression: "form.vias"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.vias },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "vias", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.inmueble.tipo_inmueble == "Lote"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Topografía")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.topografia,
-                        expression: "form.topografia"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.topografia },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "topografia", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.inmueble.tipo_inmueble == "Oficina"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Area mts2")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.area,
-                        expression: "form.area"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.area },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "area", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Espacio")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.espacio,
-                        expression: "form.espacio"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.espacio },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "espacio", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.inmueble.tipo_inmueble == "Oficina"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Portería")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "my-radio" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.porteria,
-                          expression: "form.porteria"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "12h", id: "porteria_12" },
-                      domProps: { checked: _vm._q(_vm.form.porteria, "12h") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "porteria", "12h")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "porteria_12" } }, [
-                      _vm._v("12H")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.porteria,
-                          expression: "form.porteria"
-                        }
-                      ],
-                      attrs: {
-                        type: "radio",
-                        value: "24h",
-                        id: "porteria_24",
-                        checked: ""
-                      },
-                      domProps: { checked: _vm._q(_vm.form.porteria, "24h") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "porteria", "24h")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "porteria_24" } }, [
-                      _vm._v("24H")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.porteria,
-                          expression: "form.porteria"
-                        }
-                      ],
-                      attrs: {
-                        type: "radio",
-                        value: "no",
-                        id: "porteria_0",
-                        checked: ""
-                      },
-                      domProps: { checked: _vm._q(_vm.form.porteria, "no") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "porteria", "no")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      { staticClass: "no", attrs: { for: "porteria_0" } },
-                      [_vm._v("No")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Parqueadero")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "my-radio" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.parqueadero,
-                          expression: "form.parqueadero"
-                        }
-                      ],
-                      attrs: {
-                        type: "radio",
-                        value: "1",
-                        id: "parque_industrial_1"
-                      },
-                      domProps: { checked: _vm._q(_vm.form.parqueadero, "1") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "parqueadero", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "parque_industrial_1" } }, [
-                      _vm._v("Si")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.parqueadero,
-                          expression: "form.parqueadero"
-                        }
-                      ],
-                      attrs: {
-                        type: "radio",
-                        value: "0",
-                        id: "parque_industrial_0"
-                      },
-                      domProps: { checked: _vm._q(_vm.form.parqueadero, "0") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "parqueadero", "0")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "no",
-                        attrs: { for: "parque_industrial_0" }
-                      },
-                      [_vm._v("No")]
-                    )
-                  ])
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.inmueble.tipo_inmueble == "Edificio"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Area Lote")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.area_lote,
-                        expression: "form.area_lote"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.area_lote },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "area_lote", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Area Contruida")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.area_construida,
-                        expression: "form.area_construida"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.area_construida },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.form,
-                          "area_construida",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Numero de Pisos")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.pisos,
-                        expression: "form.pisos"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.pisos },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "pisos", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.inmueble.tipo_inmueble == "Edificio"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Parqueadero")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "my-radio" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.parqueadero,
-                          expression: "form.parqueadero"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "1", id: "parqueadero_1" },
-                      domProps: { checked: _vm._q(_vm.form.parqueadero, "1") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "parqueadero", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "parqueadero_1" } }, [
-                      _vm._v("Si")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.parqueadero,
-                          expression: "form.parqueadero"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "0", id: "parqueadero_0" },
-                      domProps: { checked: _vm._q(_vm.form.parqueadero, "0") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "parqueadero", "0")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      { staticClass: "no", attrs: { for: "parqueadero_0" } },
-                      [_vm._v("No")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Ascensor")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "my-radio" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.ascensor,
-                          expression: "form.ascensor"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "1", id: "ascensor_1" },
-                      domProps: { checked: _vm._q(_vm.form.ascensor, "1") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "ascensor", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "ascensor_1" } }, [
-                      _vm._v("Si")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.ascensor,
-                          expression: "form.ascensor"
-                        }
-                      ],
-                      attrs: { type: "radio", value: "0", id: "ascensor_0" },
-                      domProps: { checked: _vm._q(_vm.form.ascensor, "0") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "ascensor", "0")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      { staticClass: "no", attrs: { for: "ascensor_0" } },
-                      [_vm._v("No")]
-                    )
-                  ])
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.inmueble.tipo_inmueble == "Casa Lote" ||
-          _vm.inmueble.tipo_inmueble == "Quinta"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Area Lote")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.area_lote,
-                        expression: "form.area_lote"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.area_lote },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "area_lote", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.inmueble.tipo_inmueble == "Casa Lote" ||
-          _vm.inmueble.tipo_inmueble == "Quinta"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Area Contruida")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.area_construida,
-                        expression: "form.area_construida"
-                      }
-                    ],
-                    attrs: { type: "text", disabled: _vm.editar },
-                    domProps: { value: _vm.form.area_construida },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.form,
-                          "area_construida",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-            _c("div", { staticClass: "group" }, [
-              _c("span", { staticClass: "mb-3" }, [_vm._v("Características")]),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.caracteristicas,
-                    expression: "form.caracteristicas"
-                  }
+                  _vm._m(1)
                 ],
-                attrs: { rows: "6", disabled: _vm.editar },
-                domProps: { value: _vm.form.caracteristicas },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "caracteristicas", $event.target.value)
-                  }
+                2
+              )
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+          _c("div", { staticClass: "group" }, [
+            _c("span", [_vm._v("Valor")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.valor,
+                  expression: "form.valor"
                 }
-              })
-            ])
+              ],
+              attrs: { type: "text", disabled: _vm.editar },
+              domProps: { value: _vm.form.valor },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "valor", $event.target.value)
+                }
+              }
+            })
           ]),
           _vm._v(" "),
-          _vm.form.tipo_inmueble == "Casa Lote" ||
-          _vm.form.tipo_inmueble == "Quinta"
-            ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-                _c("div", { staticClass: "group" }, [
-                  _c("span", [_vm._v("Tipo de Construccion")]),
+          _c("div", { staticClass: "group" }, [
+            _c("span", [_vm._v("Dirección")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.direccion,
+                  expression: "form.direccion"
+                }
+              ],
+              attrs: { type: "text", disabled: _vm.editar },
+              domProps: { value: _vm.form.direccion },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "direccion", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+          _c("div", { staticClass: "group" }, [
+            _c("span", [_vm._v("Ciudad/Municipio")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.ciudad,
+                  expression: "form.ciudad"
+                }
+              ],
+              attrs: { type: "text", disabled: _vm.editar },
+              domProps: { value: _vm.form.ciudad },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "ciudad", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "group" }, [
+            _c("span", [_vm._v("Barrio")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.barrio,
+                  expression: "form.barrio"
+                }
+              ],
+              attrs: { type: "text", disabled: _vm.editar },
+              domProps: { value: _vm.form.barrio },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "barrio", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _vm.form.tipo_inmueble == "Casa" ||
+        _vm.form.tipo_inmueble == "Apartamento"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Area m2")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.area,
+                      expression: "form.area"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.area },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "area", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Baños")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.banos,
+                      expression: "form.banos"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.banos },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "banos", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Habitaciones")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.habitaciones,
+                      expression: "form.habitaciones"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.habitaciones },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "habitaciones", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Estrato")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.estrato,
+                      expression: "form.estrato"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.estrato },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "estrato", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.form.tipo_inmueble == "Casa" ||
+        _vm.form.tipo_inmueble == "Apartamento"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Balcon")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.balcon,
+                        expression: "form.balcon"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "1", id: "balcon_1" },
+                    domProps: { checked: _vm._q(_vm.form.balcon, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "balcon", "1")
+                      }
+                    }
+                  }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "checks" }, [
-                    _vm._m(6),
-                    _vm._v(" "),
-                    _vm._m(7),
-                    _vm._v(" "),
-                    _vm._m(8),
-                    _vm._v(" "),
-                    _vm._m(9),
-                    _vm._v(" "),
-                    _vm._m(10),
-                    _vm._v(" "),
-                    _c("label", [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.inmueble.zonas,
-                            expression: "inmueble.zonas"
-                          }
-                        ],
-                        attrs: { type: "checkbox" },
-                        domProps: {
-                          checked: Array.isArray(_vm.inmueble.zonas)
-                            ? _vm._i(_vm.inmueble.zonas, null) > -1
-                            : _vm.inmueble.zonas
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.inmueble.zonas,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = null,
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.inmueble,
-                                    "zonas",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.inmueble,
-                                    "zonas",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
-                              }
-                            } else {
-                              _vm.$set(_vm.inmueble, "zonas", $$c)
-                            }
-                          }
-                        }
-                      }),
-                      _vm._v("Casa\n            ")
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(11),
-                    _vm._v(" "),
-                    _vm._m(12),
-                    _vm._v(" "),
-                    _vm._m(13)
-                  ])
+                  _c("label", { attrs: { for: "balcon_1" } }, [_vm._v("Si")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.balcon,
+                        expression: "form.balcon"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "0", id: "balcon_0" },
+                    domProps: { checked: _vm._q(_vm.form.balcon, "0") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "balcon", "0")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "no", attrs: { for: "balcon_0" } },
+                    [_vm._v("No")]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Patio")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.patio,
+                        expression: "form.patio"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "1", id: "patio_1" },
+                    domProps: { checked: _vm._q(_vm.form.patio, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "patio", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "patio_1" } }, [_vm._v("Si")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.patio,
+                        expression: "form.patio"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "0", id: "patio_0" },
+                    domProps: { checked: _vm._q(_vm.form.patio, "0") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "patio", "0")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "no", attrs: { for: "patio_0" } },
+                    [_vm._v("No")]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Terraza")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.terraza,
+                        expression: "form.terraza"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "1", id: "terraza_1" },
+                    domProps: { checked: _vm._q(_vm.form.terraza, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "terraza", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "terraza_1" } }, [_vm._v("Si")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.terraza,
+                        expression: "form.terraza"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "0", id: "terraza_0" },
+                    domProps: { checked: _vm._q(_vm.form.terraza, "0") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "terraza", "0")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "no", attrs: { for: "terraza_0" } },
+                    [_vm._v("No")]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Parqueadero")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.parqueadero,
+                        expression: "form.parqueadero"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "1", id: "parqueadero_1" },
+                    domProps: { checked: _vm._q(_vm.form.parqueadero, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "parqueadero", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "parqueadero_1" } }, [
+                    _vm._v("Si")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.parqueadero,
+                        expression: "form.parqueadero"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "0", id: "parqueadero_0" },
+                    domProps: { checked: _vm._q(_vm.form.parqueadero, "0") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "parqueadero", "0")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "no", attrs: { for: "parqueadero_0" } },
+                    [_vm._v("No")]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Portería")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.porteria,
+                        expression: "form.porteria"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "12h", id: "porteria_12" },
+                    domProps: { checked: _vm._q(_vm.form.porteria, "12h") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "porteria", "12h")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "porteria_12" } }, [
+                    _vm._v("12H")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.porteria,
+                        expression: "form.porteria"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      value: "24h",
+                      id: "porteria_24",
+                      checked: ""
+                    },
+                    domProps: { checked: _vm._q(_vm.form.porteria, "24h") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "porteria", "24h")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "porteria_24" } }, [
+                    _vm._v("24H")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.porteria,
+                        expression: "form.porteria"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      value: "no",
+                      id: "porteria_0",
+                      checked: ""
+                    },
+                    domProps: { checked: _vm._q(_vm.form.porteria, "no") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "porteria", "no")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "no", attrs: { for: "porteria_0" } },
+                    [_vm._v("No")]
+                  )
                 ])
               ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 col-xl-5 p-4" })
-        ]
-      )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.form.tipo_inmueble == "Casa" ||
+        _vm.form.tipo_inmueble == "Apartamento"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Zonas comunes")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "checks" }, [
+                  _c("label", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.inmueble.zonas,
+                          expression: "inmueble.zonas"
+                        }
+                      ],
+                      attrs: { type: "checkbox" },
+                      domProps: {
+                        checked: Array.isArray(_vm.inmueble.zonas)
+                          ? _vm._i(_vm.inmueble.zonas, null) > -1
+                          : _vm.inmueble.zonas
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.inmueble.zonas,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.inmueble,
+                                  "zonas",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.inmueble,
+                                  "zonas",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.inmueble, "zonas", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v("Gimnasio\n            ")
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _vm._m(5)
+                ])
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.inmueble.tipo_inmueble == "Bodega"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Area Frente")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.capacidad_luz,
+                      expression: "form.capacidad_luz"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.capacidad_luz },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Altura Frente")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.capacidad_luz,
+                      expression: "form.capacidad_luz"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.capacidad_luz },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Capacidad Luz")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.capacidad_luz,
+                      expression: "form.capacidad_luz"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.capacidad_luz },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.inmueble.tipo_inmueble == "Bodega"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Area Fondo")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.capacidad_luz,
+                      expression: "form.capacidad_luz"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.capacidad_luz },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Altura Fondo")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.capacidad_luz,
+                      expression: "form.capacidad_luz"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.capacidad_luz },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Capacidad Carga (PSI)")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.carga_psi,
+                      expression: "form.carga_psi"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.carga_psi },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "carga_psi", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Parque Industrial")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.parque_industrial,
+                        expression: "form.parque_industrial"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      value: "1",
+                      id: "parque_industrial_1"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.form.parque_industrial, "1")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "parque_industrial", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "parque_industrial_1" } }, [
+                    _vm._v("Si")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.parque_industrial,
+                        expression: "form.parque_industrial"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      value: "0",
+                      id: "parque_industrial_0"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.form.parque_industrial, "0")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "parque_industrial", "0")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "no",
+                      attrs: { for: "parque_industrial_0" }
+                    },
+                    [_vm._v("No")]
+                  )
+                ])
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.inmueble.tipo_inmueble == "Lote"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Area mts2")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.area,
+                      expression: "form.area"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.area },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "area", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Vías")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.vias,
+                      expression: "form.vias"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.vias },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "vias", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.inmueble.tipo_inmueble == "Lote"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Topografía")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.topografia,
+                      expression: "form.topografia"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.topografia },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "topografia", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.inmueble.tipo_inmueble == "Oficina"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Area mts2")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.area,
+                      expression: "form.area"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.area },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "area", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Espacio")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.espacio,
+                      expression: "form.espacio"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.espacio },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "espacio", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.inmueble.tipo_inmueble == "Oficina"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Portería")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.porteria,
+                        expression: "form.porteria"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "12h", id: "porteria_12" },
+                    domProps: { checked: _vm._q(_vm.form.porteria, "12h") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "porteria", "12h")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "porteria_12" } }, [
+                    _vm._v("12H")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.porteria,
+                        expression: "form.porteria"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      value: "24h",
+                      id: "porteria_24",
+                      checked: ""
+                    },
+                    domProps: { checked: _vm._q(_vm.form.porteria, "24h") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "porteria", "24h")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "porteria_24" } }, [
+                    _vm._v("24H")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.porteria,
+                        expression: "form.porteria"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      value: "no",
+                      id: "porteria_0",
+                      checked: ""
+                    },
+                    domProps: { checked: _vm._q(_vm.form.porteria, "no") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "porteria", "no")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "no", attrs: { for: "porteria_0" } },
+                    [_vm._v("No")]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Parqueadero")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.parqueadero,
+                        expression: "form.parqueadero"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      value: "1",
+                      id: "parque_industrial_1"
+                    },
+                    domProps: { checked: _vm._q(_vm.form.parqueadero, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "parqueadero", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "parque_industrial_1" } }, [
+                    _vm._v("Si")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.parqueadero,
+                        expression: "form.parqueadero"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      value: "0",
+                      id: "parque_industrial_0"
+                    },
+                    domProps: { checked: _vm._q(_vm.form.parqueadero, "0") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "parqueadero", "0")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "no",
+                      attrs: { for: "parque_industrial_0" }
+                    },
+                    [_vm._v("No")]
+                  )
+                ])
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.inmueble.tipo_inmueble == "Edificio"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Area Lote")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.area_lote,
+                      expression: "form.area_lote"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.area_lote },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "area_lote", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Area Contruida")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.area_construida,
+                      expression: "form.area_construida"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.area_construida },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "area_construida", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Numero de Pisos")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.pisos,
+                      expression: "form.pisos"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.pisos },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "pisos", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.inmueble.tipo_inmueble == "Edificio"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Parqueadero")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.parqueadero,
+                        expression: "form.parqueadero"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "1", id: "parqueadero_1" },
+                    domProps: { checked: _vm._q(_vm.form.parqueadero, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "parqueadero", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "parqueadero_1" } }, [
+                    _vm._v("Si")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.parqueadero,
+                        expression: "form.parqueadero"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "0", id: "parqueadero_0" },
+                    domProps: { checked: _vm._q(_vm.form.parqueadero, "0") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "parqueadero", "0")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "no", attrs: { for: "parqueadero_0" } },
+                    [_vm._v("No")]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Ascensor")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "my-radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.ascensor,
+                        expression: "form.ascensor"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "1", id: "ascensor_1" },
+                    domProps: { checked: _vm._q(_vm.form.ascensor, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "ascensor", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "ascensor_1" } }, [_vm._v("Si")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.ascensor,
+                        expression: "form.ascensor"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "0", id: "ascensor_0" },
+                    domProps: { checked: _vm._q(_vm.form.ascensor, "0") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.form, "ascensor", "0")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "no", attrs: { for: "ascensor_0" } },
+                    [_vm._v("No")]
+                  )
+                ])
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.inmueble.tipo_inmueble == "Casa Lote" ||
+        _vm.inmueble.tipo_inmueble == "Quinta"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Area Lote")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.area_lote,
+                      expression: "form.area_lote"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.area_lote },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "area_lote", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.inmueble.tipo_inmueble == "Casa Lote" ||
+        _vm.inmueble.tipo_inmueble == "Quinta"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Area Contruida")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.area_construida,
+                      expression: "form.area_construida"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.area_construida },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "area_construida", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+          _c("div", { staticClass: "group" }, [
+            _c("span", { staticClass: "mb-3" }, [_vm._v("Características")]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.caracteristicas,
+                  expression: "form.caracteristicas"
+                }
+              ],
+              attrs: { rows: "6", disabled: _vm.editar },
+              domProps: { value: _vm.form.caracteristicas },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "caracteristicas", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _vm.form.tipo_inmueble == "Casa Lote" ||
+        _vm.form.tipo_inmueble == "Quinta"
+          ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Tipo de Construccion")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "checks" }, [
+                  _vm._m(6),
+                  _vm._v(" "),
+                  _vm._m(7),
+                  _vm._v(" "),
+                  _vm._m(8),
+                  _vm._v(" "),
+                  _vm._m(9),
+                  _vm._v(" "),
+                  _vm._m(10),
+                  _vm._v(" "),
+                  _c("label", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.inmueble.zonas,
+                          expression: "inmueble.zonas"
+                        }
+                      ],
+                      attrs: { type: "checkbox" },
+                      domProps: {
+                        checked: Array.isArray(_vm.inmueble.zonas)
+                          ? _vm._i(_vm.inmueble.zonas, null) > -1
+                          : _vm.inmueble.zonas
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.inmueble.zonas,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.inmueble,
+                                  "zonas",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.inmueble,
+                                  "zonas",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.inmueble, "zonas", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v("Casa\n            ")
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(11),
+                  _vm._v(" "),
+                  _vm._m(12),
+                  _vm._v(" "),
+                  _vm._m(13)
+                ])
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-xl-5 p-4" })
+      ])
     ]),
     _vm._v(" "),
     _c(
@@ -72134,7 +72119,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("img", { attrs: { src: "/img/img-demo.jpg" } })])
+    return _c(
+      "div",
+      { staticClass: "gallery mb-3", attrs: { id: "carousel" } },
+      [
+        _c("div", [
+          _c("a", {
+            staticClass: "image-link",
+            staticStyle: { "background-image": "url(/img/img-demo.jpg)" },
+            attrs: { href: "/img/img-demo.jpg" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("a", {
+            staticClass: "image-link",
+            staticStyle: { "background-image": "url(/img/img-demo.jpg)" },
+            attrs: { href: "/img/img-demo.jpg" }
+          })
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -72425,7 +72430,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.content .box {\n  background: #fff;\n  max-width: 900px;\n  -webkit-box-shadow: 3px 3px 3px #cccccc;\n          box-shadow: 3px 3px 3px #cccccc;\n  border-radius: 20px;\n  padding: 20px;\n  padding: 20px;\n  margin: 50px auto;\n}\n", ""]);
+exports.push([module.i, "\n.content .box {\n  background: #fff;\n  max-width: 900px;\n  -webkit-box-shadow: 3px 3px 3px #cccccc;\n          box-shadow: 3px 3px 3px #cccccc;\n  border-radius: 20px;\n  padding: 20px;\n  padding: 20px;\n  margin: 50px auto;\n}\n.mini small {\n        -webkit-box-flex: 0;\n            -ms-flex: 0 0 auto;\n                flex: 0 0 auto;\n        margin: 0 5px;\n}\n.form-group .my-text.mini input[type=\"text\"] {\n        max-width: 90px;\n        text-align: center;\n}\n    \n", ""]);
 
 // exports
 
@@ -72978,6 +72983,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -73092,11 +73109,32 @@ if (document.getElementById("userId")) {
     },
     img: function img(event) {
       console.log(event);
+      $(".image #file").each(function () {
+        var label = $(this).next("label");
+        var fileName = "";
+        if (event.target.value) {
+          fileName = event.target.value.split("\\").pop();
+          label.html(fileName);
+        }
+      });
 
       this.form.imagePrincipal = this.$refs.file.files[0];
     },
     filesChange: function filesChange(e) {
       this.form.imagenes = e.target.files;
+      console.log(e);
+      $(".image #file2").each(function () {
+        var label = $(this).next("label");
+        var fileName = "";
+        if (e.target.value) {
+          var num = e.srcElement.files.length;
+          if (num > 1) {
+            label.html(num + ' adjuntos');
+          } else {
+            label.html(num + ' adjunto');
+          }
+        }
+      });
     },
     storeInmueble: function storeInmueble() {
       var _this = this;
@@ -74310,6 +74348,14 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.form.tipoInmueble == "Bodega"
+                  ? _c("div", { staticClass: "form-field w50" }, [_vm._m(3)])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.form.tipoInmueble == "Bodega"
+                  ? _c("div", { staticClass: "form-field w50" }, [_vm._m(4)])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.form.tipoInmueble == "Bodega"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-text" }, [
                         _c("span", [_vm._v("Capacidad carga (PSI)")]),
@@ -74376,7 +74422,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.form.tipoInmueble == "Bodega"
-                  ? _c("div", { staticClass: "form-field" }, [
+                  ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-radio" }, [
                         _c("span", [_vm._v("Parque Industrial")]),
                         _vm._v(" "),
@@ -75498,7 +75544,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(3)
+              _vm._m(5)
             ]),
             _vm._v(" "),
             _c("fieldset", [
@@ -75528,17 +75574,18 @@ var render = function() {
                   _c("div", { staticClass: "image" }, [
                     _c("input", {
                       ref: "file2",
-                      attrs: { type: "file", multiple: "" },
+                      staticClass: "inputfile",
+                      attrs: { type: "file", id: "file2", multiple: "" },
                       on: { change: _vm.filesChange }
                     }),
                     _vm._v(" "),
-                    _c("label", { attrs: { for: "file" } }, [
+                    _c("label", { attrs: { for: "file2" } }, [
                       _vm._v("Subir imagen")
                     ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-field w50" }, [
+                _c("div", { staticClass: "form-field w100" }, [
                   _c("div", { staticClass: "my-text" }, [
                     _c("span", [_vm._v("Url Video")]),
                     _vm._v(" "),
@@ -75566,7 +75613,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(4)
+              _vm._m(6)
             ]),
             _vm._v(" "),
             _c("fieldset", [
@@ -75607,7 +75654,7 @@ var render = function() {
                 ? _c("div", { staticClass: "form-group generator" }, [
                     _c("h5", [_vm._v("¿Por qué bienes lo permutarías?")]),
                     _vm._v(" "),
-                    _vm._m(5),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-field w50" }, [
                       _c(
@@ -75649,7 +75696,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "group-efectivo" }, [
-                      _vm._m(6),
+                      _vm._m(8),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-field w50" }, [
                         _vm.active
@@ -75763,6 +75810,30 @@ var staticRenderFns = [
     return _c("span", [
       _vm._v("\n                Area mts\n                "),
       _c("sup", [_vm._v("2")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "my-text mini" }, [
+      _c("span", [_vm._v("Área")]),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "text", placeholder: "Ancho" } }),
+      _c("small", [_vm._v("x")]),
+      _c("input", { attrs: { type: "text", placeholder: "Fondo" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "my-text mini" }, [
+      _c("span", [_vm._v("Altura")]),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "text", placeholder: "" } }),
+      _c("small", [_vm._v("x")]),
+      _c("input", { attrs: { type: "text", placeholder: "" } })
     ])
   },
   function() {
@@ -76024,7 +76095,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.map {\n  display: none;\n}\nhtml,\nbody,\n#app,\n.container-fluid,\n.container-fluid > div {\n  height: 100%;\n}\n.msg {\n  height: calc(100vh - 6rem);\n}\n.msg .list {\n  background: #edeeed;\n  overflow-y: auto;\n  height: 100%;\n  padding: 0;\n  -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n          box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n  z-index: 1;\n}\n.msg .list .user {\n  display: block;\n  padding: 15px 10%;\n  cursor: pointer;\n}\n.msg .list .user.active,\n.msg .list .user:hover {\n  background: #dae2e7;\n}\n.msg .user .img {\n  display: inline-block;\n  vertical-align: middle;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background: #005c96;\n}\n.msg .user .info {\n  display: inline-block;\n  vertical-align: middle;\n  width: calc(100% - 50px);\n  padding-left: 20px;\n}\n.msg .info span {\n  display: block;\n  color: #005c96;\n  letter-spacing: 1px;\n}\n.msg .info span.type {\n  font-weight: 700;\n  font-size: 0.8rem;\n}\n.msg .chat {\n  background: #fff;\n  overflow-y: auto;\n  height: 100%;\n  position: relative;\n}\n.msg .chat .from,\n.msg .chat .to {\n  display: block;\n  position: relative;\n  margin: 30px;\n  padding: 30px;\n  border-radius: 10px;\n}\n.msg .chat .from span,\n.msg .chat .to span {\n  position: absolute;\n  width: 48px;\n  line-height: 40px;\n  background: #e67319;\n  color: #fff;\n  text-align: center;\n  top: -20px;\n  left: -20px;\n  border-radius: 50%;\n  border: 4px solid #fff;\n  font-weight: 700;\n}\n.msg .chat .from span {\n  background: #005c96;\n}\n.msg .chat .from {\n  background: #b0cbe1;\n  color: #386386;\n}\n.msg .chat .to {\n  background: #fbd8af;\n  color: #8e663a;\n}\n.msg .chat .send {\n  margin: 30px 30px 60px 30px;\n}\n.msg .send input {\n  display: inline-block;\n  vertical-align: middle;\n  border-color: #e67319;\n  border-radius: 5px 0 0 5px;\n  width: calc(100% - 100px);\n}\n.msg .send input:focus {\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n.msg .send .btn {\n  display: inline-block;\n  vertical-align: middle;\n  width: 100px;\n  background: #e67319;\n  color: #fff;\n  border-radius: 0 5px 5px 0;\n}\n.msg .send .btn:hover {\n  color: rgba(255, 255, 255, 0.6);\n}\n", ""]);
+exports.push([module.i, "\n.map {\n  display: none;\n}\nhtml,\nbody,\n#app,\n.container-fluid,\n.container-fluid > div {\n  height: 100%;\n}\n.msg {\n  height: calc(100vh - 3rem);\n}\n.msg .list {\n  background: #edeeed;\n  overflow-y: auto;\n  height: 100%;\n  padding: 0;\n  -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n          box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n  z-index: 1;\n}\n.msg .list .user {\n  display: block;\n  padding: 15px 10%;\n  cursor: pointer;\n}\n.msg .list .user.active,\n.msg .list .user:hover {\n  background: #dae2e7;\n}\n.msg .user .img {\n  display: inline-block;\n  vertical-align: middle;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background: #005c96;\n}\n.msg .user .info {\n  display: inline-block;\n  vertical-align: middle;\n  width: calc(100% - 50px);\n  padding-left: 20px;\n}\n.msg .info span {\n  display: block;\n  color: #005c96;\n  letter-spacing: 1px;\n}\n.msg .info span.type {\n  font-weight: 700;\n  font-size: 0.8rem;\n}\n.msg .chat {\n  background: #fff;\n  overflow-y: auto;\n  height: 100%;\n  position: relative;\n}\n.msg .chat .from,\n.msg .chat .to {\n  display: block;\n  position: relative;\n  margin: 30px;\n  padding: 30px;\n  border-radius: 10px;\n}\n.msg .chat .from span,\n.msg .chat .to span {\n  position: absolute;\n  width: 48px;\n  line-height: 40px;\n  background: #e67319;\n  color: #fff;\n  text-align: center;\n  top: -20px;\n  left: -20px;\n  border-radius: 50%;\n  border: 4px solid #fff;\n  font-weight: 700;\n}\n.msg .chat .from span {\n  background: #005c96;\n}\n.msg .chat .from {\n  background: #b0cbe1;\n  color: #386386;\n}\n.msg .chat .to {\n  background: #fbd8af;\n  color: #8e663a;\n}\n.msg .chat .send {\n  margin: 30px 30px 60px 30px;\n}\n.msg .send input {\n  display: inline-block;\n  vertical-align: middle;\n  border-color: #e67319;\n  border-radius: 5px 0 0 5px;\n  width: calc(100% - 100px);\n}\n.msg .send input:focus {\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n.msg .send .btn {\n  display: inline-block;\n  vertical-align: middle;\n  width: 100px;\n  background: #e67319;\n  color: #fff;\n  border-radius: 0 5px 5px 0;\n}\n.msg .send .btn:hover {\n  color: rgba(255, 255, 255, 0.6);\n}\n", ""]);
 
 // exports
 

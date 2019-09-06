@@ -70240,10 +70240,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["inmueble", "user"],
@@ -70435,7 +70431,7 @@ var render = function() {
             _vm._v(" "),
             _vm.editar
               ? _c("div", [
-                  _vm.inmueble.user_id === _vm.user
+                  _vm.inmueble.user_id == _vm.user
                     ? _c(
                         "button",
                         {
@@ -70450,7 +70446,7 @@ var render = function() {
             _vm._v(" "),
             _vm.editar
               ? _c("div", [
-                  _vm.inmueble.user_id === _vm.user
+                  _vm.inmueble.user_id == _vm.user
                     ? _c(
                         "button",
                         {

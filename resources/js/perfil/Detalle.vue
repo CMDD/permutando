@@ -37,16 +37,12 @@
             </button>
 
             <div v-if="editar">
-              <button
-                class="btn inv"
-                v-if="inmueble.user_id === user"
-                @click="activarEdicion"
-              >Editar</button>
+              <button class="btn inv" v-if="inmueble.user_id == user" @click="activarEdicion">Editar</button>
             </div>
             <div v-if="editar">
               <button
                 class="btn inv btn-eliminar"
-                v-if="inmueble.user_id === user"
+                v-if="inmueble.user_id == user"
                 @click="activarEdicion"
               >Eliminar</button>
             </div>

@@ -69741,7 +69741,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.form input {\n  margin-top: 3%;\n}\n.form textarea {\n  margin-top: 3%;\n}\n.btn-enviar {\n  margin-top: 2%;\n  width: 100%;\n}\n.btn-eliminar {\n  background-color: #a71e1e !important;\n}\n", ""]);
+exports.push([module.i, "\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.form input {\n  margin-top: 3%;\n}\n.form textarea {\n  margin-top: 3%;\n}\n.btn-enviar {\n  margin-top: 2%;\n  width: 100%;\n}\n.btn-eliminar {\n  background-color: #a71e1e !important;\n}\n.box-contact {\n  margin: auto;\n}\n.text-contac {\n  font-size: 27px;\n  color: #7db227;\n}\n", ""]);
 
 // exports
 
@@ -70208,12 +70208,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["inmueble", "user"],
   data: function data() {
     return {
       actualizando: false,
+      enviando: false,
+      contact: false,
       editar: true,
       bienes: [],
       imagenes: [],
@@ -70231,9 +70270,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     contactar: function contactar() {
+      var _this = this;
+
+      this.enviando = true;
       axios.post("/contacto", this.contacto).then(function (res) {
         console.log(res.data);
+        _this.enviando = false;
+        _this.contacto.nombre = "";
+        _this.contacto.email = "";
+        _this.contacto.tel = "";
+        _this.contacto.mensaje = "";
+        _this.contact = true;
       });
+
       console.log(this.contacto);
     },
     actualizar: function actualizar() {
@@ -70243,17 +70292,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.editar = false;
     },
     getBienes: function getBienes() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("/api/bienes/" + this.inmueble.id).then(function (res) {
-        _this.bienes = res.data;
+        _this2.bienes = res.data;
       });
     },
     getImagenes: function getImagenes() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/imagenes/" + 2).then(function (res) {
-        _this2.imagenes = res.data;
+        _this3.imagenes = res.data;
         setTimeout(function () {
           $(".row").find(".gallery").slick({
             infinite: true,
@@ -70309,9 +70358,18 @@ var render = function() {
               ]),
               _vm._v(" "),
               _vm.form.video
-                ? _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
-                    _vm._v("Ver video")
-                  ])
+                ? _c(
+                    "a",
+                    {
+                      staticClass: "btn",
+                      attrs: {
+                        href: "#",
+                        "data-toggle": "modal",
+                        "data-target": "#videoModal"
+                      }
+                    },
+                    [_vm._v("Ver video")]
+                  )
                 : _vm._e()
             ])
           ]),
@@ -71889,7 +71947,11 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", placeholder: "Nombre" },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Nombre",
+                        required: ""
+                      },
                       domProps: { value: _vm.contacto.nombre },
                       on: {
                         input: function($event) {
@@ -71911,7 +71973,11 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", placeholder: "Teléfono/Celular" },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Teléfono/Celular",
+                        required: ""
+                      },
                       domProps: { value: _vm.contacto.tel },
                       on: {
                         input: function($event) {
@@ -72003,7 +72069,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { placeholder: "Mensaje" },
+                      attrs: { required: "", placeholder: "Mensaje" },
                       domProps: { value: _vm.contacto.mensaje },
                       on: {
                         input: function($event) {
@@ -72021,18 +72087,32 @@ var render = function() {
                         staticClass: "btn btn-enviar",
                         attrs: { type: "submit" }
                       },
-                      [_vm._v("Enviar")]
+                      [
+                        !_vm.enviando
+                          ? _c("span", [_vm._v("Enviar")])
+                          : _c("span", [_vm._v("Enviando...")])
+                      ]
                     )
                   ]
                 )
               ]),
               _vm._v(" "),
-              _vm._m(15)
+              _c("div", { staticClass: "col-md-6 box-contact" }, [
+                !_vm.contact
+                  ? _c("img", {
+                      attrs: { src: "/img/perfil-logo.png", alt: "" }
+                    })
+                  : _c("p", { staticClass: "text-contac" }, [
+                      _vm._v('"Se ha enviado correctamente"')
+                    ])
+              ])
             ])
           ])
         ])
       ]
-    )
+    ),
+    _vm._v(" "),
+    _vm._m(15)
   ])
 }
 var staticRenderFns = [
@@ -72185,9 +72265,55 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("p", [_vm._v("Se ha enviado correctamente")])
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "videoModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c("h4", [_vm._v("Video")]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: {
+                    type: "button",
+                    "data-dismiss": "modal",
+                    "aria-label": "Close"
+                  }
+                },
+                [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _vm._v("×")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body row" }, [
+              _c("iframe", {
+                attrs: {
+                  width: "560",
+                  height: "315",
+                  src: "https://www.youtube.com/embed/85MppyLJHz0",
+                  allowfullscreen: ""
+                }
+              })
+            ])
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -75297,7 +75423,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("option", { attrs: { value: "6" } }, [
-                              _vm._v("5")
+                              _vm._v("6")
                             ]),
                             _vm._v(" "),
                             _c("option", { attrs: { value: "Campestre" } }, [
@@ -76062,7 +76188,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.modo {\n        background: #fff;\n        display: inline-block;\n        vertical-align: middle;\n        border-radius: 10px;\n        padding: 5px 10px 5px;\n        line-height: 1.5;\n}\n.modo label {\n        margin: 0 5px;\n}\n.mapa {\n  height: calc(100vh - 3rem);\n}\n.title-map {\n  color: rgb(102, 100, 100);\n  font-size: 15px;\n  font-weight: bold;\n  margin: 0% 0% 4% 0%;\n}\n.valor-map {\n  color: rgb(102, 100, 100);\n  font-size: 12px;\n}\n", ""]);
+exports.push([module.i, "\n.modo {\n  background: #fff;\n  display: inline-block;\n  vertical-align: middle;\n  border-radius: 10px;\n  padding: 5px 10px 5px;\n  line-height: 1.5;\n}\n.modo label {\n  margin: 0 5px;\n}\n.mapa {\n  height: calc(100vh - 3rem);\n}\n.title-map {\n  color: rgb(102, 100, 100);\n  font-size: 15px;\n  font-weight: bold;\n  margin: 0% 0% 4% 0%;\n}\n.valor-map {\n  color: rgb(102, 100, 100);\n  font-size: 12px;\n}\n", ""]);
 
 // exports
 
@@ -76073,6 +76199,10 @@ exports.push([module.i, "\n.modo {\n        background: #fff;\n        display: 
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -76157,26 +76287,34 @@ if (document.getElementById("userId")) {
   },
 
   methods: {
-    getDepartamentos: function getDepartamentos() {
+    getTipo: function getTipo() {
       var _this = this;
 
+      axios.get("/api/buscar-tipo/" + this.busco.tipo).then(function (res) {
+        _this.resultadoIndex = res.data;
+        _this.cargarMap(_this.resultadoIndex);
+      });
+    },
+    getDepartamentos: function getDepartamentos() {
+      var _this2 = this;
+
       axios.get("api/departamentos").then(function (res) {
-        _this.departamentos = res.data;
+        _this2.departamentos = res.data;
       });
     },
     getCiudades: function getCiudades() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("api/ciudades/" + this.busco.departamento).then(function (res) {
-        _this2.ciudades = res.data;
+        _this3.ciudades = res.data;
       });
     },
     getInmueble: function getInmueble() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.post("/api/busco-index", this.busco).then(function (res) {
-        _this3.resultadoIndex = res.data;
-        _this3.cargarMap(_this3.resultadoIndex);
+        _this4.resultadoIndex = res.data;
+        _this4.cargarMap(_this4.resultadoIndex);
       });
     },
     cargarMap: function cargarMap(direcciones) {
@@ -76191,7 +76329,7 @@ if (document.getElementById("userId")) {
 
       var _loop = function _loop(index) {
         geocoder.geocode({
-          address: direcciones[index].direccion + direcciones[index].ciudad + direcciones[index].barrio
+          address: "Colombia" + direcciones[index].ciudad + direcciones[index].barrio + direcciones[index].direccion
         }, function (results, status) {
           if (status == "OK") {
             //Orientar cerca el marcador
@@ -76202,7 +76340,9 @@ if (document.getElementById("userId")) {
               position: results[0].geometry.location
             });
             google.maps.event.addListener(marker, "click", function () {
-              var contentString = '<div id="content">' + "<p class='title-map'>" + direcciones[index].tipo_inmueble + "</p>" + "<p class='valor-map'>" + direcciones[index].direccion + "</p>" + "<p class='valor-map'>Precio $" + direcciones[index].valor + "</p>" + '<a href="/perfil-detalle/' + direcciones[index].id + '" >Detalle</a>' + "</div>";
+              var val = (direcciones[index].valor / 1).toFixed(0).replace(".", ",").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+              var contentString = '<div id="content">' + "<p class='title-map'>" + direcciones[index].tipo_inmueble + "</p>" + "<p class='valor-map'>" + direcciones[index].direccion + "</p>" + "<p class='valor-map'>Precio $" + val + "</p>" + '<a href="/perfil-detalle/' + direcciones[index].id + '" >Detalle</a>' + "</div>";
               // infowindow.setContent(direcciones[index].tipo +' $' + direcciones[index].valor   );
               infowindow.setContent(contentString);
               infowindow.open(map, this);
@@ -76220,11 +76360,11 @@ if (document.getElementById("userId")) {
 
     //Buscador
     infoInmueble: function infoInmueble(id) {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get("api/info-inmueble/" + id).then(function (res) {
-        _this4.info = res.data;
-        console.log(_this4.info);
+        _this5.info = res.data;
+        console.log(_this5.info);
       });
     }
   }
@@ -76245,8 +76385,6 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "row accion-buscar" }, [
-        _vm._m(1),
-        _vm._v(" "),
         _c("div", { staticClass: "col-10" }, [
           _c(
             "form",
@@ -76271,23 +76409,28 @@ var render = function() {
                     }
                   ],
                   on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.busco,
-                        "tipo",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.busco,
+                          "tipo",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      function($event) {
+                        return _vm.getTipo()
+                      }
+                    ]
                   }
                 },
                 [
@@ -76498,24 +76641,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row title" }, [
       _c("div", { staticClass: "col" }, [_c("span", [_vm._v("Buscar")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2" }, [
-      _c("div", { staticClass: "modo" }, [
-        _c("label", [
-          _c("input", { attrs: { type: "radio", name: "modo", checked: "" } }),
-          _vm._v(" Mapa")
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _c("input", { attrs: { type: "radio", name: "modo" } }),
-          _vm._v(" Lista")
-        ])
-      ])
     ])
   }
 ]

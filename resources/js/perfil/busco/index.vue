@@ -6,52 +6,56 @@
       </div>
     </div>
     <div class="row accion-buscar">
-        <div class="col-2">
-            <div class="modo">
-                <label><input type="radio" name="modo" checked> Mapa</label>
-                <label><input type="radio" name="modo"> Lista</label>
-            </div>
+      <!-- <div class="col-2">
+        <div class="modo">
+          <label>
+            <input type="radio" name="modo" checked /> Mapa
+          </label>
+          <label>
+            <input type="radio" name="modo" /> Lista
+          </label>
         </div>
-        <div class="col-10">
-          <form @submit.prevent="getInmueble()">
-            <select v-model="busco.tipo">
-              <option value>Que buscas?</option>
-              <option value="Apartamento">Apartamento</option>
-              <option value="Casa">Casa</option>
-              <option value="Bodega">Bodega</option>
-              <option value="Lote">Lote</option>
-              <option value="Oficina">Oficina</option>
-              <option value="Edificio">Edificio</option>
-              <option value="Casa Lote">Casa Lote</option>
-              <option value="Quinta">Quinta</option>
-              <option value="Finca">Finca</option>
-              <option value="Hacienda">Hacienda</option>
-            </select>
+      </div>-->
+      <div class="col-10">
+        <form @submit.prevent="getInmueble()">
+          <select v-model="busco.tipo" @change="getTipo()">
+            <option value>Que buscas?</option>
+            <option value="Apartamento">Apartamento</option>
+            <option value="Casa">Casa</option>
+            <option value="Bodega">Bodega</option>
+            <option value="Lote">Lote</option>
+            <option value="Oficina">Oficina</option>
+            <option value="Edificio">Edificio</option>
+            <option value="Casa Lote">Casa Lote</option>
+            <option value="Quinta">Quinta</option>
+            <option value="Finca">Finca</option>
+            <option value="Hacienda">Hacienda</option>
+          </select>
 
-            <select required v-model="busco.en">
-              <option value>En...?</option>
-              <option value="Arriendo">Arriendo</option>
-              <option value="Venta">Venta</option>
-              <option value="Permuto">Permuta</option>
-            </select>
+          <select required v-model="busco.en">
+            <option value>En...?</option>
+            <option value="Arriendo">Arriendo</option>
+            <option value="Venta">Venta</option>
+            <option value="Permuto">Permuta</option>
+          </select>
 
-            <select required v-model="busco.departamento" @change="getCiudades()">
-              <option value>Departamento</option>
-              <option v-bind:value="dep.id" v-for="dep in departamentos" :key="dep.id">{{dep.nombre}}</option>
-            </select>
-            <select required v-model="busco.ciudad">
-              <option value>Ciudad</option>
-              <option
-                v-bind:value="ciudad.id"
-                v-for="ciudad in ciudades"
-                :key="ciudad.id"
-              >{{ciudad.nombre}}</option>
-            </select>
-            <button type="submit" class="btn">Buscar</button>
-            <!-- <input type="text" placeholder="Barrio" />
-            <input type="text" placeholder="Precio" />-->
-          </form>
-        </div>
+          <select required v-model="busco.departamento" @change="getCiudades()">
+            <option value>Departamento</option>
+            <option v-bind:value="dep.id" v-for="dep in departamentos" :key="dep.id">{{dep.nombre}}</option>
+          </select>
+          <select required v-model="busco.ciudad">
+            <option value>Ciudad</option>
+            <option
+              v-bind:value="ciudad.id"
+              v-for="ciudad in ciudades"
+              :key="ciudad.id"
+            >{{ciudad.nombre}}</option>
+          </select>
+          <button type="submit" class="btn">Buscar</button>
+          <!-- <input type="text" placeholder="Barrio" />
+          <input type="text" placeholder="Precio" />-->
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -82,6 +86,12 @@ export default {
     this.getInmueble();
   },
   methods: {
+    getTipo() {
+      axios.get("/api/buscar-tipo/" + this.busco.tipo).then(res => {
+        this.resultadoIndex = res.data;
+        this.cargarMap(this.resultadoIndex);
+      });
+    },
     getDepartamentos() {
       axios.get("api/departamentos").then(res => {
         this.departamentos = res.data;
@@ -104,16 +114,17 @@ export default {
       geocoder = new google.maps.Geocoder();
       var infowindow = new google.maps.InfoWindow();
       map = new google.maps.Map(document.getElementById("mymap"), {
-        center: { lat: 4.5318681, lng: -74.297333},
+        center: { lat: 4.5318681, lng: -74.297333 },
         zoom: 7
       });
       for (let index = 0; index < direcciones.length; index++) {
         geocoder.geocode(
           {
             address:
-              direcciones[index].direccion +
+              "Colombia" +
               direcciones[index].ciudad +
-              direcciones[index].barrio
+              direcciones[index].barrio +
+              direcciones[index].direccion
           },
           function(results, status) {
             if (status == "OK") {
@@ -125,6 +136,12 @@ export default {
                 position: results[0].geometry.location
               });
               google.maps.event.addListener(marker, "click", function() {
+                let val = (direcciones[index].valor / 1)
+                  .toFixed(0)
+                  .replace(".", ",")
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
                 var contentString =
                   '<div id="content">' +
                   "<p class='title-map'>" +
@@ -134,7 +151,7 @@ export default {
                   direcciones[index].direccion +
                   "</p>" +
                   "<p class='valor-map'>Precio $" +
-                  direcciones[index].valor +
+                  val +
                   "</p>" +
                   '<a href="/perfil-detalle/' +
                   direcciones[index].id +
@@ -163,17 +180,17 @@ export default {
 </script>
 
 <style>
-    .modo {
-        background: #fff;
-        display: inline-block;
-        vertical-align: middle;
-        border-radius: 10px;
-        padding: 5px 10px 5px;
-        line-height: 1.5;
-    }
-    .modo label {
-        margin: 0 5px;
-    }
+.modo {
+  background: #fff;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 10px;
+  padding: 5px 10px 5px;
+  line-height: 1.5;
+}
+.modo label {
+  margin: 0 5px;
+}
 .mapa {
   height: calc(100vh - 3rem);
 }

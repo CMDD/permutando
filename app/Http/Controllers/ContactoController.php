@@ -7,6 +7,7 @@ use App\Mail\Contacto;
 use Mail;
 use App\Mensaje;
 use Auth;
+use App\Contactado;
 
 class ContactoController extends Controller
 {
@@ -20,10 +21,16 @@ class ContactoController extends Controller
         $mensaje->tel = $request->tel;
         $mensaje->email = $request->email;
         $mensaje->save();
-        dd($request->inmueble);
+        
+
+        // $contactado = new Contactado();
+        // $contactado->user_id = Auth::User()->id;
+        // $contactado->inmueble_id = $request->inmueble;
+        // $contactado->save();
+
 
         Mail::to('jhon54plex@hotmail.com','John Alvaro')
         ->send(new Contacto($request));
-        return back();
+        return 200;
     }
 }

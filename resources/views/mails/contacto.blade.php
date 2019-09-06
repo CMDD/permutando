@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-        <h1>Tienes una mensaje de permutando</h1>
+        <h1>Tienes una mensaje de permutado</h1>
         <p>{{$request->nombre}}</p>
 </body>
 </html>

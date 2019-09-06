@@ -14,7 +14,13 @@
           </div>
           <div class="group">
             <h4 class="mr-3">{{inmueble.tipo_inmueble}} - {{inmueble.tipo_publicacion}}</h4>
-            <a v-if="form.video" href="#" class="btn">Ver video</a>
+            <a
+              v-if="form.video"
+              href="#"
+              class="btn"
+              data-toggle="modal"
+              data-target="#videoModal"
+            >Ver video</a>
           </div>
         </div>
 
@@ -425,12 +431,14 @@
                   class="form-control"
                   v-model="contacto.nombre"
                   placeholder="Nombre"
+                  required
                 />
                 <input
                   type="text"
                   class="form-control"
                   v-model="contacto.tel"
                   placeholder="Teléfono/Celular"
+                  required
                 />
                 <input
                   type="email"
@@ -440,13 +448,42 @@
                 />
                 <input type="hidden" class="form-control" v-model="contacto.to" />
                 <input type="hidden" class="form-control" v-model="contacto.inmueble" />
-                <textarea class="form-control" v-model="contacto.mensaje" placeholder="Mensaje"></textarea>
-                <button type="submit" class="btn btn-enviar">Enviar</button>
+                <textarea
+                  required
+                  class="form-control"
+                  v-model="contacto.mensaje"
+                  placeholder="Mensaje"
+                ></textarea>
+                <button type="submit" class="btn btn-enviar">
+                  <span v-if="!enviando">Enviar</span>
+                  <span v-else>Enviando...</span>
+                </button>
               </form>
             </div>
-            <div class="col-md-6">
-              <p>Se ha enviado correctamente</p>
+            <div class="col-md-6 box-contact">
+              <img v-if="!contact" src="/img/perfil-logo.png" alt />
+              <p v-else class="text-contac">"Se ha enviado correctamente"</p>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="videoModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Video</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body row">
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/85MppyLJHz0"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
       </div>
@@ -460,6 +497,8 @@ export default {
   data() {
     return {
       actualizando: false,
+      enviando: false,
+      contact: false,
       editar: true,
       bienes: [],
       imagenes: [],
@@ -476,9 +515,17 @@ export default {
   },
   methods: {
     contactar() {
+      this.enviando = true;
       axios.post("/contacto", this.contacto).then(res => {
         console.log(res.data);
+        this.enviando = false;
+        this.contacto.nombre = "";
+        this.contacto.email = "";
+        this.contacto.tel = "";
+        this.contacto.mensaje = "";
+        this.contact = true;
       });
+
       console.log(this.contacto);
     },
     actualizar() {
@@ -553,5 +600,12 @@ export default {
 }
 .btn-eliminar {
   background-color: #a71e1e !important;
+}
+.box-contact {
+  margin: auto;
+}
+.text-contac {
+  font-size: 27px;
+  color: #7db227;
 }
 </style>

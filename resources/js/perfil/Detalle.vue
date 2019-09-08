@@ -37,12 +37,16 @@
             </button>
 
             <div v-if="editar">
-              <button class="btn inv" v-if="inmueble.user_id == user" @click="activarEdicion">Editar</button>
+              <button
+                class="btn inv"
+                v-if="inmueble.user_id == user.id"
+                @click="activarEdicion"
+              >Editar</button>
             </div>
             <div v-if="editar">
               <button
                 class="btn inv btn-eliminar"
-                v-if="inmueble.user_id == user"
+                v-if="inmueble.user_id == user.id"
                 @click="activarEdicion"
               >Eliminar</button>
             </div>
@@ -59,7 +63,7 @@
               <input type="text" :disabled="editar" v-bind:value="inmueble.recibo_efectivo" />
             </div>
             <div class="group justify-content-end">
-              <a href="#" class="btn">Permutar</a>
+              <a href="#" data-toggle="modal" data-target="#permutoModal" class="btn">Permutar</a>
             </div>
           </div>
         </div>
@@ -468,17 +472,72 @@
         </div>
       </div>
     </div>
-    <div id="videoModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="permutoModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h4>Video</h4>
+            <h4>Permuto</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body row">
-            <iframe width="560" height="315" src allowfullscreen></iframe>
+
+          <div class="modal-body row box">
+            <div class="form-group col-md-12">
+              <div class="form-field w100">
+                <div class="my-text">
+                  <span>Valor del inmueble</span>$
+                  <input type="text" v-model="form.valor" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group generator">
+              <h5>¿Qué bienes ofrecerías?</h5>
+              <div class="group-generator">
+                <div class="form-field w50">
+                  <span>Bien #1</span>
+                  <div class="my-text">
+                    <input type="text" id="bien1" />
+                  </div>
+                </div>
+                <div class="form-field w65">
+                  <span>Valor del bien</span>
+                  <div class="my-text">
+                    <input type="text" id="valor_bien1" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-field w50">
+                <a href="#" @click="addBien" class="btn add">Agregar más bienes</a>
+              </div>
+              <div class="form-field w50">
+                <div class="my-text text-right">
+                  <span>Valor total</span>
+                  <input type="text" v-model="valorTotal" />
+                </div>
+              </div>
+              <div class="group-efectivo">
+                <div class="form-field w50">
+                  <a href="#" class="btn">Efectivo</a>
+                </div>
+                <div class="form-field w50">
+                  <div class="my-text text-right" v-if="active">
+                    <span>$</span>
+                    <input type="text" v-model="form.recibo_efectivo" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="f1-buttons col-md-12 text-right">
+              <button
+                type="submit"
+                v-if="!enviando"
+                @click="permutando"
+                class="btn btn-submit"
+              >Enviar</button>
+              <button type="button" v-else class="btn btn-submit">Enviado</button>
+            </div>
           </div>
         </div>
       </div>
@@ -487,10 +546,19 @@
 </template>
 
 <script>
+import toastr from "toastr";
+toastr.options = {
+  closeButton: true,
+  timeOut: "10000"
+  // "progressBar": true,
+};
 export default {
   props: ["inmueble", "user"],
   data() {
     return {
+      indicador: 1,
+      valorTotal: "",
+      active: false,
       actualizando: false,
       enviando: false,
       contact: false,
@@ -498,6 +566,14 @@ export default {
       bienes: [],
       imagenes: [],
       form: this.inmueble,
+      permutar: {
+        bienes: [],
+        valor_bien: [],
+        user: this.user,
+        to: this.inmueble.user_id,
+        inmueble: this.inmueble.id,
+        tipo: this.inmueble.tipo_publicacion
+      },
       contacto: {
         to: this.inmueble.user_id,
         inmueble: this.inmueble.id
@@ -509,6 +585,36 @@ export default {
     this.getImagenes();
   },
   methods: {
+    addBien() {
+      let bien = document.getElementById(`bien` + this.indicador).value;
+
+      let valor_bien = document.getElementById(`valor_bien` + this.indicador)
+        .value;
+
+      this.permutar.bienes.push(bien);
+
+      this.permutar.valor_bien.push(valor_bien.replace(/[.]/g, ""));
+
+      bien = "";
+      valor_bien = "";
+
+      this.indicador = this.indicador + 1;
+
+      var result = this.permutar.valor_bien.map(function(x) {
+        return parseInt(x, 10);
+      });
+      const reducer = (accumulator, currentValue) => accumulator + currentValue;
+      this.valorTotal = result.reduce(reducer);
+
+      var fvalor = this.form.valor.replace(/[.]/g, "");
+      var val = parseInt(fvalor) / 2;
+      console.log(val);
+      if (this.valorTotal > val) {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
+    },
     contactar() {
       this.enviando = true;
       axios.post("/contacto", this.contacto).then(res => {
@@ -522,6 +628,13 @@ export default {
       });
 
       console.log(this.contacto);
+    },
+    permutando() {
+      this.enviando = true;
+      axios.post("/api/permutando", this.permutar).then(res => {
+        console.log(res.data);
+        toastr.success("Envido correctamente");
+      });
     },
     actualizar() {
       this.actualizando = true;
@@ -625,4 +738,64 @@ export default {
   font-size: 27px;
   color: #7db227;
 }
+.my-text {
+  display: flex;
+  align-items: center;
+}
+.my-text span,
+.my-checkbox span {
+  flex: 1;
+  margin-right: 15px;
+}
+.my-text input {
+  flex: 1;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid transparent;
+  background: #f1f1f1;
+  max-width: 150px;
+  height: 32px;
+}
+.form-group .form-field.w100 {
+  width: 96%;
+}
+
+.form-group .form-field {
+  vertical-align: bottom;
+  text-rendering: auto;
+  width: 29.333%;
+  margin: 20px 2%;
+  border-bottom: 2px solid #005b95;
+  padding-bottom: 5px;
+  color: #005b95;
+}
+.form-group .form-field,
+.form-group h5 {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+.form-group {
+  letter-spacing: -0.31em;
+  *letter-spacing: normal;
+  *word-spacing: -0.43em;
+  text-rendering: optimizespeed;
+}
+
+.form-group .form-field.w50 {
+  width: 46%;
+}
+.form-group.generator .form-field {
+  border-bottom: 0;
+  margin-top: 0;
+}
+.form-group .form-field.w100 .my-text input,
+.form-group .form-field.w35 .my-text input,
+.form-group .form-field.w65 .my-text input {
+  max-width: none;
+}
 </style>
+
+styl

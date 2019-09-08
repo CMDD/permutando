@@ -103,6 +103,7 @@ class Inmueble extends Model
                 $bien = new Bien();
                 $bien->bien = $item;
                 $bien->inmueble_id = $inmueble->id;
+                $bien->tipo = 'Recibo';
                 $bien->save();
      
                $bien = Bien::find($bien->id);

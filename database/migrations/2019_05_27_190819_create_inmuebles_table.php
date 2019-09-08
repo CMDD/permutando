@@ -30,14 +30,18 @@ class CreateInmueblesTable extends Migration
             $table->string('barrio')->nullable();
             $table->string('direccion')->nullable();
             $table->string('estrato')->nullable();
+            $table->string('habitaciones')->nullable();
+            $table->string('banos')->nullable();
 
             
             //Bodega
+            $table->string('area_ancho')->nullable();
+            $table->string('area_fondo')->nullable();
+            $table->string('altura')->nullable();
             $table->string('carga_psi')->nullable();
             $table->string('capacidad_luz')->nullable();
             $table->boolean('parque_industrial')->nullable();
-            $table->string('habitaciones')->nullable();
-            $table->string('banos')->nullable();
+            
             //Lote
             $table->string('topografia')->nullable();
             $table->string('vias')->nullable();

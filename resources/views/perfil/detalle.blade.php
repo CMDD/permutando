@@ -9,7 +9,7 @@
                     <span>Detalle de Inmueble</span>
                 </div>
             </div>
-        <inmueble-detalle :inmueble="{{$inmueble}}" :user="{{auth::user()->id}}"></inmueble-detalle>
+        <inmueble-detalle :inmueble="{{$inmueble}}" :user="{{auth::user()}}"></inmueble-detalle>
         </div>
     </div>
 </div>
@@ -227,6 +227,8 @@
 }
 
 </style>
+
+{{-- <link rel="stylesheet" href="wizard/css/style.css"> --}}
 @endpush
 
 @push('scripts')

@@ -69520,7 +69520,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 if (document.getElementById("userId")) {
   var userId = document.getElementById("userId").value;
@@ -69615,12 +69614,6 @@ var render = function() {
                         "a",
                         { attrs: { href: "/perfil-detalle/" + inmueble.id } },
                         [_vm._v("Ver")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        { attrs: { href: "/perfil-detalle/" + inmueble.id } },
-                        [_vm._v("Editar")]
                       )
                     ])
                   ])
@@ -69741,7 +69734,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.gallery a.image-link {\n  height: 350px;\n  display: block;\n  background-size: cover;\n  background-position: center;\n}\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.form input {\n  margin-top: 3%;\n}\n.form textarea {\n  margin-top: 3%;\n}\n.btn-enviar {\n  margin-top: 2%;\n  width: 100%;\n}\n.btn-eliminar {\n  background-color: #a71e1e !important;\n}\n.box-contact {\n  margin: auto;\n}\n.text-contac {\n  font-size: 27px;\n  color: #7db227;\n}\n", ""]);
+exports.push([module.i, "\n.gallery a.image-link {\n  height: 350px;\n  display: block;\n  background-size: cover;\n  background-position: center;\n}\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.form input {\n  margin-top: 3%;\n}\n.form textarea {\n  margin-top: 3%;\n}\n.btn-enviar {\n  margin-top: 2%;\n  width: 100%;\n}\n.btn-eliminar {\n  background-color: #a71e1e !important;\n}\n.box-contact {\n  margin: auto;\n}\n.text-contac {\n  font-size: 27px;\n  color: #7db227;\n}\n.my-text {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.my-text span,\n.my-checkbox span {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  margin-right: 15px;\n}\n.my-text input {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  margin: 0;\n  padding: 5px;\n  border: 1px solid transparent;\n  background: #f1f1f1;\n  max-width: 150px;\n  height: 32px;\n}\n.form-group .form-field.w100 {\n  width: 96%;\n}\n.form-group .form-field {\n  vertical-align: bottom;\n  text-rendering: auto;\n  width: 29.333%;\n  margin: 20px 2%;\n  border-bottom: 2px solid #005b95;\n  padding-bottom: 5px;\n  color: #005b95;\n}\n.form-group .form-field,\n.form-group h5 {\n  display: inline-block;\n  zoom: 1;\n  *display: inline;\n  letter-spacing: normal;\n  word-spacing: normal;\n}\n.form-group {\n  letter-spacing: -0.31em;\n  *letter-spacing: normal;\n  *word-spacing: -0.43em;\n  text-rendering: optimizespeed;\n}\n.form-group .form-field.w50 {\n  width: 46%;\n}\n.form-group.generator .form-field {\n  border-bottom: 0;\n  margin-top: 0;\n}\n.form-group .form-field.w100 .my-text input,\n.form-group .form-field.w35 .my-text input,\n.form-group .form-field.w65 .my-text input {\n  max-width: none;\n}\n", ""]);
 
 // exports
 
@@ -69752,6 +69745,67 @@ exports.push([module.i, "\n.gallery a.image-link {\n  height: 350px;\n  display:
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_toastr__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_toastr__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70241,10 +70295,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+__WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
+  closeButton: true,
+  timeOut: "10000"
+  // "progressBar": true,
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["inmueble", "user"],
   data: function data() {
     return {
+      indicador: 1,
+      valorTotal: "",
+      active: false,
       actualizando: false,
       enviando: false,
       contact: false,
@@ -70252,6 +70315,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       bienes: [],
       imagenes: [],
       form: this.inmueble,
+      permutar: {
+        bienes: [],
+        valor_bien: [],
+        user: this.user,
+        to: this.inmueble.user_id,
+        inmueble: this.inmueble.id,
+        tipo: this.inmueble.tipo_publicacion
+      },
       contacto: {
         to: this.inmueble.user_id,
         inmueble: this.inmueble.id
@@ -70264,6 +70335,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    addBien: function addBien() {
+      var bien = document.getElementById("bien" + this.indicador).value;
+
+      var valor_bien = document.getElementById("valor_bien" + this.indicador).value;
+
+      this.permutar.bienes.push(bien);
+
+      this.permutar.valor_bien.push(valor_bien.replace(/[.]/g, ""));
+
+      bien = "";
+      valor_bien = "";
+
+      this.indicador = this.indicador + 1;
+
+      var result = this.permutar.valor_bien.map(function (x) {
+        return parseInt(x, 10);
+      });
+      var reducer = function reducer(accumulator, currentValue) {
+        return accumulator + currentValue;
+      };
+      this.valorTotal = result.reduce(reducer);
+
+      var fvalor = this.form.valor.replace(/[.]/g, "");
+      var val = parseInt(fvalor) / 2;
+      console.log(val);
+      if (this.valorTotal > val) {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
+    },
     contactar: function contactar() {
       var _this = this;
 
@@ -70279,6 +70381,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
 
       console.log(this.contacto);
+    },
+    permutando: function permutando() {
+      this.enviando = true;
+      axios.post("/api/permutando", this.permutar).then(function (res) {
+        console.log(res.data);
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Envido correctamente");
+      });
     },
     actualizar: function actualizar() {
       var _this2 = this;
@@ -70431,7 +70540,7 @@ var render = function() {
             _vm._v(" "),
             _vm.editar
               ? _c("div", [
-                  _vm.inmueble.user_id == _vm.user
+                  _vm.inmueble.user_id == _vm.user.id
                     ? _c(
                         "button",
                         {
@@ -70446,7 +70555,7 @@ var render = function() {
             _vm._v(" "),
             _vm.editar
               ? _c("div", [
-                  _vm.inmueble.user_id == _vm.user
+                  _vm.inmueble.user_id == _vm.user.id
                     ? _c(
                         "button",
                         {
@@ -72131,7 +72240,159 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(14)
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "permutoModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(14),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body row box" }, [
+              _c("div", { staticClass: "form-group col-md-12" }, [
+                _c("div", { staticClass: "form-field w100" }, [
+                  _c("div", { staticClass: "my-text" }, [
+                    _c("span", [_vm._v("Valor del inmueble")]),
+                    _vm._v("$\n                "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.valor,
+                          expression: "form.valor"
+                        }
+                      ],
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.form.valor },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "valor", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group generator" }, [
+                _c("h5", [_vm._v("¿Qué bienes ofrecerías?")]),
+                _vm._v(" "),
+                _vm._m(15),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-field w50" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn add",
+                      attrs: { href: "#" },
+                      on: { click: _vm.addBien }
+                    },
+                    [_vm._v("Agregar más bienes")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-field w50" }, [
+                  _c("div", { staticClass: "my-text text-right" }, [
+                    _c("span", [_vm._v("Valor total")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.valorTotal,
+                          expression: "valorTotal"
+                        }
+                      ],
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.valorTotal },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.valorTotal = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "group-efectivo" }, [
+                  _vm._m(16),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-field w50" }, [
+                    _vm.active
+                      ? _c("div", { staticClass: "my-text text-right" }, [
+                          _c("span", [_vm._v("$")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.recibo_efectivo,
+                                expression: "form.recibo_efectivo"
+                              }
+                            ],
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.form.recibo_efectivo },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "recibo_efectivo",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      : _vm._e()
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "f1-buttons col-md-12 text-right" }, [
+                !_vm.enviando
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-submit",
+                        attrs: { type: "submit" },
+                        on: { click: _vm.permutando }
+                      },
+                      [_vm._v("Enviar")]
+                    )
+                  : _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-submit",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Enviado")]
+                    )
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -72140,9 +72401,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "group justify-content-end" }, [
-      _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
-        _vm._v("Permutar")
-      ])
+      _c(
+        "a",
+        {
+          staticClass: "btn",
+          attrs: {
+            href: "#",
+            "data-toggle": "modal",
+            "data-target": "#permutoModal"
+          }
+        },
+        [_vm._v("Permutar")]
+      )
     ])
   },
   function() {
@@ -72278,55 +72548,54 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "videoModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _c("h4", [_vm._v("Video")]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: {
-                    type: "button",
-                    "data-dismiss": "modal",
-                    "aria-label": "Close"
-                  }
-                },
-                [
-                  _c("span", { attrs: { "aria-hidden": "true" } }, [
-                    _vm._v("×")
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body row" }, [
-              _c("iframe", {
-                attrs: {
-                  width: "560",
-                  height: "315",
-                  src: "",
-                  allowfullscreen: ""
-                }
-              })
-            ])
-          ])
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", [_vm._v("Permuto")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "group-generator" }, [
+      _c("div", { staticClass: "form-field w50" }, [
+        _c("span", [_vm._v("Bien #1")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-text" }, [
+          _c("input", { attrs: { type: "text", id: "bien1" } })
         ])
-      ]
-    )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-field w65" }, [
+        _c("span", [_vm._v("Valor del bien")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-text" }, [
+          _c("input", { attrs: { type: "text", id: "valor_bien1" } })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-field w50" }, [
+      _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
+        _vm._v("Efectivo")
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -76815,13 +77084,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['userId'],
     data: function data() {
         return {
+            mostrar: false,
             mensajes: [],
-            mensaje: []
+            mensaje: [],
+            bienes: []
+
         };
     },
     created: function created() {
@@ -76830,18 +77146,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        getMensaje: function getMensaje(id) {
+        getBienes: function getBienes(mensaje) {
             var _this = this;
 
+            var datos = {
+                tipo: 'Ofrezco',
+                mensaje: mensaje
+            };
+            axios.post("/api/bienes-tipo", datos).then(function (res) {
+                _this.bienes = res.data;
+                console.log(res.data);
+            });
+        },
+        getMensaje: function getMensaje(id) {
+            var _this2 = this;
+
             axios.get("api/mensaje/" + id).then(function (res) {
-                _this.mensaje = res.data;
+                _this2.mensaje = res.data;
+                _this2.mostrar = true;
+                _this2.getBienes(_this2.mensaje);
             });
         },
         getMensajes: function getMensajes() {
-            var _this2 = this;
+            var _this3 = this;
 
             axios.get("api/mensajes/" + this.userId).then(function (res) {
-                _this2.mensajes = res.data;
+                _this3.mensajes = res.data;
             });
         }
     }
@@ -76855,43 +77185,93 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row msg" },
-    [
-      _c(
-        "div",
-        { staticClass: "col-md-3 list" },
-        _vm._l(_vm.mensajes, function(mensaje) {
-          return _c(
-            "div",
-            {
-              key: mensaje.id,
-              staticClass: "user",
-              on: {
-                click: function($event) {
-                  return _vm.getMensaje(mensaje.id)
-                }
+  return _c("div", { staticClass: "row msg" }, [
+    _c(
+      "div",
+      { staticClass: "col-md-3 list" },
+      _vm._l(_vm.mensajes, function(mensaje) {
+        return _c(
+          "div",
+          {
+            key: mensaje.id,
+            staticClass: "user",
+            on: {
+              click: function($event) {
+                return _vm.getMensaje(mensaje.id)
               }
-            },
-            [
-              _c("div", { staticClass: "img" }),
-              _c("div", { staticClass: "info" }, [
-                _c("span", { staticClass: "name" }, [
-                  _vm._v(_vm._s(mensaje.nombre))
-                ]),
-                _c("span", { staticClass: "type" }, [_vm._v("Mensaje")])
+            }
+          },
+          [
+            _c("div", { staticClass: "img" }),
+            _c("div", { staticClass: "info" }, [
+              _c("span", { staticClass: "name" }, [
+                _vm._v(_vm._s(mensaje.nombre))
+              ]),
+              _c("span", { staticClass: "type" }, [
+                _vm._v(_vm._s(mensaje.tipo))
               ])
-            ]
-          )
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c("mensajes-detalle", { attrs: { mensaje: _vm.mensaje } })
-    ],
-    1
-  )
+            ])
+          ]
+        )
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _vm.mensaje.mensaje
+      ? _c("div", { staticClass: "col-md-9 chat" }, [
+          _vm.mensaje.tipo == "Mensaje"
+            ? _c("div", { staticClass: "from" }, [
+                _c("span", [_vm._v("M")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
+                  ])
+                ])
+              ])
+            : _c("div", { staticClass: "from" }, [
+                _c("span", [_vm._v("M")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-6" },
+                    [
+                      _c("h4", [_vm._v("Permuto por:")]),
+                      _vm._v(" "),
+                      _vm._l(_vm.bienes, function(bien) {
+                        return _c("div", { key: bien.id }, [
+                          _c("p", [
+                            _vm._v(
+                              _vm._s(bien.bien) + " : $" + _vm._s(bien.valor)
+                            )
+                          ])
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ])
+        ])
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -76977,13 +77357,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["mensaje"],
   data: function data() {
-    return {};
+    return {
+      bien: [],
+      datos: {
+        tipo: "Ofrezco",
+        inmueble: this.mensaje
+      }
+    };
   },
-  created: function created() {}
+  created: function created() {
+    this.getBienes();
+  },
+
+  methods: {
+    getBienes: function getBienes() {
+      var _this = this;
+
+      axios.post("/api/bienes-tipo", this.datos).then(function (res) {
+        _this.bienes = res.data;
+        console.log(res.data);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -76996,17 +77403,29 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.mensaje.mensaje
     ? _c("div", { staticClass: "col-md-9 chat" }, [
-        _c("div", { staticClass: "from" }, [
-          _c("span", [_vm._v("M")]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
-        ])
+        _vm.mensaje.tipo == "Mensaje"
+          ? _c("div", { staticClass: "from" }, [
+              _c("span", [_vm._v("M")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
+            ])
+          : _c("div", { staticClass: "from" }, [
+              _c("span", [_vm._v("M")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
+            ])
       ])
     : _vm._e()
 }

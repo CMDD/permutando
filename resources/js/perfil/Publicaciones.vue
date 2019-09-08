@@ -29,7 +29,6 @@
               <div class="item price">${{formatPrice(inmueble.valor)}}</div>
               <div>
                 <a :href="'/perfil-detalle/' + inmueble.id">Ver</a>
-                <a :href="'/perfil-detalle/' + inmueble.id">Editar</a>
               </div>
             </div>
           </div>

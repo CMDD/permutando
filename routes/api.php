@@ -37,8 +37,10 @@ Route::get('mis-inmuebles/{id}','PerfilController@misInmuebles');
 Route::post('busco-index','Perfil\BuscoController@buscoIndex');
     // inmuebles
     Route::get('bienes/{id}','BienController@getBienes');
-    Route::get('imagenes/{id}','BienController@getImagenes');
+    Route::post('bienes-tipo','BienController@getBienesTipo');
     Route::post('editar-inmueble','InmuebleController@editar');
+    Route::get('imagenes/{id}','BienController@getImagenes');
+    
 
 //Departamentos
 Route::get('departamentos','DepartamentoController@index');
@@ -48,3 +50,5 @@ Route::get('ciudades/{id}','DepartamentoController@ciudades');
 Route::get('mensajes/{id}','Mensaje\MensajeController@getMensajes');
 Route::get('mensaje/{id}','Mensaje\MensajeController@getMensaje');
 
+//Permutando
+Route::post('permutando','ContactoController@permutando');

@@ -31,7 +31,7 @@
         <div class="col-md-6 col-xl-5 p-4">
           <div class="group mb-5">
             <a href="#" class="btn" data-toggle="modal" data-target="#contactModal">Contactar</a>
-            <button v-if="!editar" class="btn inv">
+            <button type="button" v-if="!editar" class="btn inv">
               <span v-if="actualizando">Actualizando...</span>
               <span v-else @click="actualizar()">Actualizar</span>
             </button>
@@ -179,13 +179,13 @@
                 <input type="checkbox" v-model="inmueble.zonas" />Gimnasio
               </label>
               <label>
-                <input type="checkbox" />Zonas húmedas
+                <input type="checkbox" checked />Zonas húmedas
               </label>
               <label>
                 <input type="checkbox" />BBQ
               </label>
               <label>
-                <input type="checkbox" />Parques para niños
+                <input type="checkbox" checked />Parques para niños
               </label>
 
               <label>
@@ -576,7 +576,8 @@ export default {
       },
       contacto: {
         to: this.inmueble.user_id,
-        inmueble: this.inmueble.id
+        inmueble: this.inmueble.id,
+        tipo: this.inmueble.tipo_publicacion
       }
     };
   },

@@ -70325,7 +70325,8 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
       },
       contacto: {
         to: this.inmueble.user_id,
-        inmueble: this.inmueble.id
+        inmueble: this.inmueble.id,
+        tipo: this.inmueble.tipo_publicacion
       }
     };
   },
@@ -70521,21 +70522,25 @@ var render = function() {
             ),
             _vm._v(" "),
             !_vm.editar
-              ? _c("button", { staticClass: "btn inv" }, [
-                  _vm.actualizando
-                    ? _c("span", [_vm._v("Actualizando...")])
-                    : _c(
-                        "span",
-                        {
-                          on: {
-                            click: function($event) {
-                              return _vm.actualizar()
+              ? _c(
+                  "button",
+                  { staticClass: "btn inv", attrs: { type: "button" } },
+                  [
+                    _vm.actualizando
+                      ? _c("span", [_vm._v("Actualizando...")])
+                      : _c(
+                          "span",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.actualizar()
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("Actualizar")]
-                      )
-                ])
+                          },
+                          [_vm._v("Actualizar")]
+                        )
+                  ]
+                )
               : _vm._e(),
             _vm._v(" "),
             _vm.editar
@@ -72420,7 +72425,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", [
-      _c("input", { attrs: { type: "checkbox" } }),
+      _c("input", { attrs: { type: "checkbox", checked: "" } }),
       _vm._v("Zonas húmedas\n            ")
     ])
   },
@@ -72438,7 +72443,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", [
-      _c("input", { attrs: { type: "checkbox" } }),
+      _c("input", { attrs: { type: "checkbox", checked: "" } }),
       _vm._v("Parques para niños\n            ")
     ])
   },
@@ -73525,7 +73530,7 @@ if (document.getElementById("userId")) {
         //   mascotas:'',
         // }
         __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Inmueble subido correctamente");
-        window.location.href = "http://permutado.com/perfil-detalle/" + res.data;
+        window.location.href = "http://localhost:8000/perfil-detalle/" + res.data;
       });
     },
     getDepartamentos: function getDepartamentos() {
@@ -76634,6 +76639,7 @@ if (document.getElementById("userId")) {
   data: function data() {
     return {
       userId: userId,
+      zoon: 7,
       inmuebles: [],
       departamentos: [],
       ciudades: [],

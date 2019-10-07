@@ -69,6 +69,7 @@ export default {
   data() {
     return {
       userId: userId,
+      zoon: 7,
       inmuebles: [],
       departamentos: [],
       ciudades: [],
@@ -126,6 +127,7 @@ export default {
               direcciones[index].barrio +
               direcciones[index].direccion
           },
+
           function(results, status) {
             if (status == "OK") {
               //Orientar cerca el marcador

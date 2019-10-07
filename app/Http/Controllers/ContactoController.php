@@ -9,6 +9,7 @@ use App\Mensaje;
 use Auth;
 use App\Contactado;
 use App\Bien;
+use App\User;
 
 class ContactoController extends Controller
 {
@@ -24,16 +25,16 @@ class ContactoController extends Controller
         $mensaje->email = $request->email;
         $mensaje->save();
         
-
+        $user = User::find($request->to);
         // $contactado = new Contactado();
         // $contactado->user_id = Auth::User()->id;
         // $contactado->inmueble_id = $request->inmueble;
         // $contactado->save();
 
 
-        // Mail::to('jhon54plex@hotmail.com','John Alvaro')
-        // ->send(new Contacto($request));
-        return 200;
+        Mail::to($user->email,$user->name)
+        ->send(new Contacto($request));
+        return $request;
     }
 
     public function permutando(Request $request){

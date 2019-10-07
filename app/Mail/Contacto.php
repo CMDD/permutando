@@ -30,7 +30,7 @@ class Contacto extends Mailable
     public function build()
     {
         return $this->view('mails.contacto')
-                ->from('soporte@permutando.com','Permutando')
-                ->subject('Permutando');
+                ->from('soporte@permutando.com','Permutado')
+                ->subject('Permutado');
     }
 }

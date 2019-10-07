@@ -816,10 +816,9 @@ export default {
           //   mascotas:'',
           // }
           toastr.success("Inmueble subido correctamente");
-          window.location.href = `http://permutado.com/perfil-detalle/${res.data}`;
+          window.location.href = `http://localhost:8000/perfil-detalle/${res.data}`;
         });
     },
-
     getDepartamentos() {
       axios.get("/api/departamentos").then(res => {
         this.departamentos = res.data;

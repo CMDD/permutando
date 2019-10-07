@@ -1,6 +1,25 @@
 @extends('layouts.web') @section('content')
 <div class="container-fluid home">
-    <div class="row">
+        <div class="row links">
+                <div class="col-md-6 orange">
+                    <img src="/img/icon-busco.png" />
+                    <h2>¿Buscas una propuesta?</h2>
+                    <p>
+                        Selecciona los inmuebles que te interesan y comieza una
+                        negociación.
+                    </p>
+                    <a href="#" data-toggle="modal"
+                    data-target="#loginModal" class="btn">Busco</a>
+                </div>
+                <div class="col-md-6 white">
+                    <img src="/img/icon-vendo.png" />
+                    <h2>¿Tienes una propuesta?</h2>
+                    <p>Sube tus inmuebles y comieza una negociación.</p>
+                    <a href="#" data-toggle="modal"
+                    data-target="#loginModal" class="btn">Tengo</a>
+                </div>
+            </div>
+    {{-- <div class="row">
         <div class="col p-0">
             <div class="slide">
                 <div style="background-image:url('/img/img-slide-01.jpg');">
@@ -17,7 +36,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="row justify-content-center valores">
         <div class="col-md-4 col-lg-3">
             <h2>Valor 1</h2>
@@ -61,22 +80,18 @@
             <img src="/img/pc.png" />
         </div>
     </div>
-    <div class="row links">
-        <div class="col-md-6 orange">
-            <img src="/img/icon-busco.png" />
-            <h2>¿Buscas una propuesta?</h2>
-            <p>
-                Selecciona los inmuebles que te interesan y comieza una
-                negociación.
-            </p>
-            <a href="#" class="btn">Busco</a>
+
+    <div class="row justify-content-center interfaz">
+            <div class="col-12 col-lg-9">
+                {{-- <h2><span>Interfaz</span>Un sistema</h2>
+                <p>
+                    Descubra cómo Permutado.com muestra potenciales clientes que
+                    buscan y tienen todo tipo de inmuebles a negociar en un sistema
+                    perfecto para encontrar fácil y rapidamente los resultados del
+                    próximo negocio.
+                </p> --}}
+            </div>
         </div>
-        <div class="col-md-6 white">
-            <img src="/img/icon-vendo.png" />
-            <h2>¿Tienes una propuesta?</h2>
-            <p>Sube tus inmuebles y comieza una negociación.</p>
-            <a href="#" class="btn">Tengo</a>
-        </div>
-    </div>
+   
 </div>
 @stop

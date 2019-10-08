@@ -198,13 +198,13 @@
         <!-- Fin  Casa/Apatamento -->
 
         <div class="col-md-6 col-xl-5 p-4" v-if="inmueble.tipo_inmueble == 'Bodega'">
-          <div class="group">
+          <!-- <div class="group">
             <span>Area Frente</span>
             <input type="text" :disabled="editar" v-model="form.capacidad_luz" />
-          </div>
+          </div>-->
           <div class="group">
-            <span>Altura Frente</span>
-            <input type="text" :disabled="editar" v-model="form.capacidad_luz" />
+            <span>Altura</span>
+            <input type="text" :disabled="editar" v-model="form.altura" />
           </div>
 
           <div class="group">
@@ -215,11 +215,11 @@
         <div class="col-md-6 col-xl-5 p-4" v-if="inmueble.tipo_inmueble == 'Bodega'">
           <div class="group">
             <span>Area Fondo</span>
-            <input type="text" :disabled="editar" v-model="form.capacidad_luz" />
+            <input type="text" :disabled="editar" v-model="form.area_fondo" />
           </div>
           <div class="group">
-            <span>Altura Fondo</span>
-            <input type="text" :disabled="editar" v-model="form.capacidad_luz" />
+            <span>Altura Ancho</span>
+            <input type="text" :disabled="editar" v-model="form.area_ancho" />
           </div>
           <div class="group">
             <span>Capacidad Carga (PSI)</span>

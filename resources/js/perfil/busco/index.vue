@@ -32,7 +32,7 @@
             <option value="Hacienda">Hacienda</option>
           </select>
 
-          <select required v-model="busco.en">
+          <select required v-model="busco.en" @change="getEn()">
             <option value>En...?</option>
             <option value="Arriendo">Arriendo</option>
             <option value="Venta">Venta</option>
@@ -69,7 +69,7 @@ export default {
   data() {
     return {
       userId: userId,
-      zoon: 7,
+      zoom: 7,
       inmuebles: [],
       departamentos: [],
       ciudades: [],
@@ -90,7 +90,19 @@ export default {
     getTipo() {
       axios.get("/api/buscar-tipo/" + this.busco.tipo).then(res => {
         this.resultadoIndex = res.data;
-        this.cargarMap(this.resultadoIndex);
+        this.cargarMap(this.resultadoIndex, 8);
+      });
+    },
+    getDepartamento() {
+      axios.post("/api/buscar-departamento/", this.busco).then(res => {
+        this.resultadoIndex = res.data;
+        this.cargarMap(this.resultadoIndex, 10);
+      });
+    },
+    getEn() {
+      axios.post("/api/buscar-en/", this.busco).then(res => {
+        this.resultadoIndex = res.data;
+        this.cargarMap(this.resultadoIndex, 8);
       });
     },
     getDepartamentos() {
@@ -102,21 +114,22 @@ export default {
       axios.get("api/ciudades/" + this.busco.departamento).then(res => {
         this.ciudades = res.data;
       });
+      this.getDepartamento();
     },
     getInmueble() {
       axios.post("/api/busco-index", this.busco).then(res => {
         this.resultadoIndex = res.data;
-        this.cargarMap(this.resultadoIndex);
+        this.cargarMap(this.resultadoIndex, 7);
       });
     },
-    cargarMap(direcciones) {
+    cargarMap(direcciones, zoom) {
       var map;
       var geocoder;
       geocoder = new google.maps.Geocoder();
       var infowindow = new google.maps.InfoWindow();
       map = new google.maps.Map(document.getElementById("mymap"), {
         center: { lat: 4.5318681, lng: -74.297333 },
-        zoom: 7
+        zoom: zoom
       });
       for (let index = 0; index < direcciones.length; index++) {
         geocoder.geocode(
@@ -148,9 +161,6 @@ export default {
                   '<div id="content">' +
                   "<p class='title-map'>" +
                   direcciones[index].tipo_inmueble +
-                  "</p>" +
-                  "<p class='valor-map'>" +
-                  direcciones[index].direccion +
                   "</p>" +
                   "<p class='valor-map'>Precio $" +
                   val +

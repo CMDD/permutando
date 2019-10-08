@@ -232,17 +232,15 @@
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-text mini">
                 <span>Área</span>
-                <input type="text" placeholder="Ancho" />
+                <input type="text" v-model="form.area_ancho" placeholder="Ancho" />
                 <small>x</small>
-                <input type="text" placeholder="Fondo" />
+                <input type="text" v-model="form.area_fondo" placeholder="Fondo" />
               </div>
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-text mini">
                 <span>Altura</span>
-                <input type="text" placeholder />
-                <small>x</small>
-                <input type="text" placeholder />
+                <input v-model="form.altura" type="text" placeholder />
               </div>
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
@@ -253,7 +251,7 @@
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-text">
-                <span>Capacidad Luz C</span>
+                <span>Capacidad Luz (KWA)</span>
                 <input v-model="form.capacidad_luz" type="text" />
               </div>
             </div>
@@ -425,6 +423,18 @@
             </div>
             <div class="form-field w50">
               <div class="my-text">
+                <span>Valor Administracion</span>
+                <input v-model="form.administracion" type="text" />
+              </div>
+            </div>
+            <div class="form-field w50">
+              <div class="my-text">
+                <span>Años de Construcción</span>
+                <input v-model="form.anos" type="text" />
+              </div>
+            </div>
+            <div class="form-field w50">
+              <div class="my-text">
                 <span>Barrio</span>
                 <input v-model="form.barrio" type="text" />
               </div>
@@ -582,6 +592,10 @@ export default {
       departamentos: [],
       ciudades: [],
       form: {
+        area_ancho: "",
+        area_fondo: "",
+        altura: "",
+        anos: "",
         bienes: [],
         valor_bien: [],
         recibo_efectivo: "",
@@ -773,6 +787,11 @@ export default {
       fd.append("carga_psi", this.form.carga_psi);
       fd.append("capacidad_luz", this.form.capacidad_luz);
       fd.append("parque_industrial", this.form.parque_industrial);
+      fd.append("area_fondo", this.form.area_fondo);
+      fd.append("altura", this.form.altura);
+      fd.append("area_ancho", this.form.area_ancho);
+      fd.append("anos", this.form.anos);
+      fd.append("administracion", this.form.administracion);
 
       // Lote
       fd.append("topografia", this.form.topografia);

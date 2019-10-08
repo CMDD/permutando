@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Buscador
 Route::get('buscar-tipo/{tipo}','InmuebleController@buscarTipo');
+Route::post('buscar-departamento','InmuebleController@buscarDepartamento');
+Route::post('buscar-en','InmuebleController@buscarEn');
 Route::get('buscar-modo/{tipo}/{modo}','InmuebleController@buscarModo');
 Route::get('info-inmueble/{id}','InmuebleController@info');
 

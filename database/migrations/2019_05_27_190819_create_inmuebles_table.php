@@ -15,12 +15,15 @@ class CreateInmueblesTable extends Migration
     {
         Schema::create('inmuebles', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean('publicar')->default(false);
             
             $table->string('tipo_publicacion')->nullable();
             $table->string('tipo_inmueble')->nullable();
             $table->string('estado')->nullable();
             $table->text('caracteristicas')->nullable();
             $table->string('recibo_efectivo')->nullable();
+            $table->string('administracion')->nullable();
+            $table->string('anos')->nullable();
 
             // Casa - Apartamento
             $table->string('video')->nullable();

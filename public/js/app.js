@@ -71180,50 +71180,25 @@ var render = function() {
         _vm.inmueble.tipo_inmueble == "Bodega"
           ? _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
               _c("div", { staticClass: "group" }, [
-                _c("span", [_vm._v("Area Frente")]),
+                _c("span", [_vm._v("Altura")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.form.capacidad_luz,
-                      expression: "form.capacidad_luz"
+                      value: _vm.form.altura,
+                      expression: "form.altura"
                     }
                   ],
                   attrs: { type: "text", disabled: _vm.editar },
-                  domProps: { value: _vm.form.capacidad_luz },
+                  domProps: { value: _vm.form.altura },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "group" }, [
-                _c("span", [_vm._v("Altura Frente")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.capacidad_luz,
-                      expression: "form.capacidad_luz"
-                    }
-                  ],
-                  attrs: { type: "text", disabled: _vm.editar },
-                  domProps: { value: _vm.form.capacidad_luz },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
+                      _vm.$set(_vm.form, "altura", $event.target.value)
                     }
                   }
                 })
@@ -71266,43 +71241,43 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.form.capacidad_luz,
-                      expression: "form.capacidad_luz"
+                      value: _vm.form.area_fondo,
+                      expression: "form.area_fondo"
                     }
                   ],
                   attrs: { type: "text", disabled: _vm.editar },
-                  domProps: { value: _vm.form.capacidad_luz },
+                  domProps: { value: _vm.form.area_fondo },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
+                      _vm.$set(_vm.form, "area_fondo", $event.target.value)
                     }
                   }
                 })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "group" }, [
-                _c("span", [_vm._v("Altura Fondo")]),
+                _c("span", [_vm._v("Altura Ancho")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.form.capacidad_luz,
-                      expression: "form.capacidad_luz"
+                      value: _vm.form.area_ancho,
+                      expression: "form.area_ancho"
                     }
                   ],
                   attrs: { type: "text", disabled: _vm.editar },
-                  domProps: { value: _vm.form.capacidad_luz },
+                  domProps: { value: _vm.form.area_ancho },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
+                      _vm.$set(_vm.form, "area_ancho", $event.target.value)
                     }
                   }
                 })
@@ -73273,6 +73248,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -73294,6 +73279,10 @@ if (document.getElementById("userId")) {
       departamentos: [],
       ciudades: [],
       form: {
+        area_ancho: "",
+        area_fondo: "",
+        altura: "",
+        anos: "",
         bienes: [],
         valor_bien: [],
         recibo_efectivo: "",
@@ -73489,6 +73478,11 @@ if (document.getElementById("userId")) {
       fd.append("carga_psi", this.form.carga_psi);
       fd.append("capacidad_luz", this.form.capacidad_luz);
       fd.append("parque_industrial", this.form.parque_industrial);
+      fd.append("area_fondo", this.form.area_fondo);
+      fd.append("altura", this.form.altura);
+      fd.append("area_ancho", this.form.area_ancho);
+      fd.append("anos", this.form.anos);
+      fd.append("administracion", this.form.administracion);
 
       // Lote
       fd.append("topografia", this.form.topografia);
@@ -74627,11 +74621,92 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.form.tipoInmueble == "Bodega"
-                  ? _c("div", { staticClass: "form-field w50" }, [_vm._m(3)])
+                  ? _c("div", { staticClass: "form-field w50" }, [
+                      _c("div", { staticClass: "my-text mini" }, [
+                        _c("span", [_vm._v("Área")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.area_ancho,
+                              expression: "form.area_ancho"
+                            }
+                          ],
+                          attrs: { type: "text", placeholder: "Ancho" },
+                          domProps: { value: _vm.form.area_ancho },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "area_ancho",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("small", [_vm._v("x")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.area_fondo,
+                              expression: "form.area_fondo"
+                            }
+                          ],
+                          attrs: { type: "text", placeholder: "Fondo" },
+                          domProps: { value: _vm.form.area_fondo },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "area_fondo",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ])
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.form.tipoInmueble == "Bodega"
-                  ? _c("div", { staticClass: "form-field w50" }, [_vm._m(4)])
+                  ? _c("div", { staticClass: "form-field w50" }, [
+                      _c("div", { staticClass: "my-text mini" }, [
+                        _c("span", [_vm._v("Altura")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.altura,
+                              expression: "form.altura"
+                            }
+                          ],
+                          attrs: { type: "text", placeholder: "" },
+                          domProps: { value: _vm.form.altura },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "altura", $event.target.value)
+                            }
+                          }
+                        })
+                      ])
+                    ])
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.form.tipoInmueble == "Bodega"
@@ -74670,7 +74745,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Bodega"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-text" }, [
-                        _c("span", [_vm._v("Capacidad Luz C")]),
+                        _c("span", [_vm._v("Capacidad Luz (KWA)")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -75651,6 +75726,64 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w50" }, [
                   _c("div", { staticClass: "my-text" }, [
+                    _c("span", [_vm._v("Valor Administracion")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.administracion,
+                          expression: "form.administracion"
+                        }
+                      ],
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.form.administracion },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "administracion",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-field w50" }, [
+                  _c("div", { staticClass: "my-text" }, [
+                    _c("span", [_vm._v("Años de Construcción")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.anos,
+                          expression: "form.anos"
+                        }
+                      ],
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.form.anos },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "anos", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-field w50" }, [
+                  _c("div", { staticClass: "my-text" }, [
                     _c("span", [_vm._v("Barrio")]),
                     _vm._v(" "),
                     _c("input", {
@@ -75823,7 +75956,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(5)
+              _vm._m(3)
             ]),
             _vm._v(" "),
             _c("fieldset", [
@@ -75892,7 +76025,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(6)
+              _vm._m(4)
             ]),
             _vm._v(" "),
             _c("fieldset", [
@@ -75933,7 +76066,7 @@ var render = function() {
                 ? _c("div", { staticClass: "form-group generator" }, [
                     _c("h5", [_vm._v("¿Por qué bienes lo permutarías?")]),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-field w50" }, [
                       _c(
@@ -75975,7 +76108,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "group-efectivo" }, [
-                      _vm._m(8),
+                      _vm._m(6),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-field w50" }, [
                         _vm.active
@@ -76089,34 +76222,6 @@ var staticRenderFns = [
     return _c("span", [
       _vm._v("\n                Area mts\n                "),
       _c("sup", [_vm._v("2")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "my-text mini" }, [
-      _c("span", [_vm._v("Área")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "text", placeholder: "Ancho" } }),
-      _vm._v(" "),
-      _c("small", [_vm._v("x")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "text", placeholder: "Fondo" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "my-text mini" }, [
-      _c("span", [_vm._v("Altura")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "text", placeholder: "" } }),
-      _vm._v(" "),
-      _c("small", [_vm._v("x")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "text", placeholder: "" } })
     ])
   },
   function() {
@@ -76639,7 +76744,7 @@ if (document.getElementById("userId")) {
   data: function data() {
     return {
       userId: userId,
-      zoon: 7,
+      zoom: 7,
       inmuebles: [],
       departamentos: [],
       ciudades: [],
@@ -76663,39 +76768,56 @@ if (document.getElementById("userId")) {
 
       axios.get("/api/buscar-tipo/" + this.busco.tipo).then(function (res) {
         _this.resultadoIndex = res.data;
-        _this.cargarMap(_this.resultadoIndex);
+        _this.cargarMap(_this.resultadoIndex, 8);
+      });
+    },
+    getDepartamento: function getDepartamento() {
+      var _this2 = this;
+
+      axios.post("/api/buscar-departamento/", this.busco).then(function (res) {
+        _this2.resultadoIndex = res.data;
+        _this2.cargarMap(_this2.resultadoIndex, 10);
+      });
+    },
+    getEn: function getEn() {
+      var _this3 = this;
+
+      axios.post("/api/buscar-en/", this.busco).then(function (res) {
+        _this3.resultadoIndex = res.data;
+        _this3.cargarMap(_this3.resultadoIndex, 8);
       });
     },
     getDepartamentos: function getDepartamentos() {
-      var _this2 = this;
+      var _this4 = this;
 
       axios.get("api/departamentos").then(function (res) {
-        _this2.departamentos = res.data;
+        _this4.departamentos = res.data;
       });
     },
     getCiudades: function getCiudades() {
-      var _this3 = this;
+      var _this5 = this;
 
       axios.get("api/ciudades/" + this.busco.departamento).then(function (res) {
-        _this3.ciudades = res.data;
+        _this5.ciudades = res.data;
       });
+      this.getDepartamento();
     },
     getInmueble: function getInmueble() {
-      var _this4 = this;
+      var _this6 = this;
 
       axios.post("/api/busco-index", this.busco).then(function (res) {
-        _this4.resultadoIndex = res.data;
-        _this4.cargarMap(_this4.resultadoIndex);
+        _this6.resultadoIndex = res.data;
+        _this6.cargarMap(_this6.resultadoIndex, 7);
       });
     },
-    cargarMap: function cargarMap(direcciones) {
+    cargarMap: function cargarMap(direcciones, zoom) {
       var map;
       var geocoder;
       geocoder = new google.maps.Geocoder();
       var infowindow = new google.maps.InfoWindow();
       map = new google.maps.Map(document.getElementById("mymap"), {
         center: { lat: 4.5318681, lng: -74.297333 },
-        zoom: 7
+        zoom: zoom
       });
 
       var _loop = function _loop(index) {
@@ -76713,7 +76835,7 @@ if (document.getElementById("userId")) {
             google.maps.event.addListener(marker, "click", function () {
               var val = (direcciones[index].valor / 1).toFixed(0).replace(".", ",").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-              var contentString = '<div id="content">' + "<p class='title-map'>" + direcciones[index].tipo_inmueble + "</p>" + "<p class='valor-map'>" + direcciones[index].direccion + "</p>" + "<p class='valor-map'>Precio $" + val + "</p>" + '<a href="/perfil-detalle/' + direcciones[index].id + '" >Detalle</a>' + "</div>";
+              var contentString = '<div id="content">' + "<p class='title-map'>" + direcciones[index].tipo_inmueble + "</p>" + "<p class='valor-map'>Precio $" + val + "</p>" + '<a href="/perfil-detalle/' + direcciones[index].id + '" >Detalle</a>' + "</div>";
               // infowindow.setContent(direcciones[index].tipo +' $' + direcciones[index].valor   );
               infowindow.setContent(contentString);
               infowindow.open(map, this);
@@ -76731,11 +76853,11 @@ if (document.getElementById("userId")) {
 
     //Buscador
     infoInmueble: function infoInmueble(id) {
-      var _this5 = this;
+      var _this7 = this;
 
       axios.get("api/info-inmueble/" + id).then(function (res) {
-        _this5.info = res.data;
-        console.log(_this5.info);
+        _this7.info = res.data;
+        console.log(_this7.info);
       });
     }
   }
@@ -76860,23 +76982,28 @@ var render = function() {
                   ],
                   attrs: { required: "" },
                   on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.busco,
-                        "en",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.busco,
+                          "en",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      function($event) {
+                        return _vm.getEn()
+                      }
+                    ]
                   }
                 },
                 [

@@ -47,6 +47,9 @@ class InmuebleController extends Controller
                 $inmueble->carga_psi = $request->carga_psi;
                 $inmueble->capacidad_luz = $request->capacidad_luz;
                 $inmueble->parque_industrial = $request->parque_industrial;
+                $inmueble->altura = $request->altura;
+                $inmueble->area_fondo = $request->area_fondo;
+                $inmueble->area_ancho = $request->area_ancho;
                 $inmueble->save();
                 return $inmueble->store($request,$inmueble->id);
                 break;
@@ -221,6 +224,14 @@ class InmuebleController extends Controller
     //Buscadores
     public function buscarTipo($tipo){
         return Inmueble::where('tipo_inmueble',$tipo)->get();
+
+    }
+    public function buscarDepartamento(Request $request){
+        return Inmueble::where('tipo_inmueble',$request->tipo)->where('departamento_id',$request->departamento)->get();
+
+    }
+    public function buscarEn(Request $request){
+        return Inmueble::where('tipo_inmueble',$request->tipo)->where('tipo_publicacion',$request->en)->get();
 
     }
     public function buscarModo($tipo,$modo){

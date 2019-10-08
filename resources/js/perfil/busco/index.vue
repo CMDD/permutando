@@ -90,6 +90,8 @@ export default {
     getTipo() {
       axios.get("/api/buscar-tipo/" + this.busco.tipo).then(res => {
         this.resultadoIndex = res.data;
+        console.log(res.data);
+
         this.cargarMap(this.resultadoIndex, 8);
       });
     },

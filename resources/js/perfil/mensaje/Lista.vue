@@ -4,7 +4,7 @@
         <div class="user" v-for="mensaje in mensajes" :key="mensaje.id"  @click="getMensaje(mensaje.id)">
             <div class="img"></div><div class="info">
                 <span class="name">{{ mensaje.nombre }}</span
-                ><span class="type">{{mensaje.tipo}}</span>
+                ><span class="type">Oferta</span>
             </div>
         </div>
     </div>

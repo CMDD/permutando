@@ -33,6 +33,7 @@
           <div class="group mb-5">
             <div v-if="publicar === 0">
               <button
+                type="button"
                 class="btn inv"
                 v-if="inmueble.user_id == user.id"
                 @click="publicarInmueble"
@@ -40,6 +41,7 @@
             </div>
             <div v-if="publicar === 1">
               <button
+                type="button"
                 class="btn inv"
                 v-if="inmueble.user_id == user.id"
                 @click="despublicarInmueble"
@@ -229,6 +231,10 @@
           <div class="group">
             <span>Capacidad Luz</span>
             <input type="text" :disabled="editar" v-model="form.capacidad_luz" />
+          </div>
+          <div class="group">
+            <span>Años de construción</span>
+            <input type="text" :disabled="editar" v-model="form.anos" />
           </div>
         </div>
         <div class="col-md-6 col-xl-5 p-4" v-if="inmueble.tipo_inmueble == 'Bodega'">

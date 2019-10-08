@@ -70313,6 +70313,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -70561,6 +70567,7 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn inv",
+                          attrs: { type: "button" },
                           on: { click: _vm.publicarInmueble }
                         },
                         [_vm._v("Publicar")]
@@ -70576,6 +70583,7 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn inv",
+                          attrs: { type: "button" },
                           on: { click: _vm.despublicarInmueble }
                         },
                         [_vm._v("Quitar")]
@@ -71302,6 +71310,31 @@ var render = function() {
                         return
                       }
                       _vm.$set(_vm.form, "capacidad_luz", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Años de construción")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.anos,
+                      expression: "form.anos"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.anos },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "anos", $event.target.value)
                     }
                   }
                 })
@@ -76846,6 +76879,8 @@ if (document.getElementById("userId")) {
 
       axios.get("/api/buscar-tipo/" + this.busco.tipo).then(function (res) {
         _this.resultadoIndex = res.data;
+        console.log(res.data);
+
         _this.cargarMap(_this.resultadoIndex, 8);
       });
     },
@@ -77418,9 +77453,7 @@ var render = function() {
               _c("span", { staticClass: "name" }, [
                 _vm._v(_vm._s(mensaje.nombre))
               ]),
-              _c("span", { staticClass: "type" }, [
-                _vm._v(_vm._s(mensaje.tipo))
-              ])
+              _c("span", { staticClass: "type" }, [_vm._v("Oferta")])
             ])
           ]
         )

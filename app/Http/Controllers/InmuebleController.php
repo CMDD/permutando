@@ -223,15 +223,15 @@ class InmuebleController extends Controller
 
     //Buscadores
     public function buscarTipo($tipo){
-        return Inmueble::where('tipo_inmueble',$tipo)->where('publicar',true)->get();
+        return Inmueble::where('tipo_inmueble',$tipo)->where('publicar',1)->get();
 
     }
     public function buscarDepartamento(Request $request){
-        return Inmueble::where('tipo_inmueble',$request->tipo)->where('departamento_id',$request->departamento)->where('publicar',1)->get();
+        return Inmueble::where('tipo_inmueble',$request->tipo)->where('departamento_id',$request->departamento)->get();
 
     }
     public function buscarEn(Request $request){
-        return Inmueble::where('tipo_inmueble',$request->tipo)->where('tipo_publicacion',$request->en)->where('publicar',1)->get();
+        return Inmueble::where('tipo_inmueble',$request->tipo)->where('tipo_publicacion',$request->en)->get();
 
     }
     public function buscarModo($tipo,$modo){

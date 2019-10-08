@@ -615,7 +615,7 @@ export default {
     publicarInmueble() {
       let dato = {
         id: this.inmueble.id,
-        estado: true
+        estado: 1
       };
       axios.post("/api/inmueble-estado", dato).then(res => {
         console.log(res.data);
@@ -626,7 +626,7 @@ export default {
     despublicarInmueble() {
       let dato = {
         id: this.inmueble.id,
-        estado: false
+        estado: 0
       };
       axios.post("/api/inmueble-estado", dato).then(res => {
         console.log(res.data);

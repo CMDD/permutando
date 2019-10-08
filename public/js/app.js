@@ -70367,7 +70367,7 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
 
       var dato = {
         id: this.inmueble.id,
-        estado: true
+        estado: 1
       };
       axios.post("/api/inmueble-estado", dato).then(function (res) {
         console.log(res.data);
@@ -70380,7 +70380,7 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
 
       var dato = {
         id: this.inmueble.id,
-        estado: false
+        estado: 0
       };
       axios.post("/api/inmueble-estado", dato).then(function (res) {
         console.log(res.data);

@@ -23,7 +23,7 @@
 
 
 <p>Has click en el siguiente botón para contactarte con el interesado .</p>
-<a href="http://localhost:8000/perfil-mensajes"><Button  class="btn" >Ver</Button></a>
+<a href="http://permutado.com/perfil-mensajes"><Button  class="btn" >Ver</Button></a>
 
 
 <p>Permutado: cambiamos la forma de hacer tus negocios !</p>

@@ -162,6 +162,9 @@ export default {
                   "<p class='title-map'>" +
                   direcciones[index].tipo_inmueble +
                   "</p>" +
+                  "<p class='title-map'>" +
+                  direcciones[index].tipo_publicacion +
+                  "</p>" +
                   "<p class='valor-map'>Precio $" +
                   val +
                   "</p>" +

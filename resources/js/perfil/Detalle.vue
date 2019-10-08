@@ -24,11 +24,28 @@
           <!-- <a class="video-link" href="https://www.youtube.com/watch?v=_9HofM72SLs">VIDEO</a> -->
           <div class="group">
             <h4 class="mr-3">{{inmueble.tipo_inmueble}} - {{inmueble.tipo_publicacion}}</h4>
+
             <a v-if="form.video" :href="inmueble.video" class="btn video-link">Ver video</a>
           </div>
         </div>
 
         <div class="col-md-6 col-xl-5 p-4">
+          <div class="group mb-5">
+            <div v-if="publicar === 0">
+              <button
+                class="btn inv"
+                v-if="inmueble.user_id == user.id"
+                @click="publicarInmueble"
+              >Publicar</button>
+            </div>
+            <div v-if="publicar === 1">
+              <button
+                class="btn inv"
+                v-if="inmueble.user_id == user.id"
+                @click="despublicarInmueble"
+              >Quitar</button>
+            </div>
+          </div>
           <div class="group mb-5">
             <a href="#" class="btn" data-toggle="modal" data-target="#contactModal">Contactar</a>
             <button type="button" v-if="!editar" class="btn inv">
@@ -43,6 +60,7 @@
                 @click="activarEdicion"
               >Editar</button>
             </div>
+
             <div v-if="editar">
               <button
                 class="btn inv btn-eliminar"
@@ -51,6 +69,7 @@
               >Eliminar</button>
             </div>
           </div>
+
           <div v-if="form.recibo_efectivo">
             <h4>Permuto por</h4>
             <div class="group" v-for="bien in bienes" :key="bien.id">
@@ -563,6 +582,7 @@ export default {
       enviando: false,
       contact: false,
       editar: true,
+      publicar: this.inmueble.publicar,
       bienes: [],
       imagenes: [],
       form: this.inmueble,
@@ -586,6 +606,29 @@ export default {
     this.getImagenes();
   },
   methods: {
+    publicarInmueble() {
+      let dato = {
+        id: this.inmueble.id,
+        estado: true
+      };
+      axios.post("/api/inmueble-estado", dato).then(res => {
+        console.log(res.data);
+        toastr.success("Inmueble publicado correctamente");
+        this.publicar = 1;
+      });
+    },
+    despublicarInmueble() {
+      let dato = {
+        id: this.inmueble.id,
+        estado: false
+      };
+      axios.post("/api/inmueble-estado", dato).then(res => {
+        console.log(res.data);
+        toastr.success("Inmueble desactivo");
+        this.publicar = 0;
+      });
+    },
+
     addBien() {
       let bien = document.getElementById(`bien` + this.indicador).value;
 

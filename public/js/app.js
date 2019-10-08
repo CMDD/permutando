@@ -70294,6 +70294,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -70312,6 +70331,7 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
       enviando: false,
       contact: false,
       editar: true,
+      publicar: this.inmueble.publicar,
       bienes: [],
       imagenes: [],
       form: this.inmueble,
@@ -70336,6 +70356,32 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
   },
 
   methods: {
+    publicarInmueble: function publicarInmueble() {
+      var _this = this;
+
+      var dato = {
+        id: this.inmueble.id,
+        estado: true
+      };
+      axios.post("/api/inmueble-estado", dato).then(function (res) {
+        console.log(res.data);
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Inmueble publicado correctamente");
+        _this.publicar = 1;
+      });
+    },
+    despublicarInmueble: function despublicarInmueble() {
+      var _this2 = this;
+
+      var dato = {
+        id: this.inmueble.id,
+        estado: false
+      };
+      axios.post("/api/inmueble-estado", dato).then(function (res) {
+        console.log(res.data);
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Inmueble desactivo");
+        _this2.publicar = 0;
+      });
+    },
     addBien: function addBien() {
       var bien = document.getElementById("bien" + this.indicador).value;
 
@@ -70368,17 +70414,17 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
       }
     },
     contactar: function contactar() {
-      var _this = this;
+      var _this3 = this;
 
       this.enviando = true;
       axios.post("/contacto", this.contacto).then(function (res) {
         console.log(res.data);
-        _this.enviando = false;
-        _this.contacto.nombre = "";
-        _this.contacto.email = "";
-        _this.contacto.tel = "";
-        _this.contacto.mensaje = "";
-        _this.contact = true;
+        _this3.enviando = false;
+        _this3.contacto.nombre = "";
+        _this3.contacto.email = "";
+        _this3.contacto.tel = "";
+        _this3.contacto.mensaje = "";
+        _this3.contact = true;
       });
 
       console.log(this.contacto);
@@ -70391,7 +70437,7 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
       });
     },
     actualizar: function actualizar() {
-      var _this2 = this;
+      var _this4 = this;
 
       this.actualizando = true;
       this.form.departamento = this.inmueble.departamento_id;
@@ -70399,25 +70445,25 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
       this.form.userId = this.inmueble.user_id;
       axios.post("/api/editar-inmueble", this.form).then(function (res) {
         console.log(res.data);
-        _this2.actualizando = false;
-        _this2.editar = true;
+        _this4.actualizando = false;
+        _this4.editar = true;
       });
     },
     activarEdicion: function activarEdicion() {
       this.editar = false;
     },
     getBienes: function getBienes() {
-      var _this3 = this;
+      var _this5 = this;
 
       axios.get("/api/bienes/" + this.inmueble.id).then(function (res) {
-        _this3.bienes = res.data;
+        _this5.bienes = res.data;
       });
     },
     getImagenes: function getImagenes() {
-      var _this4 = this;
+      var _this6 = this;
 
       axios.get("/api/imagenes/" + 2).then(function (res) {
-        _this4.imagenes = res.data;
+        _this6.imagenes = res.data;
         setTimeout(function () {
           $(".image-link").magnificPopup({
             type: "image",
@@ -70507,6 +70553,38 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
+          _c("div", { staticClass: "group mb-5" }, [
+            _vm.publicar === 0
+              ? _c("div", [
+                  _vm.inmueble.user_id == _vm.user.id
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn inv",
+                          on: { click: _vm.publicarInmueble }
+                        },
+                        [_vm._v("Publicar")]
+                      )
+                    : _vm._e()
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.publicar === 1
+              ? _c("div", [
+                  _vm.inmueble.user_id == _vm.user.id
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn inv",
+                          on: { click: _vm.despublicarInmueble }
+                        },
+                        [_vm._v("Quitar")]
+                      )
+                    : _vm._e()
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "group mb-5" }, [
             _c(
               "a",
@@ -76835,7 +76913,7 @@ if (document.getElementById("userId")) {
             google.maps.event.addListener(marker, "click", function () {
               var val = (direcciones[index].valor / 1).toFixed(0).replace(".", ",").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-              var contentString = '<div id="content">' + "<p class='title-map'>" + direcciones[index].tipo_inmueble + "</p>" + "<p class='valor-map'>Precio $" + val + "</p>" + '<a href="/perfil-detalle/' + direcciones[index].id + '" >Detalle</a>' + "</div>";
+              var contentString = '<div id="content">' + "<p class='title-map'>" + direcciones[index].tipo_inmueble + "</p>" + "<p class='title-map'>" + direcciones[index].tipo_publicacion + "</p>" + "<p class='valor-map'>Precio $" + val + "</p>" + '<a href="/perfil-detalle/' + direcciones[index].id + '" >Detalle</a>' + "</div>";
               // infowindow.setContent(direcciones[index].tipo +' $' + direcciones[index].valor   );
               infowindow.setContent(contentString);
               infowindow.open(map, this);

@@ -223,19 +223,19 @@ class InmuebleController extends Controller
 
     //Buscadores
     public function buscarTipo($tipo){
-        return Inmueble::where('tipo_inmueble',$tipo)->get();
+        return Inmueble::where('tipo_inmueble',$tipo)->where('publicar',true)->get();
 
     }
     public function buscarDepartamento(Request $request){
-        return Inmueble::where('tipo_inmueble',$request->tipo)->where('departamento_id',$request->departamento)->get();
+        return Inmueble::where('tipo_inmueble',$request->tipo)->where('departamento_id',$request->departamento)->where('publicar',1)->get();
 
     }
     public function buscarEn(Request $request){
-        return Inmueble::where('tipo_inmueble',$request->tipo)->where('tipo_publicacion',$request->en)->get();
+        return Inmueble::where('tipo_inmueble',$request->tipo)->where('tipo_publicacion',$request->en)->where('publicar',1)->get();
 
     }
     public function buscarModo($tipo,$modo){
-      return  Inmueble::where('tipo_inmueble',$tipo)->where('tipo_publicacion',$modo)->get();   
+      return  Inmueble::where('tipo_inmueble',$tipo)->where('tipo_publicacion',$modo)->where('publicar',1)->get();   
     }
     public function info($id){
         return Inmueble::find($id);
@@ -243,5 +243,11 @@ class InmuebleController extends Controller
     }
     public function listaMap(){
         return Inmueble::all();
+    }
+    public function estado(Request $request){
+        $inmueble = Inmueble::find($request->id);
+        $inmueble->publicar = $request->estado;
+        $inmueble->save();
+        return $request;
     }
 }

@@ -53,7 +53,7 @@
             <div class="form-field w50">
               <div class="my-select">
                 <span>Tipo de Inmueble</span>
-                <select v-model="form.tipoInmueble">
+                <select required v-model="form.tipoInmueble">
                   <option value>Seleccione..</option>
                   <option value="Casa">Casa</option>
                   <option value="Apartamento">Apartamento</option>
@@ -398,7 +398,7 @@
             <div class="form-field w50">
               <div class="my-select">
                 <span>Departamento</span>
-                <select v-model="form.departamento" @change="getCiudades()">
+                <select v-model="form.departamento" required @change="getCiudades()">
                   <option value>Selecione...</option>
                   <option
                     v-bind:value="departamento.id"
@@ -412,7 +412,7 @@
             <div class="form-field w50">
               <div class="my-select">
                 <span>Ciudad / Municipio</span>
-                <select v-model="form.ciudad">
+                <select required v-model="form.ciudad">
                   <option
                     v-bind:value="ciudad.id"
                     v-for="ciudad in ciudades"

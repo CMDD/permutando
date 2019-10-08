@@ -73788,6 +73788,7 @@ var render = function() {
                             expression: "form.tipoInmueble"
                           }
                         ],
+                        attrs: { required: "" },
                         on: {
                           change: function($event) {
                             var $$selectedVal = Array.prototype.filter
@@ -75749,6 +75750,7 @@ var render = function() {
                             expression: "form.departamento"
                           }
                         ],
+                        attrs: { required: "" },
                         on: {
                           change: [
                             function($event) {
@@ -75810,6 +75812,7 @@ var render = function() {
                             expression: "form.ciudad"
                           }
                         ],
+                        attrs: { required: "" },
                         on: {
                           change: function($event) {
                             var $$selectedVal = Array.prototype.filter

@@ -31,7 +31,7 @@
 
         <div class="col-md-6 col-xl-5 p-4">
           <div class="group mb-5">
-            <div v-if="publicar === 0">
+            <div v-if="publicar == 0">
               <button
                 type="button"
                 class="btn inv"
@@ -39,7 +39,7 @@
                 @click="publicarInmueble"
               >Publicar</button>
             </div>
-            <div v-if="publicar === 1">
+            <div v-if="publicar == 1">
               <button
                 type="button"
                 class="btn inv"

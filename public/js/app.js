@@ -70560,7 +70560,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
           _c("div", { staticClass: "group mb-5" }, [
-            _vm.publicar === 0
+            _vm.publicar == 0
               ? _c("div", [
                   _vm.inmueble.user_id == _vm.user.id
                     ? _c(
@@ -70576,7 +70576,7 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _vm.publicar === 1
+            _vm.publicar == 1
               ? _c("div", [
                   _vm.inmueble.user_id == _vm.user.id
                     ? _c(

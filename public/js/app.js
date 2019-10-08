@@ -73641,7 +73641,7 @@ if (document.getElementById("userId")) {
         //   mascotas:'',
         // }
         __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Inmueble subido correctamente");
-        window.location.href = "http://localhost:8000/perfil-detalle/" + res.data;
+        window.location.href = "http://permutado.com/perfil-detalle/" + res.data;
       });
     },
     getDepartamentos: function getDepartamentos() {

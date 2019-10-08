@@ -841,7 +841,7 @@ export default {
           //   mascotas:'',
           // }
           toastr.success("Inmueble subido correctamente");
-          window.location.href = `http://localhost:8000/perfil-detalle/${res.data}`;
+          window.location.href = `http://permutado.com/perfil-detalle/${res.data}`;
         });
     },
     getDepartamentos() {

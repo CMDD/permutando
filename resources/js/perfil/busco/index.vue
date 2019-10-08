@@ -102,7 +102,7 @@ export default {
       });
     },
     getEn() {
-      axios.post("api/buscar-en", this.busco).then(res => {
+      axios.post("/api/buscar-en", this.busco).then(res => {
         this.resultadoIndex = res.data;
         this.cargarMap(this.resultadoIndex, 8);
       });

@@ -73336,6 +73336,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -73692,6 +73693,7 @@ var render = function() {
                             expression: "form.tipoPublicacion"
                           }
                         ],
+                        attrs: { required: "" },
                         on: {
                           change: function($event) {
                             var $$selectedVal = Array.prototype.filter
@@ -75815,7 +75817,7 @@ var render = function() {
                           expression: "form.administracion"
                         }
                       ],
-                      attrs: { type: "text" },
+                      attrs: { type: "text", required: "" },
                       domProps: { value: _vm.form.administracion },
                       on: {
                         input: function($event) {
@@ -75846,7 +75848,7 @@ var render = function() {
                           expression: "form.anos"
                         }
                       ],
-                      attrs: { type: "text" },
+                      attrs: { type: "text", required: "" },
                       domProps: { value: _vm.form.anos },
                       on: {
                         input: function($event) {
@@ -76108,6 +76110,13 @@ var render = function() {
             _vm._v(" "),
             _c("fieldset", [
               _c("h4", [_vm._v("Permuto")]),
+              _vm._v(" "),
+              _vm.form.tipoPublicacion === "Permuto"
+                ? _c("div", { staticClass: "popup-permuto" }, [
+                    _vm._v("Debe consignar el 50% en total"),
+                    _c("span", { staticClass: "closed" }, [_vm._v("×")])
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _vm.form.tipoPublicacion === "Permuto"
                 ? _c("div", { staticClass: "form-group" }, [

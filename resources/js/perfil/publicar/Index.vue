@@ -466,7 +466,7 @@
             <textarea v-model="form.caracteristicas" placeholder="Otras características"></textarea>
             <div class="form-field value">
               <span>Valor: $</span>
-              <input type="text" v-model="form.valor" />
+              <input required type="text" v-model="form.valor" />
             </div>
           </div>
           <div class="f1-buttons">
@@ -514,8 +514,13 @@
 
         <fieldset>
           <h4>Permuto</h4>
-            <div class="popup-permuto" v-if="form.tipoPublicacion === 'Permuto'">Debe consignar el 50% en total<span class="closed">&times;</span></div>
-            <div class="form-group" v-if="form.tipoPublicacion === 'Permuto'">
+          <div class="popup-permuto" v-if="form.tipoPublicacion === 'Permuto'">
+            Ten en cuenta que si elijes ésta opción, solo podrás añadir dinero en efectivo, una vez hayas completado en el formulario más del 50% del valor de tu propiedad en bienes.
+            <span
+              class="closed"
+            >&times;</span>
+          </div>
+          <div class="form-group" v-if="form.tipoPublicacion === 'Permuto'">
             <div class="form-field w100">
               <div class="my-text">
                 <span>Valor del inmueble</span>$

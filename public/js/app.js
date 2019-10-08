@@ -73370,6 +73370,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -76055,7 +76060,7 @@ var render = function() {
                         expression: "form.valor"
                       }
                     ],
-                    attrs: { type: "text" },
+                    attrs: { required: "", type: "text" },
                     domProps: { value: _vm.form.valor },
                     on: {
                       input: function($event) {
@@ -76146,7 +76151,9 @@ var render = function() {
               _vm._v(" "),
               _vm.form.tipoPublicacion === "Permuto"
                 ? _c("div", { staticClass: "popup-permuto" }, [
-                    _vm._v("Debe consignar el 50% en total"),
+                    _vm._v(
+                      "\n          Ten en cuenta que si elijes ésta opción, solo podrás añadir dinero en efectivo, una vez hayas completado en el formulario más del 50% del valor de tu propiedad en bienes.\n          "
+                    ),
                     _c("span", { staticClass: "closed" }, [_vm._v("×")])
                   ])
                 : _vm._e(),

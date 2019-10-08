@@ -15,10 +15,10 @@
                                 {!!csrf_field()!!}
                                 <a href="#" class="btn fb">Iniciar sesión con Facebook</a>
                                 <a href="#" class="btn gl">Iniciar sesión con Google</a>
-                                <input type="text" name="name" class="form-control mb-2" placeholder="Nombre">
+                                <input type="text" required name="name" class="form-control mb-2" placeholder="Nombre">
                                 <!--<input type="text" name="tel" class="form-control mb-3" placeholder="Tel/Cel">-->
-                                <input type="email" name="email" class="form-control mb-2" placeholder="Correo electrónico">
-                                <input type="password" name="password" class="form-control mb-2" placeholder="Contraseña">
+                                <input type="email" required  name="email" class="form-control mb-2" placeholder="Correo electrónico">
+                                <input type="password" required name="password" class="form-control mb-2" placeholder="Contraseña">
                                 <div class="tipo">
                                     <span>¿Eres inmobiliario?</span>
                                     <div class="radio-custom">
@@ -47,8 +47,8 @@
                                 {!!csrf_field()!!}
                                 <a href="#" class="btn fb">Iniciar sesión con Facebook</a>
                                 <a href="#" class="btn gl">Iniciar sesión con Google</a>
-                                <input type="email" name="email" class="form-control mb-2" placeholder="Correo electrónico">
-                                <input type="password" name="password" class="form-control mb-2" placeholder="Contraseña">
+                                <input type="email" required name="email" class="form-control mb-2" placeholder="Correo electrónico">
+                                <input type="password" required name="password" class="form-control mb-2" placeholder="Contraseña">
                                 <button type="submit" class="btn">Iniciar sesión</button>
                             </form>
                         </div>

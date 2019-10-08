@@ -246,7 +246,7 @@ class InmuebleController extends Controller
     }
     public function estado(Request $request){
         $inmueble = Inmueble::find((int)$request->id);
-        $inmueble->publicar = $request->estado;
+        $inmueble->publicar = (int)$request->estado;
         $inmueble->save();
         return $inmueble;
     }

@@ -33,7 +33,7 @@
 .f1-step.activated p { color: #f19100; }
 .f1-step.active p { color: #f19100; }
 
-.f1 fieldset { display: none; text-align: left; }
+.f1 fieldset { display: none; text-align: left; position: relative;}
 
 .f1-buttons {
     overflow: hidden;
@@ -309,6 +309,7 @@
 
 .f1 .input-error {
     border-color: #f19100!important;
+    color: #f19100!important;
 }
 
 .image {

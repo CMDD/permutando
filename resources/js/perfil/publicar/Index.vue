@@ -41,7 +41,7 @@
             <div class="form-field w50">
               <div class="my-select">
                 <span>Tipo de publicación</span>
-                <select v-model="form.tipoPublicacion">
+                <select v-model="form.tipoPublicacion" required>
                   <option value>Seleccione..</option>
                   <option value="Venta">Venta</option>
                   <option value="Arriendo">Arriendo</option>
@@ -424,13 +424,13 @@
             <div class="form-field w50">
               <div class="my-text">
                 <span>Valor Administracion</span>
-                <input v-model="form.administracion" type="text" />
+                <input v-model="form.administracion" type="text" required />
               </div>
             </div>
             <div class="form-field w50">
               <div class="my-text">
                 <span>Años de Construcción</span>
-                <input v-model="form.anos" type="text" />
+                <input v-model="form.anos" type="text" required />
               </div>
             </div>
             <div class="form-field w50">
@@ -514,7 +514,8 @@
 
         <fieldset>
           <h4>Permuto</h4>
-          <div class="form-group" v-if="form.tipoPublicacion === 'Permuto'">
+            <div class="popup-permuto" v-if="form.tipoPublicacion === 'Permuto'">Debe consignar el 50% en total<span class="closed">&times;</span></div>
+            <div class="form-group" v-if="form.tipoPublicacion === 'Permuto'">
             <div class="form-field w100">
               <div class="my-text">
                 <span>Valor del inmueble</span>$

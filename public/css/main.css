@@ -19,32 +19,120 @@
     padding: .2rem 1rem;
 }
 
+#accordionLogin {
+    padding: 1.25rem 1.25rem 0 1.25rem;
+}
+#accordionLogin .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    line-height: 30px;
+    z-index: 10px;
+}
+#accordionLogin .card {
+    border: 0;
+}
 #accordionLogin .card-header {
     cursor: pointer;
     font-size: 1.1rem;
     font-weight: 500;
+    background: transparent;
+    text-align: center;
+    border: 0;
+    padding: 0 0 1.25rem 0;
+    color: #005b95;
+}
+#accordionLogin .card-header span {
+    color: #f19100;
+}
+#accordionLogin .card-body {
+    padding: 0 0 1.25rem 0;
 }
 
+#accordionLogin .form-control {
+    border-color: #005b95;
+    border-radius: 0;
+    color: #005b95;
+    font-size: .9rem;
+}
+#accordionLogin .form-control::placeholder {
+    color: #347dac;
+}
+#accordionLogin .tipo {
+    background: #ffe6c1;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: .5rem;
+    font-size: .9rem;
+    color: #f19100;
+}
 #accordionLogin .btn {
     color:#fff;
     background-color: #f19100;
     background-repeat: no-repeat;
     background-size: 24px;
     background-position: center left 5px;
+    width: 100%;
+    border-radius: 0;
 }
 
 #accordionLogin .btn.fb {
     color:#fff;
     background-color: #3b5998;
-    padding-left: 35px;
+    padding-left: 50px;
+    margin-bottom: 10px;
+    background-position: center left 10px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 24 24'%3E%3Cpath d='M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z'/%3E%3C/svg%3E");
 }
 
 #accordionLogin .btn.gl {
     color:#fff;
     background-color: #d64a39;
-    padding-left: 35px;
+    padding-left: 50px;
+    margin-bottom: 10px;
+    background-position: center left 10px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 24 24'%3E%3Cpath d='M7 11v2.4h3.97c-.16 1.029-1.2 3.02-3.97 3.02-2.39 0-4.34-1.979-4.34-4.42 0-2.44 1.95-4.42 4.34-4.42 1.36 0 2.27.58 2.79 1.08l1.9-1.83c-1.22-1.14-2.8-1.83-4.69-1.83-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.721-2.84 6.721-6.84 0-.46-.051-.81-.111-1.16h-6.61zm0 0 17 2h-3v3h-2v-3h-3v-2h3v-3h2v3h3v2z' fill-rule='evenodd' clip-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+
+/* The container */
+#accordionLogin .radio-custom label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin: 10px 10px 5px 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* Hide the browser's default radio button */
+#accordionLogin .radio-custom input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+/* Create a custom radio button */
+#accordionLogin .radio-custom .checkmark {
+    display: block;
+    width: 30px;
+    line-height: 30px;
+    background-color: #f19100;
+    border-radius: 50%;
+    color: #fff;
+}
+/* When the radio button is checked, add a blue background */
+#accordionLogin .radio-custom input:checked ~ .checkmark {
+    background-color: #005b95;
+}
+
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 400px;
+        margin: 1.75rem auto;
+    }
 }
 
 .btn.focus, .btn:focus {

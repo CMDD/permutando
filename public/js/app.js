@@ -76906,7 +76906,7 @@ if (document.getElementById("userId")) {
     getDepartamento: function getDepartamento() {
       var _this2 = this;
 
-      axios.post("/api/buscar-departamento/", this.busco).then(function (res) {
+      axios.post("api/buscar-departamento/", this.busco).then(function (res) {
         _this2.resultadoIndex = res.data;
         _this2.cargarMap(_this2.resultadoIndex, 10);
       });
@@ -76914,7 +76914,7 @@ if (document.getElementById("userId")) {
     getEn: function getEn() {
       var _this3 = this;
 
-      axios.post("/api/buscar-en", this.busco).then(function (res) {
+      axios.post("api/buscar-en", this.busco).then(function (res) {
         _this3.resultadoIndex = res.data;
         _this3.cargarMap(_this3.resultadoIndex, 8);
       });

@@ -76906,7 +76906,7 @@ if (document.getElementById("userId")) {
     getDepartamento: function getDepartamento() {
       var _this2 = this;
 
-      axios.post("api/buscar-departamento/", this.busco).then(function (res) {
+      axios.post("/api/buscar-departamento/", this.busco).then(function (res) {
         _this2.resultadoIndex = res.data;
         _this2.cargarMap(_this2.resultadoIndex, 10);
       });
@@ -76922,14 +76922,14 @@ if (document.getElementById("userId")) {
     getDepartamentos: function getDepartamentos() {
       var _this4 = this;
 
-      axios.get("api/departamentos").then(function (res) {
+      axios.get("/api/departamentos").then(function (res) {
         _this4.departamentos = res.data;
       });
     },
     getCiudades: function getCiudades() {
       var _this5 = this;
 
-      axios.get("api/ciudades/" + this.busco.departamento).then(function (res) {
+      axios.get("/api/ciudades/" + this.busco.departamento).then(function (res) {
         _this5.ciudades = res.data;
       });
       this.getDepartamento();

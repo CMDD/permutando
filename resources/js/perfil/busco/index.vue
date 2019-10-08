@@ -96,7 +96,7 @@ export default {
       });
     },
     getDepartamento() {
-      axios.post("api/buscar-departamento/", this.busco).then(res => {
+      axios.post("/api/buscar-departamento/", this.busco).then(res => {
         this.resultadoIndex = res.data;
         this.cargarMap(this.resultadoIndex, 10);
       });
@@ -108,12 +108,12 @@ export default {
       });
     },
     getDepartamentos() {
-      axios.get("api/departamentos").then(res => {
+      axios.get("/api/departamentos").then(res => {
         this.departamentos = res.data;
       });
     },
     getCiudades() {
-      axios.get("api/ciudades/" + this.busco.departamento).then(res => {
+      axios.get("/api/ciudades/" + this.busco.departamento).then(res => {
         this.ciudades = res.data;
       });
       this.getDepartamento();

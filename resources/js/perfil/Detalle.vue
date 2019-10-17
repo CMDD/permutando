@@ -3,7 +3,7 @@
     <form>
       <div class="row justify-content-center">
         <div class="col-md-6 col-xl-5 p-4">
-          <div class="gallery mb-3" id="carousel">
+          <!--<div class="gallery mb-3" id="carousel">
             <div>
               <a
                 class="image-link"
@@ -11,8 +11,8 @@
                 v-bind:style="{ backgroundImage: 'url(' + '/' + inmueble.imagen+')' }"
               ></a>
               <!--<img :src="'/'+inmueble.imagen" />-->
-            </div>
-
+           <!-- </div>-->
+<!--
             <div v-for="image in imagenes" :key="image.id">
               <a
                 class="image-link"
@@ -20,8 +20,27 @@
                 v-bind:style="{ backgroundImage: 'url(' + '/' + image.image+')' }"
               ></a>
             </div>
-          </div>
+          </div>-->
           <!-- <a class="video-link" href="https://www.youtube.com/watch?v=_9HofM72SLs">VIDEO</a> -->
+            <div class="edit-gallery">
+                <p>Imagen principal</p>
+                <div class="img-prev" style="background-image: url(http://permutando.test/img/pc.png);"><span class="delete">&times;</span></div>
+                <div class="image">
+                    <input type="file" id="file" class="inputfile">
+                    <label for="file">Subir</label>
+                </div>
+                <hr>
+                <p>Otras</p>
+                <div class="img-prev" style="background-image: url(http://permutando.test/img/pc.png);"><span class="delete">&times;</span></div>
+                <div class="img-prev" style="background-image: url(http://permutando.test/img/pc.png);"><span class="delete">&times;</span></div>
+                <div class="img-prev" style="background-image: url(http://permutando.test/img/pc.png);"><span class="delete">&times;</span></div>
+                <div class="image">
+                    <input type="file" id="file2" multiple="multiple" class="inputfile">
+                    <label for="file2">Subir imágenes</label>
+                </div>
+
+            </div>
+
           <div class="group">
             <h4 class="mr-3">{{inmueble.tipo_inmueble}} - {{inmueble.tipo_publicacion}}</h4>
 
@@ -93,7 +112,7 @@
             </div>
             <div class="group justify-content-end">
               <a
-                v-if="inmueble.user_id != user.id"
+                v-if="inmueble.user_id == user.id"
                 href="#"
                 data-toggle="modal"
                 data-target="#permutoModal"
@@ -514,7 +533,7 @@
       </div>
     </div>
     <div id="permutoModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
           <div class="modal-header">
             <h4>Permuto</h4>
@@ -523,7 +542,7 @@
             </button>
           </div>
 
-          <div class="modal-body row box">
+          <div class="modal-body">
             <div class="form-group col-md-12">
               <div class="form-field w100">
                 <div class="my-text">
@@ -873,6 +892,70 @@ export default {
 .form-group .form-field.w65 .my-text input {
   max-width: none;
 }
+
+.edit-gallery p {
+    margin-bottom: 0;
+}
+.edit-gallery .img-prev {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin: 20px 20px 0 0;
+}
+.edit-gallery .delete {
+    position: absolute;
+    right: -9px;
+    top: -4px;
+    width: 25px;
+    line-height: 24px;
+    text-align: center;
+    background: #a71e1d;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 20px;
+    padding-bottom: 1px;
+    cursor: pointer;
+}
+
+.edit-gallery .image {
+    display: block;
+    margin-top: 15px;
+    position: relative;
+}
+.edit-gallery .image .inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+    top: 0;
+	z-index: -1;
+}
+.edit-gallery .image .inputfile + label {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #005b95;
+    text-align: center;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 0;
+    padding: 5px 10px;
+}
+.edit-gallery .image .inputfile + label:hover {
+    background-color: #f19100;
+}
+
+
 </style>
 
 styl

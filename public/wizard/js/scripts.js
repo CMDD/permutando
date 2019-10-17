@@ -39,7 +39,7 @@ jQuery(document).ready(function() {
     	var progress_line = $(this).parents('.f1').find('.f1-progress-line');
 
     	// fields validation
-    	parent_fieldset.find('input[type="text"]:required, input[type="password"]:required, textarea:required, select:required').each(function() {
+    	parent_fieldset.find('input[type="text"]:required, input[type="password"]:required, input[type="file"]:required, textarea:required, select:required').each(function() {
     		if( $(this).val() == "" ) {
     			$(this).addClass('input-error');
     			next_step = false;
@@ -98,6 +98,10 @@ jQuery(document).ready(function() {
     	});
     	// fields validation
 
+    });
+
+    $(document).on('click', '.open-popup', function() {
+        $('.popup-permuto').fadeIn();
     });
 
     $(document).on('click', '.popup-permuto .closed', function() {

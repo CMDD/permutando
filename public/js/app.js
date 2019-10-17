@@ -69578,12 +69578,16 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "box" }, [
-                _c("div", {
-                  staticClass: "image",
-                  style: {
-                    backgroundImage: "url(" + "/" + inmueble.imagen + ")"
-                  }
-                }),
+                _c(
+                  "div",
+                  {
+                    staticClass: "image",
+                    style: {
+                      backgroundImage: "url(" + "/" + inmueble.imagen + ")"
+                    }
+                  },
+                  [_c("span", { staticClass: "delete" }, [_vm._v("×")])]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "content" }, [
                   _c("div", { staticClass: "name" }, [
@@ -69734,7 +69738,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.gallery a.image-link {\n  height: 350px;\n  display: block;\n  background-size: cover;\n  background-position: center;\n}\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.form input {\n  margin-top: 3%;\n}\n.form textarea {\n  margin-top: 3%;\n}\n.btn-enviar {\n  margin-top: 2%;\n  width: 100%;\n}\n.btn-eliminar {\n  background-color: #a71e1e !important;\n}\n.box-contact {\n  margin: auto;\n}\n.text-contac {\n  font-size: 27px;\n  color: #7db227;\n}\n.my-text {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.my-text span,\n.my-checkbox span {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  margin-right: 15px;\n}\n.my-text input {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  margin: 0;\n  padding: 5px;\n  border: 1px solid transparent;\n  background: #f1f1f1;\n  max-width: 150px;\n  height: 32px;\n}\n.form-group .form-field.w100 {\n  width: 96%;\n}\n.form-group .form-field {\n  vertical-align: bottom;\n  text-rendering: auto;\n  width: 29.333%;\n  margin: 20px 2%;\n  border-bottom: 2px solid #005b95;\n  padding-bottom: 5px;\n  color: #005b95;\n}\n.form-group .form-field,\n.form-group h5 {\n  display: inline-block;\n  zoom: 1;\n  *display: inline;\n  letter-spacing: normal;\n  word-spacing: normal;\n}\n.form-group {\n  letter-spacing: -0.31em;\n  *letter-spacing: normal;\n  *word-spacing: -0.43em;\n  text-rendering: optimizespeed;\n}\n.form-group .form-field.w50 {\n  width: 46%;\n}\n.form-group.generator .form-field {\n  border-bottom: 0;\n  margin-top: 0;\n}\n.form-group .form-field.w100 .my-text input,\n.form-group .form-field.w35 .my-text input,\n.form-group .form-field.w65 .my-text input {\n  max-width: none;\n}\n", ""]);
+exports.push([module.i, "\n.gallery a.image-link {\n  height: 350px;\n  display: block;\n  background-size: cover;\n  background-position: center;\n}\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.form input {\n  margin-top: 3%;\n}\n.form textarea {\n  margin-top: 3%;\n}\n.btn-enviar {\n  margin-top: 2%;\n  width: 100%;\n}\n.btn-eliminar {\n  background-color: #a71e1e !important;\n}\n.box-contact {\n  margin: auto;\n}\n.text-contac {\n  font-size: 27px;\n  color: #7db227;\n}\n.my-text {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.my-text span,\n.my-checkbox span {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  margin-right: 15px;\n}\n.my-text input {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  margin: 0;\n  padding: 5px;\n  border: 1px solid transparent;\n  background: #f1f1f1;\n  max-width: 150px;\n  height: 32px;\n}\n.form-group .form-field.w100 {\n  width: 96%;\n}\n.form-group .form-field {\n  vertical-align: bottom;\n  text-rendering: auto;\n  width: 29.333%;\n  margin: 20px 2%;\n  border-bottom: 2px solid #005b95;\n  padding-bottom: 5px;\n  color: #005b95;\n}\n.form-group .form-field,\n.form-group h5 {\n  display: inline-block;\n  zoom: 1;\n  *display: inline;\n  letter-spacing: normal;\n  word-spacing: normal;\n}\n.form-group {\n  letter-spacing: -0.31em;\n  *letter-spacing: normal;\n  *word-spacing: -0.43em;\n  text-rendering: optimizespeed;\n}\n.form-group .form-field.w50 {\n  width: 46%;\n}\n.form-group.generator .form-field {\n  border-bottom: 0;\n  margin-top: 0;\n}\n.form-group .form-field.w100 .my-text input,\n.form-group .form-field.w35 .my-text input,\n.form-group .form-field.w65 .my-text input {\n  max-width: none;\n}\n.edit-gallery p {\n    margin-bottom: 0;\n}\n.edit-gallery .img-prev {\n    width: 80px;\n    height: 80px;\n    display: inline-block;\n    background-size: cover;\n    background-position: center;\n    position: relative;\n    margin: 20px 20px 0 0;\n}\n.edit-gallery .delete {\n    position: absolute;\n    right: -9px;\n    top: -4px;\n    width: 25px;\n    line-height: 24px;\n    text-align: center;\n    background: #a71e1d;\n    color: #fff;\n    border-radius: 50%;\n    font-size: 20px;\n    padding-bottom: 1px;\n    cursor: pointer;\n}\n.edit-gallery .image {\n    display: block;\n    margin-top: 15px;\n    position: relative;\n}\n.edit-gallery .image .inputfile {\n\twidth: 0.1px;\n\theight: 0.1px;\n\topacity: 0;\n\toverflow: hidden;\n\tposition: absolute;\n    top: 0;\n\tz-index: -1;\n}\n.edit-gallery .image .inputfile + label {\n    display: block;\n    width: 100%;\n    max-width: 200px;\n    color: #fff;\n    border-radius: 5px;\n    background-color: #005b95;\n    text-align: center;\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    cursor: pointer;\n    margin: 0;\n    padding: 5px 10px;\n}\n.edit-gallery .image .inputfile + label:hover {\n    background-color: #f19100;\n}\n\n\n", ""]);
 
 // exports
 
@@ -69747,6 +69751,25 @@ exports.push([module.i, "\n.gallery a.image-link {\n  height: 350px;\n  display:
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_toastr__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_toastr__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70538,34 +70561,7 @@ var render = function() {
     _c("form", [
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-          _c(
-            "div",
-            { staticClass: "gallery mb-3", attrs: { id: "carousel" } },
-            [
-              _c("div", [
-                _c("a", {
-                  staticClass: "image-link",
-                  style: {
-                    backgroundImage: "url(" + "/" + _vm.inmueble.imagen + ")"
-                  },
-                  attrs: { href: "/" + _vm.inmueble.imagen }
-                })
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.imagenes, function(image) {
-                return _c("div", { key: image.id }, [
-                  _c("a", {
-                    staticClass: "image-link",
-                    style: {
-                      backgroundImage: "url(" + "/" + image.image + ")"
-                    },
-                    attrs: { href: "/" + image.image }
-                  })
-                ])
-              })
-            ],
-            2
-          ),
+          _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "group" }, [
             _c("h4", { staticClass: "mr-3" }, [
@@ -70754,7 +70750,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "group justify-content-end" }, [
-                    _vm.inmueble.user_id != _vm.user.id
+                    _vm.inmueble.user_id == _vm.user.id
                       ? _c(
                           "a",
                           {
@@ -71329,16 +71325,16 @@ var render = function() {
                         }
                       }
                     }),
-                    _vm._v("Gimnasio\n            ")
+                    _vm._v("Gimnasio\n              ")
                   ]),
-                  _vm._v(" "),
-                  _vm._m(0),
                   _vm._v(" "),
                   _vm._m(1),
                   _vm._v(" "),
                   _vm._m(2),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _vm._m(4)
                 ])
               ])
             ])
@@ -72136,8 +72132,6 @@ var render = function() {
                 _c("span", [_vm._v("Tipo de Construccion")]),
                 _vm._v(" "),
                 _c("div", { staticClass: "checks" }, [
-                  _vm._m(4),
-                  _vm._v(" "),
                   _vm._m(5),
                   _vm._v(" "),
                   _vm._m(6),
@@ -72145,6 +72139,8 @@ var render = function() {
                   _vm._m(7),
                   _vm._v(" "),
                   _vm._m(8),
+                  _vm._v(" "),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c("label", [
                     _c("input", {
@@ -72191,14 +72187,14 @@ var render = function() {
                         }
                       }
                     }),
-                    _vm._v("Casa\n            ")
+                    _vm._v("Casa\n              ")
                   ]),
-                  _vm._v(" "),
-                  _vm._m(9),
                   _vm._v(" "),
                   _vm._m(10),
                   _vm._v(" "),
-                  _vm._m(11)
+                  _vm._m(11),
+                  _vm._v(" "),
+                  _vm._m(12)
                 ])
               ])
             ])
@@ -72222,7 +72218,7 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(12),
+            _vm._m(13),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body row" }, [
               _c("div", { staticClass: "col-md-6 form" }, [
@@ -72424,145 +72420,149 @@ var render = function() {
         }
       },
       [
-        _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _vm._m(13),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body row box" }, [
-              _c("div", { staticClass: "form-group col-md-12" }, [
-                _c("div", { staticClass: "form-field w100" }, [
-                  _c("div", { staticClass: "my-text" }, [
-                    _c("span", [_vm._v("Valor del inmueble")]),
-                    _vm._v("$\n                "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.valor,
-                          expression: "form.valor"
-                        }
-                      ],
-                      attrs: { type: "text" },
-                      domProps: { value: _vm.form.valor },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "valor", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                ])
-              ]),
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-dialog-centered modal-xl" },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(14),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group generator" }, [
-                _c("h5", [_vm._v("¿Qué bienes ofrecerías?")]),
-                _vm._v(" "),
-                _vm._m(14),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-field w50" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn add",
-                      attrs: { href: "#" },
-                      on: { click: _vm.addBien }
-                    },
-                    [_vm._v("Agregar más bienes")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-field w50" }, [
-                  _c("div", { staticClass: "my-text text-right" }, [
-                    _c("span", [_vm._v("Valor total")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.valorTotal,
-                          expression: "valorTotal"
-                        }
-                      ],
-                      attrs: { type: "text" },
-                      domProps: { value: _vm.valorTotal },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "form-group col-md-12" }, [
+                  _c("div", { staticClass: "form-field w100" }, [
+                    _c("div", { staticClass: "my-text" }, [
+                      _c("span", [_vm._v("Valor del inmueble")]),
+                      _vm._v("$\n                  "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.valor,
+                            expression: "form.valor"
                           }
-                          _vm.valorTotal = $event.target.value
+                        ],
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.form.valor },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "valor", $event.target.value)
+                          }
                         }
-                      }
-                    })
+                      })
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "group-efectivo" }, [
+                _c("div", { staticClass: "form-group generator" }, [
+                  _c("h5", [_vm._v("¿Qué bienes ofrecerías?")]),
+                  _vm._v(" "),
                   _vm._m(15),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-field w50" }, [
-                    _vm.active
-                      ? _c("div", { staticClass: "my-text text-right" }, [
-                          _c("span", [_vm._v("$")]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.recibo_efectivo,
-                                expression: "form.recibo_efectivo"
-                              }
-                            ],
-                            attrs: { type: "text" },
-                            domProps: { value: _vm.form.recibo_efectivo },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.form,
-                                  "recibo_efectivo",
-                                  $event.target.value
-                                )
-                              }
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn add",
+                        attrs: { href: "#" },
+                        on: { click: _vm.addBien }
+                      },
+                      [_vm._v("Agregar más bienes")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-field w50" }, [
+                    _c("div", { staticClass: "my-text text-right" }, [
+                      _c("span", [_vm._v("Valor total")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.valorTotal,
+                            expression: "valorTotal"
+                          }
+                        ],
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.valorTotal },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
                             }
-                          })
-                        ])
-                      : _vm._e()
+                            _vm.valorTotal = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "group-efectivo" }, [
+                    _vm._m(16),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-field w50" }, [
+                      _vm.active
+                        ? _c("div", { staticClass: "my-text text-right" }, [
+                            _c("span", [_vm._v("$")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.recibo_efectivo,
+                                  expression: "form.recibo_efectivo"
+                                }
+                              ],
+                              attrs: { type: "text" },
+                              domProps: { value: _vm.form.recibo_efectivo },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "recibo_efectivo",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        : _vm._e()
+                    ])
                   ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "f1-buttons col-md-12 text-right" }, [
+                  !_vm.enviando
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-submit",
+                          attrs: { type: "submit" },
+                          on: { click: _vm.permutando }
+                        },
+                        [_vm._v("Enviar")]
+                      )
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-submit",
+                          attrs: { type: "button" }
+                        },
+                        [_vm._v("Enviado")]
+                      )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "f1-buttons col-md-12 text-right" }, [
-                !_vm.enviando
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-submit",
-                        attrs: { type: "submit" },
-                        on: { click: _vm.permutando }
-                      },
-                      [_vm._v("Enviar")]
-                    )
-                  : _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-submit",
-                        attrs: { type: "button" }
-                      },
-                      [_vm._v("Enviado")]
-                    )
               ])
             ])
-          ])
-        ])
+          ]
+        )
       ]
     )
   ])
@@ -72572,81 +72572,74 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [
-      _c("input", { attrs: { type: "checkbox", checked: "" } }),
-      _vm._v("Zonas húmedas\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _c("input", { attrs: { type: "checkbox" } }),
-      _vm._v("BBQ\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _c("input", { attrs: { type: "checkbox", checked: "" } }),
-      _vm._v("Parques para niños\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _c("input", { attrs: { type: "checkbox" } }),
-      _vm._v("Salón comunal\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _c("input", { attrs: { type: "checkbox", checked: "" } }),
-      _vm._v("Parqueadero cubierto\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _c("input", { attrs: { type: "checkbox" } }),
-      _vm._v("Parqueadero descubierto\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _c("input", { attrs: { type: "checkbox", checked: "" } }),
-      _vm._v("Pozo séptico\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _c("input", { attrs: { type: "checkbox" } }),
-      _vm._v("Alcantarillado\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _c("input", { attrs: { type: "checkbox" } }),
-      _vm._v("Zonas deportivas\n            ")
+    return _c("div", { staticClass: "edit-gallery" }, [
+      _c("p", [_vm._v("Imagen principal")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "img-prev",
+          staticStyle: {
+            "background-image": "url(http://permutando.test/img/pc.png)"
+          }
+        },
+        [_c("span", { staticClass: "delete" }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "image" }, [
+        _c("input", {
+          staticClass: "inputfile",
+          attrs: { type: "file", id: "file" }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "file" } }, [_vm._v("Subir")])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("p", [_vm._v("Otras")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "img-prev",
+          staticStyle: {
+            "background-image": "url(http://permutando.test/img/pc.png)"
+          }
+        },
+        [_c("span", { staticClass: "delete" }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "img-prev",
+          staticStyle: {
+            "background-image": "url(http://permutando.test/img/pc.png)"
+          }
+        },
+        [_c("span", { staticClass: "delete" }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "img-prev",
+          staticStyle: {
+            "background-image": "url(http://permutando.test/img/pc.png)"
+          }
+        },
+        [_c("span", { staticClass: "delete" }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "image" }, [
+        _c("input", {
+          staticClass: "inputfile",
+          attrs: { type: "file", id: "file2", multiple: "multiple" }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "file2" } }, [_vm._v("Subir imágenes")])
+      ])
     ])
   },
   function() {
@@ -72655,7 +72648,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", [
       _c("input", { attrs: { type: "checkbox", checked: "" } }),
-      _vm._v("Bodega\n            ")
+      _vm._v("Zonas húmedas\n              ")
     ])
   },
   function() {
@@ -72664,7 +72657,16 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", [
       _c("input", { attrs: { type: "checkbox" } }),
-      _vm._v("Piscina\n            ")
+      _vm._v("BBQ\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("input", { attrs: { type: "checkbox", checked: "" } }),
+      _vm._v("Parques para niños\n              ")
     ])
   },
   function() {
@@ -72673,7 +72675,79 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", [
       _c("input", { attrs: { type: "checkbox" } }),
-      _vm._v("Kiosko\n            ")
+      _vm._v("Salón comunal\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("input", { attrs: { type: "checkbox", checked: "" } }),
+      _vm._v("Parqueadero cubierto\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("input", { attrs: { type: "checkbox" } }),
+      _vm._v("Parqueadero descubierto\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("input", { attrs: { type: "checkbox", checked: "" } }),
+      _vm._v("Pozo séptico\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("input", { attrs: { type: "checkbox" } }),
+      _vm._v("Alcantarillado\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("input", { attrs: { type: "checkbox" } }),
+      _vm._v("Zonas deportivas\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("input", { attrs: { type: "checkbox", checked: "" } }),
+      _vm._v("Bodega\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("input", { attrs: { type: "checkbox" } }),
+      _vm._v("Piscina\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("input", { attrs: { type: "checkbox" } }),
+      _vm._v("Kiosko\n              ")
     ])
   },
   function() {
@@ -73759,11 +73833,7 @@ var render = function() {
           "form",
           {
             staticClass: "f1",
-            attrs: {
-              name: "myform",
-              role: "form",
-              enctype: "multipart/form-data"
-            },
+            attrs: { role: "form", enctype: "multipart/form-data" },
             on: {
               submit: function($event) {
                 $event.preventDefault()
@@ -76467,7 +76537,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-field w50" }, [
-      _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "btn open-popup", attrs: { href: "#" } }, [
         _vm._v("Efectivo")
       ])
     ])

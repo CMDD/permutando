@@ -7,7 +7,7 @@
     </div>
     <div class="box">
       <form
-        name="myform"
+
         role="form"
         @submit.prevent="storeInmueble"
         class="f1"
@@ -556,7 +556,7 @@
             </div>
             <div class="group-efectivo">
               <div class="form-field w50">
-                <a href="#" class="btn">Efectivo</a>
+                <a href="#" class="btn open-popup">Efectivo</a>
               </div>
               <div class="form-field w50">
                 <div class="my-text text-right" v-if="active">

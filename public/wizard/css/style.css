@@ -311,6 +311,9 @@
     border-color: #f19100!important;
     color: #f19100!important;
 }
+.image .inputfile.input-error + label {
+    background: #f19100!important;
+}
 
 .image {
     display: block;

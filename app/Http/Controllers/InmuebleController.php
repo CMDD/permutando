@@ -140,6 +140,9 @@ class InmuebleController extends Controller
                 $inmueble->carga_psi = $request->carga_psi;
                 $inmueble->capacidad_luz = $request->capacidad_luz;
                 $inmueble->parque_industrial = $request->parque_industrial;
+                $inmueble->altura = $request->altura;
+                $inmueble->area_fondo = $request->area_fondo;
+                $inmueble->area_ancho = $request->area_ancho;
                 $inmueble->save();
                 return $inmueble->store($request,$inmueble->id);
                 break;

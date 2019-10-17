@@ -70319,6 +70319,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -70359,6 +70375,7 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
   created: function created() {
     this.getBienes();
     this.getImagenes();
+    this.getDepartamentos();
   },
 
   methods: {
@@ -70439,7 +70456,7 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
       this.enviando = true;
       axios.post("/api/permutando", this.permutar).then(function (res) {
         console.log(res.data);
-        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Envido correctamente");
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Enviado correctamente");
       });
     },
     actualizar: function actualizar() {
@@ -70486,6 +70503,20 @@ __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
             accessibility: false
           });
         }, 0);
+      });
+    },
+    getDepartamentos: function getDepartamentos() {
+      var _this7 = this;
+
+      axios.get("/api/departamentos").then(function (res) {
+        _this7.departamentos = res.data;
+      });
+    },
+    getCiudades: function getCiudades() {
+      var _this8 = this;
+
+      axios.get("/api/ciudades/" + this.form.departamento).then(function (res) {
+        _this8.ciudades = res.data;
       });
     },
     formatPrice: function formatPrice(value) {
@@ -70545,15 +70576,48 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm.form.video
-              ? _c(
-                  "a",
-                  {
-                    staticClass: "btn video-link",
-                    attrs: { href: _vm.inmueble.video }
-                  },
-                  [_vm._v("Ver video")]
-                )
+            _vm.editar
+              ? _c("div", [
+                  _vm.form.video
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "btn video-link",
+                          attrs: { href: _vm.inmueble.video }
+                        },
+                        [_vm._v("Ver video")]
+                      )
+                    : _vm._e()
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.editar
+              ? _c("div", { staticClass: "form-field w100" }, [
+                  _c("div", { staticClass: "my-text" }, [
+                    _c("span", [_vm._v("Url Video")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.video,
+                          expression: "form.video"
+                        }
+                      ],
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.form.video },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "video", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ])
               : _vm._e()
           ])
         ]),
@@ -70689,7 +70753,22 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _vm._m(0)
+                  _c("div", { staticClass: "group justify-content-end" }, [
+                    _vm.inmueble.user_id != _vm.user.id
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "btn",
+                            attrs: {
+                              href: "#",
+                              "data-toggle": "modal",
+                              "data-target": "#permutoModal"
+                            }
+                          },
+                          [_vm._v("Permutar")]
+                        )
+                      : _vm._e()
+                  ])
                 ],
                 2
               )
@@ -70749,30 +70828,32 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-6 col-xl-5 p-4" }, [
-          _c("div", { staticClass: "group" }, [
-            _c("span", [_vm._v("Ciudad/Municipio")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.ciudad,
-                  expression: "form.ciudad"
-                }
-              ],
-              attrs: { type: "text", disabled: _vm.editar },
-              domProps: { value: _vm.form.ciudad },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _vm.editar
+            ? _c("div", { staticClass: "group" }, [
+                _c("span", [_vm._v("Ciudad/Municipio")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.ciudad,
+                      expression: "form.ciudad"
+                    }
+                  ],
+                  attrs: { type: "text", disabled: _vm.editar },
+                  domProps: { value: _vm.form.ciudad },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "ciudad", $event.target.value)
+                    }
                   }
-                  _vm.$set(_vm.form, "ciudad", $event.target.value)
-                }
-              }
-            })
-          ]),
+                })
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("div", { staticClass: "group" }, [
             _c("span", [_vm._v("Barrio")]),
@@ -71251,13 +71332,13 @@ var render = function() {
                     _vm._v("Gimnasio\n            ")
                   ]),
                   _vm._v(" "),
+                  _vm._m(0),
+                  _vm._v(" "),
                   _vm._m(1),
                   _vm._v(" "),
                   _vm._m(2),
                   _vm._v(" "),
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _vm._m(4)
+                  _vm._m(3)
                 ])
               ])
             ])
@@ -72055,6 +72136,8 @@ var render = function() {
                 _c("span", [_vm._v("Tipo de Construccion")]),
                 _vm._v(" "),
                 _c("div", { staticClass: "checks" }, [
+                  _vm._m(4),
+                  _vm._v(" "),
                   _vm._m(5),
                   _vm._v(" "),
                   _vm._m(6),
@@ -72062,8 +72145,6 @@ var render = function() {
                   _vm._m(7),
                   _vm._v(" "),
                   _vm._m(8),
-                  _vm._v(" "),
-                  _vm._m(9),
                   _vm._v(" "),
                   _c("label", [
                     _c("input", {
@@ -72113,11 +72194,11 @@ var render = function() {
                     _vm._v("Casa\n            ")
                   ]),
                   _vm._v(" "),
+                  _vm._m(9),
+                  _vm._v(" "),
                   _vm._m(10),
                   _vm._v(" "),
-                  _vm._m(11),
-                  _vm._v(" "),
-                  _vm._m(12)
+                  _vm._m(11)
                 ])
               ])
             ])
@@ -72141,7 +72222,7 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(13),
+            _vm._m(12),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body row" }, [
               _c("div", { staticClass: "col-md-6 form" }, [
@@ -72345,7 +72426,7 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(14),
+            _vm._m(13),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body row box" }, [
               _c("div", { staticClass: "form-group col-md-12" }, [
@@ -72380,7 +72461,7 @@ var render = function() {
               _c("div", { staticClass: "form-group generator" }, [
                 _c("h5", [_vm._v("¿Qué bienes ofrecerías?")]),
                 _vm._v(" "),
-                _vm._m(15),
+                _vm._m(14),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w50" }, [
                   _c(
@@ -72422,7 +72503,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "group-efectivo" }, [
-                  _vm._m(16),
+                  _vm._m(15),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-field w50" }, [
                     _vm.active
@@ -72487,25 +72568,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "group justify-content-end" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn",
-          attrs: {
-            href: "#",
-            "data-toggle": "modal",
-            "data-target": "#permutoModal"
-          }
-        },
-        [_vm._v("Permutar")]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -75916,7 +75978,7 @@ var render = function() {
                           expression: "form.barrio"
                         }
                       ],
-                      attrs: { type: "text" },
+                      attrs: { type: "text", required: "" },
                       domProps: { value: _vm.form.barrio },
                       on: {
                         input: function($event) {
@@ -75943,7 +76005,7 @@ var render = function() {
                           expression: "form.direccion"
                         }
                       ],
-                      attrs: { type: "text" },
+                      attrs: { type: "text", required: "" },
                       domProps: { value: _vm.form.direccion },
                       on: {
                         input: function($event) {
@@ -76091,7 +76153,7 @@ var render = function() {
                     _c("input", {
                       ref: "file",
                       staticClass: "inputfile",
-                      attrs: { type: "file", id: "file" },
+                      attrs: { required: "", type: "file", id: "file" },
                       on: { change: _vm.img }
                     }),
                     _vm._v(" "),

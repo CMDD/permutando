@@ -436,13 +436,13 @@
             <div class="form-field w50">
               <div class="my-text">
                 <span>Barrio</span>
-                <input v-model="form.barrio" type="text" />
+                <input v-model="form.barrio" type="text" required />
               </div>
             </div>
             <div class="form-field w50">
               <div class="my-text">
                 <span>Dirección</span>
-                <input v-model="form.direccion" type="text" />
+                <input v-model="form.direccion" type="text" required />
               </div>
             </div>
             <div
@@ -480,7 +480,7 @@
             <div class="form-field w50">
               <span>Imagen Principal</span>
               <div class="image">
-                <input type="file" id="file" ref="file" @change="img" class="inputfile" />
+                <input required type="file" id="file" ref="file" @change="img" class="inputfile" />
                 <label for="file">Subir</label>
               </div>
             </div>

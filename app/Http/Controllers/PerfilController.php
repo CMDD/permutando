@@ -7,6 +7,10 @@ use App\Inmueble;
 use App\Image;
 class PerfilController extends Controller
 {
+
+    public function _construct(){
+        $this->middleware('auth');
+    }
     public function misInmuebles($id){
 
         return Inmueble::where('user_id',$id)->get();

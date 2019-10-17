@@ -25,7 +25,9 @@ Route::get('lista-usuarios',function(){return view('admin.usuario.lista');});
 Route::get('lista-inmuebles',function(){return view('admin.inmueble.lista');});
 Route::get('detalle-inmueble/{id}','InmuebleController@detalle');
 
-//Rutas de Perfil
+
+Route::group(['middleware'=>'auth'],function(){
+    //Rutas de Perfil
 Route::get('perfil-mis-publicaciones',function(){return view('perfil.publicaciones');});
 Route::get('perfil-publicar',function(){return view('perfil.publicar.index');});
 Route::get('perfil-publicar-oficina',function(){return view('perfil.publicar.oficina');});
@@ -34,6 +36,9 @@ Route::get('perfil-detalle/{id}','PerfilController@detalle');
 Route::get('perfil-mensajes',function(){
     return view("perfil.mensajes");
 });
+
+});
+
 
 Route::get('perfil-buscar',function(){
     return view('perfil.busco.index');

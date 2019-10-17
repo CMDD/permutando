@@ -25,7 +25,15 @@
           <div class="group">
             <h4 class="mr-3">{{inmueble.tipo_inmueble}} - {{inmueble.tipo_publicacion}}</h4>
 
-            <a v-if="form.video" :href="inmueble.video" class="btn video-link">Ver video</a>
+            <div v-if="editar">
+              <a v-if="form.video" :href="inmueble.video" class="btn video-link">Ver video</a>
+            </div>
+            <div class="form-field w100" v-if="!editar">
+              <div class="my-text">
+                <span>Url Video</span>
+                <input v-model="form.video" type="text" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -84,7 +92,13 @@
               <input type="text" :disabled="editar" v-bind:value="inmueble.recibo_efectivo" />
             </div>
             <div class="group justify-content-end">
-              <a href="#" data-toggle="modal" data-target="#permutoModal" class="btn">Permutar</a>
+              <a
+                v-if="inmueble.user_id != user.id"
+                href="#"
+                data-toggle="modal"
+                data-target="#permutoModal"
+                class="btn"
+              >Permutar</a>
             </div>
           </div>
         </div>
@@ -100,11 +114,13 @@
             <input type="text" :disabled="editar" v-model="form.direccion" />
           </div>
         </div>
+
         <div class="col-md-6 col-xl-5 p-4">
-          <div class="group">
+          <div class="group" v-if="editar">
             <span>Ciudad/Municipio</span>
             <input type="text" :disabled="editar" v-model="form.ciudad" />
           </div>
+
           <div class="group">
             <span>Barrio</span>
             <input type="text" :disabled="editar" v-model="form.barrio" />
@@ -610,6 +626,7 @@ export default {
   created() {
     this.getBienes();
     this.getImagenes();
+    this.getDepartamentos();
   },
   methods: {
     publicarInmueble() {
@@ -683,7 +700,7 @@ export default {
       this.enviando = true;
       axios.post("/api/permutando", this.permutar).then(res => {
         console.log(res.data);
-        toastr.success("Envido correctamente");
+        toastr.success("Enviado correctamente");
       });
     },
     actualizar() {
@@ -726,6 +743,16 @@ export default {
               accessibility: false
             });
         }, 0);
+      });
+    },
+    getDepartamentos() {
+      axios.get("/api/departamentos").then(res => {
+        this.departamentos = res.data;
+      });
+    },
+    getCiudades() {
+      axios.get("/api/ciudades/" + this.form.departamento).then(res => {
+        this.ciudades = res.data;
       });
     },
     formatPrice(value) {

@@ -3,7 +3,7 @@
     <form>
       <div class="row justify-content-center">
         <div class="col-md-6 col-xl-5 p-4">
-          <!--<div class="gallery mb-3" id="carousel">
+          <div class="gallery mb-3" id="carousel" v-if="editar">
             <div>
               <a
                 class="image-link"
@@ -11,8 +11,8 @@
                 v-bind:style="{ backgroundImage: 'url(' + '/' + inmueble.imagen+')' }"
               ></a>
               <!--<img :src="'/'+inmueble.imagen" />-->
-           <!-- </div>-->
-<!--
+            </div>
+
             <div v-for="image in imagenes" :key="image.id">
               <a
                 class="image-link"
@@ -20,26 +20,47 @@
                 v-bind:style="{ backgroundImage: 'url(' + '/' + image.image+')' }"
               ></a>
             </div>
-          </div>-->
+          </div>
           <!-- <a class="video-link" href="https://www.youtube.com/watch?v=_9HofM72SLs">VIDEO</a> -->
-            <div class="edit-gallery">
-                <p>Imagen principal</p>
-                <div class="img-prev" style="background-image: url(http://permutando.test/img/pc.png);"><span class="delete">&times;</span></div>
-                <div class="image">
-                    <input type="file" id="file" class="inputfile">
-                    <label for="file">Subir</label>
-                </div>
-                <hr>
-                <p>Otras</p>
-                <div class="img-prev" style="background-image: url(http://permutando.test/img/pc.png);"><span class="delete">&times;</span></div>
-                <div class="img-prev" style="background-image: url(http://permutando.test/img/pc.png);"><span class="delete">&times;</span></div>
-                <div class="img-prev" style="background-image: url(http://permutando.test/img/pc.png);"><span class="delete">&times;</span></div>
-                <div class="image">
-                    <input type="file" id="file2" multiple="multiple" class="inputfile">
-                    <label for="file2">Subir imágenes</label>
-                </div>
-
+          <div class="edit-gallery">
+            <div v-if="!editar">
+              <p>Imagen principal</p>
+              <div
+                class="img-prev"
+                style="background-image: url(http://permutando.test/img/pc.png);"
+              >
+                <span class="delete">&times;</span>
+              </div>
+              <div class="image">
+                <input type="file" id="file" class="inputfile" />
+                <label for="file">Subir</label>
+              </div>
+              <hr />
+              <p>Otras</p>
+              <div
+                class="img-prev"
+                style="background-image: url(http://permutando.test/img/pc.png);"
+              >
+                <span class="delete">&times;</span>
+              </div>
+              <div
+                class="img-prev"
+                style="background-image: url(http://permutando.test/img/pc.png);"
+              >
+                <span class="delete">&times;</span>
+              </div>
+              <div
+                class="img-prev"
+                style="background-image: url(http://permutando.test/img/pc.png);"
+              >
+                <span class="delete">&times;</span>
+              </div>
+              <div class="image">
+                <input type="file" id="file2" multiple="multiple" class="inputfile" />
+                <label for="file2">Subir imágenes</label>
+              </div>
             </div>
+          </div>
 
           <div class="group">
             <h4 class="mr-3">{{inmueble.tipo_inmueble}} - {{inmueble.tipo_publicacion}}</h4>
@@ -894,68 +915,66 @@ export default {
 }
 
 .edit-gallery p {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .edit-gallery .img-prev {
-    width: 80px;
-    height: 80px;
-    display: inline-block;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    margin: 20px 20px 0 0;
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin: 20px 20px 0 0;
 }
 .edit-gallery .delete {
-    position: absolute;
-    right: -9px;
-    top: -4px;
-    width: 25px;
-    line-height: 24px;
-    text-align: center;
-    background: #a71e1d;
-    color: #fff;
-    border-radius: 50%;
-    font-size: 20px;
-    padding-bottom: 1px;
-    cursor: pointer;
+  position: absolute;
+  right: -9px;
+  top: -4px;
+  width: 25px;
+  line-height: 24px;
+  text-align: center;
+  background: #a71e1d;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 20px;
+  padding-bottom: 1px;
+  cursor: pointer;
 }
 
 .edit-gallery .image {
-    display: block;
-    margin-top: 15px;
-    position: relative;
+  display: block;
+  margin-top: 15px;
+  position: relative;
 }
 .edit-gallery .image .inputfile {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-    top: 0;
-	z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 .edit-gallery .image .inputfile + label {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    color: #fff;
-    border-radius: 5px;
-    background-color: #005b95;
-    text-align: center;
-    -webkit-transition: all .3s ease;
-    transition: all .3s ease;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    cursor: pointer;
-    margin: 0;
-    padding: 5px 10px;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  color: #fff;
+  border-radius: 5px;
+  background-color: #005b95;
+  text-align: center;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0;
+  padding: 5px 10px;
 }
 .edit-gallery .image .inputfile + label:hover {
-    background-color: #f19100;
+  background-color: #f19100;
 }
-
-
 </style>
 
 styl

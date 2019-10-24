@@ -6,13 +6,7 @@
       </div>
     </div>
     <div class="box">
-      <form
-
-        role="form"
-        @submit.prevent="storeInmueble"
-        class="f1"
-        enctype="multipart/form-data"
-      >
+      <form role="form" @submit.prevent="storeInmueble" class="f1" enctype="multipart/form-data">
         <div class="f1-steps">
           <div class="f1-progress">
             <div
@@ -76,7 +70,7 @@
             >
               <div class="my-text">
                 <span>
-                  Area mts
+                  Área mts
                   <sup>2</sup>
                 </span>
                 <input v-model="form.area" type="text" :required="form.tipoInmueble == 'Casa'" />
@@ -90,7 +84,7 @@
             >
               <div class="my-text">
                 <span>
-                  Area Lote
+                  Área Lote
                   <!-- <sup>2</sup> -->
                 </span>
                 <input v-model="form.area_lote" type="text" />
@@ -103,7 +97,7 @@
             >
               <div class="my-text">
                 <span>
-                  Area Construida
+                  Área Construida
                   <!-- <sup>2</sup> -->
                 </span>
                 <input v-model="form.area_construida" type="text" />
@@ -399,7 +393,7 @@
               <div class="my-select">
                 <span>Departamento</span>
                 <select v-model="form.departamento" required @change="getCiudades()">
-                  <option value>Selecione...</option>
+                  <option value>Seleccione...</option>
                   <option
                     v-bind:value="departamento.id"
                     v-for="departamento in departamentos"
@@ -423,7 +417,7 @@
             </div>
             <div class="form-field w50">
               <div class="my-text">
-                <span>Valor Administracion</span>
+                <span>Valor Administración</span>
                 <input v-model="form.administracion" type="text" required />
               </div>
             </div>
@@ -513,7 +507,8 @@
         </fieldset>
 
         <fieldset>
-          <h4>Permuto</h4>
+          <h4 v-if="form.tipoPublicacion === 'Permuto'">Permuto</h4>
+          <h4 v-if="form.tipoPublicacion != 'Permuto'">Finalizar</h4>
           <div class="popup-permuto" v-if="form.tipoPublicacion === 'Permuto'">
             Ten en cuenta que si elijes ésta opción, solo podrás añadir dinero en efectivo, una vez hayas completado en el formulario más del 50% del valor de tu propiedad en bienes.
             <span

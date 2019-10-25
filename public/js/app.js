@@ -73614,6 +73614,10 @@ if (document.getElementById("userId")) {
       departamentos: [],
       ciudades: [],
       form: {
+        permuto: [{
+          bien: "",
+          valor: ""
+        }],
         area_ancho: "",
         area_fondo: "",
         altura: "",

@@ -593,6 +593,12 @@ export default {
       departamentos: [],
       ciudades: [],
       form: {
+        permuto: [
+          {
+            bien: "",
+            valor: ""
+          }
+        ],
         area_ancho: "",
         area_fondo: "",
         altura: "",

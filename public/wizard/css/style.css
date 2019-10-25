@@ -1,7 +1,7 @@
 .f1 h4 {
     background: #005b95;
     color: #fff;
-    padding: 5px 2%;
+    padding: 5px 4%;
     margin-top: 20px;
     border-radius: 30px;
     font-size: 1.2rem;
@@ -39,6 +39,8 @@
     overflow: hidden;
     border-top: 2px solid #005b95;
     padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .f1 input:focus, .f1 textarea:focus {
@@ -46,10 +48,8 @@
 }
 
 .f1 .btn {
-    float: right;
     color: #fff;
     padding: 5px 15px;
-    margin: 0 2% 10px 2%;
     border-radius: 30px;
     font-size: .9rem;
     font-weight: 300;
@@ -68,7 +68,6 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23ffffff' viewBox='0 0 24 24'%3E%3Cpath d='M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z'/%3E%3C/svg%3E");
 }
 .f1 .btn-prev {
-    float: left;
     padding-left: 34px;
     background-position: center left 9px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23ffffff' viewBox='0 0 24 24'%3E%3Cpath d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z'/%3E%3C/svg%3E");
@@ -99,7 +98,7 @@
 .form-group .form-field {
     vertical-align: bottom;
     text-rendering: auto;
-    width: 29.333%;
+    width: 96%;
     margin: 20px 2%;
     border-bottom: 2px solid #005b95;
     padding-bottom: 5px;
@@ -118,18 +117,7 @@
     border-bottom: 0;
     margin-top: 0;
 }
-.form-group .form-field.w2 {
-    width: 62.666%;
-}
-.form-group .form-field.w35 {
-    width: 31%;
-}
-.form-group .form-field.w50 {
-    width: 46%;
-}
-.form-group .form-field.w65 {
-    width: 61%;
-}
+
 .form-group .form-field.w100 {
     width: 96%;
 }
@@ -144,7 +132,8 @@
 
 .my-radio, .my-select, .my-text, .my-checkbox {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 .my-checkbox {
     align-items: start;
@@ -152,7 +141,6 @@
 
 .my-radio span, .my-select span, .my-text span, .my-checkbox span {
     flex: 1;
-    margin-right: 15px;
 }
 .form-group.list span, .form-group.more span {
     border-bottom: 2px solid #005b95;
@@ -163,7 +151,8 @@
 }
 
 .my-text input {
-    flex: 1;
+    flex: 0 0 auto;
+    width: 50%;
     margin: 0;
     padding: 5px;
     border: 1px solid transparent;
@@ -221,10 +210,8 @@
     padding: 5px 16px 5px 10px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    flex: 0 0 50px;
-}
-.form-group .form-field.w50 .my-select select {
-    flex: 1;
+    flex: 0 0 auto;
+    width: 50%;
 }
 
 .my-checkbox input[type=checkbox] {
@@ -235,7 +222,7 @@
     display: block;
     font-size: .7rem;
     font-weight: 600;
-    margin: 3px 6px 3px 0;
+    margin: 0 6px 6px 0;
     cursor: pointer;
 }
 .my-checkbox input[type=checkbox] + label:before {
@@ -256,6 +243,11 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23fff' viewBox='0 0 24 24'%3E%3Cpath d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'/%3E%3C/svg%3E");
 }
 .my-checkbox .form-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.my-checkbox .form-col >div {
     flex: 1;
 }
 .form-group.list .my-checkbox {
@@ -348,4 +340,30 @@
 }
 .image .inputfile + label:hover {
     background-color: #f19100;
+}
+
+@media (min-width: 768px){
+
+    .form-group .form-field {
+        width: 29.333%;
+    }
+    .form-group .form-field.w62 {
+        width: 62.666%;
+    }
+    .form-group .form-field.w2 {
+        width: 62.666%;
+    }
+    .form-group .form-field.w35 {
+        width: 31%;
+    }
+    .form-group .form-field.w65 {
+        width: 61%;
+    }
+    .form-group .form-field.w50 {
+        width: 46%;
+    }
+    .my-checkbox .form-col {
+        flex-direction: row;
+    }
+
 }

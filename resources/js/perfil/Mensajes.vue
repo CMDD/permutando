@@ -52,15 +52,16 @@ body,
   height: 100%;
 }
 .msg {
-  height: calc(100vh - 3rem);
+    height: calc(100vh - 3rem);
+    flex-direction: column;
 }
 .msg .list {
   background: #edeeed;
   overflow-y: auto;
-  height: 100%;
   padding: 0;
   box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);
   z-index: 1;
+    height: 120px;
 }
 .msg .list .user {
   display: block;
@@ -98,7 +99,6 @@ body,
 .msg .chat {
   background: #fff;
   overflow-y: auto;
-  height: 100%;
   position: relative;
 }
 .msg .chat .from,
@@ -158,4 +158,14 @@ body,
 .msg .send .btn:hover {
   color: rgba(255, 255, 255, 0.6);
 }
+
+    @media (min-width: 768px){
+        .msg {
+          flex-direction: row;
+        }
+        .msg .list, .msg .chat {
+            height: 100%;
+        }
+    }
+
 </style>

@@ -25,6 +25,11 @@
     }
     .accion-buscar form {
         display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .gmnoprint {
+        display: none!important;
     }
     .accion-buscar select {
         -webkit-appearance: button;
@@ -48,13 +53,14 @@
         line-height: 1.5;
         vertical-align: middle;
         display: inline-block;
-        margin-right: 10px;
+        margin: 0 2% 2% 0;
     }
     .accion-buscar .btn {
         background: #005b95;
         color: #fff;
         border-radius: 50px;
         flex: 0 0 auto;
+        margin: 0 2% 2% 0;
     }
     .accion-buscar .btn:hover {
         background: #e67319;

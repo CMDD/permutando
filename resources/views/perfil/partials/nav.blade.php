@@ -1,6 +1,7 @@
 <div class="col-12 col-md-4 col-lg-3 col-xl-2 sidebar">
-    <a href="/">
-        <img class="logo" src="/img/perfil-logo.png" />
+    <span class="close-menu">&times;</span>
+    <a class="logo" href="/">
+        <img src="/img/perfil-logo.png" />
     </a>
     <div class="user">
         <input

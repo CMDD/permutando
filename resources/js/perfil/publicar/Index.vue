@@ -104,82 +104,84 @@
               </div>
             </div>
             <div
-              class="form-field w2"
+              class="form-field w100"
               v-if="form.tipoInmueble == 'Casa Lote' 
             || form.tipoInmueble == 'Quinta' || form.tipoInmueble == 'Finca' || form.tipoInmueble == 'Hacienda'"
             >
               <div class="my-checkbox">
                 <span>Tipo de Construcción</span>
                 <div class="form-col">
-                  <input type="checkbox" v-model="form.tipo_construccion" value="Casa" id="zonas_1" />
-                  <label for="zonas_1">Casa</label>
-                  <input
-                    type="checkbox"
-                    v-model="form.tipo_construccion"
-                    value="Bodega"
-                    id="zonas_2"
-                  />
-                  <label for="zonas_2">Bodega</label>
-                  <input
-                    type="checkbox"
-                    v-model="form.tipo_construccion"
-                    value="Piscina"
-                    id="zonas_3"
-                  />
-                  <label for="zonas_3">Piscina</label>
+                  <div>
+                      <input type="checkbox" v-model="form.tipo_construccion" value="Casa" id="zonas_1" />
+                      <label for="zonas_1">Casa</label>
+                      <input
+                        type="checkbox"
+                        v-model="form.tipo_construccion"
+                        value="Bodega"
+                        id="zonas_2"
+                      />
+                      <label for="zonas_2">Bodega</label>
+                      <input
+                        type="checkbox"
+                        v-model="form.tipo_construccion"
+                        value="Piscina"
+                        id="zonas_3"
+                      />
+                      <label for="zonas_3">Piscina</label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        v-model="form.tipo_construccion"
+                        value="Kiosco"
+                        id="zonas_4"
+                      />
+                      <label for="zonas_4">Kiosco</label>
+                      <input
+                        type="checkbox"
+                        v-model="form.tipo_construccion"
+                        value="Parqueadero cubierto"
+                        id="zonas_5"
+                      />
+                      <label for="zonas_5">Parqueadero cubierto</label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        v-model="form.tipo_construccion"
+                        value="Parqueadero descubierto"
+                        id="zonas_9"
+                      />
+                      <label for="zonas_9">Parqueadero descubierto</label>
+                      <input
+                        type="checkbox"
+                        v-model="form.tipo_construccion"
+                        value="Pozo séptico"
+                        id="zonas_6"
+                      />
+                      <label for="zonas_6">Pozo séptico</label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        v-model="form.tipo_construccion"
+                        value="Alcantarillado"
+                        id="zonas_7"
+                      />
+                      <label for="zonas_7">Alcantarillado</label>
+                      <input
+                        type="checkbox"
+                        v-model="form.tipo_construccion"
+                        value="Zonas deportivas"
+                        id="zonas_8"
+                      />
+                      <label for="zonas_8">Zonas deportivas</label>
+                    </div>
                 </div>
-                <div class="form-col">
-                  <input
-                    type="checkbox"
-                    v-model="form.tipo_construccion"
-                    value="Kiosco"
-                    id="zonas_4"
-                  />
-                  <label for="zonas_4">Kiosco</label>
-                  <input
-                    type="checkbox"
-                    v-model="form.tipo_construccion"
-                    value="Parqueadero cubierto"
-                    id="zonas_5"
-                  />
-                  <label for="zonas_5">Parqueadero cubierto</label>
                 </div>
-                <div class="form-col">
-                  <input
-                    type="checkbox"
-                    v-model="form.tipo_construccion"
-                    value="Parqueadero descubierto"
-                    id="zonas_9"
-                  />
-                  <label for="zonas_9">Parqueadero descubierto</label>
-                  <input
-                    type="checkbox"
-                    v-model="form.tipo_construccion"
-                    value="Pozo séptico"
-                    id="zonas_6"
-                  />
-                  <label for="zonas_6">Pozo séptico</label>
-                </div>
-                <div class="form-col">
-                  <input
-                    type="checkbox"
-                    v-model="form.tipo_construccion"
-                    value="Alcantarillado"
-                    id="zonas_7"
-                  />
-                  <label for="zonas_7">Alcantarillado</label>
-                  <input
-                    type="checkbox"
-                    v-model="form.tipo_construccion"
-                    value="Zonas deportivas"
-                    id="zonas_8"
-                  />
-                  <label for="zonas_8">Zonas deportivas</label>
-                </div>
-              </div>
             </div>
 
-            <div class="form-field w50" v-if="form.tipoInmueble == 'Oficina' ">
+            <div class="form-field w62" v-if="form.tipoInmueble == 'Oficina' ">
               <div class="my-select">
                 <span>Espacio</span>
                 <select v-model="form.espacio">
@@ -207,7 +209,7 @@
               </div>
             </div>
 
-            <div class="form-field w50" v-if="form.tipoInmueble == 'Lote' ">
+            <div class="form-field w62" v-if="form.tipoInmueble == 'Lote' ">
               <div class="my-text">
                 <span>Topografía</span>
                 <input v-model="form.topografia" type="text" />
@@ -363,29 +365,31 @@
             </div>
 
             <div
-              class="form-field w2"
+              class="form-field w100"
               v-if="form.tipoInmueble == 'Casa' || form.tipoInmueble == 'Apartamento' "
             >
               <div class="my-checkbox">
                 <span>Zonas Comunes</span>
                 <div class="form-col">
-                  <input type="checkbox" v-model="form.zonas" value="Gimnasio" id="zonas_1" />
-                  <label for="zonas_1">Gimnasio</label>
-                  <input type="checkbox" v-model="form.zonas" value="BBQ" id="zonas_2" />
-                  <label for="zonas_2">BBQ</label>
-                  <input type="checkbox" v-model="form.zonas" value="Salón comunal" id="zonas_3" />
-                  <label for="zonas_3">Salón comunal</label>
-                </div>
-                <div class="form-col">
-                  <input type="checkbox" v-model="form.zonas" value="Zona húmeda" id="zonas_4" />
-                  <label for="zonas_4">Zona húmeda</label>
-                  <input
-                    type="checkbox"
-                    v-model="form.zonas"
-                    value="Parques para niños"
-                    id="zonas_5"
-                  />
-                  <label for="zonas_5">Parques para niños</label>
+                    <div>
+                      <input type="checkbox" v-model="form.zonas" value="Gimnasio" id="zonas_1" />
+                      <label for="zonas_1">Gimnasio</label>
+                      <input type="checkbox" v-model="form.zonas" value="BBQ" id="zonas_2" />
+                      <label for="zonas_2">BBQ</label>
+                      <input type="checkbox" v-model="form.zonas" value="Salón comunal" id="zonas_3" />
+                      <label for="zonas_3">Salón comunal</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" v-model="form.zonas" value="Zona húmeda" id="zonas_4" />
+                      <label for="zonas_4">Zona húmeda</label>
+                      <input
+                        type="checkbox"
+                        v-model="form.zonas"
+                        value="Parques para niños"
+                        id="zonas_5"
+                      />
+                      <label for="zonas_5">Parques para niños</label>
+                    </div>
                 </div>
               </div>
             </div>
@@ -440,7 +444,7 @@
               </div>
             </div>
             <div
-              class="form-field"
+              class="form-field w50"
               v-if="form.tipoInmueble == 'Casa' || form.tipoInmueble == 'Apartamento' "
             >
               <div class="my-select">
@@ -458,7 +462,7 @@
               </div>
             </div>
             <textarea v-model="form.caracteristicas" placeholder="Otras características"></textarea>
-            <div class="form-field value">
+            <div class="form-field w50 value">
               <span>Valor: $</span>
               <input required type="text" v-model="form.valor" />
             </div>

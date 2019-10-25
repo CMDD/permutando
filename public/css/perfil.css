@@ -18,8 +18,62 @@
     bottom: 0;
 }
 
+.title .col {
+    position: relative;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.mobile-menu {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 2;
+    width: 3rem;
+    height: 3rem;
+    margin-top: -25px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+.mobile-menu:before,
+.mobile-menu:after,
+.mobile-menu span {
+    content: '';
+    display: block;
+    width: 26px;
+    height: 2px;
+    position: absolute;
+    left: 12px;
+    background: #ffffff;
+}
+.mobile-menu:before {
+    top: 16px;
+}
+.mobile-menu span {
+    top: 24px;
+}
+.mobile-menu:after {
+    top: 32px;
+}
+
+.sidebar .close-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    line-height: 30px;
+    width: 35px;
+    text-align: center;
+    font-size: 30px;
+    background: #e67319;
+    border-radius: 50%;
+    padding-bottom: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
 .sidebar {
-    display: none;
+    display: block;
     position: fixed;
     left: 0;
     top: 0;
@@ -29,16 +83,20 @@
     padding: 20px;
     background: #fff;
     color: #005c96;
-    border-right: 1px solid #e67319;
+    text-align: center;
+    transition: transform .3s ease;
+    transform: translateX(-100%);
+}
+.sidebar.opened {
+    transform: translateX(0);
 }
 
 .sidebar .logo {
-    display: block;
-    margin: 0 auto 20px auto;
+    display: inline-block;
+    margin: 25px auto 20px auto;
 }
 .sidebar .user {
     font-weight: 700;
-    text-align: center;
     margin-bottom: 20px;
 }
 .sidebar .menu {
@@ -46,6 +104,7 @@
     padding: 0;
     font-size: .9rem;
     letter-spacing: 1px;
+    text-align: left;
 }
 .sidebar .menu a {
     color: #005c96;
@@ -136,7 +195,11 @@
 @media (min-width: 768px){
 
     .sidebar {
-        display: block;
+        transform: translateX(0)!important;
+        border-right: 1px solid #e67319;
+    }
+    .sidebar .close-menu, .mobile-menu {
+        display: none;
     }
     .inmuebles { padding: 40px 4%; }
 

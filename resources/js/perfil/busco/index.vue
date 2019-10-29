@@ -2,6 +2,9 @@
   <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
     <div class="row title">
       <div class="col">
+        <a class="mobile-menu">
+          <span></span>
+        </a>
         <span>Buscar</span>
       </div>
     </div>

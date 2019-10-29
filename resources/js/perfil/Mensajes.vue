@@ -2,6 +2,9 @@
   <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
     <div class="row title">
       <div class="col">
+        <a class="mobile-menu">
+          <span></span>
+        </a>
         <span>Mis Mensajes</span>
       </div>
     </div>
@@ -52,8 +55,8 @@ body,
   height: 100%;
 }
 .msg {
-    height: calc(100vh - 3rem);
-    flex-direction: column;
+  height: calc(100vh - 3rem);
+  flex-direction: column;
 }
 .msg .list {
   background: #edeeed;
@@ -61,7 +64,7 @@ body,
   padding: 0;
   box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);
   z-index: 1;
-    height: 120px;
+  height: 120px;
 }
 .msg .list .user {
   display: block;
@@ -159,13 +162,13 @@ body,
   color: rgba(255, 255, 255, 0.6);
 }
 
-    @media (min-width: 768px){
-        .msg {
-          flex-direction: row;
-        }
-        .msg .list, .msg .chat {
-            height: 100%;
-        }
-    }
-
+@media (min-width: 768px) {
+  .msg {
+    flex-direction: row;
+  }
+  .msg .list,
+  .msg .chat {
+    height: 100%;
+  }
+}
 </style>

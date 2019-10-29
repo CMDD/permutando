@@ -73600,6 +73600,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.options = {
@@ -76574,6 +76575,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row title" }, [
       _c("div", { staticClass: "col" }, [
+        _c("a", { staticClass: "mobile-menu" }, [_c("span")]),
+        _vm._v(" "),
         _c("span", [_vm._v("Publicar Inmueble")])
       ])
     ])
@@ -76872,7 +76875,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.map {\n  display: none;\n}\nhtml,\nbody,\n#app,\n.container-fluid,\n.container-fluid > div {\n  height: 100%;\n}\n.msg {\n    height: calc(100vh - 3rem);\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n.msg .list {\n  background: #edeeed;\n  overflow-y: auto;\n  padding: 0;\n  -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n          box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n  z-index: 1;\n    height: 120px;\n}\n.msg .list .user {\n  display: block;\n  padding: 15px 10%;\n  cursor: pointer;\n}\n.msg .list .user.active,\n.msg .list .user:hover {\n  background: #dae2e7;\n}\n.msg .user .img {\n  display: inline-block;\n  vertical-align: middle;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background: #005c96;\n}\n.msg .user .info {\n  display: inline-block;\n  vertical-align: middle;\n  width: calc(100% - 50px);\n  padding-left: 20px;\n}\n.msg .info span {\n  display: block;\n  color: #005c96;\n  letter-spacing: 1px;\n}\n.msg .info span.type {\n  font-weight: 700;\n  font-size: 0.8rem;\n}\n.msg .chat {\n  background: #fff;\n  overflow-y: auto;\n  position: relative;\n}\n.msg .chat .from,\n.msg .chat .to {\n  display: block;\n  position: relative;\n  margin: 30px;\n  padding: 30px;\n  border-radius: 10px;\n}\n.msg .chat .from span,\n.msg .chat .to span {\n  position: absolute;\n  width: 48px;\n  line-height: 40px;\n  background: #e67319;\n  color: #fff;\n  text-align: center;\n  top: -20px;\n  left: -20px;\n  border-radius: 50%;\n  border: 4px solid #fff;\n  font-weight: 700;\n}\n.msg .chat .from span {\n  background: #005c96;\n}\n.msg .chat .from {\n  background: #b0cbe1;\n  color: #386386;\n}\n.msg .chat .to {\n  background: #fbd8af;\n  color: #8e663a;\n}\n.msg .chat .send {\n  margin: 30px 30px 60px 30px;\n}\n.msg .send input {\n  display: inline-block;\n  vertical-align: middle;\n  border-color: #e67319;\n  border-radius: 5px 0 0 5px;\n  width: calc(100% - 100px);\n}\n.msg .send input:focus {\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n.msg .send .btn {\n  display: inline-block;\n  vertical-align: middle;\n  width: 100px;\n  background: #e67319;\n  color: #fff;\n  border-radius: 0 5px 5px 0;\n}\n.msg .send .btn:hover {\n  color: rgba(255, 255, 255, 0.6);\n}\n@media (min-width: 768px){\n.msg {\n          -webkit-box-orient: horizontal;\n          -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n                  flex-direction: row;\n}\n.msg .list, .msg .chat {\n            height: 100%;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.map {\n  display: none;\n}\nhtml,\nbody,\n#app,\n.container-fluid,\n.container-fluid > div {\n  height: 100%;\n}\n.msg {\n  height: calc(100vh - 3rem);\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n}\n.msg .list {\n  background: #edeeed;\n  overflow-y: auto;\n  padding: 0;\n  -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n          box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.3);\n  z-index: 1;\n  height: 120px;\n}\n.msg .list .user {\n  display: block;\n  padding: 15px 10%;\n  cursor: pointer;\n}\n.msg .list .user.active,\n.msg .list .user:hover {\n  background: #dae2e7;\n}\n.msg .user .img {\n  display: inline-block;\n  vertical-align: middle;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background: #005c96;\n}\n.msg .user .info {\n  display: inline-block;\n  vertical-align: middle;\n  width: calc(100% - 50px);\n  padding-left: 20px;\n}\n.msg .info span {\n  display: block;\n  color: #005c96;\n  letter-spacing: 1px;\n}\n.msg .info span.type {\n  font-weight: 700;\n  font-size: 0.8rem;\n}\n.msg .chat {\n  background: #fff;\n  overflow-y: auto;\n  position: relative;\n}\n.msg .chat .from,\n.msg .chat .to {\n  display: block;\n  position: relative;\n  margin: 30px;\n  padding: 30px;\n  border-radius: 10px;\n}\n.msg .chat .from span,\n.msg .chat .to span {\n  position: absolute;\n  width: 48px;\n  line-height: 40px;\n  background: #e67319;\n  color: #fff;\n  text-align: center;\n  top: -20px;\n  left: -20px;\n  border-radius: 50%;\n  border: 4px solid #fff;\n  font-weight: 700;\n}\n.msg .chat .from span {\n  background: #005c96;\n}\n.msg .chat .from {\n  background: #b0cbe1;\n  color: #386386;\n}\n.msg .chat .to {\n  background: #fbd8af;\n  color: #8e663a;\n}\n.msg .chat .send {\n  margin: 30px 30px 60px 30px;\n}\n.msg .send input {\n  display: inline-block;\n  vertical-align: middle;\n  border-color: #e67319;\n  border-radius: 5px 0 0 5px;\n  width: calc(100% - 100px);\n}\n.msg .send input:focus {\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n.msg .send .btn {\n  display: inline-block;\n  vertical-align: middle;\n  width: 100px;\n  background: #e67319;\n  color: #fff;\n  border-radius: 0 5px 5px 0;\n}\n.msg .send .btn:hover {\n  color: rgba(255, 255, 255, 0.6);\n}\n@media (min-width: 768px) {\n.msg {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n}\n.msg .list,\n  .msg .chat {\n    height: 100%;\n}\n}\n", ""]);
 
 // exports
 
@@ -76883,6 +76886,9 @@ exports.push([module.i, "\n.map {\n  display: none;\n}\nhtml,\nbody,\n#app,\n.co
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -76953,7 +76959,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row title" }, [
-      _c("div", { staticClass: "col" }, [_c("span", [_vm._v("Mis Mensajes")])])
+      _c("div", { staticClass: "col" }, [
+        _c("a", { staticClass: "mobile-menu" }, [_c("span")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("Mis Mensajes")])
+      ])
     ])
   }
 ]
@@ -77063,6 +77073,9 @@ exports.push([module.i, "\n.modo {\n  background: #fff;\n  display: inline-block
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -77529,7 +77542,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row title" }, [
-      _c("div", { staticClass: "col" }, [_c("span", [_vm._v("Buscar")])])
+      _c("div", { staticClass: "col" }, [
+        _c("a", { staticClass: "mobile-menu" }, [_c("span")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("Buscar")])
+      ])
     ])
   }
 ]

@@ -1,21 +1,15 @@
 @extends('perfil.layout')
 @section('content')
 <div class="container-fluid">
-    <div class="row justify-content-end">
-        @include('perfil.partials.nav')
-        <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
-            <div class="row title">
-                <div class="col">
-                    <span>Detalle de Inmueble</span>
-                </div>
-            </div>
-        <inmueble-detalle :inmueble="{{$inmueble}}" :user="{{auth::user()}}"></inmueble-detalle>
+        <div class="row justify-content-end">
+            @include('perfil.partials.nav')
+            <inmueble-detalle :inmueble="{{$inmueble}}" :user="{{auth::user()}}"></inmueble-detalle> 
         </div>
     </div>
-</div>
 @stop
 
 @push('styles')
+
     <link rel="stylesheet" href="/css/magnific-popup.css" />
     <link rel="stylesheet" href="/css/slick.css" />
     <style>

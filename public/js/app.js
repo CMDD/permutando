@@ -27818,7 +27818,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(17);
-module.exports = __webpack_require__(117);
+module.exports = __webpack_require__(123);
 
 
 /***/ }),
@@ -27856,11 +27856,11 @@ Vue.component("perfil-busco", __webpack_require__(96));
 //Componentes Detalle
 Vue.component("detalle-casa", __webpack_require__(101));
 Vue.component("detalle-bodega", __webpack_require__(106));
-Vue.component("detalle-contactar", __webpack_require__(129));
-Vue.component("detalle-permuto", __webpack_require__(132));
+Vue.component("detalle-contactar", __webpack_require__(111));
+Vue.component("detalle-permuto", __webpack_require__(114));
 //Mensajes
-Vue.component("mensajes-lista", __webpack_require__(111));
-Vue.component("mensajes-detalle", __webpack_require__(114));
+Vue.component("mensajes-lista", __webpack_require__(117));
+Vue.component("mensajes-detalle", __webpack_require__(120));
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: [{
@@ -76582,442 +76582,6 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/perfil/mensaje/Lista.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dc479aa4", Component.options)
-  } else {
-    hotAPI.reload("data-v-dc479aa4", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 112 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['userId'],
-    data: function data() {
-        return {
-            mostrar: false,
-            mensajes: [],
-            mensaje: [],
-            bienes: []
-
-        };
-    },
-    created: function created() {
-        console.log(this.user);
-        this.getMensajes();
-    },
-
-    methods: {
-        getBienes: function getBienes(mensaje) {
-            var _this = this;
-
-            var datos = {
-                tipo: 'Ofrezco',
-                mensaje: mensaje
-            };
-            axios.post("/api/bienes-tipo", datos).then(function (res) {
-                _this.bienes = res.data;
-                console.log(res.data);
-            });
-        },
-        getMensaje: function getMensaje(id) {
-            var _this2 = this;
-
-            axios.get("api/mensaje/" + id).then(function (res) {
-                _this2.mensaje = res.data;
-                _this2.mostrar = true;
-                _this2.getBienes(_this2.mensaje);
-            });
-        },
-        getMensajes: function getMensajes() {
-            var _this3 = this;
-
-            axios.get("api/mensajes/" + this.userId).then(function (res) {
-                _this3.mensajes = res.data;
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 113 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row msg" }, [
-    _c(
-      "div",
-      { staticClass: "col-md-3 list" },
-      _vm._l(_vm.mensajes, function(mensaje) {
-        return _c(
-          "div",
-          {
-            key: mensaje.id,
-            staticClass: "user",
-            on: {
-              click: function($event) {
-                return _vm.getMensaje(mensaje.id)
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "img" }),
-            _c("div", { staticClass: "info" }, [
-              _c("span", { staticClass: "name" }, [
-                _vm._v(_vm._s(mensaje.nombre))
-              ]),
-              _c("span", { staticClass: "type" }, [_vm._v("Oferta")])
-            ])
-          ]
-        )
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _vm.mensaje.mensaje
-      ? _c("div", { staticClass: "col-md-9 chat" }, [
-          _vm.mensaje.tipo == "Mensaje"
-            ? _c("div", { staticClass: "from" }, [
-                _c("span", [_vm._v("M")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
-                  ])
-                ])
-              ])
-            : _c("div", { staticClass: "from" }, [
-                _c("span", [_vm._v("M")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-md-6" },
-                    [
-                      _c("h4", [_vm._v("Permuto por:")]),
-                      _vm._v(" "),
-                      _vm._l(_vm.bienes, function(bien) {
-                        return _c("div", { key: bien.id }, [
-                          _c("p", [
-                            _vm._v(
-                              _vm._s(bien.bien) + " : $" + _vm._s(bien.valor)
-                            )
-                          ])
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ])
-              ])
-        ])
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-dc479aa4", module.exports)
-  }
-}
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(115)
-/* template */
-var __vue_template__ = __webpack_require__(116)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/perfil/mensaje/Detalle.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-bf030c3c", Component.options)
-  } else {
-    hotAPI.reload("data-v-bf030c3c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 115 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["mensaje"],
-  data: function data() {
-    return {
-      bien: [],
-      datos: {
-        tipo: "Ofrezco",
-        inmueble: this.mensaje
-      }
-    };
-  },
-  created: function created() {
-    this.getBienes();
-  },
-
-  methods: {
-    getBienes: function getBienes() {
-      var _this = this;
-
-      axios.post("/api/bienes-tipo", this.datos).then(function (res) {
-        _this.bienes = res.data;
-        console.log(res.data);
-      });
-    }
-  }
-});
-
-/***/ }),
-/* 116 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm.mensaje.mensaje
-    ? _c("div", { staticClass: "col-md-9 chat" }, [
-        _vm.mensaje.tipo == "Mensaje"
-          ? _c("div", { staticClass: "from" }, [
-              _c("span", [_vm._v("M")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
-            ])
-          : _c("div", { staticClass: "from" }, [
-              _c("span", [_vm._v("M")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
-            ])
-      ])
-    : _vm._e()
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-bf030c3c", module.exports)
-  }
-}
-
-/***/ }),
-/* 117 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */,
-/* 124 */,
-/* 125 */,
-/* 126 */,
-/* 127 */,
-/* 128 */,
-/* 129 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(130)
-/* template */
-var __vue_template__ = __webpack_require__(131)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
 Component.options.__file = "resources/js/perfil/detalle/component/Contactar.vue"
 
 /* hot reload */
@@ -77040,7 +76604,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 130 */
+/* 112 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77135,7 +76699,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 131 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -77398,19 +76962,23 @@ if (false) {
 }
 
 /***/ }),
-/* 132 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(135)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(133)
+var __vue_script__ = __webpack_require__(115)
 /* template */
-var __vue_template__ = __webpack_require__(134)
+var __vue_template__ = __webpack_require__(116)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -77445,7 +77013,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 133 */
+/* 115 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77485,11 +77053,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 134 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -77534,40 +77132,93 @@ var staticRenderFns = [
             { staticClass: "modal-dialog modal-dialog-centered modal-lg" },
             [
               _c("div", { staticClass: "modal-content" }, [
-                _c("div", { staticClass: "modal-header" }, [
-                  _c("h4", [_vm._v("Permuto")]),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "close",
-                      attrs: {
-                        type: "button",
-                        "data-dismiss": "modal",
-                        "aria-label": "Close"
-                      }
-                    },
-                    [
-                      _c("span", { attrs: { "aria-hidden": "true" } }, [
-                        _vm._v("×")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
-                  _c("div", { staticClass: "form-group col-md-12" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("div", { staticClass: "my-text" }, [
-                        _c("span", [_vm._v("Valor del inmueble")]),
-                        _vm._v("$\n                "),
-                        _c("input", { attrs: { type: "text" } })
-                      ])
+                  _c("div", { staticClass: "form-group main-group" }, [
+                    _c("img", {
+                      attrs: {
+                        src: "http://permutando.test/img/perfil-logo.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { staticClass: "icono" }, [
+                      _vm._v("Valor de inmueble")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        disabled: "",
+                        value: "$50.000.000"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("h5", { staticClass: "text-center mt-4" }, [
+                    _vm._v("¿Qué bienes ofrecerías?")
+                  ]),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row campos" }, [
+                    _c("div", { staticClass: "col-md-8" }, [
+                      _c("label", [_vm._v("Bien #1")]),
+                      _vm._v(" "),
+                      _c("input", { attrs: { type: "text" } })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Valor del bien")]),
+                      _vm._v(" "),
+                      _c("input", { attrs: { type: "text" } })
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group generator" }, [
-                    _c("h5", [_vm._v("¿Qué bienes ofrecerías?")])
+                  _c("div", { staticClass: "row campos" }, [
+                    _c("div", { staticClass: "col-md-8" }, [
+                      _c("label", [_vm._v("Bien #2")]),
+                      _vm._v(" "),
+                      _c("input", { attrs: { type: "text" } })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Valor del bien")]),
+                      _vm._v(" "),
+                      _c("input", { attrs: { type: "text" } })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row campos" }, [
+                    _c("div", { staticClass: "col-md-8" }, [
+                      _c("label", [_vm._v("Bien #3")]),
+                      _vm._v(" "),
+                      _c("input", { attrs: { type: "text" } })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Valor del bien")]),
+                      _vm._v(" "),
+                      _c("input", { attrs: { type: "text" } })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row total mt-4" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
+                        _vm._v("Agregar más inmuebles")
+                      ]),
+                      _vm._v(" "),
+                      _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
+                        _vm._v("Efectivo")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Valor total:")]),
+                        _vm._v(" "),
+                        _c("input", { attrs: { type: "text" } })
+                      ])
+                    ])
                   ]),
                   _vm._v(" "),
                   _c(
@@ -77601,6 +77252,482 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-c028811e", module.exports)
   }
 }
+
+/***/ }),
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(118)
+/* template */
+var __vue_template__ = __webpack_require__(119)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/perfil/mensaje/Lista.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-dc479aa4", Component.options)
+  } else {
+    hotAPI.reload("data-v-dc479aa4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 118 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['userId'],
+    data: function data() {
+        return {
+            mostrar: false,
+            mensajes: [],
+            mensaje: [],
+            bienes: []
+
+        };
+    },
+    created: function created() {
+        console.log(this.user);
+        this.getMensajes();
+    },
+
+    methods: {
+        getBienes: function getBienes(mensaje) {
+            var _this = this;
+
+            var datos = {
+                tipo: 'Ofrezco',
+                mensaje: mensaje
+            };
+            axios.post("/api/bienes-tipo", datos).then(function (res) {
+                _this.bienes = res.data;
+                console.log(res.data);
+            });
+        },
+        getMensaje: function getMensaje(id) {
+            var _this2 = this;
+
+            axios.get("api/mensaje/" + id).then(function (res) {
+                _this2.mensaje = res.data;
+                _this2.mostrar = true;
+                _this2.getBienes(_this2.mensaje);
+            });
+        },
+        getMensajes: function getMensajes() {
+            var _this3 = this;
+
+            axios.get("api/mensajes/" + this.userId).then(function (res) {
+                _this3.mensajes = res.data;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row msg" }, [
+    _c(
+      "div",
+      { staticClass: "col-md-3 list" },
+      _vm._l(_vm.mensajes, function(mensaje) {
+        return _c(
+          "div",
+          {
+            key: mensaje.id,
+            staticClass: "user",
+            on: {
+              click: function($event) {
+                return _vm.getMensaje(mensaje.id)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "img" }),
+            _c("div", { staticClass: "info" }, [
+              _c("span", { staticClass: "name" }, [
+                _vm._v(_vm._s(mensaje.nombre))
+              ]),
+              _c("span", { staticClass: "type" }, [_vm._v("Oferta")])
+            ])
+          ]
+        )
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _vm.mensaje.mensaje
+      ? _c("div", { staticClass: "col-md-9 chat" }, [
+          _vm.mensaje.tipo == "Mensaje"
+            ? _c("div", { staticClass: "from" }, [
+                _c("span", [_vm._v("M")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
+                  ])
+                ])
+              ])
+            : _c("div", { staticClass: "from" }, [
+                _c("span", [_vm._v("M")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-6" },
+                    [
+                      _c("h4", [_vm._v("Permuto por:")]),
+                      _vm._v(" "),
+                      _vm._l(_vm.bienes, function(bien) {
+                        return _c("div", { key: bien.id }, [
+                          _c("p", [
+                            _vm._v(
+                              _vm._s(bien.bien) + " : $" + _vm._s(bien.valor)
+                            )
+                          ])
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-dc479aa4", module.exports)
+  }
+}
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(121)
+/* template */
+var __vue_template__ = __webpack_require__(122)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/perfil/mensaje/Detalle.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-bf030c3c", Component.options)
+  } else {
+    hotAPI.reload("data-v-bf030c3c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 121 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["mensaje"],
+  data: function data() {
+    return {
+      bien: [],
+      datos: {
+        tipo: "Ofrezco",
+        inmueble: this.mensaje
+      }
+    };
+  },
+  created: function created() {
+    this.getBienes();
+  },
+
+  methods: {
+    getBienes: function getBienes() {
+      var _this = this;
+
+      axios.post("/api/bienes-tipo", this.datos).then(function (res) {
+        _this.bienes = res.data;
+        console.log(res.data);
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.mensaje.mensaje
+    ? _c("div", { staticClass: "col-md-9 chat" }, [
+        _vm.mensaje.tipo == "Mensaje"
+          ? _c("div", { staticClass: "from" }, [
+              _c("span", [_vm._v("M")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
+            ])
+          : _c("div", { staticClass: "from" }, [
+              _c("span", [_vm._v("M")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Nombre: " + _vm._s(_vm.mensaje.nombre))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Télefono: " + _vm._s(_vm.mensaje.tel))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Email: " + _vm._s(_vm.mensaje.email))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Mensaje:" + _vm._s(_vm.mensaje.mensaje))])
+            ])
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-bf030c3c", module.exports)
+  }
+}
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(136);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("01fc4efa", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c028811e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Permuto.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c028811e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Permuto.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 136 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal-content {\n    border-radius: 15px;\n    color: #005b95;\n}\n.modal .main-group {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n.modal .main-group img {\n    max-width: 100px;\n    margin-right: 20px;\n}\n.modal .main-group input {\n    width: 50%;\n    text-align: center;\n    background-color: rgba(0, 90, 149, 0.2);\n    font-weight: 600;\n    font-size: 18px;\n    border-radius: 50px;\n}\n.modal .main-group label {\n    font-size: 20px;\n    font-weight: bold;\n    margin: 0;\n}\n.modal .campos label {\n    margin: 0;\n}\n.modal .campos >div {\n    margin-top: 10px;\n}\n.modal .total .btn {\n    display: block;\n    max-width: 200px;\n    margin-bottom: 10px;\n    border-radius: 4px;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

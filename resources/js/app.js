@@ -26,6 +26,17 @@ Vue.component("publicar-inmueble", require("./perfil/publicar/Index.vue"));
 Vue.component("formulario-casa", require("./perfil/publicar/Casa.vue"));
 Vue.component("perfil-mensajes", require("./perfil/Mensajes.vue"));
 Vue.component("perfil-busco", require("./perfil/busco/index.vue"));
+//Componentes Detalle
+Vue.component("detalle-casa", require("./perfil/detalle/Casa.vue"));
+Vue.component("detalle-bodega", require("./perfil/detalle/Bodega.vue"));
+Vue.component(
+    "detalle-contactar",
+    require("./perfil/detalle/component/Contactar.vue")
+);
+Vue.component(
+    "detalle-permuto",
+    require("./perfil/detalle/component/Permuto.vue")
+);
 //Mensajes
 Vue.component("mensajes-lista", require("./perfil/mensaje/Lista.vue"));
 Vue.component("mensajes-detalle", require("./perfil/mensaje/Detalle.vue"));

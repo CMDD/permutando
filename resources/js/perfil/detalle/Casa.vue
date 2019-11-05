@@ -1,16 +1,6 @@
 <template>
-  <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
-    <div class="row title">
-      <div class="col">
-        <a class="mobile-menu">
-          <span></span>
-        </a>
-        <span>INFORMACIÓN DEL INMUEBLE</span>
-      </div>
-    </div>
-    <detalle-casa v-if="form.tipo_inmueble === 'Casa' " :datos="form"></detalle-casa>
-    <detalle-bodega v-if="form.tipo_inmueble === 'Bodega' " :datos="form"></detalle-bodega>
-    <!-- <form action>
+  <div>
+    <form action>
       <div class="row">
         <div class="col-md-5 p-3">
           <div class="caja p-4">
@@ -24,7 +14,7 @@
             </div>
             <div class="form-group">
               <label>Área m2</label>
-              <input type="text" v-model="form.area" />
+              <input type="text" />
             </div>
             <div class="form-group">
               <label>Baños</label>
@@ -204,16 +194,16 @@
           </div>
         </div>
       </div>
-    </form>-->
+    </form>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["inmueble", "user"],
+  props: ["datos"],
   data() {
     return {
-      form: this.inmueble
+      form: this.datos
     };
   },
   created() {},

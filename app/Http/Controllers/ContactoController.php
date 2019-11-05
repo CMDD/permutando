@@ -25,15 +25,15 @@ class ContactoController extends Controller
         $mensaje->email = $request->email;
         $mensaje->save();
         
-        $user = User::find($request->to);
+        // $user = User::find($request->to);
         // $contactado = new Contactado();
         // $contactado->user_id = Auth::User()->id;
         // $contactado->inmueble_id = $request->inmueble;
         // $contactado->save();
 
 
-        Mail::to($user->email,$user->name)
-        ->send(new Contacto($request));
+        // Mail::to($user->email,$user->name)
+        // ->send(new Contacto($request));
         return $request;
     }
 

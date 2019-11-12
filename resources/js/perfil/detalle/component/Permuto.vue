@@ -14,7 +14,7 @@
             </div>
             <h5 class="text-center mt-4">¿Qué bienes ofrecerías?</h5>
             <hr />
-            <div class="row campos" v-for="(input, index) in inputs" :key="input.id">
+            <div class="row campos text-left" v-for="(input, index) in inputs" :key="input.id">
               <div class="col-md-8">
                 <label>
                   Bien #{{index + 1}}
@@ -22,7 +22,7 @@
                 </label>
                 <input type="text" v-model="input.bien" />
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 text-left">
                 <label>Valor del bien</label>
                 <!-- <input type="text" v-model="input.valor" /> -->
                 <VueNumeric currency="$" separator="." v-model="input.valor_bien"></VueNumeric>
@@ -182,4 +182,9 @@ export default {
 .swal2-popup {
   font-size: 0.6rem !important;
 }
+    .campos a {
+        color: red;
+        margin-left: 10px;
+        font-size: .8rem;
+    }
 </style>

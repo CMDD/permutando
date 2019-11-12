@@ -256,35 +256,36 @@
       <div class="row" v-if="form.tipo_publicacion == 'Permuto'">
         <div class="col-12">
           <div class="caja p-4">
-            <div class="col-12">
-              <label>Permutado por:</label>
-            </div>
+
             <div class="row" v-for="bien in bienes" :key="bien.id">
-              <div class="col-md-4">
+                <div class="col-12 mb-3">
+                    <label>Permutado por:</label>
+                </div>
+              <div class="col-md-5">
                 <div class="form-group">
                   <label>Nombre</label>
                   <input type="text" v-model="bien.bien" />
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <div class="form-group">
                   <label>Valor</label>
                   <!-- <input type="text" v-model="bien.valor" /> -->
                   <VueNumeric currency="$" separator="." v-model="bien.valor" :disabled="!editar"></VueNumeric>
                 </div>
               </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Efectivo</label>
-                <!-- <input type="text" v-model="form.recibo_efectivo" /> -->
-                <VueNumeric
-                  currency="$"
-                  separator=","
-                  v-model="form.recibo_efectivo"
-                  :disabled="!editar"
-                ></VueNumeric>
-              </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label>Efectivo</label>
+                    <!-- <input type="text" v-model="form.recibo_efectivo" /> -->
+                    <VueNumeric
+                      currency="$"
+                      separator=","
+                      v-model="form.recibo_efectivo"
+                      :disabled="!editar"
+                    ></VueNumeric>
+                  </div>
+                </div>
             </div>
           </div>
         </div>

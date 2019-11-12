@@ -63,7 +63,7 @@ class Inmueble extends Model
      $inmueble->area = $request->area;
 
      //User
-   if($request->edit === "false"){
+   if($request->edit == "false"){
      $inmueble->user_id = $user->id;
      $inmueble->username = $user->name;
      $inmueble->usertel = $user->tel;
@@ -120,7 +120,7 @@ class Inmueble extends Model
      
 
      if ( $request->tipo_publicacion == "Permuto") {
-          if($request->edit == true){
+          if($request->edit == "true"){
                $indicador=0;
           foreach ((array)$request->bienes as $item) {
      

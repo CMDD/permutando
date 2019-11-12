@@ -79400,6 +79400,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -80408,7 +80409,16 @@ var render = function() {
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-6" }, [_c("detalle-video")], 1)
+                _c("div", { staticClass: "col-6" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "video-link btn",
+                      attrs: { href: _vm.form.video }
+                    },
+                    [_vm._v("Video del inmueble")]
+                  )
+                ])
               ])
             ]),
             _vm._v(" "),

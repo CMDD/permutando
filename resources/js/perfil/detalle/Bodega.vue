@@ -238,7 +238,8 @@
                 </div>
               </div>
               <div class="col-6">
-                <detalle-video></detalle-video>
+                <a class="video-link btn" :href="form.video">Video del inmueble</a>
+                <!-- <detalle-video></detalle-video> -->
               </div>
             </div>
           </div>

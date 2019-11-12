@@ -229,21 +229,21 @@
     <script src="/js/jquery.magnific-popup.min.js"></script>
     <script src="/js/slick.min.js"></script>
     <script>
-        // $(document).ready(function() {
-        //     $('.image-link').magnificPopup({
-        //       type: 'image',
-        //       gallery:{
-        //         enabled:true
-        //       }
-        //     });
-        //     $('.video-link').magnificPopup({type:'iframe'});
-        // });
-        // $('.gallery').slick({
-        //     infinite: true,
-        //     speed: 300,
-        //     slidesToShow: 1,
-        //     adaptiveHeight: true,
-        //     accessibility: false
-        // });
+        $(document).ready(function() {
+            $('.image-link').magnificPopup({
+              type: 'image',
+              gallery:{
+                enabled:true
+              }
+            });
+            $('.video-link').magnificPopup({type:'iframe'});
+        });
+        $('.gallery').slick({
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            accessibility: false
+        });
     </script>
 @endpush

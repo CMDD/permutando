@@ -3,6 +3,8 @@ require("./bootstrap");
 window.Vue = require("vue");
 
 import Router from "vue-router";
+import VueSweetalert2 from "vue-sweetalert2";
+Vue.use(VueSweetalert2);
 
 Vue.use(Router);
 
@@ -22,13 +24,14 @@ Vue.component("maps", require("./web/Maps.vue"));
 //Perfil
 Vue.component("publicaciones", require("./perfil/Publicaciones.vue"));
 Vue.component("inmueble-detalle", require("./perfil/Detalle.vue"));
-Vue.component("publicar-inmueble", require("./perfil/publicar/Index.vue"));
+Vue.component("publicar-inmueble", require("./perfil/publicar/Inmueble.vue"));
 Vue.component("formulario-casa", require("./perfil/publicar/Casa.vue"));
 Vue.component("perfil-mensajes", require("./perfil/Mensajes.vue"));
 Vue.component("perfil-busco", require("./perfil/busco/index.vue"));
 //Componentes Detalle
 Vue.component("detalle-casa", require("./perfil/detalle/Casa.vue"));
 Vue.component("detalle-bodega", require("./perfil/detalle/Bodega.vue"));
+Vue.component("detalle-video", require("./perfil/detalle/component/Video.vue"));
 Vue.component(
     "detalle-contactar",
     require("./perfil/detalle/component/Contactar.vue")

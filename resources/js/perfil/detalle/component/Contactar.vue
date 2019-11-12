@@ -33,8 +33,8 @@
                   v-model="contacto.email"
                   placeholder="Email"
                 />
-                <input type="hidden" class="form-control" v-model="contacto.to" />
-                <input type="hidden" class="form-control" v-model="contacto.inmueble" />
+                <!-- <input type="hidden" class="form-control" v-model="contacto.to" />
+                <input type="hidden" class="form-control" v-model="contacto.inmueble" />-->
                 <textarea
                   required
                   class="form-control"
@@ -63,7 +63,9 @@ export default {
   data() {
     return {
       enviando: false,
-      contacto: {}
+      contacto: {
+        to: this.inmueble.user_id
+      }
     };
   },
   methods: {

@@ -1,12 +1,13 @@
 <template>
   <div>
-    <form action>
+    <form @submit.prevent="updateInmueble">
       <div class="row">
         <div class="col-md-5 p-3">
           <div class="caja p-4">
             <div class="form-group">
               <label>Valor</label>
-              <input type="text" v-model="form.valor" :disabled="!editar" />
+              <!-- <input type="text" v-model="form.valor" :disabled="!editar" /> -->
+              <VueNumeric currency="$" separator="." v-model="form.valor" :disabled="!editar"></VueNumeric>
             </div>
 
             <div class="form-group">
@@ -30,11 +31,47 @@
               <label>Capacidad Carga (PSI)</label>
               <input type="text" v-model="form.carga_psi" :disabled="!editar" />
             </div>
-            <div class="form-group">
+            <div class="form-group" v-if="!editar">
               <label>Departamento</label>
-              <input type="text" v-model="form.departamento" :disabled="!editar" />
+              <input type="text" v-model="form.departamento" disabled />
             </div>
-            <div class="form-group">
+            <!-- <div class="my-select form-group" v-if="editar">
+              <label>Departamento</label>
+              <select @change="getCiudades()" v-model="form.departamento">
+                <option value>{{form.departamento}}</option>
+                <option
+                  v-for="departamento in departamentos"
+                  :key="departamento.id"
+                  v-bind:value="departamento"
+                >{{departamento.nombre}}</option>
+              </select>
+            </div>-->
+
+            <div class="my-select form-group" v-if="editar">
+              <label>Departamento</label>
+              <select v-model="form.departamento" @change="getCiudades()">
+                <option>Seleccione...</option>
+                <option
+                  v-bind:value="departamento.id"
+                  v-for="departamento in departamentos"
+                  :key="departamento.id"
+                >{{departamento.nombre}}</option>
+              </select>
+            </div>
+
+            <div class="my-select form-group" v-if="editar">
+              <label>Ciudad / Municipio</label>
+              <select v-model="form.ciudad">
+                <option>Seleccione...</option>
+                <option
+                  v-bind:value="ciudad.id"
+                  v-for="ciudad in ciudades"
+                  :key="ciudad.id"
+                >{{ciudad.nombre}}</option>
+              </select>
+            </div>
+
+            <div class="form-group" v-if="!editar">
               <label>Ciudad / Municipio</label>
               <input type="text" v-model="form.ciudad" :disabled="!editar" />
             </div>
@@ -46,22 +83,15 @@
               <label>Dirección</label>
               <input type="text" v-model="form.direccion" :disabled="!editar" />
             </div>
-            <!-- <div class="my-select form-group">
-              <label>Departamento</label>
-              <select @change="getCiudades()" v-model="form.departamento">
-                <option>{{form.departamento}}</option>
-
-                <option
-                  v-for="departamento in departamentos"
-                  :key="departamento.id"
-                  v-bind:value="departamento"
-                >{{departamento.nombre}}</option>
-              </select>
-            </div>-->
 
             <div class="form-group">
               <label>Valor Adminsitración</label>
-              <input type="text" v-model="form.administracion" :disabled="!editar" />
+              <VueNumeric
+                currency="$"
+                separator="."
+                v-model="form.administracion"
+                :disabled="!editar"
+              ></VueNumeric>
             </div>
             <div class="form-group">
               <label>Parque Industrial</label>
@@ -88,81 +118,135 @@
         </div>
 
         <div class="col-md-7 p-3">
-          <div class="caja p-4">
+          <div class="caja p-4" v-if="!editar">
             <div class="edit-gallery">
+              <label>Imagenes del inmueble</label>
+              <div class="gallery mb-3" id="carousel">
+                <div>
+                  <a
+                    class="image-link"
+                    :href="'/'+form.imagen"
+                    v-bind:style="{ backgroundImage: 'url(' + '/' + form.imagen+')' }"
+                  ></a>
+                </div>
+                <div v-if="form.im2">
+                  <a
+                    class="image-link"
+                    :href="'/'+form.im2"
+                    v-bind:style="{ backgroundImage: 'url(' + '/' + form.im2+')' }"
+                  ></a>
+                </div>
+                <div v-if="form.im3">
+                  <a
+                    class="image-link"
+                    :href="'/'+form.im3"
+                    v-bind:style="{ backgroundImage: 'url(' + '/' + form.im3+')' }"
+                  ></a>
+                </div>
+                <div v-if="form.im4">
+                  <a
+                    class="image-link"
+                    :href="'/'+form.im4"
+                    v-bind:style="{ backgroundImage: 'url(' + '/' + form.im4+')' }"
+                  ></a>
+                </div>
+                <div v-if="form.im5">
+                  <a
+                    class="image-link"
+                    :href="'/'+form.im5"
+                    v-bind:style="{ backgroundImage: 'url(' + '/' + form.im5+')' }"
+                  ></a>
+                </div>
+                <div v-if="form.im6">
+                  <a
+                    class="image-link"
+                    :href="'/'+form.im6"
+                    v-bind:style="{ backgroundImage: 'url(' + '/' + form.im6+')' }"
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="caja p-4">
+            <div class="edit-gallery" v-if="editar">
               <label>Imágenes</label>
               <div class="image added">
-                <span class="delete">&times;</span>
-                <input type="file" id="file_1" ref="img1" @change="img" class="inputfile" disabled />
+                <span v-if="editar" class="delete">&times;</span>
+                <input type="file" id="file_1" ref="im1" class="inputfile" @change="im1" />
                 <label
                   for="file_1"
                   v-bind:style="{ backgroundImage: 'url(' + '/' + form.imagen+')' }"
                 ></label>
               </div>
-              <div class="image added">
-                <span class="delete">&times;</span>
-                <input type="file" id="file_2" class="inputfile" disabled />
+              <div :class="'image' + (form.im2 !== null ? ' added':'' )">
+                <span v-if="editar" @click="eliminar('im2',form.id)" class="delete">&times;</span>
+                <input type="file" id="file_2" ref="im2" class="inputfile" @change="im2" />
                 <label
+                  v-if="form.im2"
                   for="file_2"
-                  v-bind:style="{ backgroundImage: 'url(' + '/' + form.imagen+')' }"
+                  v-bind:style="{ backgroundImage: 'url(' + '/' + form.im2+')' }"
                 ></label>
+                <label v-else for="file_2"></label>
               </div>
-              <div class="image added">
-                <span class="delete">&times;</span>
-                <input type="file" id="file_3" class="inputfile" disabled />
+
+              <div :class="'image' + (form.im3 !== null ? ' added':'' )">
+                <span v-if="editar" class="delete" @click="eliminar('im3',form.id)">&times;</span>
+                <input type="file" id="file_3" ref="im3" class="inputfile" @change="im3" />
                 <label
+                  v-if="form.im3"
                   for="file_3"
-                  v-bind:style="{ backgroundImage: 'url(' + '/' + form.imagen+')' }"
+                  v-bind:style="{ backgroundImage: 'url(' + '/' + form.im3+')' }"
                 ></label>
+                <label v-else for="file_3"></label>
               </div>
-              <div class="image added">
-                <span class="delete">&times;</span>
-                <input type="file" id="file_4" class="inputfile" />
+              <div :class="'image' + (form.im4 !== null ? ' added':'' )">
+                <span v-if="editar" class="delete" @click="eliminar('im4',form.id)">&times;</span>
+                <input type="file" id="file_4" ref="im4" class="inputfile" @change="im4" />
                 <label
+                  v-if="form.im4"
                   for="file_4"
-                  v-bind:style="{ backgroundImage: 'url(' + '/' + form.imagen+')' }"
+                  v-bind:style="{ backgroundImage: 'url(' + '/' + form.im4+')' }"
                 ></label>
+                <label v-else for="file_4"></label>
               </div>
-              <div class="image added">
-                <span class="delete">&times;</span>
-                <input type="file" id="file_5" class="inputfile" disabled />
+              <div :class="'image' + (form.im5 !== null ? ' added':'' )">
+                <span v-if="editar" class="delete" @click="eliminar('im5',form.id)">&times;</span>
+                <input type="file" id="file_5" ref="im5" class="inputfile" @change="im5" />
                 <label
+                  v-if="form.im5"
                   for="file_5"
-                  v-bind:style="{ backgroundImage: 'url(' + '/' + form.imagen+')' }"
+                  v-bind:style="{ backgroundImage: 'url(' + '/' + form.im5+')' }"
                 ></label>
+                <label v-else for="file_5"></label>
               </div>
-              <div class="image added">
-                <span class="delete">&times;</span>
-                <input type="file" id="file_6" class="inputfile" />
+              <div :class="'image' + (form.im6 !== null ? ' added':'' )">
+                <span v-if="editar" class="delete" @click="eliminar('im6',form.id)">&times;</span>
+                <input type="file" id="file_6" ref="im6" class="inputfile" @change="im6" />
                 <label
+                  v-if="form.im6"
                   for="file_6"
-                  v-bind:style="{ backgroundImage: 'url(' + '/' + form.imagen+')' }"
+                  v-bind:style="{ backgroundImage: 'url(' + '/' + form.im6+')' }"
                 ></label>
+                <label v-else for="file_6"></label>
               </div>
             </div>
             <div class="row video align-items-end">
-              <div class="col-6">
-                <div class="form-group">
+              <div class="col-12">
+                <div class="form-group" v-if="editar">
                   <label>Link del video</label>
-                  <input type="text" v-model="form.video" :disabled="!editar" />
+                  <input type="text" v-model="form.video" />
                 </div>
               </div>
               <div class="col-6">
-                <iframe
-                  width="100%"
-                  :src="form.video"
-                  frameborder="0"
-                  allow="autoplay; encrypted-media"
-                  allowfullscreen
-                ></iframe>
+                <detalle-video></detalle-video>
               </div>
             </div>
           </div>
           <div class="caja p-4 mt-4">
             <div class="row">
-              <div class="col-12 mt-4">
+              <div class="col-12">
                 <label>Características</label>
-                <textarea rows="4" v-model="form.caracteristicas"></textarea>
+                <textarea rows="4" v-model="form.caracteristicas" :disabled="!editar"></textarea>
               </div>
             </div>
           </div>
@@ -184,35 +268,58 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Valor</label>
-                  <input type="text" v-model="bien.valor" />
+                  <!-- <input type="text" v-model="bien.valor" /> -->
+                  <VueNumeric currency="$" separator="." v-model="bien.valor" :disabled="!editar"></VueNumeric>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Efectivo</label>
-                <input type="text" v-model="form.recibo_efectivo" />
+                <!-- <input type="text" v-model="form.recibo_efectivo" /> -->
+                <VueNumeric
+                  currency="$"
+                  separator=","
+                  v-model="form.recibo_efectivo"
+                  :disabled="!editar"
+                ></VueNumeric>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </form>
 
-    <detalle-contactar :inmueble="form.id"></detalle-contactar>
-    <detalle-permuto :inmueble="form.id"></detalle-permuto>
+      <div class="row">
+        <div class="col-4">
+          <a href="#" @click="edit()" v-if="!editar" class="btn">Editar</a>
+          <button type="submit" v-else class="btn">Actualizar</button>
+        </div>
+        <div class="col-4">
+          <detalle-permuto :inmueble="form" :user="user"></detalle-permuto>
+        </div>
+        <div class="col-4">
+          <detalle-contactar :inmueble="form"></detalle-contactar>
+        </div>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
+import VueNumeric from "vue-numeric";
+import toastr from "toastr";
 export default {
-  props: ["datos"],
+  components: {
+    VueNumeric
+  },
+  props: ["datos", "user"],
   data() {
     return {
       editar: false,
       enviando: false,
       bienes: [],
       departamentos: [],
+      ciudades: [],
       form: this.datos,
       contacto: {}
     };
@@ -222,7 +329,21 @@ export default {
     this.getBienes();
   },
   methods: {
-    contactar() {},
+    permutando() {
+      this.enviando = true;
+      axios.post("/api/permutando", this.permutar).then(res => {
+        console.log(res.data);
+      });
+    },
+    edit() {
+      this.editar = true;
+      Vue.swal.fire({
+        icon: "success",
+        title: "Ya puedes editar tu inmueble",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    },
     getBienes() {
       axios.get("/api/bienes/" + this.form.id).then(res => {
         this.bienes = res.data;
@@ -235,14 +356,92 @@ export default {
     },
     getCiudades(value) {
       console.log(value);
-
-      //   axios.get("/api/ciudades/" + this.form.departamento).then(res => {
-      //     this.ciudades = res.data;
-      //   });
+      axios.get("/api/ciudades/" + this.form.departamento).then(res => {
+        this.ciudades = res.data;
+      });
     },
-    img(event) {
+    updateInmueble() {
+      let fd = new FormData();
+
+      for (var i = 0; i < this.bienes.length; i++) {
+        fd.append("bienes[]", this.bienes[i].bien);
+        fd.append("valor_bien[]", this.bienes[i].valor);
+        fd.append("bien_id[]", this.bienes[i].id);
+      }
+      // for (var i = 0; i < this.form.valor_bien.length; i++) {
+      //   fd.append("valor_bien[]", this.form.valor_bien[i]);
+      // }
+
+      // General
+      fd.append("tipo_inmueble", this.form.tipo_inmueble);
+      fd.append("tipo_publicacion", this.form.tipo_publicacion);
+      fd.append("caracteristicas", this.form.caracteristicas);
+      fd.append("id", this.form.id);
+      fd.append("valor", this.form.valor);
+      fd.append("departamento", this.form.departamento);
+      fd.append("ciudad", this.form.ciudad);
+      fd.append("barrio", this.form.barrio);
+      fd.append("direccion", this.form.direccion);
+      fd.append("video", this.form.video);
+      fd.append("recibo_efectivo", this.form.recibo_efectivo);
+      fd.append("im1", this.form.im1);
+      fd.append("im2", this.form.im2);
+      fd.append("im3", this.form.im3);
+      fd.append("im4", this.form.im4);
+      fd.append("im5", this.form.im5);
+      fd.append("im6", this.form.im6);
+
+      // Bodega
+      fd.append("carga_psi", this.form.carga_psi);
+      fd.append("capacidad_luz", this.form.capacidad_luz);
+      fd.append("parque_industrial", this.form.parque_industrial);
+      fd.append("area_fondo", this.form.area_fondo);
+      fd.append("area_ancho", this.form.area_ancho);
+      fd.append("altura", this.form.altura);
+      fd.append("anos", this.form.anos);
+      fd.append("administracion", this.form.administracion);
+      fd.append("edit", true);
+
+      axios
+        .post("/api/editar-inmueble", fd, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+        .then(res => {
+          console.log(res.data);
+
+          toastr.success("Inmueble actualizado correctamente");
+        });
+    },
+    eliminar(value, id) {
+      axios.get("/api/delete-img/" + value + "/" + id).then(res => {
+        toastr.success(res.data);
+      });
+    },
+    im1(event) {
       console.log(event);
-      this.form.img1 = this.$refs.img1.files[0];
+      this.form.im1 = this.$refs.im1.files[0];
+    },
+    im2(event) {
+      console.log(event);
+      this.form.im2 = this.$refs.im2.files[0];
+    },
+    im3(event) {
+      console.log(event);
+      this.form.im3 = this.$refs.im3.files[0];
+    },
+    im4(event) {
+      console.log(event);
+      this.form.im4 = this.$refs.im4.files[0];
+    },
+    im5(event) {
+      console.log(event);
+      this.form.im5 = this.$refs.im5.files[0];
+    },
+    im6(event) {
+      console.log(event);
+      this.form.im6 = this.$refs.im6.files[0];
     }
   }
 };
@@ -485,5 +684,11 @@ input {
   white-space: nowrap;
   flex: 0 0 auto;
   width: 50%;
+}
+.gallery a.image-link {
+  height: 350px;
+  display: block;
+  background-size: cover;
+  background-position: center;
 }
 </style>

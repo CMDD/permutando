@@ -39,7 +39,6 @@ class ContactoController extends Controller
 
     public function permutando(Request $request){
         
-        
         $mensaje = new Mensaje();
         $mensaje->from = $request->user['id'];
         $mensaje->to = (int)$request->to;
@@ -67,6 +66,7 @@ class ContactoController extends Controller
                $indicador = $indicador +1;
               
            }
+           return $request;
         return 'llegando';
     }
 }

@@ -2,7 +2,9 @@
   <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
     <div class="row title">
       <div class="col">
-        <a class="mobile-menu"><span></span></a>
+        <a class="mobile-menu">
+          <span></span>
+        </a>
         <span>Mis publicaciones</span>
       </div>
     </div>
@@ -14,7 +16,9 @@
         :key="inmueble.id"
       >
         <div class="box">
-          <div class="image" v-bind:style="{ backgroundImage: 'url(' + '/' + inmueble.imagen+')' }"><span class="delete">&times;</span></div>
+          <div class="image" v-bind:style="{ backgroundImage: 'url(' + '/' + inmueble.imagen+')' }">
+            <span @click="eliminarPublicacion(inmueble.id)" class="delete">&times;</span>
+          </div>
           <div class="content">
             <div class="name">
               <h4>{{inmueble.tipo}}</h4>
@@ -55,6 +59,31 @@ export default {
     this.getInmuebles();
   },
   methods: {
+    eliminarPublicacion(id) {
+      Vue.swal
+        .fire({
+          title: "Estas seguro?",
+          text: "Tu publicación será eliminada!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Si, Eliminar!",
+          cancelButtonText: "Cancelar"
+        })
+        .then(result => {
+          if (result.value) {
+            axios.get("/api/delete-inmueble/" + id).then(res => {
+              Vue.swal.fire(
+                "Eliminada!",
+                "Tu publicación ha sido eliminada",
+                "success"
+              );
+              this.getInmuebles();
+            });
+          }
+        });
+    },
     getInmuebles() {
       axios.get("api/mis-inmuebles/" + this.userId).then(res => {
         this.inmuebles = res.data;

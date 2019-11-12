@@ -9,7 +9,7 @@
       </div>
     </div>
     <detalle-casa v-if="form.tipo_inmueble === 'Casa' " :datos="form"></detalle-casa>
-    <detalle-bodega v-if="form.tipo_inmueble === 'Bodega' " :datos="form"></detalle-bodega>
+    <detalle-bodega v-if="form.tipo_inmueble === 'Bodega' " :datos="form" :user="user"></detalle-bodega>
     <!-- <form action>
       <div class="row">
         <div class="col-md-5 p-3">

@@ -43,6 +43,8 @@ Route::post('busco-index','Perfil\BuscoController@buscoIndex');
     Route::post('editar-inmueble','InmuebleController@editar');
     Route::get('imagenes/{id}','BienController@getImagenes');
     Route::post('inmueble-estado','InmuebleController@estado');
+    Route::get('delete-img/{img}/{id}','InmuebleController@deleteImage');
+    Route::get('delete-inmueble/{id}','InmuebleController@deleteInmueble');
     
 
 //Departamentos

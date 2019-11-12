@@ -106,7 +106,7 @@ class InmuebleController extends Controller
                 break;
         }
 
-        return $inmueble->id;
+        return $request;
     }
     public function editar(Request $request){
         switch ($request->tipo_inmueble) {
@@ -136,7 +136,7 @@ class InmuebleController extends Controller
                 return $inmueble->store($request,$inmueble->id);
                 break;
             case 'Bodega':
-            $inmueble = Inmueble::find($request->id);
+                $inmueble = Inmueble::find((int)$request->id);
                 $inmueble->carga_psi = $request->carga_psi;
                 $inmueble->capacidad_luz = $request->capacidad_luz;
                 $inmueble->parque_industrial = $request->parque_industrial;
@@ -144,6 +144,7 @@ class InmuebleController extends Controller
                 $inmueble->area_fondo = $request->area_fondo;
                 $inmueble->area_ancho = $request->area_ancho;
                 $inmueble->save();
+              
                 return $inmueble->store($request,$inmueble->id);
                 break;
             case 'Lote':
@@ -199,7 +200,7 @@ class InmuebleController extends Controller
                 break;
         }
 
-        return $inmueble->id;
+        return $request;
 
     }
 
@@ -253,4 +254,17 @@ class InmuebleController extends Controller
         $inmueble->save();
         return $inmueble;
     }
+
+    public function deleteImage($img,$id){
+        $inmueble = Inmueble::find($id);
+        $inmueble->$img = null;
+        $inmueble->save();
+        return "Imagen eliminada correctamente";
+  }
+    public function deleteInmueble($id){
+        $inmueble = Inmueble::find($id);
+        $inmueble->delete();
+        return "Inmueble eliminado correctamente";
+  }
+ 
 }

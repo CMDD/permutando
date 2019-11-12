@@ -2,7 +2,9 @@
   <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
     <div class="row title">
       <div class="col">
-        <a class="mobile-menu"><span></span></a>
+        <a class="mobile-menu">
+          <span></span>
+        </a>
         <span>Publicar Inmueble</span>
       </div>
     </div>
@@ -113,73 +115,78 @@
                 <span>Tipo de Construcción</span>
                 <div class="form-col">
                   <div>
-                      <input type="checkbox" v-model="form.tipo_construccion" value="Casa" id="zonas_1" />
-                      <label for="zonas_1">Casa</label>
-                      <input
-                        type="checkbox"
-                        v-model="form.tipo_construccion"
-                        value="Bodega"
-                        id="zonas_2"
-                      />
-                      <label for="zonas_2">Bodega</label>
-                      <input
-                        type="checkbox"
-                        v-model="form.tipo_construccion"
-                        value="Piscina"
-                        id="zonas_3"
-                      />
-                      <label for="zonas_3">Piscina</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        v-model="form.tipo_construccion"
-                        value="Kiosco"
-                        id="zonas_4"
-                      />
-                      <label for="zonas_4">Kiosco</label>
-                      <input
-                        type="checkbox"
-                        v-model="form.tipo_construccion"
-                        value="Parqueadero cubierto"
-                        id="zonas_5"
-                      />
-                      <label for="zonas_5">Parqueadero cubierto</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        v-model="form.tipo_construccion"
-                        value="Parqueadero descubierto"
-                        id="zonas_9"
-                      />
-                      <label for="zonas_9">Parqueadero descubierto</label>
-                      <input
-                        type="checkbox"
-                        v-model="form.tipo_construccion"
-                        value="Pozo séptico"
-                        id="zonas_6"
-                      />
-                      <label for="zonas_6">Pozo séptico</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        v-model="form.tipo_construccion"
-                        value="Alcantarillado"
-                        id="zonas_7"
-                      />
-                      <label for="zonas_7">Alcantarillado</label>
-                      <input
-                        type="checkbox"
-                        v-model="form.tipo_construccion"
-                        value="Zonas deportivas"
-                        id="zonas_8"
-                      />
-                      <label for="zonas_8">Zonas deportivas</label>
-                    </div>
+                    <input
+                      type="checkbox"
+                      v-model="form.tipo_construccion"
+                      value="Casa"
+                      id="zonas_1"
+                    />
+                    <label for="zonas_1">Casa</label>
+                    <input
+                      type="checkbox"
+                      v-model="form.tipo_construccion"
+                      value="Bodega"
+                      id="zonas_2"
+                    />
+                    <label for="zonas_2">Bodega</label>
+                    <input
+                      type="checkbox"
+                      v-model="form.tipo_construccion"
+                      value="Piscina"
+                      id="zonas_3"
+                    />
+                    <label for="zonas_3">Piscina</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      v-model="form.tipo_construccion"
+                      value="Kiosco"
+                      id="zonas_4"
+                    />
+                    <label for="zonas_4">Kiosco</label>
+                    <input
+                      type="checkbox"
+                      v-model="form.tipo_construccion"
+                      value="Parqueadero cubierto"
+                      id="zonas_5"
+                    />
+                    <label for="zonas_5">Parqueadero cubierto</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      v-model="form.tipo_construccion"
+                      value="Parqueadero descubierto"
+                      id="zonas_9"
+                    />
+                    <label for="zonas_9">Parqueadero descubierto</label>
+                    <input
+                      type="checkbox"
+                      v-model="form.tipo_construccion"
+                      value="Pozo séptico"
+                      id="zonas_6"
+                    />
+                    <label for="zonas_6">Pozo séptico</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      v-model="form.tipo_construccion"
+                      value="Alcantarillado"
+                      id="zonas_7"
+                    />
+                    <label for="zonas_7">Alcantarillado</label>
+                    <input
+                      type="checkbox"
+                      v-model="form.tipo_construccion"
+                      value="Zonas deportivas"
+                      id="zonas_8"
+                    />
+                    <label for="zonas_8">Zonas deportivas</label>
+                  </div>
                 </div>
-                </div>
+              </div>
             </div>
 
             <div class="form-field w62" v-if="form.tipoInmueble == 'Oficina' ">
@@ -372,25 +379,25 @@
               <div class="my-checkbox">
                 <span>Zonas Comunes</span>
                 <div class="form-col">
-                    <div>
-                      <input type="checkbox" v-model="form.zonas" value="Gimnasio" id="zonas_1" />
-                      <label for="zonas_1">Gimnasio</label>
-                      <input type="checkbox" v-model="form.zonas" value="BBQ" id="zonas_2" />
-                      <label for="zonas_2">BBQ</label>
-                      <input type="checkbox" v-model="form.zonas" value="Salón comunal" id="zonas_3" />
-                      <label for="zonas_3">Salón comunal</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" v-model="form.zonas" value="Zona húmeda" id="zonas_4" />
-                      <label for="zonas_4">Zona húmeda</label>
-                      <input
-                        type="checkbox"
-                        v-model="form.zonas"
-                        value="Parques para niños"
-                        id="zonas_5"
-                      />
-                      <label for="zonas_5">Parques para niños</label>
-                    </div>
+                  <div>
+                    <input type="checkbox" v-model="form.zonas" value="Gimnasio" id="zonas_1" />
+                    <label for="zonas_1">Gimnasio</label>
+                    <input type="checkbox" v-model="form.zonas" value="BBQ" id="zonas_2" />
+                    <label for="zonas_2">BBQ</label>
+                    <input type="checkbox" v-model="form.zonas" value="Salón comunal" id="zonas_3" />
+                    <label for="zonas_3">Salón comunal</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" v-model="form.zonas" value="Zona húmeda" id="zonas_4" />
+                    <label for="zonas_4">Zona húmeda</label>
+                    <input
+                      type="checkbox"
+                      v-model="form.zonas"
+                      value="Parques para niños"
+                      id="zonas_5"
+                    />
+                    <label for="zonas_5">Parques para niños</label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -423,7 +430,8 @@
             <div class="form-field w50">
               <div class="my-text">
                 <span>Valor Administración</span>
-                <input v-model="form.administracion" type="text" required />
+                <!-- <input v-model="form.administracion" type="text" required /> -->
+                <VueNumeric currency="$" separator="," v-model="form.administracion"></VueNumeric>
               </div>
             </div>
             <div class="form-field w50">
@@ -465,7 +473,8 @@
             <textarea v-model="form.caracteristicas" placeholder="Otras características"></textarea>
             <div class="form-field w50 value">
               <span>Valor: $</span>
-              <input required type="text" v-model="form.valor" />
+              <!-- <input required type="text" v-model="form.valor" /> -->
+              <VueNumeric currency="$" separator="." v-model="form.valor"></VueNumeric>
             </div>
           </div>
           <div class="f1-buttons">
@@ -483,7 +492,7 @@
                 <label for="file">Subir</label>
               </div>
             </div>
-            <div class="form-field w50">
+            <!-- <div class="form-field w50">
               <span>Imágenes...</span>
               <small>(Máximo 6 imágenes)</small>
               <div class="image">
@@ -497,7 +506,7 @@
                 />
                 <label for="file2">Subir imagen</label>
               </div>
-            </div>
+            </div>-->
             <div class="form-field w100">
               <div class="my-text">
                 <span>Url Video</span>
@@ -524,44 +533,46 @@
             <div class="form-field w100">
               <div class="my-text">
                 <span>Valor del inmueble</span>$
-                <input type="text" v-model="form.valor" />
+                <!-- <input type="text" v-model="form.valor" /> -->
+                <VueNumeric currency="$" separator="." v-model="form.valor"></VueNumeric>
               </div>
             </div>
           </div>
           <div class="form-group generator" v-if="form.tipoPublicacion === 'Permuto'">
             <h5>¿Por qué bienes lo permutarías?</h5>
-            <div class="group-generator">
-              <div class="form-field w65">
-                <span>Bien #1</span>
+            <div class="group-generator" v-for="(input, index) in inputs" :key="input.index">
+              <div class="form-field">
+                <span>Bien #{{index +1}}</span>
+                <a href="#" @click="eliminarInput(index)">Eliminar</a>
                 <div class="my-text">
-                  <input type="text" id="bien1" />
+                  <input type="text" v-model="input.bien" />
                 </div>
               </div>
-              <div class="form-field w35">
+              <div class="form-field">
                 <span>Valor del bien</span>
                 <div class="my-text">
-                  <input type="text" id="valor_bien1" />
+                  <VueNumeric currency="$" separator="." v-model="input.valor"></VueNumeric>
                 </div>
               </div>
             </div>
 
             <div class="form-field w50">
-              <a href="#" @click="addBien" class="btn add">Agregar más bienes</a>
+              <button type="button" @click="addBien()" class="btn add">Agregar más bienes</button>
             </div>
             <div class="form-field w50">
               <div class="my-text text-right">
                 <span>Valor total</span>
-                <input type="text" v-model="valorTotal" />
+                <VueNumeric currency="$" separator="." v-model="valorTotal"></VueNumeric>
               </div>
             </div>
             <div class="group-efectivo">
               <div class="form-field w50">
-                <a href="#" class="btn open-popup">Efectivo</a>
+                <a href="#" class="btn" @click="addEfectivo()">Recibo en Efectivo</a>
               </div>
               <div class="form-field w50">
                 <div class="my-text text-right" v-if="active">
                   <span>Recibo en efectivo</span>
-                  <input type="text" v-model="form.recibo_efectivo" />
+                  <VueNumeric currency="$" separator="." v-model="form.recibo_efectivo"></VueNumeric>
                 </div>
               </div>
             </div>
@@ -577,6 +588,7 @@
   </div>
 </template>
 <script>
+import VueNumeric from "vue-numeric";
 import toastr from "toastr";
 toastr.options = {
   closeButton: true,
@@ -588,27 +600,23 @@ if (document.getElementById("userId")) {
 } else {
 }
 export default {
+  components: {
+    VueNumeric
+  },
   data() {
     return {
-      indicador: 1,
       active: false,
-      valorTotal: 0,
+      valorTotal: "",
       userId: userId,
       enviando: true,
       departamentos: [],
       ciudades: [],
+      inputs: [],
       form: {
-        permuto: [
-          {
-            bien: "",
-            valor: ""
-          }
-        ],
         area_ancho: "",
         area_fondo: "",
         altura: "",
         anos: "",
-        bienes: [],
         valor_bien: [],
         recibo_efectivo: "",
         tipoPublicacion: "",
@@ -668,34 +676,37 @@ export default {
     this.getDepartamentos();
   },
   methods: {
+    addEfectivo() {
+      this.validarValor();
+
+      let result2 = parseInt(this.form.valor) / 2 + 1;
+      if (this.valorTotal >= result2) {
+        this.active = true;
+      } else {
+        this.active = false;
+        Vue.swal.fire(
+          "Ten en cuenta que si elijes ésta opción, solo podrás añadir dinero en efectivo, una vez hayas completado en el formulario más del 50% del valor de tu propiedad en bienes"
+        );
+      }
+    },
     addBien() {
-      let bien = document.getElementById(`bien` + this.indicador).value;
-
-      let valor_bien = document.getElementById(`valor_bien` + this.indicador)
-        .value;
-
-      this.form.bienes.push(bien);
-      this.form.valor_bien.push(valor_bien.replace(/[.]/g, ""));
-
-      bien = "";
-      valor_bien = "";
-
-      this.indicador = this.indicador + 1;
-
-      var result = this.form.valor_bien.map(function(x) {
-        return parseInt(x, 10);
+      this.validarValor();
+      this.inputs.push({
+        bien: "",
+        valor: ""
       });
-      const reducer = (accumulator, currentValue) => accumulator + currentValue;
-      this.valorTotal = result.reduce(reducer);
 
-      var fvalor = this.form.valor.replace(/[.]/g, "");
-      var val = parseInt(fvalor) / 2;
-      console.log(val);
+      var val = parseInt(this.form.valor) / 2;
+
       if (this.valorTotal > val) {
         this.active = true;
       } else {
         this.active = false;
       }
+    },
+    eliminarInput(index) {
+      this.inputs.splice(index, 1);
+      this.validarValor();
     },
     img(event) {
       console.log(event);
@@ -732,12 +743,12 @@ export default {
       for (var i = 0; i < this.form.zonas.length; i++) {
         fd.append("zonas[]", this.form.zonas[i]);
       }
-      for (var i = 0; i < this.form.bienes.length; i++) {
-        fd.append("bienes[]", this.form.bienes[i]);
-      }
-      for (var i = 0; i < this.form.valor_bien.length; i++) {
-        fd.append("valor_bien[]", this.form.valor_bien[i]);
-      }
+      // for (var i = 0; i < this.form.inputs.length; i++) {
+      //   fd.append("bienes[]", this.form.inputs[i]);
+      // }
+      // for (var i = 0; i < this.form.valor_bien.length; i++) {
+      //   fd.append("valor_bien[]", this.form.valor_bien[i]);
+      // }
       for (var i = 0; i < this.form.transporte.length; i++) {
         fd.append("transporte[]", this.form.transporte[i]);
       }
@@ -769,6 +780,7 @@ export default {
       //      fd.append('modos[]',this.modo[i]);
       // }
       fd.append("area", this.form.area);
+      fd.append("bienes", this.inputs);
 
       fd.append("habitaciones", this.form.habitaciones);
       fd.append("banos", this.form.banos);
@@ -847,7 +859,8 @@ export default {
           //   mascotas:'',
           // }
           toastr.success("Inmueble subido correctamente");
-          window.location.href = `http://permutado.com/perfil-detalle/${res.data}`;
+
+          // window.location.href = `http://permutado.com/perfil-detalle/${res.data}`;
         });
     },
     getDepartamentos() {
@@ -863,34 +876,22 @@ export default {
     formatPrice(value) {
       let val = (value / 1).toFixed(0).replace(".", ",");
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
+    validarValor() {
+      if (this.inputs.length > 0) {
+        var result = this.inputs.map(function(x) {
+          return parseInt(x.valor, 10);
+        });
+        const reducer = (accumulator, currentValue) =>
+          accumulator + currentValue;
+
+        this.valorTotal = result.reduce(reducer);
+      } else {
+        this.valorTotal = 0;
+      }
     }
   }
 };
-
-$(document).on("click", ".generator .add", function() {
-  var num = $(".group-generator").length + 1;
-
-  var ids = $(this)
-      .parent()
-      .attr("data-option"),
-    box_html = $(
-      '<div class="group-generator"><div class="form-field w65"><span>Bien #' +
-        num +
-        '</span><div class="my-text"><input type="text" id="bien' +
-        num +
-        '"   /></div></div><div class="form-field w35"><span>Valor del bien</span><div class="my-text"><input type="text" id="valor_bien' +
-        num +
-        '"  /></div></div></div>'
-    );
-
-  box_html.hide();
-  $(this)
-    .parent()
-    .before(box_html);
-  box_html.fadeIn("fast");
-
-  return false;
-});
 </script>
 
 <style>

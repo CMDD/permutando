@@ -290,14 +290,10 @@
       </div>
 
       <div class="row">
-        <div class="col-4">
+        <div class="col-12 text-right py-3 botones-azules">
           <a href="#" @click="edit()" v-if="!editar" class="btn">Editar</a>
           <button type="submit" v-else class="btn">Actualizar</button>
-        </div>
-        <div class="col-4">
           <detalle-permuto :inmueble="form" :user="user"></detalle-permuto>
-        </div>
-        <div class="col-4">
           <detalle-contactar :inmueble="form"></detalle-contactar>
         </div>
       </div>
@@ -446,38 +442,7 @@ export default {
   }
 };
 
-$(document).ready(function() {
-  $(".inputfile").change(function() {
-    var input = this;
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        $(input)
-          .next()
-          .css("background-image", "url(" + e.target.result + ")");
-        $(input)
-          .parent()
-          .addClass("added");
-        $(input).prop("disabled", true);
-      };
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      $(input)
-        .parent()
-        .removeClass("added");
-      $(input).prop("disabled", false);
-    }
-  });
 
-  $(document).on("click", ".edit-gallery .image.added .delete", function() {
-    var input = $(this).next();
-    input.val("").prop("disabled", false);
-    $(this)
-      .parent()
-      .removeClass("added");
-    input.next().css("background-image", "");
-  });
-});
 </script>
 
 <style>
@@ -691,4 +656,16 @@ input {
   background-size: cover;
   background-position: center;
 }
+    .botones-azules >div {
+        display: inline-block;
+    }
+    .botones-azules .btn {
+        background: #005b96;
+        border: 0;
+        border-radius: 7px;
+        margin: 5px;
+    }
+    .botones-azules .btn:hover {
+        background: #f19100;
+    }
 </style>

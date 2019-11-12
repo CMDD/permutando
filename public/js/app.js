@@ -79402,6 +79402,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -80464,63 +80469,67 @@ var render = function() {
                 _c(
                   "div",
                   { staticClass: "caja p-4" },
-                  _vm._l(_vm.bienes, function(bien) {
-                    return _c("div", { key: bien.id, staticClass: "row" }, [
-                      _vm._m(0, true),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-5" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Nombre")]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: bien.bien,
-                                expression: "bien.bien"
-                              }
-                            ],
-                            attrs: { type: "text" },
-                            domProps: { value: bien.bien },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(bien, "bien", $event.target.value)
-                              }
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-5" }, [
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c("label", [_vm._v("Valor")]),
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.bienes, function(bien) {
+                      return _c("div", { key: bien.id, staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-5" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Nombre")]),
                             _vm._v(" "),
-                            _c("VueNumeric", {
-                              attrs: {
-                                currency: "$",
-                                separator: ".",
-                                disabled: !_vm.editar
-                              },
-                              model: {
-                                value: bien.valor,
-                                callback: function($$v) {
-                                  _vm.$set(bien, "valor", $$v)
-                                },
-                                expression: "bien.valor"
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: bien.bien,
+                                  expression: "bien.bien"
+                                }
+                              ],
+                              attrs: { type: "text" },
+                              domProps: { value: bien.bien },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(bien, "bien", $event.target.value)
+                                }
                               }
                             })
-                          ],
-                          1
-                        )
-                      ]),
-                      _vm._v(" "),
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-5" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-group" },
+                            [
+                              _c("label", [_vm._v("Valor")]),
+                              _vm._v(" "),
+                              _c("VueNumeric", {
+                                attrs: {
+                                  currency: "$",
+                                  separator: ".",
+                                  disabled: !_vm.editar
+                                },
+                                model: {
+                                  value: bien.valor,
+                                  callback: function($$v) {
+                                    _vm.$set(bien, "valor", $$v)
+                                  },
+                                  expression: "bien.valor"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ])
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "col-md-5" }, [
                         _c(
                           "div",
@@ -80547,8 +80556,8 @@ var render = function() {
                         )
                       ])
                     ])
-                  }),
-                  0
+                  ],
+                  2
                 )
               ])
             ])
@@ -80629,8 +80638,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mb-3" }, [
-      _c("label", [_vm._v("Permutado por:")])
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 mb-3" }, [
+        _c("label", [_vm._v("Permutado por:")])
+      ])
     ])
   }
 ]

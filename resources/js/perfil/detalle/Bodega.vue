@@ -256,11 +256,13 @@
       <div class="row" v-if="form.tipo_publicacion == 'Permuto'">
         <div class="col-12">
           <div class="caja p-4">
-
-            <div class="row" v-for="bien in bienes" :key="bien.id">
+            <div class="row">
                 <div class="col-12 mb-3">
-                    <label>Permutado por:</label>
+                <label>Permutado por:</label>
                 </div>
+            </div>
+            <div class="row" v-for="bien in bienes" :key="bien.id">
+
               <div class="col-md-5">
                 <div class="form-group">
                   <label>Nombre</label>
@@ -274,6 +276,9 @@
                   <VueNumeric currency="$" separator="." v-model="bien.valor" :disabled="!editar"></VueNumeric>
                 </div>
               </div>
+
+            </div>
+            <div class="row">
                 <div class="col-md-5">
                   <div class="form-group">
                     <label>Efectivo</label>

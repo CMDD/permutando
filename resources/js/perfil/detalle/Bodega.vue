@@ -291,6 +291,8 @@
 
       <div class="row">
         <div class="col-12 text-right py-3 botones-azules">
+          <a href="#" @click="publicar()" v-if="!publico" class="btn">Publicar Inmueble</a>
+          <a href="#" @click="ocultar()" v-if="publico" class="btn">Ocultar Inmueble</a>
           <a href="#" @click="edit()" v-if="!editar" class="btn">Editar</a>
           <button type="submit" v-else class="btn">Actualizar</button>
           <detalle-permuto :inmueble="form" :user="user"></detalle-permuto>
@@ -311,6 +313,8 @@ export default {
   props: ["datos", "user"],
   data() {
     return {
+      publico: this.datos.publicar,
+      url: "",
       editar: false,
       enviando: false,
       bienes: [],
@@ -354,6 +358,28 @@ export default {
       console.log(value);
       axios.get("/api/ciudades/" + this.form.departamento).then(res => {
         this.ciudades = res.data;
+      });
+    },
+    publicar() {
+      axios.get("/api/publicar-inmueble/" + this.form.id).then(res => {
+        Vue.swal.fire({
+          icon: "success",
+          title: "Tu inmueble ha sido publicado correctamente",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.publico = true;
+      });
+    },
+    ocultar() {
+      axios.get("/api/ocultar-inmueble/" + this.form.id).then(res => {
+        Vue.swal.fire({
+          icon: "success",
+          title: "Tu inmueble ha sido pausado",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.publico = false;
       });
     },
     updateInmueble() {
@@ -430,6 +456,9 @@ export default {
     im4(event) {
       console.log(event);
       this.form.im4 = this.$refs.im4.files[0];
+
+      const file = this.$refs.im4.files[0];
+      this.url = URL.createObjectURL(file);
     },
     im5(event) {
       console.log(event);
@@ -441,8 +470,6 @@ export default {
     }
   }
 };
-
-
 </script>
 
 <style>
@@ -656,16 +683,16 @@ input {
   background-size: cover;
   background-position: center;
 }
-    .botones-azules >div {
-        display: inline-block;
-    }
-    .botones-azules .btn {
-        background: #005b96;
-        border: 0;
-        border-radius: 7px;
-        margin: 5px;
-    }
-    .botones-azules .btn:hover {
-        background: #f19100;
-    }
+.botones-azules > div {
+  display: inline-block;
+}
+.botones-azules .btn {
+  background: #005b96;
+  border: 0;
+  border-radius: 7px;
+  margin: 5px;
+}
+.botones-azules .btn:hover {
+  background: #f19100;
+}
 </style>

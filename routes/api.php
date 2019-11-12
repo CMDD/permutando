@@ -23,6 +23,7 @@ Route::post('buscar-departamento','InmuebleController@buscarDepartamento');
 Route::post('buscar-en','InmuebleController@buscarEn');
 Route::get('buscar-modo/{tipo}/{modo}','InmuebleController@buscarModo');
 Route::get('info-inmueble/{id}','InmuebleController@info');
+Route::get('buscarAll','InmuebleController@buscarAll');
 
 
 // Admin
@@ -45,6 +46,8 @@ Route::post('busco-index','Perfil\BuscoController@buscoIndex');
     Route::post('inmueble-estado','InmuebleController@estado');
     Route::get('delete-img/{img}/{id}','InmuebleController@deleteImage');
     Route::get('delete-inmueble/{id}','InmuebleController@deleteInmueble');
+    Route::get('publicar-inmueble/{id}','InmuebleController@publicarInmueble');
+    Route::get('ocultar-inmueble/{id}','InmuebleController@ocultarInmueble');
     
 
 //Departamentos

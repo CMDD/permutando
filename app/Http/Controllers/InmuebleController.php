@@ -226,16 +226,19 @@ class InmuebleController extends Controller
     }
 
     //Buscadores
+    public function buscarAll(){
+        return Inmueble::where('publicar',1)->get();
+    }
     public function buscarTipo($tipo){
         return Inmueble::where('tipo_inmueble',$tipo)->where('publicar',1)->get();
 
     }
     public function buscarDepartamento(Request $request){
-        return Inmueble::where('tipo_inmueble',$request->tipo)->where('departamento_id',$request->departamento)->get();
+        return Inmueble::where('tipo_inmueble',$request->tipo)->where('departamento_id',$request->departamento)->where('publicar',1)->get();
 
     }
     public function buscarEn(Request $request){
-        return Inmueble::where('tipo_inmueble',$request->tipo)->where('tipo_publicacion',$request->en)->get();
+        return Inmueble::where('tipo_inmueble',$request->tipo)->where('tipo_publicacion',$request->en)->where('publicar',1)->get();
 
     }
     public function buscarModo($tipo,$modo){
@@ -265,6 +268,19 @@ class InmuebleController extends Controller
         $inmueble = Inmueble::find($id);
         $inmueble->delete();
         return "Inmueble eliminado correctamente";
+  }
+
+  public function publicarInmueble($id){
+    $inmueble = Inmueble::find($id);
+    $inmueble->publicar = true;
+    $inmueble->save();
+    return "Inmueble eliminado correctamente";
+  }
+  public function ocultarInmueble($id){
+    $inmueble = Inmueble::find($id);
+    $inmueble->publicar = false;
+    $inmueble->save();
+    return "Inmueble pausado correctamente";
   }
  
 }

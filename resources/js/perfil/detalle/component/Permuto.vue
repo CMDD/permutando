@@ -89,6 +89,8 @@ export default {
       this.enviando = true;
       axios.post("/api/permutando", this.permutar).then(res => {
         console.log(res.data);
+        Vue.swal.fire("Enviado correctamente", "Tu oferta ha sido enviada");
+        $("#permutoModal").modal("hide");
         // toastr.success("Enviado correctamente");
       });
     },
@@ -108,6 +110,8 @@ export default {
       this.validarValor();
 
       let result2 = parseInt(this.inmueble.valor) / 2 + 1;
+      console.log(result2);
+
       if (this.valorTotal >= result2) {
         this.efectivo = false;
       } else {
@@ -123,10 +127,11 @@ export default {
         var result = this.inputs.map(function(x) {
           return parseInt(x.valor_bien, 10);
         });
+
         const reducer = (accumulator, currentValue) =>
           accumulator + currentValue;
 
-        this.permutar.valorTotal = result.reduce(reducer);
+        this.valorTotal = result.reduce(reducer);
       } else {
         this.permutar.valorTotal = 0;
       }

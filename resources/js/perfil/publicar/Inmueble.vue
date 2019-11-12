@@ -42,7 +42,7 @@
                   <option value>Seleccione..</option>
                   <option value="Venta">Venta</option>
                   <option value="Arriendo">Arriendo</option>
-                  <option value="Permuto">Permuto</option>
+                  <option value="Permuto">Permuta</option>
                 </select>
               </div>
             </div>
@@ -860,7 +860,14 @@ export default {
           // }
           toastr.success("Inmueble subido correctamente");
 
-          // window.location.href = `http://permutado.com/perfil-detalle/${res.data}`;
+          var getUrl = window.location;
+          var baseUrl =
+            getUrl.protocol +
+            "//" +
+            getUrl.host +
+            "/" +
+            getUrl.pathname.split("/")[1];
+          window.location.href = `/perfil-detalle/${res.data}`;
         });
     },
     getDepartamentos() {
@@ -912,5 +919,4 @@ export default {
   max-width: 90px;
   text-align: center;
 }
-
 </style>

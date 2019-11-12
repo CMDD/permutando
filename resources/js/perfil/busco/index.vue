@@ -87,15 +87,23 @@ export default {
   },
   created() {
     this.getDepartamentos();
-    this.getInmueble();
+    this.getInmuebleAll();
   },
   methods: {
+    getInmuebleAll() {
+      axios.get("api/buscarAll").then(res => {
+        this.resultadoIndex = res.data;
+        console.log(res.data);
+
+        this.cargarMap(this.resultadoIndex, 6);
+      });
+    },
     getTipo() {
       axios.get("/api/buscar-tipo/" + this.busco.tipo).then(res => {
         this.resultadoIndex = res.data;
         console.log(res.data);
 
-        this.cargarMap(this.resultadoIndex, 8);
+        this.cargarMap(this.resultadoIndex, 7);
       });
     },
     getDepartamento() {

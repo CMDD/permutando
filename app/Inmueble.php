@@ -158,7 +158,7 @@ class Inmueble extends Model
           
      }
 
-     return $request;
+     return $inmueble->id;
 
     }
 

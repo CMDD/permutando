@@ -42,6 +42,9 @@
     display: flex;
     justify-content: space-between;
 }
+.f1-buttons.single {
+    justify-content: flex-end;
+}
 
 .f1 input:focus, .f1 textarea:focus {
     outline: none;
@@ -364,6 +367,18 @@
     }
     .my-checkbox .form-col {
         flex-direction: row;
+    }
+    .group-generator .form-field {
+        width: 46%;
+    }
+    .group-generator .my-text input {
+        width: 100%;
+        max-width: none;
+    }
+    .form-group.generator .form-field a {
+        color: red;
+        font-size: .8rem;
+        margin-left: 10px;
     }
 
 }

@@ -477,7 +477,7 @@
               <VueNumeric currency="$" separator="." v-model="form.valor"></VueNumeric>
             </div>
           </div>
-          <div class="f1-buttons">
+          <div class="f1-buttons single">
             <button type="button" class="btn btn-next">Siguiente</button>
           </div>
         </fieldset>
@@ -560,7 +560,7 @@
               <button type="button" @click="addBien()" class="btn add">Agregar más bienes</button>
             </div>
             <div class="form-field w50">
-              <div class="my-text text-right">
+              <div class="my-text text-right align-items-center">
                 <span>Valor total</span>
                 <VueNumeric currency="$" separator="." v-model="valorTotal"></VueNumeric>
               </div>
@@ -912,4 +912,5 @@ export default {
   max-width: 90px;
   text-align: center;
 }
+
 </style>

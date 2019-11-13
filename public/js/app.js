@@ -80843,7 +80843,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ["datos", "user"],
   data: function data() {
     return {
-      publico: this.datos.publicar,
+      publico: parseInt(this.datos.publicar),
       url: "",
       editar: false,
       enviando: false,

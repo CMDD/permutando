@@ -81998,7 +81998,7 @@ var render = function() {
             "div",
             { staticClass: "col-12 text-right py-3 botones-azules" },
             [
-              _vm.user.id === _vm.datos.user_id
+              _vm.user.id == _vm.datos.user_id
                 ? _c("div", [
                     !_vm.publico
                       ? _c(

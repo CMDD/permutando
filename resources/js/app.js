@@ -31,6 +31,10 @@ Vue.component("perfil-busco", require("./perfil/busco/index.vue"));
 //Componentes Detalle
 Vue.component("detalle-casa", require("./perfil/detalle/Casa.vue"));
 Vue.component("detalle-bodega", require("./perfil/detalle/Bodega.vue"));
+Vue.component("detalle-lote", require("./perfil/detalle/Lote.vue"));
+Vue.component("detalle-oficina", require("./perfil/detalle/Oficina.vue"));
+Vue.component("detalle-edificio", require("./perfil/detalle/Edificio.vue"));
+Vue.component("detalle-quinta", require("./perfil/detalle/Quinta.vue"));
 Vue.component("detalle-video", require("./perfil/detalle/component/Video.vue"));
 Vue.component(
     "detalle-contactar",

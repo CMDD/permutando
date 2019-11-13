@@ -238,8 +238,13 @@
                 </div>
               </div>
               <div class="col-6">
-                <a class="video-link btn" :href="form.video">Video del inmueble</a>
+                <a
+                  v-if="form.video"
+                  class="video-link btn"
+                  :href="form.video"
+                >Ver video del inmueble</a>
                 <!-- <detalle-video></detalle-video> -->
+                <p v-else>No tiene video disponible</p>
               </div>
             </div>
           </div>
@@ -257,12 +262,11 @@
         <div class="col-12">
           <div class="caja p-4">
             <div class="row">
-                <div class="col-12 mb-3">
+              <div class="col-12 mb-3">
                 <label>Permutado por:</label>
-                </div>
+              </div>
             </div>
             <div class="row" v-for="bien in bienes" :key="bien.id">
-
               <div class="col-md-5">
                 <div class="form-group">
                   <label>Nombre</label>
@@ -276,21 +280,21 @@
                   <VueNumeric currency="$" separator="." v-model="bien.valor" :disabled="!editar"></VueNumeric>
                 </div>
               </div>
-
             </div>
             <div class="row">
-                <div class="col-md-5">
-                  <div class="form-group">
-                    <label>Efectivo</label>
-                    <!-- <input type="text" v-model="form.recibo_efectivo" /> -->
-                    <VueNumeric
-                      currency="$"
-                      separator=","
-                      v-model="form.recibo_efectivo"
-                      :disabled="!editar"
-                    ></VueNumeric>
-                  </div>
+              <div class="col-md-5">
+                <hr />
+                <div class="form-group">
+                  <label>Recibo en efectivo</label>
+                  <!-- <input type="text" v-model="form.recibo_efectivo" /> -->
+                  <VueNumeric
+                    currency="$"
+                    separator="."
+                    v-model="form.recibo_efectivo"
+                    :disabled="!editar"
+                  ></VueNumeric>
                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -298,12 +302,14 @@
 
       <div class="row">
         <div class="col-12 text-right py-3 botones-azules">
-          <a href="#" @click="publicar()" v-if="!publico" class="btn">Publicar Inmueble</a>
-          <a href="#" @click="ocultar()" v-if="publico" class="btn">Ocultar Inmueble</a>
-          <a href="#" @click="edit()" v-if="!editar" class="btn">Editar</a>
-          <button type="submit" v-else class="btn">Actualizar</button>
-          <detalle-permuto :inmueble="form" :user="user"></detalle-permuto>
-          <detalle-contactar :inmueble="form"></detalle-contactar>
+          <div v-if="user.id === datos.user_id">
+            <a href="#" @click="publicar()" v-if="!publico " class="btn">Publicar Inmueble</a>
+            <a href="#" @click="ocultar()" v-if="publico" class="btn">Ocultar Inmueble</a>
+            <a href="#" @click="edit()" v-if="!editar" class="btn">Editar</a>
+            <button type="submit" v-else class="btn">Actualizar</button>
+          </div>
+          <detalle-permuto :inmueble="form" :user="user" v-if="user.id != datos.user_id"></detalle-permuto>
+          <detalle-contactar :inmueble="form" v-if="user.id != datos.user_id"></detalle-contactar>
         </div>
       </div>
     </form>

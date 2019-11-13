@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group" v-if="!efectivo">
                   <label>Efectivo:</label>
-                  <input type="text" />
+                  <VueNumeric currency="$" separator="." v-model="permutar.efectivo"></VueNumeric>
                 </div>
               </div>
             </div>
@@ -182,9 +182,9 @@ export default {
 .swal2-popup {
   font-size: 0.6rem !important;
 }
-    .campos a {
-        color: red;
-        margin-left: 10px;
-        font-size: .8rem;
-    }
+.campos a {
+  color: red;
+  margin-left: 10px;
+  font-size: 0.8rem;
+}
 </style>

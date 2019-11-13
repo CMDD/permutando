@@ -18,8 +18,9 @@ class PerfilController extends Controller
     }
 
     public function detalle($id){
-        $imagenes = Image::where('inmueble_id',$id)->get();
-        $inmueble = Inmueble::find($id);
-        return view('perfil.detalle')->with('inmueble',$inmueble)->with('imagenes',$imagenes);
+        $inmueble = new Inmueble();
+         
+
+        return view('perfil.detalle')->with('inmueble',$inmueble->detail($id));
     }
 }

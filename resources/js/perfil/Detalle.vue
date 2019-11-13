@@ -8,8 +8,20 @@
         <span>INFORMACIÓN DEL INMUEBLE</span>
       </div>
     </div>
-    <detalle-casa v-if="form.tipo_inmueble === 'Casa' " :datos="form"></detalle-casa>
+    <detalle-casa
+      v-if="form.tipo_inmueble === 'Casa' || form.tipo_inmueble ==='Apartamento' "
+      :datos="form"
+      :user="user"
+    ></detalle-casa>
     <detalle-bodega v-if="form.tipo_inmueble === 'Bodega' " :datos="form" :user="user"></detalle-bodega>
+    <detalle-lote v-if="form.tipo_inmueble === 'Lote' " :datos="form" :user="user"></detalle-lote>
+    <detalle-oficina v-if="form.tipo_inmueble === 'Oficina' " :datos="form" :user="user"></detalle-oficina>
+    <detalle-edificio v-if="form.tipo_inmueble === 'Edificio' " :datos="form" :user="user"></detalle-edificio>
+    <detalle-quinta
+      v-if="form.tipo_inmueble === 'Quinta' || form.tipo_inmueble === 'Casa Lote' || form.tipo_inmueble === 'Finca' || form.tipo_inmueble === 'Hacienda' "
+      :datos="form"
+      :user="user"
+    ></detalle-quinta>
     <!-- <form action>
       <div class="row">
         <div class="col-md-5 p-3">

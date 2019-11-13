@@ -17,29 +17,24 @@
               </label>
               <input type="text" v-model="form.area" :disabled="!editar" />
             </div>
-            <div class="my-select form-group" :disabled="!editar">
-              <label>Habitaciones</label>
-              <select v-model="form.habitaciones">
-                <option value>{{form.habitaciones}}</option>
-                <option v-bind:value="1">1</option>
-                <option v-bind:value="2">2</option>
-                <option v-bind:value="3">3</option>
-                <option v-bind:value="4">4</option>
-                <option v-bind:value="5">5</option>
-              </select>
-            </div>
-            <div class="my-select form-group" :disabled="!editar">
-              <label>Baños</label>
-              <select v-model="form.banos">
-                <option value>{{form.banos}}</option>
-                <option v-bind:value="1">1</option>
-                <option v-bind:value="2">2</option>
-                <option v-bind:value="3">3</option>
-                <option v-bind:value="4">4</option>
-                <option v-bind:value="5">5</option>
-              </select>
+
+            <div class="form-group">
+              <label>Topografía</label>
+              <input type="text" v-model="form.topografia" :disabled="!editar" />
             </div>
 
+            <div class="my-select form-group" :disabled="!editar">
+              <label>Vias</label>
+              <select v-model="form.vias">
+                <option value>{{form.vias}}</option>
+                <option v-bind:value="'Pavimentada'">Pavimentada</option>
+                <option v-bind:value="'Destapada'">Destapada</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Años de contrucción</label>
+              <input type="text" v-model="form.anos" :disabled="!editar" />
+            </div>
             <div class="form-group" v-if="!editar">
               <label>Departamento</label>
               <input type="text" v-model="form.departamento" disabled />
@@ -92,23 +87,6 @@
               <label>Dirección</label>
               <input type="text" v-model="form.direccion" :disabled="!editar" />
             </div>
-            <div class="form-group">
-              <label>Años de contrucción</label>
-              <input type="text" v-model="form.anos" :disabled="!editar" />
-            </div>
-            <div class="my-select form-group" :disabled="!editar">
-              <label>Estrato</label>
-              <select v-model="form.estrato">
-                <option value>{{form.estrato}}</option>
-                <option v-bind:value="1">1</option>
-                <option v-bind:value="2">2</option>
-                <option v-bind:value="3">3</option>
-                <option v-bind:value="4">4</option>
-                <option v-bind:value="5">5</option>
-                <option v-bind:value="6">6</option>
-                <option v-bind:value="'Campestre'">Campestre</option>
-              </select>
-            </div>
 
             <div class="form-group">
               <label>Valor Adminsitración</label>
@@ -118,89 +96,6 @@
                 v-model="form.administracion"
                 :disabled="!editar"
               ></VueNumeric>
-            </div>
-            <div class="form-group">
-              <label>Balcon</label>
-              <div class="my-radio">
-                <input
-                  type="radio"
-                  id="balcon_1"
-                  value="1"
-                  v-model="form.balcon"
-                  :disabled="!editar"
-                />
-                <label for="balcon_1">Si</label>
-                <input
-                  type="radio"
-                  id="balcon_0"
-                  value="0"
-                  v-model="form.balcon"
-                  :disabled="!editar"
-                />
-                <label for="balcon_0" class="no">No</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Terraza</label>
-              <div class="my-radio">
-                <input
-                  type="radio"
-                  id="terraza_1"
-                  value="1"
-                  v-model="form.terraza"
-                  :disabled="!editar"
-                />
-                <label for="terraza_1">Si</label>
-                <input
-                  type="radio"
-                  id="terraza_0"
-                  value="0"
-                  v-model="form.terraza"
-                  :disabled="!editar"
-                />
-                <label for="terraza_0" class="no">No</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Parqueadero</label>
-              <div class="my-radio">
-                <input
-                  type="radio"
-                  id="parqueadero_1"
-                  value="1"
-                  v-model="form.parqueadero"
-                  :disabled="!editar"
-                />
-                <label for="parqueadero_1">Si</label>
-                <input
-                  type="radio"
-                  id="parqueadero_0"
-                  value="0"
-                  v-model="form.parqueadero"
-                  :disabled="!editar"
-                />
-                <label for="parqueadero_0" class="no">No</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Patio</label>
-              <div class="my-radio">
-                <input type="radio" id="patio_1" value="1" v-model="form.patio" :disabled="!editar" />
-                <label for="patio_1">Si</label>
-                <input type="radio" id="patio_0" value="0" v-model="form.patio" :disabled="!editar" />
-                <label for="patio_0" class="no">No</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="my-radio">
-                <label>Portería</label>
-                <input type="radio" v-model="form.porteria" value="12h" id="porteria_12" />
-                <label for="porteria_12">12H</label>
-                <input type="radio" v-model="form.porteria" value="24h" id="porteria_24" checked />
-                <label for="porteria_24">24H</label>
-                <input type="radio" v-model="form.porteria" value="no" id="porteria_0" checked />
-                <label for="porteria_0" class="no">No</label>
-              </div>
             </div>
           </div>
         </div>
@@ -335,21 +230,12 @@
                 <p v-else>No tiene video disponible</p>
               </div>
             </div>
-            <div class="caja p-4 mt-4" v-if="form.zonas.length">
-              <div class="row my-checkbox" v-if="!editar">
-                <div class="col-md-3">
-                  <label>Zonas Comunes</label>
-                </div>
-                <div class="col-md-3" v-for="zona in form.zonas" :key="zona.id">
-                  <input type="checkbox" checked />
-                  <label :for="zona.nombre">{{zona.nombre}}</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 mt-4">
-                  <label>Características</label>
-                  <textarea rows="4" v-model="form.caracteristicas"></textarea>
-                </div>
+          </div>
+          <div class="caja p-4 mt-4">
+            <div class="row">
+              <div class="col-12">
+                <label>Características</label>
+                <textarea rows="4" v-model="form.caracteristicas" :disabled="!editar"></textarea>
               </div>
             </div>
           </div>
@@ -430,7 +316,6 @@ export default {
       bienes: [],
       departamentos: [],
       ciudades: [],
-      zonas: [],
       form: this.datos,
       contacto: {}
     };
@@ -524,21 +409,12 @@ export default {
       fd.append("im5", this.form.im5);
       fd.append("im6", this.form.im6);
 
-      // Casa
-      fd.append("area", this.form.area);
-      fd.append("habitaciones", this.form.habitaciones);
-      fd.append("banos", this.form.banos);
-      fd.append("terraza", this.form.terraza);
-      fd.append("patio", this.form.patio);
-      fd.append("porteria", this.form.porteria);
-      fd.append("parqueadero", this.form.parqueadero);
-      fd.append("estrato", this.form.estrato);
-      for (var i = 0; i < this.zonas.length; i++) {
-        fd.append("zonas[]", this.zonas[i]);
-      }
+      // Lote
 
-      fd.append("balcon", this.form.balcon);
       fd.append("anos", this.form.anos);
+      fd.append("area", this.form.area);
+      fd.append("topografia", this.form.topografia);
+      fd.append("vias", this.form.vias);
       fd.append("administracion", this.form.administracion);
       fd.append("edit", true);
 
@@ -812,8 +688,5 @@ input {
 }
 .botones-azules .btn:hover {
   background: #f19100;
-}
-sub {
-  top: -0.5em;
 }
 </style>

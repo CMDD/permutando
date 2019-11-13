@@ -20,6 +20,7 @@ class Inmueble extends Model
      public function zonas() {
          return $this->hasMany('App\Zonas');
      }
+     
      public function transporte() {
           return $this->hasMany('App\Transporte');
      }
@@ -57,7 +58,13 @@ class Inmueble extends Model
      $inmueble->tipo_inmueble = $request->tipo_inmueble;
      $inmueble->estado = $request->tipo_publicacion;
      $inmueble->recibo_efectivo = str_replace ( ".", "",$request->recibo_efectivo);
-     $inmueble->video = $request->video;
+
+     if($inmueble->video === "null" ){
+       $inmueble->video = "";
+     }else{
+          $inmueble->video = $request->video ;  
+     }
+
      $inmueble->administracion = $request->administracion;
      $inmueble->anos = $request->anos;
      $inmueble->area = $request->area;
@@ -160,6 +167,14 @@ class Inmueble extends Model
 
      return $inmueble->id;
 
+    }
+
+
+    public function detail($id){
+         $inmueble = Inmueble::find($id);
+         $inmueble->zonas;
+         $inmueble->construccion;
+         return $inmueble;
     }
 
     

@@ -21,6 +21,7 @@ class InmuebleController extends Controller
             case 'Apartamento':            
                 $inmueble = new Inmueble();
                 $inmueble->barrio = $request->barrio;
+                $inmueble->area = $request->area;
                 $inmueble->direccion = $request->direccion;
                 $inmueble->estrato = $request->estrato;
                 $inmueble->habitaciones = $request->habitaciones;
@@ -126,13 +127,19 @@ class InmuebleController extends Controller
                 
                 $inmueble->valor = $request->valor;
                 $inmueble->save();
+                
+                if(count($request->zonas) > 0 ){
+                 
                 foreach ((array)$request->zonas as $item) {
-                     $zona = new Zonas();
-                     $zona->nombre = $item;
-                     $zona->inmueble_id = $inmueble->id;
-                     $zona->save();
+                    $zona = Zonas::where('inmueble_id',$inmueble->id)->first();
+                     $zona->delete();
+                    //  $zona = Zonas::where('inmueble_id',$inmueble->id)->first();
+                    //  $zona->nombre = $item;
+                    //  $zona->inmueble_id = $inmueble->id;
+                    //  $zona->save();
           
                 }
+            }
                 return $inmueble->store($request,$inmueble->id);
                 break;
             case 'Bodega':
@@ -148,7 +155,7 @@ class InmuebleController extends Controller
                 return $inmueble->store($request,$inmueble->id);
                 break;
             case 'Lote':
-            $inmueble = Inmueble::find($request->id);
+                $inmueble = Inmueble::find($request->id);
                 $inmueble->topografia = $request->topografia;
                 $inmueble->vias = $request->vias;
                 $inmueble->save();
@@ -205,8 +212,10 @@ class InmuebleController extends Controller
     }
 
     public function detalle($id){
-    
-        $inmueble = Inmueble::find($id);
+        
+        $inmueble =  new Inmueble();
+        $inmueble->detail($id);
+        dd($inmueble);
         return view('admin.inmueble.detalle')->with('inmueble');
 
     }

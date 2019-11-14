@@ -88,9 +88,10 @@ export default {
       });
       this.enviando = true;
       axios.post("/api/permutando", this.permutar).then(res => {
-        console.log(res.data);
         Vue.swal.fire("Enviado correctamente", "Tu oferta ha sido enviada");
-        $("#permutoModal").modal("hide");
+        jQuery("#permutoModal").modal("hide");
+        $("body").removeClass("modal-open");
+        $(".modal-backdrop").remove();
         // toastr.success("Enviado correctamente");
       });
     },

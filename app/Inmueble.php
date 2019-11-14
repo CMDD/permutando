@@ -59,11 +59,17 @@ class Inmueble extends Model
      $inmueble->estado = $request->tipo_publicacion;
      $inmueble->recibo_efectivo = str_replace ( ".", "",$request->recibo_efectivo);
 
-     if($inmueble->video == "null" || $inmueble->video == ''  ){
-       $inmueble->video = "";
-     }else{
-          $inmueble->video = $request->video;  
+     if($request->video){
+          $inmueble->video = $request->video; 
      }
+
+       
+
+     // if($inmueble->video == "null" || $inmueble->video == ''  ){
+     //   $inmueble->video = "";
+     // }else{
+     //      $inmueble->video = $request->video;  
+     // }
 
      $inmueble->administracion = $request->administracion;
      $inmueble->anos = $request->anos;

@@ -132,8 +132,6 @@ export default {
     getInmueble() {
       axios.post("/api/busco-index", this.busco).then(res => {
         this.resultadoIndex = res.data;
-        console.log();
-
         this.cargarMap(this.resultadoIndex, 11);
       });
     },

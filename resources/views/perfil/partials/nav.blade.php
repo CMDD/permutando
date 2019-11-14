@@ -34,9 +34,9 @@
         <li>
                 <a href="/perfil-mis-publicaciones" class="">Mis publicaciones</a>
             </li>
-        <li>
+        {{-- <li>
             <a href="/perfil-mis-publicaciones" class="">Mis inmuebles contactados</a>
-        </li>
+        </li> --}}
         <li><a href="/perfil-mensajes">Mis mensajes</a></li>
         
         <!-- <li><a href="#">Mis alertas</a></li>

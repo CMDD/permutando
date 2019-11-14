@@ -50,6 +50,7 @@
                                 <a href="#" class="btn gl">Iniciar sesión con Google</a>
                                 <input type="email" required name="email" class="form-control mb-2" placeholder="Correo electrónico">
                                 <input type="password" required name="password" class="form-control mb-2" placeholder="Contraseña">
+                                <input type="hidden"  name="web" value="si">
                                 <button type="submit" class="btn">Iniciar sesión</button>
                             </form>
                         </div>

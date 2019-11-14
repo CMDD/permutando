@@ -1,4 +1,4 @@
-{{-- <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="loginModal2" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div id="accordionLogin" class="modal-body accordion">
@@ -19,6 +19,7 @@
                                 <!--<input type="text" name="tel" class="form-control mb-3" placeholder="Tel/Cel">-->
                                 <input type="email" required  name="email" class="form-control mb-2" placeholder="Correo electrónico">
                                 <input type="password" required name="password" class="form-control mb-2" placeholder="Contraseña">
+                                <input type="hidden"  name="web" value="si">
                                 <div class="tipo">
                                     <span>¿Eres inmobiliario?</span>
                                     <div class="radio-custom">
@@ -57,5 +58,5 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 

@@ -132,7 +132,7 @@ export default {
     getInmueble() {
       axios.post("/api/busco-index", this.busco).then(res => {
         this.resultadoIndex = res.data;
-        this.cargarMap(this.resultadoIndex, 7);
+        this.cargarMap(this.resultadoIndex, 11);
       });
     },
     cargarMap(direcciones, zoom) {

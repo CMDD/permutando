@@ -77869,7 +77869,7 @@ if (document.getElementById("userId")) {
 
       axios.post("/api/busco-index", this.busco).then(function (res) {
         _this7.resultadoIndex = res.data;
-        _this7.cargarMap(_this7.resultadoIndex, 7);
+        _this7.cargarMap(_this7.resultadoIndex, 11);
       });
     },
     cargarMap: function cargarMap(direcciones, zoom) {

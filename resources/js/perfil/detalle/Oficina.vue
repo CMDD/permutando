@@ -313,8 +313,8 @@
       <div class="row">
         <div class="col-12 text-right py-3 botones-azules">
           <div v-if="user.id == datos.user_id">
-            <a href="#" @click="publicar()" v-if="!publico " class="btn">Publicar Inmueble</a>
-            <a href="#" @click="ocultar()" v-if="publico" class="btn">Ocultar Inmueble</a>
+            <a href="#" @click="publicar()" class="btn">Publicar Inmueble</a>
+            <!-- <a href="#" @click="ocultar()" v-if="publico" class="btn">Ocultar Inmueble</a> -->
             <a href="#" @click="edit()" v-if="!editar" class="btn">Editar</a>
             <button type="submit" v-if="editar" class="btn">Actualizar</button>
             <button type="submit" v-if="actualizando" class="btn">Actualizando...</button>

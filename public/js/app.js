@@ -80311,37 +80311,19 @@ var render = function() {
             [
               _vm.user.id == _vm.datos.user_id
                 ? _c("div", [
-                    !_vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.publicar()
-                              }
-                            }
-                          },
-                          [_vm._v("Publicar Inmueble")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.ocultar()
-                              }
-                            }
-                          },
-                          [_vm._v("Ocultar Inmueble")]
-                        )
-                      : _vm._e(),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            return _vm.publicar()
+                          }
+                        }
+                      },
+                      [_vm._v("Publicar Inmueble")]
+                    ),
                     _vm._v(" "),
                     !_vm.editar
                       ? _c(
@@ -82025,37 +82007,19 @@ var render = function() {
             [
               _vm.user.id == _vm.datos.user_id
                 ? _c("div", [
-                    !_vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.publicar()
-                              }
-                            }
-                          },
-                          [_vm._v("Publicar Inmueble")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.ocultar()
-                              }
-                            }
-                          },
-                          [_vm._v("Ocultar Inmueble")]
-                        )
-                      : _vm._e(),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            return _vm.publicar()
+                          }
+                        }
+                      },
+                      [_vm._v("Publicar Inmueble")]
+                    ),
                     _vm._v(" "),
                     !_vm.editar
                       ? _c(
@@ -83645,37 +83609,19 @@ var render = function() {
             [
               _vm.user.id == _vm.datos.user_id
                 ? _c("div", [
-                    !_vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.publicar()
-                              }
-                            }
-                          },
-                          [_vm._v("Publicar Inmueble")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.ocultar()
-                              }
-                            }
-                          },
-                          [_vm._v("Ocultar Inmueble")]
-                        )
-                      : _vm._e(),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            return _vm.publicar()
+                          }
+                        }
+                      },
+                      [_vm._v("Publicar Inmueble")]
+                    ),
                     _vm._v(" "),
                     !_vm.editar
                       ? _c(
@@ -85422,37 +85368,19 @@ var render = function() {
             [
               _vm.user.id == _vm.datos.user_id
                 ? _c("div", [
-                    !_vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.publicar()
-                              }
-                            }
-                          },
-                          [_vm._v("Publicar Inmueble")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.ocultar()
-                              }
-                            }
-                          },
-                          [_vm._v("Ocultar Inmueble")]
-                        )
-                      : _vm._e(),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            return _vm.publicar()
+                          }
+                        }
+                      },
+                      [_vm._v("Publicar Inmueble")]
+                    ),
                     _vm._v(" "),
                     !_vm.editar
                       ? _c(
@@ -87182,37 +87110,19 @@ var render = function() {
             [
               _vm.user.id == _vm.datos.user_id
                 ? _c("div", [
-                    !_vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.publicar()
-                              }
-                            }
-                          },
-                          [_vm._v("Publicar Inmueble")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.ocultar()
-                              }
-                            }
-                          },
-                          [_vm._v("Ocultar Inmueble")]
-                        )
-                      : _vm._e(),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            return _vm.publicar()
+                          }
+                        }
+                      },
+                      [_vm._v("Publicar Inmueble")]
+                    ),
                     _vm._v(" "),
                     !_vm.editar
                       ? _c(
@@ -88749,37 +88659,19 @@ var render = function() {
             [
               _vm.user.id == _vm.datos.user_id
                 ? _c("div", [
-                    !_vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.publicar()
-                              }
-                            }
-                          },
-                          [_vm._v("Publicar Inmueble")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.publico
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.ocultar()
-                              }
-                            }
-                          },
-                          [_vm._v("Ocultar Inmueble")]
-                        )
-                      : _vm._e(),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            return _vm.publicar()
+                          }
+                        }
+                      },
+                      [_vm._v("Publicar Inmueble")]
+                    ),
                     _vm._v(" "),
                     !_vm.editar
                       ? _c(

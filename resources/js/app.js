@@ -9,6 +9,7 @@ Vue.use(VueSweetalert2);
 Vue.use(Router);
 
 Vue.component("lista-usuarios", require("./admin/Usuarios.vue"));
+Vue.component("login-component", require("./web/Login.vue"));
 Vue.component("lista-inmuebles", require("./admin/Inmueble.vue"));
 Vue.component(
     "example-component",

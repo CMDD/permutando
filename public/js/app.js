@@ -27846,6 +27846,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_sweetalert2__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
 Vue.component("lista-usuarios", __webpack_require__(49));
+Vue.component("login-component", __webpack_require__(165));
 Vue.component("lista-inmuebles", __webpack_require__(52));
 Vue.component("example-component", __webpack_require__(55));
 
@@ -27905,7 +27906,7 @@ window.Popper = __webpack_require__(22).default;
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(7);
+  // window.$ = window.jQuery = require("jquery");
   //require('bootstrap');
 } catch (e) {}
 
@@ -90294,6 +90295,715 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */,
+/* 160 */,
+/* 161 */,
+/* 162 */,
+/* 163 */,
+/* 164 */,
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(167)
+/* template */
+var __vue_template__ = __webpack_require__(166)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/web/Login.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-438d5140", Component.options)
+  } else {
+    hotAPI.reload("data-v-438d5140", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 166 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "row links" }, [
+      _c("div", { staticClass: "col-md-6 orange" }, [
+        _c("img", { attrs: { src: "/img/icon-busco.png" } }),
+        _vm._v(" "),
+        _c("h2", [_vm._v("¿Buscas una propuesta?")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n        Selecciona los inmuebles que te interesan y comieza una\n        negociación.\n      "
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn",
+            attrs: { href: "#", "data-toggle": "modal" },
+            on: {
+              click: function($event) {
+                return _vm.showModal("/perfil-buscar")
+              }
+            }
+          },
+          [_vm._v("Busco")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6 white" }, [
+        _c("img", { attrs: { src: "/img/icon-vendo.png" } }),
+        _vm._v(" "),
+        _c("h2", [_vm._v("¿Tienes una propuesta?")]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Sube tus inmuebles y comieza una negociación.")]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn",
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                return _vm.showModal("/perfil-publicar")
+              }
+            }
+          },
+          [_vm._v("Tengo")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "loginModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c(
+              "div",
+              {
+                staticClass: "modal-body accordion",
+                attrs: { id: "accordionLogin" }
+              },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "card" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card-header",
+                      attrs: {
+                        id: "headRegister",
+                        "data-toggle": "collapse",
+                        "data-target": "#register",
+                        "aria-expanded": "true",
+                        "aria-controls": "register"
+                      }
+                    },
+                    [_vm._v("Regístrate para ver y publicar ofertas")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "collapse show",
+                      attrs: {
+                        id: "register",
+                        "aria-labelledby": "headRegister",
+                        "data-parent": "#accordionLogin"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "card-body" }, [
+                        _c(
+                          "form",
+                          {
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return _vm.registro($event)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "a",
+                              { staticClass: "btn fb", attrs: { href: "#" } },
+                              [_vm._v("Iniciar sesión con Facebook")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              { staticClass: "btn gl", attrs: { href: "#" } },
+                              [_vm._v("Iniciar sesión con Google")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.name,
+                                  expression: "form.name"
+                                }
+                              ],
+                              staticClass: "form-control mb-2",
+                              attrs: {
+                                type: "text",
+                                required: "",
+                                placeholder: "Nombre"
+                              },
+                              domProps: { value: _vm.form.name },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "name",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.email,
+                                  expression: "form.email"
+                                }
+                              ],
+                              staticClass: "form-control mb-2",
+                              attrs: {
+                                type: "email",
+                                required: "",
+                                placeholder: "Correo electrónico"
+                              },
+                              domProps: { value: _vm.form.email },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "email",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.password,
+                                  expression: "form.password"
+                                }
+                              ],
+                              staticClass: "form-control mb-2",
+                              attrs: {
+                                type: "password",
+                                required: "",
+                                placeholder: "Contraseña"
+                              },
+                              domProps: { value: _vm.form.password },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "password",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "tipo" }, [
+                              _c("span", [_vm._v("¿Eres inmobiliario?")]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "radio-custom" }, [
+                                _c("label", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.inmobiliario,
+                                        expression: "form.inmobiliario"
+                                      }
+                                    ],
+                                    attrs: { type: "radio", value: "Si" },
+                                    domProps: {
+                                      checked: _vm._q(
+                                        _vm.form.inmobiliario,
+                                        "Si"
+                                      )
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        return _vm.$set(
+                                          _vm.form,
+                                          "inmobiliario",
+                                          "Si"
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "checkmark" }, [
+                                    _vm._v("Si")
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("label", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.inmobiliario,
+                                        expression: "form.inmobiliario"
+                                      }
+                                    ],
+                                    attrs: { type: "radio", value: "No" },
+                                    domProps: {
+                                      checked: _vm._q(
+                                        _vm.form.inmobiliario,
+                                        "No"
+                                      )
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        return _vm.$set(
+                                          _vm.form,
+                                          "inmobiliario",
+                                          "No"
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "checkmark" }, [
+                                    _vm._v("No")
+                                  ])
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              { staticClass: "btn", attrs: { type: "submit" } },
+                              [_vm._v("Regístrate")]
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "collapse",
+                      attrs: {
+                        id: "login",
+                        "aria-labelledby": "headLogin",
+                        "data-parent": "#accordionLogin"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "card-body" }, [
+                        _c(
+                          "form",
+                          {
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return _vm.login($event)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "a",
+                              { staticClass: "btn fb", attrs: { href: "#" } },
+                              [_vm._v("Iniciar sesión con Facebook")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              { staticClass: "btn gl", attrs: { href: "#" } },
+                              [_vm._v("Iniciar sesión con Google")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.email,
+                                  expression: "form.email"
+                                }
+                              ],
+                              staticClass: "form-control mb-2",
+                              attrs: {
+                                type: "email",
+                                required: "",
+                                placeholder: "Correo electrónico"
+                              },
+                              domProps: { value: _vm.form.email },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "email",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.password,
+                                  expression: "form.password"
+                                }
+                              ],
+                              staticClass: "form-control mb-2",
+                              attrs: {
+                                type: "password",
+                                required: "",
+                                placeholder: "Contraseña"
+                              },
+                              domProps: { value: _vm.form.password },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "password",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              { staticClass: "btn", attrs: { type: "submit" } },
+                              [_vm._v("Iniciar sesión")]
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            )
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "card-header",
+        attrs: {
+          id: "headLogin",
+          "data-toggle": "collapse",
+          "data-target": "#login",
+          "aria-expanded": "true",
+          "aria-controls": "login"
+        }
+      },
+      [
+        _vm._v("\n              ¿Tienes una cuenta?\n              "),
+        _c("span", [_vm._v("Entrar")])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-438d5140", module.exports)
+  }
+}
+
+/***/ }),
+/* 167 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      to: "",
+      form: {}
+    };
+  },
+
+  methods: {
+    showModal: function showModal(value) {
+      $("#loginModal").modal("show");
+      this.to = value;
+    },
+    registro: function registro() {
+      var _this = this;
+
+      axios.post("registro", this.form).then(function (res) {
+        if (res.data == 200) {
+          window.location.href = _this.to;
+        }
+      });
+    },
+    login: function login() {
+      var _this2 = this;
+
+      axios.post("autenticar", this.form).then(function (res) {
+        if (res.data == 200) {
+          window.location.href = _this2.to;
+        }
+      });
+      console.log(this.form);
+    }
+  }
+});
 
 /***/ })
 /******/ ]);

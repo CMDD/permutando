@@ -37,7 +37,7 @@
            
             @include('partials.nav')
 
-            @include('partials.registro')
+            {{-- @include('partials.registro') --}}
 
             <!-- @if(Auth::user())
                 <div class="container-fluid">
@@ -80,5 +80,6 @@
                 accessibility: false
             });
         </script>
+       
     </body>
 </html>

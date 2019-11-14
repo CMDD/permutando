@@ -1,6 +1,7 @@
 @extends('layouts.web') @section('content')
 <div class="container-fluid home">
-        <div class="row links">
+    <login-component></login-component>
+        {{-- <div class="row links">
                 <div class="col-md-6 orange">
                     <img src="/img/icon-busco.png" />
                     <h2>¿Buscas una propuesta?</h2>
@@ -8,7 +9,7 @@
                         Selecciona los inmuebles que te interesan y comieza una
                         negociación.
                     </p>
-                    <a href="#" data-toggle="modal"
+                    <a href="#" data-toggle="modal" data-id="1"
                     data-target="#loginModal" class="btn">Busco</a>
                 </div>
                 <div class="col-md-6 white">
@@ -16,9 +17,9 @@
                     <h2>¿Tienes una propuesta?</h2>
                     <p>Sube tus inmuebles y comieza una negociación.</p>
                     <a href="#" data-toggle="modal"
-                    data-target="#loginModal" class="btn">Tengo</a>
+                    data-target="#loginModal" data-id="2" class="btn">Tengo</a>
                 </div>
-            </div>
+            </div> --}}
     {{-- <div class="row">
         <div class="col p-0">
             <div class="slide">

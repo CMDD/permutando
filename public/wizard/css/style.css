@@ -10,30 +10,78 @@
     text-transform: uppercase;
 }
 
-.f1-steps { overflow: hidden; position: relative; text-align: center; }
+.f1-steps {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
 
-.f1-progress { position: absolute; top: 24px; left: 0; width: 100%; height: 1px; background: #ddd; }
-.f1-progress-line { position: absolute; top: 0; left: 0; height: 1px; background: #f19100; }
+.f1-progress {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+}
+.f1-progress-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    background: #f19100;
+}
 
-.f1-step { position: relative; float: left; width: 33.333333%; padding: 0 5px; }
+.f1-step {
+    position: relative;
+    float: left;
+    width: 33.333333%;
+    padding: 0 5px;
+}
 
 .f1-step-icon {
-	display: inline-block; width: 40px; height: 40px; margin-top: 4px; background: #b9b9b9;
-	font-size: 16px; color: #fff; line-height: 40px;
-	-moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-top: 4px;
+    background: #b9b9b9;
+    font-size: 16px;
+    color: #fff;
+    line-height: 40px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
 }
 .f1-step.activated .f1-step-icon {
-	background: #fff; border: 1px solid #f19100; color: #f19100; line-height: 38px;
+    background: #fff;
+    border: 1px solid #f19100;
+    color: #f19100;
+    line-height: 38px;
 }
 .f1-step.active .f1-step-icon {
-	width: 48px; height: 48px; margin-top: 0; background: #f19100; font-size: 22px; line-height: 48px;
+    width: 48px;
+    height: 48px;
+    margin-top: 0;
+    background: #f19100;
+    font-size: 22px;
+    line-height: 48px;
 }
 
-.f1-step p { color: #ccc; }
-.f1-step.activated p { color: #f19100; }
-.f1-step.active p { color: #f19100; }
+.f1-step p {
+    color: #ccc;
+}
+.f1-step.activated p {
+    color: #f19100;
+}
+.f1-step.active p {
+    color: #f19100;
+}
 
-.f1 fieldset { display: none; text-align: left; position: relative;}
+.f1 fieldset {
+    display: none;
+    text-align: left;
+    position: relative;
+}
 
 .f1-buttons {
     overflow: hidden;
@@ -46,7 +94,8 @@
     justify-content: flex-end;
 }
 
-.f1 input:focus, .f1 textarea:focus {
+.f1 input:focus,
+.f1 textarea:focus {
     outline: none;
 }
 
@@ -54,7 +103,7 @@
     color: #fff;
     padding: 5px 15px;
     border-radius: 30px;
-    font-size: .9rem;
+    font-size: 0.9rem;
     font-weight: 300;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -83,7 +132,8 @@
     *word-spacing: -0.43em;
     text-rendering: optimizespeed;
 }
-.form-group .form-field, .form-group h5 {
+.form-group .form-field,
+.form-group h5 {
     display: inline-block;
     zoom: 1;
     *display: inline;
@@ -107,13 +157,15 @@
     padding-bottom: 5px;
     color: #005b95;
 }
-.form-group.generator .add, .form-group.generator .group-efectivo .btn {
+.form-group.generator .add,
+.form-group.generator .group-efectivo .btn {
     float: none;
     margin: 0;
     color: #fff;
     background: #f19100;
 }
-.form-group.generator .add:hover, .form-group.generator .group-efectivo .btn:hover {
+.form-group.generator .add:hover,
+.form-group.generator .group-efectivo .btn:hover {
     background: #005b95;
 }
 .form-group.generator .form-field {
@@ -124,7 +176,8 @@
 .form-group .form-field.w100 {
     width: 96%;
 }
-.form-group.list .form-field, .form-group.more .form-field {
+.form-group.list .form-field,
+.form-group.more .form-field {
     width: 21%;
     vertical-align: top;
     border: 0;
@@ -133,19 +186,27 @@
     width: 46%;
 }
 
-.my-radio, .my-select, .my-text, .my-checkbox {
+.my-radio,
+.my-select,
+.my-text,
+.my-checkbox {
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 .my-checkbox {
     align-items: start;
 }
 
-.my-radio span, .my-select span, .my-text span, .my-checkbox span {
+.my-radio span,
+.my-select span,
+.my-text span,
+.my-checkbox span {
     flex: 1;
 }
-.form-group.list span, .form-group.more span {
+.form-group.list span,
+.form-group.more span {
     border-bottom: 2px solid #005b95;
     padding-bottom: 5px;
     margin-bottom: 10px;
@@ -155,29 +216,25 @@
 
 .my-text input {
     flex: 0 0 auto;
-    width: 50%;
+    width: 100%;
     margin: 0;
     padding: 5px;
     border: 1px solid transparent;
     background: #f1f1f1;
-    max-width: 150px;
     height: 32px;
-}
-.form-group .form-field.w50 .my-text input {
-    max-width: 200px;
 }
 .form-group .form-field.w100 .my-text input,
 .form-group .form-field.w35 .my-text input,
 .form-group .form-field.w65 .my-text input {
     max-width: none;
 }
-.my-radio input[type=radio] {
-    display:none;
+.my-radio input[type="radio"] {
+    display: none;
 }
-.my-radio input[type=radio] + label {
+.my-radio input[type="radio"] + label {
     flex: 0 0 auto;
     text-align: center;
-    font-size: .65rem;
+    font-size: 0.65rem;
     line-height: 32px;
     font-weight: 600;
     width: 32px;
@@ -188,10 +245,10 @@
     cursor: pointer;
     text-transform: uppercase;
 }
-.my-radio input[type=radio]:checked + label {
+.my-radio input[type="radio"]:checked + label {
     background: #7db227;
 }
-.my-radio input[type=radio]:checked + label.no {
+.my-radio input[type="radio"]:checked + label.no {
     background: #a71e1e;
 }
 
@@ -217,19 +274,19 @@
     width: 50%;
 }
 
-.my-checkbox input[type=checkbox] {
-    display:none;
+.my-checkbox input[type="checkbox"] {
+    display: none;
 }
-.my-checkbox input[type=checkbox] + label {
+.my-checkbox input[type="checkbox"] + label {
     flex: 0 0 auto;
     display: block;
-    font-size: .7rem;
+    font-size: 0.7rem;
     font-weight: 600;
     margin: 0 6px 6px 0;
     cursor: pointer;
 }
-.my-checkbox input[type=checkbox] + label:before {
-    content: '';
+.my-checkbox input[type="checkbox"] + label:before {
+    content: "";
     display: inline-block;
     vertical-align: bottom;
     width: 15px;
@@ -241,7 +298,7 @@
     margin-right: 3px;
     border-radius: 50%;
 }
-.my-checkbox input[type=checkbox]:checked + label:before  {
+.my-checkbox input[type="checkbox"]:checked + label:before {
     background-color: #7db227;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23fff' viewBox='0 0 24 24'%3E%3Cpath d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'/%3E%3C/svg%3E");
 }
@@ -250,17 +307,17 @@
     display: flex;
     flex-direction: column;
 }
-.my-checkbox .form-col >div {
+.my-checkbox .form-col > div {
     flex: 1;
 }
 .form-group.list .my-checkbox {
     flex-direction: column;
 }
-.form-group.list .my-checkbox input[type=checkbox] + label {
-    font-size: .8rem;
+.form-group.list .my-checkbox input[type="checkbox"] + label {
+    font-size: 0.8rem;
     font-weight: 400;
 }
-.form-group.list .my-checkbox input[type=checkbox] + label:before {
+.form-group.list .my-checkbox input[type="checkbox"] + label:before {
     width: 20px;
     height: 20px;
     margin-right: 5px;
@@ -269,7 +326,7 @@
 .f1 textarea {
     display: block;
     width: 96%;
-    font-size: .9rem;
+    font-size: 0.9rem;
     margin: 20px 2%;
     padding: 10px;
     border: 1px solid transparent;
@@ -296,18 +353,18 @@
 .f1 .value input {
     display: inline-block;
     vertical-align: middle;
-    font-size: .9rem;
+    font-size: 0.9rem;
     padding: 10px;
     border: 1px solid transparent;
     background: #f1f1f1;
 }
 
 .f1 .input-error {
-    border-color: #f19100!important;
-    color: #f19100!important;
+    border-color: #f19100 !important;
+    color: #f19100 !important;
 }
 .image .inputfile.input-error + label {
-    background: #f19100!important;
+    background: #f19100 !important;
 }
 
 .image {
@@ -316,13 +373,13 @@
     position: relative;
 }
 .image .inputfile {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
     top: 0;
-	z-index: -1;
+    z-index: -1;
 }
 .image .inputfile + label {
     display: block;
@@ -332,8 +389,8 @@
     border-radius: 5px;
     background-color: #005b95;
     text-align: center;
-    -webkit-transition: all .3s ease;
-    transition: all .3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -345,8 +402,11 @@
     background-color: #f19100;
 }
 
-@media (min-width: 768px){
-
+@media (min-width: 768px) {
+    .my-text input {
+        width: 50%;
+        max-width: 150px;
+    }
     .form-group .form-field {
         width: 29.333%;
     }
@@ -377,8 +437,10 @@
     }
     .form-group.generator .form-field a {
         color: red;
-        font-size: .8rem;
+        font-size: 0.8rem;
         margin-left: 10px;
     }
-
+    .form-group .form-field.w50 .my-text input {
+        max-width: 200px;
+    }
 }

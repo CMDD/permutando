@@ -77145,7 +77145,8 @@ var render = function() {
                         _c(
                           "div",
                           {
-                            staticClass: "my-text text-right align-items-center"
+                            staticClass:
+                              "my-text text-md-right align-items-center"
                           },
                           [
                             _c("span", [_vm._v("Valor total")]),

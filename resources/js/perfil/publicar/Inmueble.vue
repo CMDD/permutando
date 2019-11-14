@@ -560,7 +560,7 @@
               <button type="button" @click="addBien()" class="btn add">Agregar más bienes</button>
             </div>
             <div class="form-field w50">
-              <div class="my-text text-right align-items-center">
+              <div class="my-text text-md-right align-items-center">
                 <span>Valor total</span>
                 <VueNumeric currency="$" separator="." v-model="valorTotal"></VueNumeric>
               </div>

@@ -122,9 +122,6 @@ class Inmueble extends Model
           }
      }
 
-
-     
-
      if ( $request->tipo_publicacion == "Permuto") {
           if($request->edit == "true"){
                $indicador=0;

@@ -84315,6 +84315,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       fd.append("anos", this.form.anos);
       fd.append("espacio", this.form.espacio);
+      fd.append("parqueadero", this.form.parqueadero);
       fd.append("porteria", this.form.porteria);
       fd.append("administracion", this.form.administracion);
       fd.append("edit", true);

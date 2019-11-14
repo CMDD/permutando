@@ -27906,7 +27906,7 @@ window.Popper = __webpack_require__(22).default;
  */
 
 try {
-  // window.$ = window.jQuery = require("jquery");
+  window.$ = window.jQuery = __webpack_require__(7);
   //require('bootstrap');
 } catch (e) {}
 

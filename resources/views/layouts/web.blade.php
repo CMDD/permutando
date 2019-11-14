@@ -50,10 +50,11 @@
             @yield('content') @include('layouts.footer')
         </div>
 
-        <script
+        {{-- <script
             type="text/javascript"
             src="https://code.jquery.com/jquery-3.3.1.min.js"
-        ></script>
+        ></script> --}}
+        <script src="js/app.js"></script>
         <script
             type="text/javascript"
             src="js/bootstrap.bundle.min.js"
@@ -68,7 +69,7 @@
             defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQW6mlbcn4P312vnTaZNdknL0O1JRwdvA"
         ></script>
-        <script src="js/app.js"></script>
+       
 
         <script src="/js/slick.min.js"></script>
         <script>

@@ -149,6 +149,8 @@ export default {
       axios.post("registro", this.form).then(res => {
         if (res.data == 200) {
           window.location.href = this.to;
+        } else {
+          Vue.swal.fire("", "Verifica tus datos");
         }
       });
     },
@@ -156,9 +158,10 @@ export default {
       axios.post("autenticar", this.form).then(res => {
         if (res.data == 200) {
           window.location.href = this.to;
+        } else {
+          Vue.swal.fire("", "Verifica tus datos");
         }
       });
-      console.log(this.form);
     }
   }
 };

@@ -90989,6 +90989,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post("registro", this.form).then(function (res) {
         if (res.data == 200) {
           window.location.href = _this.to;
+        } else {
+          Vue.swal.fire("", "Verifica tus datos");
         }
       });
     },
@@ -90998,9 +91000,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post("autenticar", this.form).then(function (res) {
         if (res.data == 200) {
           window.location.href = _this2.to;
+        } else {
+          Vue.swal.fire("", "Verifica tus datos");
         }
       });
-      console.log(this.form);
     }
   }
 });

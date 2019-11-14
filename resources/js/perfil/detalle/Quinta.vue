@@ -282,7 +282,8 @@
             <a href="#" @click="publicar()" v-if="!publico " class="btn">Publicar Inmueble</a>
             <a href="#" @click="ocultar()" v-if="publico" class="btn">Ocultar Inmueble</a>
             <a href="#" @click="edit()" v-if="!editar" class="btn">Editar</a>
-            <button type="submit" v-else class="btn">Actualizar</button>
+            <button type="submit" v-if="editar" class="btn">Actualizar</button>
+            <button type="submit" v-if="actualizando" class="btn">Actualizando...</button>
           </div>
           <detalle-permuto :inmueble="form" :user="user" v-if="user.id != datos.user_id"></detalle-permuto>
           <detalle-contactar :inmueble="form" v-if="user.id != datos.user_id"></detalle-contactar>
@@ -303,6 +304,7 @@ export default {
   data() {
     return {
       publico: this.datos.publicar,
+      actualizando: false,
       url: "",
       editar: false,
       enviando: false,
@@ -372,6 +374,7 @@ export default {
       });
     },
     updateInmueble() {
+      this.actualizando = true;
       let fd = new FormData();
 
       for (var i = 0; i < this.bienes.length; i++) {
@@ -419,6 +422,7 @@ export default {
           console.log(res.data);
 
           toastr.success("Inmueble actualizado correctamente");
+          this.actualizando = false;
         });
     },
     eliminar(value, id) {

@@ -59,10 +59,10 @@ class Inmueble extends Model
      $inmueble->estado = $request->tipo_publicacion;
      $inmueble->recibo_efectivo = str_replace ( ".", "",$request->recibo_efectivo);
 
-     if($inmueble->video === "null" ){
+     if($inmueble->video == "null" || $inmueble->video == ''  ){
        $inmueble->video = "";
      }else{
-          $inmueble->video = $request->video ;  
+          $inmueble->video = $request->video;  
      }
 
      $inmueble->administracion = $request->administracion;
@@ -110,7 +110,7 @@ class Inmueble extends Model
      if($request->file('im6')){
           $inmueble->im6 = $request->file('im6')->store('imagenes');
      }
-     
+
      $inmueble->save();
 
      if ($request->imagenes) {
@@ -119,7 +119,6 @@ class Inmueble extends Model
                $imagen->image = $item->store('imagenes');
                $imagen->inmueble_id = $inmueble->id;
                $imagen->save();
-     
           }
      }
 

@@ -1,6 +1,11 @@
 @extends('layouts.web') @section('content')
 <div class="container-fluid home">
-    <login-component></login-component>
+    @if(Auth::User())
+    <login-component :user={{Auth::User()->id}}></login-component>
+    @else
+    <login-component :user="0"></login-component>
+    @endIf
+
         {{-- <div class="row links">
                 <div class="col-md-6 orange">
                     <img src="/img/icon-busco.png" />

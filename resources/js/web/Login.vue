@@ -134,6 +134,7 @@
 
 <script>
 export default {
+  props: ["user"],
   data() {
     return {
       to: "/perfil-buscar",
@@ -144,8 +145,12 @@ export default {
   },
   methods: {
     showModal(value) {
-      $("#loginModal").modal("show");
-      this.to = value;
+      if (this.user != 0) {
+        window.location.href = value;
+      } else {
+        $("#loginModal").modal("show");
+        this.to = value;
+      }
     },
     registro() {
       axios.post("registro", this.form).then(res => {

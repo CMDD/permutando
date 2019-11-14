@@ -90874,6 +90874,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["user"],
   data: function data() {
     return {
       to: "/perfil-buscar",
@@ -90885,8 +90886,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     showModal: function showModal(value) {
-      $("#loginModal").modal("show");
-      this.to = value;
+      if (this.user != 0) {
+        window.location.href = value;
+      } else {
+        $("#loginModal").modal("show");
+        this.to = value;
+      }
     },
     registro: function registro() {
       var _this = this;

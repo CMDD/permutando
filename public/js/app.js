@@ -80226,7 +80226,7 @@ var render = function() {
                                   expression: "bien.bien"
                                 }
                               ],
-                              attrs: { type: "text" },
+                              attrs: { type: "text", disabled: !_vm.editar },
                               domProps: { value: bien.bien },
                               on: {
                                 input: function($event) {
@@ -81922,7 +81922,7 @@ var render = function() {
                                   expression: "bien.bien"
                                 }
                               ],
-                              attrs: { type: "text" },
+                              attrs: { type: "text", disabled: !_vm.editar },
                               domProps: { value: bien.bien },
                               on: {
                                 input: function($event) {
@@ -83524,7 +83524,7 @@ var render = function() {
                                   expression: "bien.bien"
                                 }
                               ],
-                              attrs: { type: "text" },
+                              attrs: { type: "text", disabled: !_vm.editar },
                               domProps: { value: bien.bien },
                               on: {
                                 input: function($event) {
@@ -85283,7 +85283,7 @@ var render = function() {
                                   expression: "bien.bien"
                                 }
                               ],
-                              attrs: { type: "text" },
+                              attrs: { type: "text", disabled: !_vm.editar },
                               domProps: { value: bien.bien },
                               on: {
                                 input: function($event) {
@@ -87025,7 +87025,7 @@ var render = function() {
                                   expression: "bien.bien"
                                 }
                               ],
-                              attrs: { type: "text" },
+                              attrs: { type: "text", disabled: !_vm.editar },
                               domProps: { value: bien.bien },
                               on: {
                                 input: function($event) {
@@ -88574,7 +88574,7 @@ var render = function() {
                                   expression: "bien.bien"
                                 }
                               ],
-                              attrs: { type: "text" },
+                              attrs: { type: "text", disabled: !_vm.editar },
                               domProps: { value: bien.bien },
                               on: {
                                 input: function($event) {

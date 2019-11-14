@@ -280,7 +280,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label>Nombre</label>
-                  <input type="text" v-model="bien.bien" />
+                  <input type="text" v-model="bien.bien" :disabled="!editar" />
                 </div>
               </div>
               <div class="col-md-5">

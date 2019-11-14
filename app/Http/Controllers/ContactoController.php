@@ -25,11 +25,11 @@ class ContactoController extends Controller
         $mensaje->email = $request->email;
         $mensaje->save();
         
-        // $user = User::find($request->to);
-        // $contactado = new Contactado();
-        // $contactado->user_id = Auth::User()->id;
-        // $contactado->inmueble_id = $request->inmueble;
-        // $contactado->save();
+        $user = User::find($request->to);
+        $contactado = new Contactado();
+        $contactado->user_id = Auth::User()->id;
+        $contactado->inmueble_id = $request->inmueble;
+        $contactado->save();
 
 
         Mail::to($user->email,$user->name)

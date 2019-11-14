@@ -67,7 +67,7 @@
                                 type="button"
                                 class="btn nav-link mx-3"
                                 data-toggle="modal"
-                                data-target="#loginModal2"
+                                data-target="#loginModal"
                             >
                                 Iniciar sesión
                             </button>

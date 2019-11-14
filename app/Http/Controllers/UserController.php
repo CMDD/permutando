@@ -18,39 +18,24 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        if($request->web == 'si'){
-
-          if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
-            return Redirect::to('/perfil-buscar');
-            // return 200;
-          }
-        }else{
-          if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
-            // return Redirect::to('/perfil-publicar');
-            return 200;
-        }else{
-           return 100;
-        }
-         
+        if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
+          // return Redirect::to('/perfil-publicar');
+          return 200;
+      }else{
+         return 100;
       }
+         
       
-        return Redirect::to('/');
+      
+        // return Redirect::to('/');
     }
 
     public function autenticar(Request $request){
-          if($request->web == 'si'){
-            if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
-              return Redirect::to('/perfil-buscar');
-              
-            }else{
-              return Redirect::to('/');
-            }
 
+          if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
+            // return Redirect::to('/perfil-publicar');
+            return 200;
           }else{
-            if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
-              // return Redirect::to('/perfil-publicar');
-              return 200;
-            }
             return 100;
           }
 

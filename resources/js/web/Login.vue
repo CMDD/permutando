@@ -136,8 +136,10 @@
 export default {
   data() {
     return {
-      to: "",
-      form: {}
+      to: "/perfil-buscar",
+      form: {
+        web: "no"
+      }
     };
   },
   methods: {

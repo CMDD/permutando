@@ -32,8 +32,8 @@ class ContactoController extends Controller
         // $contactado->save();
 
 
-        // Mail::to($user->email,$user->name)
-        // ->send(new Contacto($request));
+        Mail::to($user->email,$user->name)
+        ->send(new Contacto($request));
         return $request;
     }
 

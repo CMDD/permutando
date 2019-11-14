@@ -54,3 +54,8 @@ Route::post('contacto','ContactoController@contacto');
 Route::get('contacto',function(){
     return view('contacto');
 });
+
+
+//Login Google
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');

@@ -47,9 +47,10 @@
                 </button>
               </form>
             </div>
+
             <div class="col-md-6 box-contact text-center">
               <img src="/img/perfil-logo.png" alt />
-              <p class="text-contac">"Se ha enviado correctamente"</p>
+              <p v-if="mostrar" class="text-contac">"Se ha enviado correctamente"</p>
             </div>
           </div>
         </div>
@@ -62,6 +63,7 @@ export default {
   props: ["inmueble"],
   data() {
     return {
+      mostrar: false,
       enviando: false,
       contacto: {
         to: this.inmueble.user_id
@@ -79,6 +81,7 @@ export default {
         this.contacto.tel = "";
         this.contacto.mensaje = "";
         this.contact = true;
+        this.mostrar = true;
       });
 
       console.log(this.contacto);
@@ -86,3 +89,12 @@ export default {
   }
 };
 </script>
+
+<style>
+input {
+  margin-top: 10px;
+}
+textarea {
+  margin-top: 10px;
+}
+</style>

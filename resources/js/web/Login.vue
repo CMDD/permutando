@@ -43,7 +43,7 @@
                 <div class="card-body">
                   <form @submit.prevent="registro">
                     <a href="#" class="btn fb">Iniciar sesión con Facebook</a>
-                    <a href="#" class="btn gl">Iniciar sesión con Google</a>
+                    <a href="/auth/google" class="btn gl">Iniciar sesión con Google</a>
                     <input
                       type="text"
                       required
@@ -105,7 +105,7 @@
                 <div class="card-body">
                   <form @submit.prevent="login">
                     <a href="#" class="btn fb">Iniciar sesión con Facebook</a>
-                    <a href="#" class="btn gl">Iniciar sesión con Google</a>
+                    <a href="/auth/google" class="btn gl">Iniciar sesión con Google</a>
                     <input
                       type="email"
                       required

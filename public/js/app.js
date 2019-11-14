@@ -89017,6 +89017,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(168)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(139)
@@ -89025,7 +89029,7 @@ var __vue_template__ = __webpack_require__(140)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -89124,11 +89128,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["inmueble"],
   data: function data() {
     return {
+      mostrar: false,
       enviando: false,
       contacto: {
         to: this.inmueble.user_id
@@ -89149,6 +89155,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.contacto.tel = "";
         _this.contacto.mensaje = "";
         _this.contact = true;
+        _this.mostrar = true;
       });
 
       console.log(this.contacto);
@@ -89319,7 +89326,15 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm._m(1)
+              _c("div", { staticClass: "col-md-6 box-contact text-center" }, [
+                _c("img", { attrs: { src: "/img/perfil-logo.png", alt: "" } }),
+                _vm._v(" "),
+                _vm.mostrar
+                  ? _c("p", { staticClass: "text-contac" }, [
+                      _vm._v('"Se ha enviado correctamente"')
+                    ])
+                  : _vm._e()
+              ])
             ])
           ])
         ])
@@ -89347,18 +89362,6 @@ var staticRenderFns = [
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6 box-contact text-center" }, [
-      _c("img", { attrs: { src: "/img/perfil-logo.png", alt: "" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "text-contac" }, [
-        _vm._v('"Se ha enviado correctamente"')
-      ])
     ])
   }
 ]
@@ -90484,7 +90487,10 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "a",
-                              { staticClass: "btn gl", attrs: { href: "#" } },
+                              {
+                                staticClass: "btn gl",
+                                attrs: { href: "/auth/google" }
+                              },
                               [_vm._v("Iniciar sesión con Google")]
                             ),
                             _vm._v(" "),
@@ -90696,7 +90702,10 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "a",
-                              { staticClass: "btn gl", attrs: { href: "#" } },
+                              {
+                                staticClass: "btn gl",
+                                attrs: { href: "/auth/google" }
+                              },
                               [_vm._v("Iniciar sesión con Google")]
                             ),
                             _vm._v(" "),
@@ -91007,6 +91016,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   }
 });
+
+/***/ }),
+/* 168 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(169);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("4196437b", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7ad92f7c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Contactar.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7ad92f7c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Contactar.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 169 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\ninput {\n  margin-top: 10px;\n}\ntextarea {\n  margin-top: 10px;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

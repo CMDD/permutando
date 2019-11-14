@@ -128,7 +128,7 @@ class InmuebleController extends Controller
                 $inmueble->valor = $request->valor;
                 $inmueble->save();
                 
-                if(count($request->zonas) > 0 ){
+                
                  
                 // foreach ((array)$request->zonas as $item) {
                 //     $zona = Zonas::where('inmueble_id',$inmueble->id)->first();
@@ -139,7 +139,7 @@ class InmuebleController extends Controller
                 //      $zona->save();
           
                 // }
-            }
+            
                 return $inmueble->store($request,$inmueble->id);
                 break;
             case 'Bodega':

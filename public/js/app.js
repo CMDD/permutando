@@ -73901,7 +73901,7 @@ if (document.getElementById("userId")) {
         this.active = true;
       } else {
         this.active = false;
-        Vue.swal.fire("Ten en cuenta que si elijes esta opción, sólo podrás añadir dinero en efectivo  una vez hayas completado más del 50% del valor de tu propiedad en bienes");
+        Vue.swal.fire("Ten en cuenta que si eliges esta opción, sólo podrás añadir dinero en efectivo  una vez hayas completado más del 50% del valor de tu propiedad en bienes");
       }
     },
     addBien: function addBien() {

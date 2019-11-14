@@ -130,15 +130,15 @@ class InmuebleController extends Controller
                 
                 if(count($request->zonas) > 0 ){
                  
-                foreach ((array)$request->zonas as $item) {
-                    $zona = Zonas::where('inmueble_id',$inmueble->id)->first();
-                     $zona->delete();
-                    //  $zona = Zonas::where('inmueble_id',$inmueble->id)->first();
-                    //  $zona->nombre = $item;
-                    //  $zona->inmueble_id = $inmueble->id;
-                    //  $zona->save();
+                // foreach ((array)$request->zonas as $item) {
+                //     $zona = Zonas::where('inmueble_id',$inmueble->id)->first();
+                //      $zona->delete();
+                //      $zona = Zonas::where('inmueble_id',$inmueble->id)->first();
+                //      $zona->nombre = $item;
+                //      $zona->inmueble_id = $inmueble->id;
+                //      $zona->save();
           
-                }
+                // }
             }
                 return $inmueble->store($request,$inmueble->id);
                 break;

@@ -21,7 +21,7 @@ class UserController extends Controller
         if($request->web == 'si'){
 
           if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
-            return Redirect::to('/perfil-publicar');
+            return Redirect::to('/perfil-buscar');
             // return 200;
           }
         }else{
@@ -40,7 +40,7 @@ class UserController extends Controller
     public function autenticar(Request $request){
           if($request->web == 'si'){
             if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
-              return Redirect::to('/perfil-publicar');
+              return Redirect::to('/perfil-buscar');
               
             }else{
               return Redirect::to('/');

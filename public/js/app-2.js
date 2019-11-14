@@ -77869,6 +77869,8 @@ if (document.getElementById("userId")) {
 
       axios.post("/api/busco-index", this.busco).then(function (res) {
         _this7.resultadoIndex = res.data;
+        console.log();
+
         _this7.cargarMap(_this7.resultadoIndex, 11);
       });
     },

@@ -80337,7 +80337,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("Editar")]
+                          [_vm._v("Agregar más imágenes / Editar")]
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -82033,7 +82033,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("Editar")]
+                          [_vm._v("Agregar más imágenes / Editar")]
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -83635,7 +83635,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("Editar")]
+                          [_vm._v("Agregar más imágenes / Editar")]
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -85394,7 +85394,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("Editar")]
+                          [_vm._v("Agregar más imágenes / Editar")]
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -87136,7 +87136,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("Editar")]
+                          [_vm._v("Agregar más imágenes / Editar")]
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -88685,7 +88685,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("Editar")]
+                          [_vm._v("Agregar más imágenes / Editar")]
                         )
                       : _vm._e(),
                     _vm._v(" "),

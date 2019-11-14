@@ -288,7 +288,7 @@
           <div v-if="user.id == datos.user_id">
             <a href="#" @click="publicar()" class="btn">Publicar Inmueble</a>
             <!-- <a href="#" @click="ocultar()" v-if="publico" class="btn">Ocultar Inmueble</a> -->
-            <a href="#" @click="edit()" v-if="!editar" class="btn">Editar</a>
+            <a href="#" @click="edit()" v-if="!editar" class="btn">Agregar más imágenes / Editar</a>
             <button type="submit" v-if="editar" class="btn">Actualizar</button>
             <button type="submit" v-if="actualizando" class="btn">Actualizando...</button>
           </div>

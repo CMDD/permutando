@@ -8,7 +8,7 @@
       <ol class="breadcrumb">
         <li>
           <i class="fa fa-dashboard"></i>
- Dashboard
+          Dashboard
         </li>
         <li class="active">
           <i class="fa fa-book"></i>Inmuebles
@@ -28,11 +28,11 @@
               <tr>
                 <th>id</th>
                 <th>Tipo</th>
-                <th>Area m2</th>
-                <th>Habitaciones</th>
+                <th>En</th>
                 <th>Usuario</th>
                 <th>Email</th>
-                <th>Accion</th>
+                <th>Teléfono</th>
+                <!-- <th>Accion</th> -->
               </tr>
             </thead>
             <tbody></tbody>
@@ -59,11 +59,11 @@ export default {
         columns: [
           { data: "id" },
           { data: "tipo_inmueble" },
-          { data: "area" },
-          { data: "habitaciones" },
+          { data: "tipo_publicacion" },
           { data: "username" },
           { data: "useremail" },
-          { data: "btn" }
+          { data: "usertel" }
+          // { data: "btn" }
         ],
         language: {
           sProcessing: "Procesando...",

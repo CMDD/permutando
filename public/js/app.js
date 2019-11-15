@@ -71959,7 +71959,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       $("#datatable-suscripciones").DataTable({
         serverSide: true,
         ajax: "api/lista-inmuebles",
-        columns: [{ data: "id" }, { data: "tipo_inmueble" }, { data: "area" }, { data: "habitaciones" }, { data: "username" }, { data: "useremail" }, { data: "btn" }],
+        columns: [{ data: "id" }, { data: "tipo_inmueble" }, { data: "tipo_publicacion" }, { data: "username" }, { data: "useremail" }, { data: "usertel"
+          // { data: "btn" }
+        }],
         language: {
           sProcessing: "Procesando...",
           sLengthMenu: "Mostrar _MENU_ registros",
@@ -72014,19 +72016,19 @@ var staticRenderFns = [
     return _c("div", {}, [
       _c("section", { staticClass: "content-header" }, [
         _c("h1", [
-          _vm._v("\n       Inmuebles\n       "),
+          _vm._v("\n      Inmuebles\n      "),
           _c("small", [_vm._v("Listas")])
         ]),
         _vm._v(" "),
         _c("ol", { staticClass: "breadcrumb" }, [
           _c("li", [
             _c("i", { staticClass: "fa fa-dashboard" }),
-            _vm._v("\nDashboard\n       ")
+            _vm._v("\n        Dashboard\n      ")
           ]),
           _vm._v(" "),
           _c("li", { staticClass: "active" }, [
             _c("i", { staticClass: "fa fa-book" }),
-            _vm._v("Inmuebles\n       ")
+            _vm._v("Inmuebles\n      ")
           ])
         ])
       ]),
@@ -72053,15 +72055,13 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("th", [_vm._v("Tipo")]),
                     _vm._v(" "),
-                    _c("th", [_vm._v("Area m2")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Habitaciones")]),
+                    _c("th", [_vm._v("En")]),
                     _vm._v(" "),
                     _c("th", [_vm._v("Usuario")]),
                     _vm._v(" "),
                     _c("th", [_vm._v("Email")]),
                     _vm._v(" "),
-                    _c("th", [_vm._v("Accion")])
+                    _c("th", [_vm._v("Teléfono")])
                   ])
                 ]),
                 _vm._v(" "),

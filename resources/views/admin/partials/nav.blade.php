@@ -11,7 +11,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/lista-usuarios">Lista</a></li>
-            <li><a href="#">Crear</a></li>
+            {{-- <li><a href="#">Crear</a></li> --}}
           </ul>
         </li>
         <li class="treeview">

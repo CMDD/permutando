@@ -166,7 +166,7 @@ export default {
         if (res.data == 200) {
           window.location.href = this.to;
         } else {
-          Vue.swal.fire("", "Verifica tus datos");
+          Vue.swal.fire("", "Verifica tus datos", "info");
         }
       });
     }

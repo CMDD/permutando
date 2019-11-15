@@ -30,7 +30,7 @@
               <!-- <div class="item garage">{{inmueble.parqueadero}} parqueaderos</div> -->
             </div>
             <div class="group">
-              <div class="item meters">{{inmueble.ciudad}}</div>
+              <div class="item price">{{inmueble.ciudad}}</div>
               <div class="item price">${{formatPrice(inmueble.valor)}}</div>
               <div>
                 <a :href="'/perfil-detalle/' + inmueble.id">Ver</a>

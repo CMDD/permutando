@@ -404,7 +404,7 @@
             <div class="form-field w50">
               <div class="my-select">
                 <span>Departamento</span>
-                <select v-model="form.departamento" @change="getCiudades()">
+                <select v-model="form.departamento" @change="getCiudades()" required>
                   <option value>Seleccione...</option>
                   <option
                     v-bind:value="departamento.id"
@@ -418,7 +418,7 @@
             <div class="form-field w50">
               <div class="my-select">
                 <span>Ciudad / Municipio</span>
-                <select v-model="form.ciudad">
+                <select v-model="form.ciudad" required>
                   <option
                     v-bind:value="ciudad.id"
                     v-for="ciudad in ciudades"

@@ -35,7 +35,7 @@
           <div class="col-md-6">
               <h4>Permuto por:</h4>
               <div v-for="bien in bienes" :key="bien.id">
-                <p>{{bien.bien}} : ${{bien.valor}}</p>
+                <p>{{bien.bien}} : ${{bien.valor}}  <VueNumeric currency="$" separator="." v-model="bien.valor" :disabled="!editar"></VueNumeric></p>
               </div>  
           </div>
       </div>
@@ -56,6 +56,7 @@
     </div>
 </template>
 <script>
+import VueNumeric from "vue-numeric";
     export default {
         props:['userId'],
         data() {

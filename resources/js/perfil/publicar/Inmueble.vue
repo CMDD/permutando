@@ -419,6 +419,7 @@
               <div class="my-select">
                 <span>Ciudad / Municipio</span>
                 <select v-model="form.ciudad" required>
+                  <option value>Seleccione...</option>
                   <option
                     v-bind:value="ciudad.id"
                     v-for="ciudad in ciudades"

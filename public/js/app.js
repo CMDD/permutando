@@ -78957,6 +78957,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -81868,14 +81869,20 @@ var render = function() {
                           }
                         }
                       },
-                      _vm._l(_vm.ciudades, function(ciudad) {
-                        return _c(
-                          "option",
-                          { key: ciudad.id, domProps: { value: ciudad.id } },
-                          [_vm._v(_vm._s(ciudad.nombre))]
-                        )
-                      }),
-                      0
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Seleccione...")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.ciudades, function(ciudad) {
+                          return _c(
+                            "option",
+                            { key: ciudad.id, domProps: { value: ciudad.id } },
+                            [_vm._v(_vm._s(ciudad.nombre))]
+                          )
+                        })
+                      ],
+                      2
                     )
                   ])
                 ]),

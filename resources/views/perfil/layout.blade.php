@@ -22,7 +22,7 @@
         />
         <link
             rel="stylesheet"
-            href="/css/app.css"
+            href="/css/app.css?v=1.1"
             type="text/css"
             media="all"
         />
@@ -45,7 +45,7 @@
         
         <script type="text/javascript" src="/js/perfil.js"></script>
         
-        <script type="text/javascript" src="/js/app.js"></script>
+        <script type="text/javascript" src="/js/app.js?v=1.1"></script>
         @stack('scripts')
         
         

@@ -50,10 +50,10 @@
             @yield('content') @include('layouts.footer')
         </div>
 
-        {{-- <script
+         {{-- <script
             type="text/javascript"
             src="https://code.jquery.com/jquery-3.3.1.min.js"
-        ></script> --}}
+        ></script>  --}}
         <script src="js/app.js?v=3"></script>
         <script
             type="text/javascript"

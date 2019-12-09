@@ -37,7 +37,9 @@
         {{-- <li>
             <a href="/perfil-mis-publicaciones" class="">Mis inmuebles contactados</a>
         </li> --}}
-        <li><a href="/perfil-mensajes">Mis mensajes</a></li>
+        <li>
+            <a href="/perfil-mensajes">Mis mensajes <span class="noti"></span></a> 
+        </li>
         
         <!-- <li><a href="#">Mis alertas</a></li>
         <li><a href="#">Crear Alertas</a></li> -->
@@ -46,3 +48,22 @@
         </li>
     </ul>
 </div>
+
+@push('styles')
+<style>
+.noti{
+    background-color: #e67319;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -7.5px;
+}
+.sidebar .menu a {
+    position: RELATIVE;
+}
+</style>
+@endpush

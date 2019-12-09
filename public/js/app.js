@@ -77686,7 +77686,7 @@ if (document.getElementById("userId")) {
       var _this = this;
 
       Vue.swal.fire({
-        title: "Estas seguro?",
+        title: "Estás seguro?",
         text: "Tu publicación será eliminada!",
         icon: "warning",
         showCancelButton: true,
@@ -78353,7 +78353,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.content .box {\n  background: #fff;\n  max-width: 900px;\n  -webkit-box-shadow: 3px 3px 3px #cccccc;\n          box-shadow: 3px 3px 3px #cccccc;\n  border-radius: 20px;\n  padding: 20px;\n  padding: 20px;\n  margin: 50px auto;\n}\n.mini small {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  margin: 0 5px;\n}\n.form-group .my-text.mini input[type=\"text\"] {\n  max-width: 90px;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.content .box {\n  background: #fff;\n  max-width: 900px;\n  -webkit-box-shadow: 3px 3px 3px #cccccc;\n          box-shadow: 3px 3px 3px #cccccc;\n  border-radius: 20px;\n  padding: 20px;\n  padding: 20px;\n  margin: 50px auto;\n}\n.mini small {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  margin: 0 5px;\n}\n.form-group .my-text.mini input[type=\"text\"] {\n  max-width: 90px;\n  text-align: center;\n}\n.aviso {\n  color: #e67319;\n  font-size: 22px;\n}\n.containerPreview {\n  margin-bottom: 10%;\n}\n.preview {\n  height: auto;\n  width: 100%;\n}\n.containerAviso {\n}\n", ""]);
 
 // exports
 
@@ -78368,6 +78368,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_numeric___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_numeric__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_toastr__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -78975,13 +78987,17 @@ if (document.getElementById("userId")) {
   },
   data: function data() {
     return {
+      preview: null,
       active: false,
       valorTotal: "",
       userId: userId,
       enviando: true,
       departamentos: [],
       ciudades: [],
-      inputs: [],
+      inputs: [{
+        valor: "",
+        bien: ""
+      }],
       form: {
         area_ancho: "",
         area_fondo: "",
@@ -79047,6 +79063,11 @@ if (document.getElementById("userId")) {
   },
 
   methods: {
+    mostrarAlerta: function mostrarAlerta(value) {
+      if (value == "Permuto") {
+        Vue.swal.fire("", "Ten en cuenta que si eliges esta opción, sólo podrás añadir dinero en efectivo  una vez hayas completado más del 50% del valor de tu propiedad en bienes", "info");
+      }
+    },
     addEfectivo: function addEfectivo() {
       this.validarValor();
       var result2 = parseInt(this.form.valor) / 2;
@@ -79088,6 +79109,7 @@ if (document.getElementById("userId")) {
       });
 
       this.form.imagePrincipal = this.$refs.file.files[0];
+      this.preview = URL.createObjectURL(this.$refs.file.files[0]);
     },
     filesChange: function filesChange(e) {
       this.form.imagenes = e.target.files;
@@ -79741,23 +79763,28 @@ var render = function() {
                         ],
                         attrs: { required: "" },
                         on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.form,
-                              "tipoPublicacion",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "tipoPublicacion",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            function($event) {
+                              return _vm.mostrarAlerta(_vm.form.tipoPublicacion)
+                            }
+                          ]
                         }
                       },
                       [
@@ -82116,6 +82143,15 @@ var render = function() {
                   _c("span", [_vm._v("Imagen Principal")]),
                   _vm._v(" "),
                   _c("div", { staticClass: "image" }, [
+                    _vm.preview != null
+                      ? _c("div", { staticClass: "containerPreview" }, [
+                          _c("img", {
+                            staticClass: "preview",
+                            attrs: { src: _vm.preview, alt: "" }
+                          })
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c("input", {
                       ref: "file",
                       staticClass: "inputfile",
@@ -82126,6 +82162,8 @@ var render = function() {
                     _c("label", { attrs: { for: "file" } }, [_vm._v("Subir")])
                   ])
                 ]),
+                _vm._v(" "),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w100" }, [
                   _c("div", { staticClass: "my-text" }, [
@@ -82155,7 +82193,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(4)
+              _vm._m(5)
             ]),
             _vm._v(" "),
             _c("fieldset", [
@@ -82464,6 +82502,16 @@ var staticRenderFns = [
     return _c("div", { staticClass: "f1-buttons single" }, [
       _c("button", { staticClass: "btn btn-next", attrs: { type: "button" } }, [
         _vm._v("Siguiente")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-field w50 containerAviso" }, [
+      _c("p", { staticClass: "aviso" }, [
+        _vm._v("¡Podrás subir otras fotos más adelante!")
       ])
     ])
   },
@@ -86065,12 +86113,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this4 = this;
 
       axios.get("/api/publicar-inmueble/" + this.form.id).then(function (res) {
-        Vue.swal.fire({
-          icon: "success",
-          title: "Tu inmueble ha sido publicado correctamente",
-          showConfirmButton: false,
-          timer: 1500
-        });
+        Vue.swal.fire("PUBLICACIÓN EXITOSA", "Diste el primer paso para lograr tu objetivo. Próximamente te contactará un usuario interesado. Permutado, cambiamos la forma de hacer tus negocios.", "success");
         _this4.publico = true;
       });
     },
@@ -94231,7 +94274,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       mostrar: false,
       enviando: false,
       contacto: {
-        to: this.inmueble.user_id
+        to: this.inmueble.user_id,
+        tipo_publicacion: this.inmueble.tipo_publicacion,
+        inmueble: this.inmueble.id
       }
     };
   },
@@ -94412,8 +94457,8 @@ var render = function() {
                       },
                       [
                         !_vm.enviando
-                          ? _c("span", [_vm._v("Enviar")])
-                          : _c("span", [_vm._v("Enviando...")])
+                          ? _c("span", [_vm._v("Contactar")])
+                          : _c("span", [_vm._v("Contactando...")])
                       ]
                     )
                   ]

@@ -42,8 +42,8 @@
                   placeholder="Mensaje"
                 ></textarea>
                 <button type="submit" class="btn btn-enviar">
-                  <span v-if="!enviando">Enviar</span>
-                  <span v-else>Enviando...</span>
+                  <span v-if="!enviando">Contactar</span>
+                  <span v-else>Contactando...</span>
                 </button>
               </form>
             </div>
@@ -66,7 +66,9 @@ export default {
       mostrar: false,
       enviando: false,
       contacto: {
-        to: this.inmueble.user_id
+        to: this.inmueble.user_id,
+        tipo_publicacion: this.inmueble.tipo_publicacion,
+        inmueble: this.inmueble.id
       }
     };
   },

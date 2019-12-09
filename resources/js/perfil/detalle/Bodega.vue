@@ -378,12 +378,11 @@ export default {
     },
     publicar() {
       axios.get("/api/publicar-inmueble/" + this.form.id).then(res => {
-        Vue.swal.fire({
-          icon: "success",
-          title: "Tu inmueble ha sido publicado correctamente",
-          showConfirmButton: false,
-          timer: 1500
-        });
+        Vue.swal.fire(
+          "PUBLICACIÓN EXITOSA",
+          "Diste el primer paso para lograr tu objetivo. Próximamente te contactará un usuario interesado. Permutado, cambiamos la forma de hacer tus negocios.",
+          "success"
+        );
         this.publico = true;
       });
     },

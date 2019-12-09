@@ -62,7 +62,7 @@ export default {
     eliminarPublicacion(id) {
       Vue.swal
         .fire({
-          title: "Estas seguro?",
+          title: "Estás seguro?",
           text: "Tu publicación será eliminada!",
           icon: "warning",
           showCancelButton: true,

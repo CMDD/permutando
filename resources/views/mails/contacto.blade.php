@@ -14,10 +14,10 @@
 <body>
     
      <p>¡ Buenas Noticias !</p> 
-     @if($request->tipo =='Venta')
+     @if($request->tipo_publicacion =='Venta')
     <p>Estás muy cerca de Vender  tu inmueble.</p>  
     @endif
-     @if($request->tipo =='Permuto')
+     @if($request->tipo_publicacion  =='Permuto')
     <p>Estás muy cerca de Permutar  tu inmueble.</p>  
     @endif
 

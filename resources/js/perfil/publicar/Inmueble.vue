@@ -38,7 +38,11 @@
             <div class="form-field w50">
               <div class="my-select">
                 <span>Tipo de publicación</span>
-                <select v-model="form.tipoPublicacion" required>
+                <select
+                  v-model="form.tipoPublicacion"
+                  required
+                  @change="mostrarAlerta(form.tipoPublicacion)"
+                >
                   <option value>Seleccione..</option>
                   <option value="Venta">Venta</option>
                   <option value="Arriendo">Arriendo</option>
@@ -489,10 +493,18 @@
             <div class="form-field w50">
               <span>Imagen Principal</span>
               <div class="image">
+                <div class="containerPreview" v-if="preview != null">
+                  <img class="preview" :src="preview" alt />
+                </div>
+
                 <input required type="file" id="file" ref="file" @change="img" class="inputfile" />
                 <label for="file">Subir</label>
               </div>
             </div>
+            <div class="form-field w50 containerAviso">
+              <p class="aviso">¡Podrás subir otras fotos más adelante!</p>
+            </div>
+
             <!-- <div class="form-field w50">
               <span>Imágenes...</span>
               <small>(Máximo 6 imágenes)</small>
@@ -606,13 +618,19 @@ export default {
   },
   data() {
     return {
+      preview: null,
       active: false,
       valorTotal: "",
       userId: userId,
       enviando: true,
       departamentos: [],
       ciudades: [],
-      inputs: [],
+      inputs: [
+        {
+          valor: "",
+          bien: ""
+        }
+      ],
       form: {
         area_ancho: "",
         area_fondo: "",
@@ -677,6 +695,15 @@ export default {
     this.getDepartamentos();
   },
   methods: {
+    mostrarAlerta(value) {
+      if (value == "Permuto") {
+        Vue.swal.fire(
+          "",
+          "Ten en cuenta que si eliges esta opción, sólo podrás añadir dinero en efectivo  una vez hayas completado más del 50% del valor de tu propiedad en bienes",
+          "info"
+        );
+      }
+    },
     addEfectivo() {
       this.validarValor();
       let result2 = parseInt(this.form.valor) / 2;
@@ -720,6 +747,7 @@ export default {
       });
 
       this.form.imagePrincipal = this.$refs.file.files[0];
+      this.preview = URL.createObjectURL(this.$refs.file.files[0]);
     },
     filesChange(e) {
       this.form.imagenes = e.target.files;
@@ -919,5 +947,18 @@ export default {
 .form-group .my-text.mini input[type="text"] {
   max-width: 90px;
   text-align: center;
+}
+.aviso {
+  color: #e67319;
+  font-size: 22px;
+}
+.containerPreview {
+  margin-bottom: 10%;
+}
+.preview {
+  height: auto;
+  width: 100%;
+}
+.containerAviso {
 }
 </style>

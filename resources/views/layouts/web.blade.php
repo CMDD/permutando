@@ -54,7 +54,7 @@
             type="text/javascript"
             src="https://code.jquery.com/jquery-3.3.1.min.js"
         ></script> --}}
-        <script src="js/app.js"></script>
+        <script src="js/app.js?ver=1"></script>
         <script
             type="text/javascript"
             src="js/bootstrap.bundle.min.js"

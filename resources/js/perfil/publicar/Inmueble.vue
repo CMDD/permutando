@@ -37,7 +37,7 @@
           <div class="form-group">
             <div class="form-field w50">
               <div class="my-select">
-                <span>Tipo de publicación</span>
+                <span>Tipo de publicación:</span>
                 <select
                   v-model="form.tipoPublicacion"
                   required
@@ -53,7 +53,7 @@
 
             <div class="form-field w50">
               <div class="my-select">
-                <span>Tipo de Inmueble</span>
+                <span>Tipo de Inmueble:</span>
                 <select required v-model="form.tipoInmueble">
                   <option value>Seleccione..</option>
                   <option value="Casa">Casa</option>
@@ -79,6 +79,7 @@
                 <span>
                   Área mts
                   <sup>2</sup>
+                  :
                 </span>
                 <input v-model="form.area" type="text" :required="form.tipoInmueble == 'Casa'" />
               </div>
@@ -91,8 +92,9 @@
             >
               <div class="my-text">
                 <span>
-                  Área Lote
-                  <!-- <sup>2</sup> -->
+                  Área Lote mts
+                  <sup>2</sup>
+                  :
                 </span>
                 <input v-model="form.area_lote" type="text" />
               </div>
@@ -104,8 +106,9 @@
             >
               <div class="my-text">
                 <span>
-                  Área Construida
-                  <!-- <sup>2</sup> -->
+                  Área Construida mts
+                  <sup>2</sup>
+                  :
                 </span>
                 <input v-model="form.area_construida" type="text" />
               </div>
@@ -116,7 +119,7 @@
             || form.tipoInmueble == 'Quinta' || form.tipoInmueble == 'Finca' || form.tipoInmueble == 'Hacienda'"
             >
               <div class="my-checkbox">
-                <span>Tipo de Construcción</span>
+                <span>Tipo de Construcción:</span>
                 <div class="form-col">
                   <div>
                     <input
@@ -195,7 +198,7 @@
 
             <div class="form-field w62" v-if="form.tipoInmueble == 'Oficina' ">
               <div class="my-select">
-                <span>Espacio</span>
+                <span>Espacio:</span>
                 <select v-model="form.espacio">
                   <option value>Seleccione..</option>
                   <option value="Abierto">Abierto</option>
@@ -206,14 +209,14 @@
 
             <div class="form-field w50" v-if="form.tipoInmueble == 'Edificio' ">
               <div class="my-text">
-                <span>Numero de pisos</span>
+                <span>Numero de pisos:</span>
                 <input v-model="form.pisos" type="number" />
               </div>
             </div>
 
             <div class="form-field" v-if="form.tipoInmueble == 'Edificio' ">
               <div class="my-radio">
-                <span>Ascensor</span>
+                <span>Ascensor:</span>
                 <input type="radio" v-model="form.ascensor" value="1" id="balcon_1" />
                 <label for="balcon_1">Si</label>
                 <input type="radio" v-model="form.ascensor" value="0" id="balcon_0" checked />
@@ -223,13 +226,13 @@
 
             <div class="form-field w62" v-if="form.tipoInmueble == 'Lote' ">
               <div class="my-text">
-                <span>Topografía</span>
+                <span>Topografía:</span>
                 <input v-model="form.topografia" type="text" />
               </div>
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Lote' ">
               <div class="my-select">
-                <span>Vías</span>
+                <span>Vías:</span>
                 <select v-model="form.vias">
                   <option value>Seleccione...</option>
                   <option value="Pavimentada">Pavimentada</option>
@@ -242,6 +245,7 @@
                 <span>
                   Área mts
                   <sup>2</sup>
+                  :
                 </span>
                 <input type="text" v-model="form.area_ancho" placeholder="Ancho" />
                 <small>x</small>
@@ -251,27 +255,28 @@
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-text mini">
                 <span>
-                  Altura
+                  Altura mts
                   <sup>2</sup>
+                  :
                 </span>
                 <input v-model="form.altura" type="text" placeholder />
               </div>
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-text">
-                <span>Capacidad carga (PSI)</span>
+                <span>Capacidad carga (PSI):</span>
                 <input v-model="form.carga_psi" type="text" />
               </div>
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-text">
-                <span>Capacidad Luz (KWA)</span>
+                <span>Capacidad Luz (KWA):</span>
                 <input v-model="form.capacidad_luz" type="text" />
               </div>
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-radio">
-                <span>Parque Industrial</span>
+                <span>Parque Industrial:</span>
                 <input type="radio" v-model="form.parque_industrial" value="1" id="balcon_1" />
                 <label for="balcon_1">Si</label>
                 <input
@@ -290,7 +295,7 @@
               v-if="form.tipoInmueble == 'Apartamento' || form.tipoInmueble == 'Casa' "
             >
               <div class="my-select">
-                <span>Habitaciones</span>
+                <span>Habitaciones:</span>
                 <select v-model="form.habitaciones">
                   <option>--</option>
                   <option value="1">1</option>
@@ -306,7 +311,7 @@
               v-if="form.tipoInmueble == 'Casa'|| form.tipoInmueble == 'Apartamento' "
             >
               <div class="my-select">
-                <span>Baños</span>
+                <span>Baños:</span>
                 <select v-model="form.banos">
                   <option>--</option>
                   <option value="1">1</option>
@@ -322,7 +327,7 @@
               v-if="form.tipoInmueble == 'Casa' || form.tipoInmueble == 'Apartamento' "
             >
               <div class="my-radio">
-                <span>Balcón</span>
+                <span>Balcón:</span>
                 <input type="radio" v-model="form.balcon" value="1" id="balcon_1" />
                 <label for="balcon_1">Si</label>
                 <input type="radio" v-model="form.balcon" value="0" id="balcon_0" checked />
@@ -334,7 +339,7 @@
               v-if="form.tipoInmueble == 'Casa' || form.tipoInmueble == 'Apartamento' "
             >
               <div class="my-radio">
-                <span>Terraza</span>
+                <span>Terraza:</span>
                 <input type="radio" v-model="form.terraza" value="1" id="terraza_1" />
                 <label for="terraza_1">Si</label>
                 <input type="radio" v-model="form.terraza" value="0" id="terraza_0" checked />
@@ -346,7 +351,7 @@
               v-if="form.tipoInmueble == 'Casa' || form.tipoInmueble == 'Apartamento' "
             >
               <div class="my-radio">
-                <span>Patio</span>
+                <span>Patio:</span>
                 <input type="radio" v-model="form.patio" value="1" id="patio_1" />
                 <label for="patio_1">Si</label>
                 <input type="radio" v-model="form.patio" value="0" id="patio_0" checked />
@@ -359,7 +364,7 @@
               v-if="form.tipoInmueble == 'Casa' || form.tipoInmueble == 'Apartamento' || form.tipoInmueble == 'Oficina' "
             >
               <div class="my-radio">
-                <span>Portería</span>
+                <span>Portería:</span>
                 <input type="radio" v-model="form.porteria" value="12h" id="porteria_12" />
                 <label for="porteria_12">12H</label>
                 <input type="radio" v-model="form.porteria" value="24h" id="porteria_24" checked />
@@ -374,7 +379,7 @@
               || form.tipoInmueble == 'Oficina' || form.tipoInmueble == 'Edificio' "
             >
               <div class="my-radio">
-                <span>Parqueadero</span>
+                <span>Parqueadero:</span>
                 <input type="radio" v-model="form.parqueadero" value="1" id="parqueadero_1" />
                 <label for="parqueadero_1">Si</label>
                 <input type="radio" v-model="form.parqueadero" value="0" id="parqueadero_0" checked />
@@ -387,7 +392,7 @@
               v-if="form.tipoInmueble == 'Casa' || form.tipoInmueble == 'Apartamento' "
             >
               <div class="my-checkbox">
-                <span>Zonas Comunes</span>
+                <span>Zonas Comunes:</span>
                 <div class="form-col">
                   <div>
                     <input type="checkbox" v-model="form.zonas" value="Gimnasio" id="zonas_1" />
@@ -413,7 +418,7 @@
             </div>
             <div class="form-field w50">
               <div class="my-select">
-                <span>Departamento</span>
+                <span>Departamento:</span>
                 <select v-model="form.departamento" @change="getCiudades()" required>
                   <option value>Seleccione...</option>
                   <option
@@ -427,7 +432,7 @@
 
             <div class="form-field w50">
               <div class="my-select">
-                <span>Ciudad / Municipio</span>
+                <span>Ciudad / Municipio:</span>
                 <select v-model="form.ciudad" required>
                   <option value>Seleccione...</option>
                   <option
@@ -440,26 +445,26 @@
             </div>
             <div class="form-field w50">
               <div class="my-text">
-                <span>Valor Administración</span>
+                <span>Valor Administración:</span>
                 <!-- <input v-model="form.administracion" type="text" required /> -->
                 <VueNumeric currency="$" separator="." v-model="form.administracion"></VueNumeric>
               </div>
             </div>
             <div class="form-field w50">
               <div class="my-text">
-                <span>Años de Construcción</span>
+                <span>Años de Construcción:</span>
                 <input v-model="form.anos" type="text" required />
               </div>
             </div>
             <div class="form-field w50">
               <div class="my-text">
-                <span>Barrio</span>
+                <span>Barrio:</span>
                 <input v-model="form.barrio" type="text" required />
               </div>
             </div>
             <div class="form-field w50">
               <div class="my-text">
-                <span>Dirección</span>
+                <span>Dirección:</span>
                 <input v-model="form.direccion" type="text" required />
               </div>
             </div>
@@ -468,7 +473,7 @@
               v-if="form.tipoInmueble == 'Casa' || form.tipoInmueble == 'Apartamento' "
             >
               <div class="my-select">
-                <span>Estrato</span>
+                <span>Estrato:</span>
                 <select v-model="form.estrato">
                   <option>--</option>
                   <option value="1">1</option>
@@ -528,7 +533,7 @@
             </div>-->
             <div class="form-field w100">
               <div class="my-text">
-                <span>Url Video</span>
+                <span>Url Video:</span>
                 <input v-model="form.video" type="text" />
               </div>
             </div>
@@ -551,7 +556,7 @@
           <div class="form-group" v-if="form.tipoPublicacion === 'Permuto'">
             <div class="form-field w100">
               <div class="my-text">
-                <span>Valor del inmueble</span>$
+                <span>Valor del inmueble:</span>$
                 <!-- <input type="text" v-model="form.valor" /> -->
                 <VueNumeric currency="$" separator="." v-model="form.valor"></VueNumeric>
               </div>
@@ -561,14 +566,14 @@
             <h5>¿Por qué bienes lo permutarías?</h5>
             <div class="group-generator" v-for="(input, index) in inputs" :key="input.index">
               <div class="form-field">
-                <span>Bien #{{index +1}}</span>
+                <span>Bien #{{index +1}}:</span>
                 <a href="#" @click="eliminarInput(index)">Eliminar</a>
                 <div class="my-text">
                   <input type="text" v-model="input.bien" />
                 </div>
               </div>
               <div class="form-field">
-                <span>Valor del bien</span>
+                <span>Valor del bien:</span>
                 <div class="my-text">
                   <VueNumeric currency="$" separator="." v-model="input.valor"></VueNumeric>
                 </div>
@@ -580,7 +585,7 @@
             </div>
             <div class="form-field w50">
               <div class="my-text text-md-right align-items-center">
-                <span>Valor total</span>
+                <span>Valor total:</span>
                 <VueNumeric currency="$" separator="." v-model="valorTotal"></VueNumeric>
               </div>
             </div>
@@ -590,7 +595,7 @@
               </div>
               <div class="form-field w50">
                 <div class="my-text text-right" v-if="active">
-                  <span>Recibo en efectivo</span>
+                  <span>Recibo en efectivo:</span>
                   <VueNumeric currency="$" separator="." v-model="form.recibo_efectivo"></VueNumeric>
                 </div>
               </div>

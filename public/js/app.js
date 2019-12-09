@@ -78976,6 +78976,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -79754,7 +79759,7 @@ var render = function() {
               _c("div", { staticClass: "form-group" }, [
                 _c("div", { staticClass: "form-field w50" }, [
                   _c("div", { staticClass: "my-select" }, [
-                    _c("span", [_vm._v("Tipo de publicación")]),
+                    _c("span", [_vm._v("Tipo de publicación:")]),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -79816,7 +79821,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w50" }, [
                   _c("div", { staticClass: "my-select" }, [
-                    _c("span", [_vm._v("Tipo de Inmueble")]),
+                    _c("span", [_vm._v("Tipo de Inmueble:")]),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -79941,11 +79946,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Hacienda"
                   ? _c("div", { staticClass: "form-field" }, [
                       _c("div", { staticClass: "my-text" }, [
-                        _c("span", [
-                          _vm._v(
-                            "\n                Área Lote\n                "
-                          )
-                        ]),
+                        _vm._m(3),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -79982,11 +79983,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Hacienda"
                   ? _c("div", { staticClass: "form-field" }, [
                       _c("div", { staticClass: "my-text" }, [
-                        _c("span", [
-                          _vm._v(
-                            "\n                Área Construida\n                "
-                          )
-                        ]),
+                        _vm._m(4),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -80022,7 +80019,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Hacienda"
                   ? _c("div", { staticClass: "form-field w100" }, [
                       _c("div", { staticClass: "my-checkbox" }, [
-                        _c("span", [_vm._v("Tipo de Construcción")]),
+                        _c("span", [_vm._v("Tipo de Construcción:")]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-col" }, [
                           _c("div", [
@@ -80578,7 +80575,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Oficina"
                   ? _c("div", { staticClass: "form-field w62" }, [
                       _c("div", { staticClass: "my-select" }, [
-                        _c("span", [_vm._v("Espacio")]),
+                        _c("span", [_vm._v("Espacio:")]),
                         _vm._v(" "),
                         _c(
                           "select",
@@ -80632,7 +80629,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Edificio"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-text" }, [
-                        _c("span", [_vm._v("Numero de pisos")]),
+                        _c("span", [_vm._v("Numero de pisos:")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -80661,7 +80658,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Edificio"
                   ? _c("div", { staticClass: "form-field" }, [
                       _c("div", { staticClass: "my-radio" }, [
-                        _c("span", [_vm._v("Ascensor")]),
+                        _c("span", [_vm._v("Ascensor:")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -80720,7 +80717,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Lote"
                   ? _c("div", { staticClass: "form-field w62" }, [
                       _c("div", { staticClass: "my-text" }, [
-                        _c("span", [_vm._v("Topografía")]),
+                        _c("span", [_vm._v("Topografía:")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -80753,7 +80750,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Lote"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-select" }, [
-                        _c("span", [_vm._v("Vías")]),
+                        _c("span", [_vm._v("Vías:")]),
                         _vm._v(" "),
                         _c(
                           "select",
@@ -80807,7 +80804,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Bodega"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-text mini" }, [
-                        _vm._m(3),
+                        _vm._m(5),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -80867,7 +80864,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Bodega"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-text mini" }, [
-                        _vm._m(4),
+                        _vm._m(6),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -80896,7 +80893,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Bodega"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-text" }, [
-                        _c("span", [_vm._v("Capacidad carga (PSI)")]),
+                        _c("span", [_vm._v("Capacidad carga (PSI):")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -80929,7 +80926,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Bodega"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-text" }, [
-                        _c("span", [_vm._v("Capacidad Luz (KWA)")]),
+                        _c("span", [_vm._v("Capacidad Luz (KWA):")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -80962,7 +80959,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Bodega"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-radio" }, [
-                        _c("span", [_vm._v("Parque Industrial")]),
+                        _c("span", [_vm._v("Parque Industrial:")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -81034,7 +81031,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Casa"
                   ? _c("div", { staticClass: "form-field" }, [
                       _c("div", { staticClass: "my-select" }, [
-                        _c("span", [_vm._v("Habitaciones")]),
+                        _c("span", [_vm._v("Habitaciones:")]),
                         _vm._v(" "),
                         _c(
                           "select",
@@ -81099,7 +81096,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Apartamento"
                   ? _c("div", { staticClass: "form-field" }, [
                       _c("div", { staticClass: "my-select" }, [
-                        _c("span", [_vm._v("Baños")]),
+                        _c("span", [_vm._v("Baños:")]),
                         _vm._v(" "),
                         _c(
                           "select",
@@ -81164,7 +81161,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Apartamento"
                   ? _c("div", { staticClass: "form-field" }, [
                       _c("div", { staticClass: "my-radio" }, [
-                        _c("span", [_vm._v("Balcón")]),
+                        _c("span", [_vm._v("Balcón:")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -81224,7 +81221,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Apartamento"
                   ? _c("div", { staticClass: "form-field" }, [
                       _c("div", { staticClass: "my-radio" }, [
-                        _c("span", [_vm._v("Terraza")]),
+                        _c("span", [_vm._v("Terraza:")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -81284,7 +81281,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Apartamento"
                   ? _c("div", { staticClass: "form-field" }, [
                       _c("div", { staticClass: "my-radio" }, [
-                        _c("span", [_vm._v("Patio")]),
+                        _c("span", [_vm._v("Patio:")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -81345,7 +81342,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Oficina"
                   ? _c("div", { staticClass: "form-field" }, [
                       _c("div", { staticClass: "my-radio" }, [
-                        _c("span", [_vm._v("Portería")]),
+                        _c("span", [_vm._v("Portería:")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -81444,7 +81441,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Edificio"
                   ? _c("div", { staticClass: "form-field" }, [
                       _c("div", { staticClass: "my-radio" }, [
-                        _c("span", [_vm._v("Parqueadero")]),
+                        _c("span", [_vm._v("Parqueadero:")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -81515,7 +81512,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Apartamento"
                   ? _c("div", { staticClass: "form-field w100" }, [
                       _c("div", { staticClass: "my-checkbox" }, [
-                        _c("span", [_vm._v("Zonas Comunes")]),
+                        _c("span", [_vm._v("Zonas Comunes:")]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-col" }, [
                           _c("div", [
@@ -81806,7 +81803,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w50" }, [
                   _c("div", { staticClass: "my-select" }, [
-                    _c("span", [_vm._v("Departamento")]),
+                    _c("span", [_vm._v("Departamento:")]),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -81868,7 +81865,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w50" }, [
                   _c("div", { staticClass: "my-select" }, [
-                    _c("span", [_vm._v("Ciudad / Municipio")]),
+                    _c("span", [_vm._v("Ciudad / Municipio:")]),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -81925,7 +81922,7 @@ var render = function() {
                     "div",
                     { staticClass: "my-text" },
                     [
-                      _c("span", [_vm._v("Valor Administración")]),
+                      _c("span", [_vm._v("Valor Administración:")]),
                       _vm._v(" "),
                       _c("VueNumeric", {
                         attrs: { currency: "$", separator: "." },
@@ -81944,7 +81941,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w50" }, [
                   _c("div", { staticClass: "my-text" }, [
-                    _c("span", [_vm._v("Años de Construcción")]),
+                    _c("span", [_vm._v("Años de Construcción:")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -81971,7 +81968,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w50" }, [
                   _c("div", { staticClass: "my-text" }, [
-                    _c("span", [_vm._v("Barrio")]),
+                    _c("span", [_vm._v("Barrio:")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -81998,7 +81995,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w50" }, [
                   _c("div", { staticClass: "my-text" }, [
-                    _c("span", [_vm._v("Dirección")]),
+                    _c("span", [_vm._v("Dirección:")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -82027,7 +82024,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Apartamento"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-select" }, [
-                        _c("span", [_vm._v("Estrato")]),
+                        _c("span", [_vm._v("Estrato:")]),
                         _vm._v(" "),
                         _c(
                           "select",
@@ -82138,7 +82135,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm._m(5)
+              _vm._m(7)
             ]),
             _vm._v(" "),
             _c("fieldset", [
@@ -82169,11 +82166,11 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(6),
+                _vm._m(8),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w100" }, [
                   _c("div", { staticClass: "my-text" }, [
-                    _c("span", [_vm._v("Url Video")]),
+                    _c("span", [_vm._v("Url Video:")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -82199,7 +82196,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(7)
+              _vm._m(9)
             ]),
             _vm._v(" "),
             _c("fieldset", [
@@ -82227,7 +82224,7 @@ var render = function() {
                         "div",
                         { staticClass: "my-text" },
                         [
-                          _c("span", [_vm._v("Valor del inmueble")]),
+                          _c("span", [_vm._v("Valor del inmueble:")]),
                           _vm._v("$\n              "),
                           _vm._v(" "),
                           _c("VueNumeric", {
@@ -82261,7 +82258,7 @@ var render = function() {
                           [
                             _c("div", { staticClass: "form-field" }, [
                               _c("span", [
-                                _vm._v("Bien #" + _vm._s(index + 1))
+                                _vm._v("Bien #" + _vm._s(index + 1) + ":")
                               ]),
                               _vm._v(" "),
                               _c(
@@ -82306,7 +82303,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "form-field" }, [
-                              _c("span", [_vm._v("Valor del bien")]),
+                              _c("span", [_vm._v("Valor del bien:")]),
                               _vm._v(" "),
                               _c(
                                 "div",
@@ -82354,7 +82351,7 @@ var render = function() {
                               "my-text text-md-right align-items-center"
                           },
                           [
-                            _c("span", [_vm._v("Valor total")]),
+                            _c("span", [_vm._v("Valor total:")]),
                             _vm._v(" "),
                             _c("VueNumeric", {
                               attrs: { currency: "$", separator: "." },
@@ -82394,7 +82391,7 @@ var render = function() {
                                 "div",
                                 { staticClass: "my-text text-right" },
                                 [
-                                  _c("span", [_vm._v("Recibo en efectivo")]),
+                                  _c("span", [_vm._v("Recibo en efectivo:")]),
                                   _vm._v(" "),
                                   _c("VueNumeric", {
                                     attrs: { currency: "$", separator: "." },
@@ -82498,7 +82495,28 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", [
       _vm._v("\n                Área mts\n                "),
-      _c("sup", [_vm._v("2")])
+      _c("sup", [_vm._v("2")]),
+      _vm._v("\n                :\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _vm._v("\n                Área Lote mts\n                "),
+      _c("sup", [_vm._v("2")]),
+      _vm._v("\n                :\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _vm._v("\n                Área Construida mts\n                "),
+      _c("sup", [_vm._v("2")]),
+      _vm._v("\n                :\n              ")
     ])
   },
   function() {
@@ -82507,7 +82525,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", [
       _vm._v("\n                Área mts\n                "),
-      _c("sup", [_vm._v("2")])
+      _c("sup", [_vm._v("2")]),
+      _vm._v("\n                :\n              ")
     ])
   },
   function() {
@@ -82515,8 +82534,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", [
-      _vm._v("\n                Altura\n                "),
-      _c("sup", [_vm._v("2")])
+      _vm._v("\n                Altura mts\n                "),
+      _c("sup", [_vm._v("2")]),
+      _vm._v("\n                :\n              ")
     ])
   },
   function() {

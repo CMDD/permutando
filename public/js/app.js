@@ -78970,6 +78970,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -80801,7 +80807,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Bodega"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-text mini" }, [
-                        _c("span", [_vm._v("Área")]),
+                        _vm._m(3),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -80861,7 +80867,7 @@ var render = function() {
                 _vm.form.tipoInmueble == "Bodega"
                   ? _c("div", { staticClass: "form-field w50" }, [
                       _c("div", { staticClass: "my-text mini" }, [
-                        _c("span", [_vm._v("Altura")]),
+                        _vm._m(4),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -82132,7 +82138,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm._m(3)
+              _vm._m(5)
             ]),
             _vm._v(" "),
             _c("fieldset", [
@@ -82163,7 +82169,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(4),
+                _vm._m(6),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-field w100" }, [
                   _c("div", { staticClass: "my-text" }, [
@@ -82193,7 +82199,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(5)
+              _vm._m(7)
             ]),
             _vm._v(" "),
             _c("fieldset", [
@@ -82492,6 +82498,24 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", [
       _vm._v("\n                Área mts\n                "),
+      _c("sup", [_vm._v("2")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _vm._v("\n                Área mts\n                "),
+      _c("sup", [_vm._v("2")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _vm._v("\n                Altura\n                "),
       _c("sup", [_vm._v("2")])
     ])
   },

@@ -239,7 +239,10 @@
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-text mini">
-                <span>Área</span>
+                <span>
+                  Área mts
+                  <sup>2</sup>
+                </span>
                 <input type="text" v-model="form.area_ancho" placeholder="Ancho" />
                 <small>x</small>
                 <input type="text" v-model="form.area_fondo" placeholder="Fondo" />
@@ -247,7 +250,10 @@
             </div>
             <div class="form-field w50" v-if="form.tipoInmueble == 'Bodega' ">
               <div class="my-text mini">
-                <span>Altura</span>
+                <span>
+                  Altura
+                  <sup>2</sup>
+                </span>
                 <input v-model="form.altura" type="text" placeholder />
               </div>
             </div>

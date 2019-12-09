@@ -27,7 +27,7 @@
             media="all"
         />
         @stack('styles')
-        <link rel="stylesheet" href="/css/app.css" />
+        <link rel="stylesheet" href="/css/app.css?v=1.1" />
         <link rel="stylesheet" href="/css/slick.css" />
     </head>
 

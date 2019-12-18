@@ -263,6 +263,14 @@
                   <VueNumeric currency="$" separator="." v-model="bien.valor" :disabled="!editar"></VueNumeric>
                 </div>
               </div>
+              <div class="col-md-2">
+                <button
+                  v-if="editar"
+                  type="button"
+                  class="btn"
+                  @click="eliminarBien(bien.id)"
+                >Eliminar</button>
+              </div>
             </div>
             <div class="row">
               <div class="col-md-5">
@@ -279,6 +287,7 @@
                 </div>
               </div>
             </div>
+            <permuto-component :datos="form" :bienes2="bienes" v-if="editar"></permuto-component>
           </div>
         </div>
       </div>

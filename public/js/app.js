@@ -30437,7 +30437,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(19);
-module.exports = __webpack_require__(158);
+module.exports = __webpack_require__(163);
 
 
 /***/ }),
@@ -30461,6 +30461,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.component("lista-usuarios", __webpack_require__(50));
 Vue.component("login-component", __webpack_require__(53));
 Vue.component("lista-inmuebles", __webpack_require__(56));
+
 Vue.component("example-component", __webpack_require__(59));
 
 //Web
@@ -30484,11 +30485,12 @@ Vue.component("detalle-oficina", __webpack_require__(124));
 Vue.component("detalle-edificio", __webpack_require__(129));
 Vue.component("detalle-quinta", __webpack_require__(134));
 Vue.component("detalle-video", __webpack_require__(139));
-Vue.component("detalle-contactar", __webpack_require__(142));
-Vue.component("detalle-permuto", __webpack_require__(147));
+Vue.component("permuto-component", __webpack_require__(142));
+Vue.component("detalle-contactar", __webpack_require__(147));
+Vue.component("detalle-permuto", __webpack_require__(152));
 //Mensajes
-Vue.component("mensajes-lista", __webpack_require__(152));
-Vue.component("mensajes-detalle", __webpack_require__(155));
+Vue.component("mensajes-lista", __webpack_require__(157));
+Vue.component("mensajes-detalle", __webpack_require__(160));
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: [{
@@ -71320,6 +71322,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["user"],
@@ -71344,13 +71361,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     registro: function registro() {
       var _this = this;
 
-      axios.post("registro", this.form).then(function (res) {
-        if (res.data == 200) {
-          window.location.href = _this.to;
-        } else {
-          Vue.swal.fire("", "Verifica tus datos");
-        }
-      });
+      if (this.form.email != this.form.verifieldEmail) {
+        Vue.swal.fire("", "Los correos no son iguales!", "info");
+      } else if (this.form.password != this.form.verifieldPassword) {
+        Vue.swal.fire("", "Las contraseñas no son iguales!", "info");
+      } else {
+        axios.post("registro", this.form).then(function (res) {
+          if (res.data == 200) {
+            window.location.href = _this.to;
+          } else {
+            Vue.swal.fire("", "Verifica tus datos");
+          }
+        });
+      }
     },
     login: function login() {
       var _this2 = this;
@@ -71567,6 +71590,36 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
+                                  value: _vm.form.verifieldEmail,
+                                  expression: "form.verifieldEmail"
+                                }
+                              ],
+                              staticClass: "form-control mb-2",
+                              attrs: {
+                                type: "email",
+                                required: "",
+                                placeholder: "Confirmar correo"
+                              },
+                              domProps: { value: _vm.form.verifieldEmail },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "verifieldEmail",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
                                   value: _vm.form.password,
                                   expression: "form.password"
                                 }
@@ -71586,6 +71639,36 @@ var render = function() {
                                   _vm.$set(
                                     _vm.form,
                                     "password",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.verifieldPassword,
+                                  expression: "form.verifieldPassword"
+                                }
+                              ],
+                              staticClass: "form-control mb-2",
+                              attrs: {
+                                type: "password",
+                                required: "",
+                                placeholder: "Confirmar contraseña"
+                              },
+                              domProps: { value: _vm.form.verifieldPassword },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "verifieldPassword",
                                     $event.target.value
                                   )
                                 }
@@ -77919,7 +78002,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.caja {\n  border: 1px solid #005c96;\n  border-radius: 15px;\n}\n.caja label {\n  display: block;\n  color: #005b95;\n  font-weight: 500;\n}\ninput,\ntextarea {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  width: 100%;\n  margin: 0;\n  padding: 5px;\n  border: 1px solid transparent;\n  background: #f1f1f1;\n}\ninput:focus,\ntextarea:focus {\n  outline: none;\n}\ninput {\n  height: 32px;\n}\n.form-group {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n}\n.form-group label {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  display: inline-block;\n}\n.form-group input {\n  width: 70%;\n}\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.my-checkbox input[type=\"checkbox\"] {\n  display: none;\n}\n.my-checkbox input[type=\"checkbox\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  display: block;\n  font-size: 0.7rem;\n  font-weight: 600;\n  margin: 0 6px 6px 0;\n  cursor: pointer;\n}\n.my-checkbox input[type=\"checkbox\"] + label:before {\n  content: \"\";\n  display: inline-block;\n  vertical-align: bottom;\n  width: 15px;\n  height: 15px;\n  background-color: #b9b9b9;\n  background-size: 9px;\n  background-position: center;\n  background-repeat: no-repeat;\n  margin-right: 3px;\n  border-radius: 50%;\n}\n.my-checkbox input[type=\"checkbox\"]:checked + label:before {\n  background-color: #7db227;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23fff' viewBox='0 0 24 24'%3E%3Cpath d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'/%3E%3C/svg%3E\");\n}\n.my-checkbox .form-col {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n}\n.my-checkbox .form-col > div {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n.edit-gallery {\n  border-bottom: 2px solid #005b96;\n  margin-bottom: 20px;\n}\n.edit-gallery .image {\n  display: inline-block;\n  margin: 5px;\n  position: relative;\n}\n.edit-gallery .image .inputfile {\n  width: 0.1px;\n  height: 0.1px;\n  opacity: 0;\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  z-index: -1;\n}\n.edit-gallery .image .inputfile + label {\n  position: relative;\n  display: block;\n  width: 100px;\n  height: 100px;\n  background-color: #f1f1f1;\n  background-position: center;\n  background-size: cover;\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n  cursor: pointer;\n}\n.edit-gallery .image .inputfile:disabled + label {\n  cursor: default;\n}\n.edit-gallery .image:not(.added) .inputfile + label:hover {\n}\n.edit-gallery .image .delete {\n  display: none;\n  position: absolute;\n  right: -9px;\n  top: -4px;\n  width: 25px;\n  line-height: 24px;\n  text-align: center;\n  background: #a71e1d;\n  color: #fff;\n  border-radius: 50%;\n  font-size: 20px;\n  padding-bottom: 1px;\n  z-index: 5;\n  cursor: pointer;\n}\n.edit-gallery .image.added .delete {\n  display: block;\n}\n.edit-gallery .image:not(.added) .inputfile + label:before {\n  content: \"+\";\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 50%;\n  margin-top: -24px;\n  font-size: 40px;\n  line-height: 1;\n  text-align: center;\n  color: #005b96;\n  font-weight: 700;\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n}\n.edit-gallery .image:not(.added) .inputfile + label:hover:before {\n  color: #e67319;\n}\n.video .form-group {\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: start;\n      -ms-flex-align: start;\n          align-items: flex-start;\n}\n.video .form-group input {\n  width: 100%;\n}\n.video .prev-video {\n  width: 100%;\n  height: 0;\n  padding-top: 60%;\n  background: #ccc;\n}\n", ""]);
+exports.push([module.i, "\n.caja {\n  border: 1px solid #005c96;\n  border-radius: 15px;\n}\n.caja label {\n  display: block;\n  color: #005b95;\n  font-weight: 500;\n}\ninput,\ntextarea {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  width: 100%;\n  margin: 0;\n  padding: 5px;\n  border: 1px solid transparent;\n  background: #f1f1f1;\n}\ninput:focus,\ntextarea:focus {\n  outline: none;\n}\ninput {\n  height: 32px;\n}\n.form-group {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n}\n.form-group label {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  display: inline-block;\n}\n.form-group input {\n  width: 70%;\n}\n.my-radio input[type=\"radio\"] {\n  display: none;\n}\n.my-radio input[type=\"radio\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  text-align: center;\n  font-size: 0.65rem;\n  line-height: 32px;\n  font-weight: 600;\n  width: 32px;\n  margin: 0 3px;\n  border-radius: 50%;\n  background: #b9b9b9;\n  color: #fff;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n.my-radio input[type=\"radio\"]:checked + label {\n  background: #7db227;\n}\n.my-radio input[type=\"radio\"]:checked + label.no {\n  background: #a71e1e;\n}\n.my-checkbox input[type=\"checkbox\"] {\n  display: none;\n}\n.my-checkbox input[type=\"checkbox\"] + label {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  display: block;\n  font-size: 0.7rem;\n  font-weight: 600;\n  margin: 0 6px 6px 0;\n  cursor: pointer;\n}\n.my-checkbox input[type=\"checkbox\"] + label:before {\n  content: \"\";\n  display: inline-block;\n  vertical-align: bottom;\n  width: 15px;\n  height: 15px;\n  background-color: #b9b9b9;\n  background-size: 9px;\n  background-position: center;\n  background-repeat: no-repeat;\n  margin-right: 3px;\n  border-radius: 50%;\n}\n.my-checkbox input[type=\"checkbox\"]:checked + label:before {\n  background-color: #7db227;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23fff' viewBox='0 0 24 24'%3E%3Cpath d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'/%3E%3C/svg%3E\");\n}\n.my-checkbox .form-col {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n}\n.my-checkbox .form-col > div {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n.edit-gallery {\n  border-bottom: 2px solid #005b96;\n  margin-bottom: 20px;\n}\n.edit-gallery .image {\n  display: inline-block;\n  margin: 5px;\n  position: relative;\n}\n.edit-gallery .image .inputfile {\n  width: 0.1px;\n  height: 0.1px;\n  opacity: 0;\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  z-index: -1;\n}\n.edit-gallery .image .inputfile + label {\n  position: relative;\n  display: block;\n  width: 100px;\n  height: 100px;\n  background-color: #f1f1f1;\n  background-position: center;\n  background-size: cover;\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n  cursor: pointer;\n}\n.edit-gallery .image .inputfile:disabled + label {\n  cursor: default;\n}\n.edit-gallery .image:not(.added) .inputfile + label:hover {\n}\n.edit-gallery .image .delete {\n  display: none;\n  position: absolute;\n  right: -9px;\n  top: -4px;\n  width: 25px;\n  line-height: 24px;\n  text-align: center;\n  background: #a71e1d;\n  color: #fff;\n  border-radius: 50%;\n  font-size: 20px;\n  padding-bottom: 1px;\n  z-index: 5;\n  cursor: pointer;\n}\n.edit-gallery .image.added .delete {\n  display: block;\n}\n/* .edit-gallery .image:not(.added) .inputfile + label:before {\n  content: \"+\";\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 50%;\n  margin-top: -24px;\n  font-size: 40px;\n  line-height: 1;\n  text-align: center;\n  color: #005b96;\n  font-weight: 700;\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n}\n.edit-gallery .image:not(.added) .inputfile + label:hover:before {\n  color: #e67319;\n} */\n.video .form-group {\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: start;\n      -ms-flex-align: start;\n          align-items: flex-start;\n}\n.video .form-group input {\n  width: 100%;\n}\n.video .prev-video {\n  width: 100%;\n  height: 0;\n  padding-top: 60%;\n  background: #ccc;\n}\n", ""]);
 
 // exports
 
@@ -78173,31 +78256,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   }
 });
 
-$(document).ready(function () {
-  $(".inputfile").change(function () {
-    var input = this;
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $(input).next().css("background-image", "url(" + e.target.result + ")");
-        $(input).parent().addClass("added");
-        $(input).prop("disabled", true);
-      };
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      $(input).parent().removeClass("added");
-      $(input).prop("disabled", false);
-    }
-  });
+// $(document).ready(function() {
+//   $(".inputfile").change(function() {
+//     var input = this;
+//     if (input.files && input.files[0]) {
+//       var reader = new FileReader();
+//       reader.onload = function(e) {
+//         $(input)
+//           .next()
+//           .css("background-image", "url(" + e.target.result + ")");
+//         $(input)
+//           .parent()
+//           .addClass("added");
+//         $(input).prop("disabled", true);
+//       };
+//       reader.readAsDataURL(input.files[0]);
+//     } else {
+//       $(input)
+//         .parent()
+//         .removeClass("added");
+//       $(input).prop("disabled", false);
+//     }
+//   });
 
-  $(document).on("click", ".edit-gallery .image.added .delete", function () {
-    var input = $(this).next();
-    input.val("").prop("disabled", false);
-    $(this).parent().removeClass("added");
-    input.next().css("background-image", "");
-    console.log(input);
-  });
-});
+//   $(document).on("click", ".edit-gallery .image.added .delete", function() {
+//     var input = $(this).next();
+//     input.val("").prop("disabled", false);
+//     $(this)
+//       .parent()
+//       .removeClass("added");
+//     input.next().css("background-image", "");
+//     console.log(input);
+//   });
+// });
+//
 
 /***/ }),
 /* 89 */
@@ -83987,6 +84079,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -83997,7 +84098,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ["datos", "user"],
   data: function data() {
     return {
-      publico: this.datos.publicar,
+      publico: parseInt(this.datos.publicar),
       actualizando: false,
       url: "",
       editar: false,
@@ -84016,6 +84117,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    eliminarBien: function eliminarBien(id) {
+      var _this = this;
+
+      axios.get("/api/eliminar-bien/" + id).then(function (res) {
+        Vue.swal("", "Bien eliminado correctamente", "success");
+        _this.getBienes();
+      });
+    },
     permutando: function permutando() {
       this.enviando = true;
       axios.post("/api/permutando", this.permutar).then(function (res) {
@@ -84032,29 +84141,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     getBienes: function getBienes() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("/api/bienes/" + this.form.id).then(function (res) {
-        _this.bienes = res.data;
+        _this2.bienes = res.data;
       });
     },
     getDepartamentos: function getDepartamentos() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/departamentos").then(function (res) {
-        _this2.departamentos = res.data;
+        _this3.departamentos = res.data;
       });
     },
     getCiudades: function getCiudades(value) {
-      var _this3 = this;
+      var _this4 = this;
 
       console.log(value);
       axios.get("/api/ciudades/" + this.form.departamento).then(function (res) {
-        _this3.ciudades = res.data;
+        _this4.ciudades = res.data;
       });
     },
     publicar: function publicar() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get("/api/publicar-inmueble/" + this.form.id).then(function (res) {
         Vue.swal.fire({
@@ -84063,11 +84172,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           showConfirmButton: false,
           timer: 1500
         });
-        _this4.publico = true;
+        _this5.publico = true;
       });
     },
     ocultar: function ocultar() {
-      var _this5 = this;
+      var _this6 = this;
 
       axios.get("/api/ocultar-inmueble/" + this.form.id).then(function (res) {
         Vue.swal.fire({
@@ -84076,11 +84185,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           showConfirmButton: false,
           timer: 1500
         });
-        _this5.publico = false;
+        _this6.publico = false;
       });
     },
     updateInmueble: function updateInmueble() {
-      var _this6 = this;
+      var _this7 = this;
 
       this.actualizando = true;
       var fd = new FormData();
@@ -84137,7 +84246,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
       }).then(function (res) {
         __WEBPACK_IMPORTED_MODULE_1_toastr___default.a.success("Inmueble actualizado correctamente");
-        _this6.actualizando = false;
+        _this7.actualizando = false;
       });
     },
     eliminar: function eliminar(value, id) {
@@ -85517,6 +85626,24 @@ var render = function() {
                             ],
                             1
                           )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-2" }, [
+                          _vm.editar
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.eliminarBien(bien.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Eliminar")]
+                              )
+                            : _vm._e()
                         ])
                       ])
                     }),
@@ -85549,7 +85676,13 @@ var render = function() {
                           1
                         )
                       ])
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.editar
+                      ? _c("permuto-component", {
+                          attrs: { datos: _vm.form, bienes2: _vm.bienes }
+                        })
+                      : _vm._e()
                   ],
                   2
                 )
@@ -86088,6 +86221,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -86098,6 +86249,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ["datos", "user"],
   data: function data() {
     return {
+      preview3: false,
       publico: parseInt(this.datos.publicar),
       actualizando: false,
       url: "",
@@ -86116,6 +86268,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    eliminarBien: function eliminarBien(id) {
+      var _this = this;
+
+      axios.get("/api/eliminar-bien/" + id).then(function (res) {
+        Vue.swal("", "Bien eliminado correctamente", "success");
+        _this.getBienes();
+      });
+    },
     permutando: function permutando() {
       this.enviando = true;
       axios.post("/api/permutando", this.permutar).then(function (res) {
@@ -86124,45 +86284,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     edit: function edit() {
       this.editar = true;
-      Vue.swal.fire({
-        icon: "success",
-        title: "Ya puedes editar tu inmueble",
-        showConfirmButton: false,
-        timer: 1500
-      });
+      Vue.swal("", "Ya puedes editar tu inmueble", "info");
     },
     getBienes: function getBienes() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("/api/bienes/" + this.form.id).then(function (res) {
-        _this.bienes = res.data;
+        _this2.bienes = res.data;
       });
     },
     getDepartamentos: function getDepartamentos() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/departamentos").then(function (res) {
-        _this2.departamentos = res.data;
+        _this3.departamentos = res.data;
       });
     },
     getCiudades: function getCiudades(value) {
-      var _this3 = this;
+      var _this4 = this;
 
       console.log(value);
       axios.get("/api/ciudades/" + this.form.departamento).then(function (res) {
-        _this3.ciudades = res.data;
+        _this4.ciudades = res.data;
       });
     },
     publicar: function publicar() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get("/api/publicar-inmueble/" + this.form.id).then(function (res) {
         Vue.swal.fire("PUBLICACIÓN EXITOSA", "Diste el primer paso para lograr tu objetivo. Próximamente te contactará un usuario interesado. Permutado, cambiamos la forma de hacer tus negocios.", "success");
-        _this4.publico = true;
+        _this5.publico = true;
       });
     },
     ocultar: function ocultar() {
-      var _this5 = this;
+      var _this6 = this;
 
       axios.get("/api/ocultar-inmueble/" + this.form.id).then(function (res) {
         Vue.swal.fire({
@@ -86171,11 +86326,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           showConfirmButton: false,
           timer: 1500
         });
-        _this5.publico = false;
+        _this6.publico = false;
       });
     },
     updateInmueble: function updateInmueble() {
-      var _this6 = this;
+      var _this7 = this;
 
       this.actualizando = true;
       var fd = new FormData();
@@ -86227,7 +86382,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log(res.data);
 
         __WEBPACK_IMPORTED_MODULE_1_toastr___default.a.success("Inmueble actualizado correctamente");
-        _this6.actualizando = false;
+        _this7.actualizando = false;
       });
     },
     eliminar: function eliminar(value, id) {
@@ -86246,6 +86401,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     im3: function im3(event) {
       console.log(event);
       this.form.im3 = this.$refs.im3.files[0];
+      this.preview3 = URL.createObjectURL(this.$refs.im3.files[0]);
     },
     im4: function im4(event) {
       console.log(event);
@@ -86940,7 +87096,23 @@ var render = function() {
                               },
                               attrs: { for: "file_3" }
                             })
-                          : _c("label", { attrs: { for: "file_3" } })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.preview3 != false
+                          ? _c("label", {
+                              style: {
+                                backgroundImage: "url(" + _vm.preview3 + ")"
+                              },
+                              attrs: { for: "file_3" }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.preview3 === false
+                          ? _c("label", {
+                              staticClass: "img333",
+                              attrs: { for: "file_3" }
+                            })
+                          : _vm._e()
                       ]
                     ),
                     _vm._v(" "),
@@ -87208,6 +87380,24 @@ var render = function() {
                             ],
                             1
                           )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-2" }, [
+                          _vm.editar
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.eliminarBien(bien.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Eliminar")]
+                              )
+                            : _vm._e()
                         ])
                       ])
                     }),
@@ -87240,7 +87430,13 @@ var render = function() {
                           1
                         )
                       ])
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.editar
+                      ? _c("permuto-component", {
+                          attrs: { datos: _vm.form, bienes2: _vm.bienes }
+                        })
+                      : _vm._e()
                   ],
                   2
                 )
@@ -87442,6 +87638,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_numeric___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_numeric__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_toastr__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -88810,6 +89015,24 @@ var render = function() {
                             ],
                             1
                           )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-2" }, [
+                          _vm.editar
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.eliminarBien(bien.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Eliminar")]
+                              )
+                            : _vm._e()
                         ])
                       ])
                     }),
@@ -88842,7 +89065,13 @@ var render = function() {
                           1
                         )
                       ])
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.editar
+                      ? _c("permuto-component", {
+                          attrs: { datos: _vm.form, bienes2: _vm.bienes }
+                        })
+                      : _vm._e()
                   ],
                   2
                 )
@@ -89053,6 +89282,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_numeric___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_numeric__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_toastr__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -90569,6 +90807,24 @@ var render = function() {
                             ],
                             1
                           )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-2" }, [
+                          _vm.editar
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.eliminarBien(bien.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Eliminar")]
+                              )
+                            : _vm._e()
                         ])
                       ])
                     }),
@@ -90601,7 +90857,13 @@ var render = function() {
                           1
                         )
                       ])
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.editar
+                      ? _c("permuto-component", {
+                          attrs: { datos: _vm.form, bienes2: _vm.bienes }
+                        })
+                      : _vm._e()
                   ],
                   2
                 )
@@ -90812,6 +91074,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_numeric___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_numeric__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_toastr__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -92311,6 +92582,24 @@ var render = function() {
                             ],
                             1
                           )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-2" }, [
+                          _vm.editar
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.eliminarBien(bien.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Eliminar")]
+                              )
+                            : _vm._e()
                         ])
                       ])
                     }),
@@ -92343,7 +92632,13 @@ var render = function() {
                           1
                         )
                       ])
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.editar
+                      ? _c("permuto-component", {
+                          attrs: { datos: _vm.form, bienes2: _vm.bienes }
+                        })
+                      : _vm._e()
                   ],
                   2
                 )
@@ -92554,6 +92849,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_numeric___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_numeric__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_toastr__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -93860,6 +94164,24 @@ var render = function() {
                             ],
                             1
                           )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-2" }, [
+                          _vm.editar
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.eliminarBien(bien.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Eliminar")]
+                              )
+                            : _vm._e()
                         ])
                       ])
                     }),
@@ -93892,7 +94214,13 @@ var render = function() {
                           1
                         )
                       ])
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.editar
+                      ? _c("permuto-component", {
+                          attrs: { datos: _vm.form, bienes2: _vm.bienes }
+                        })
+                      : _vm._e()
                   ],
                   2
                 )
@@ -94183,6 +94511,526 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
+Component.options.__file = "resources/js/perfil/detalle/component/PermutoComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-789d903c", Component.options)
+  } else {
+    hotAPI.reload("data-v-789d903c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(144);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("0702d2c3", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-789d903c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PermutoComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-789d903c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PermutoComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 144 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal-content {\n  border-radius: 15px;\n  color: #005b95;\n}\n.modal .main-group {\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.modal .main-group img {\n  max-width: 100px;\n  margin-right: 20px;\n}\n.modal .main-group input {\n  width: 50%;\n  text-align: center;\n  background-color: rgba(0, 90, 149, 0.2);\n  font-weight: 600;\n  font-size: 18px;\n  border-radius: 50px;\n}\n.modal .main-group label {\n  font-size: 20px;\n  font-weight: bold;\n  margin: 0;\n}\n.modal .campos label {\n  margin: 0;\n}\n.modal .campos > div {\n  margin-top: 10px;\n}\n.modal .total .btn {\n  display: block;\n  max-width: 200px;\n  margin-bottom: 10px;\n}\n.modal .btn {\n  border-radius: 4px;\n}\n.swal2-popup {\n  font-size: 0.6rem !important;\n}\n.campos a {\n  color: red;\n  margin-left: 10px;\n  font-size: 0.8rem;\n}\n.botones-azules > div {\n  display: inline-block;\n}\n.botones-azules .btn {\n  background: #005b96;\n  border: 0;\n  border-radius: 7px;\n  margin: 5px;\n}\n.botones-azules .btn:hover {\n  background: #f19100;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 145 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_numeric__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_numeric___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_numeric__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    VueNumeric: __WEBPACK_IMPORTED_MODULE_0_vue_numeric___default.a
+  },
+  props: ["bienes2", "datos"],
+  data: function data() {
+    return {
+      inmueble: this.datos,
+      efectivo: true,
+      suma: "",
+      valorTotal: "",
+      inputs: [],
+      enviando: false,
+      bienes: this.bienes2
+    };
+  },
+  created: function created() {
+    this.validarValor();
+  },
+
+  methods: {
+    updatePermuta: function updatePermuta() {
+      // this.bienes = {
+      //   recibo_efectivo: this.inmueble.recibo_efectivo
+      // };
+      this.validarValor();
+      axios.post("/api/update-permuta", this.bienes).then(function (res) {
+        Vue.swal("", "Actualizado correctamente", "success");
+        console.log(res.data);
+
+        // jQuery("#permutoModal").modal("hide");
+        // $("body").removeClass("modal-open");
+        // $(".modal-backdrop").remove();
+        // toastr.success("Enviado correctamente");
+      });
+
+      axios.post("/api/editar-recibo-efectivo", this.inmueble).then(function (res) {
+        console.log(res.data);
+      });
+
+      // this.inputs.forEach(element => {
+      //   this.permutar.bienes.push(element.bien);
+      //   this.permutar.valor_bien.push(element.valor_bien);
+      //   console.log(element);
+      // });
+      // this.enviando = true;
+      // axios.post("/api/permutando", this.permutar).then(res => {
+      //   Vue.swal.fire("Enviado correctamente", "Tu oferta ha sido enviada");
+      //   jQuery("#permutoModal").modal("hide");
+      //   $("body").removeClass("modal-open");
+      //   $(".modal-backdrop").remove();
+      //   // toastr.success("Enviado correctamente");
+      // });
+    },
+    add: function add() {
+      this.validarValor();
+      this.bienes.push({
+        bien: "",
+        valor: "",
+        id: null
+      });
+    },
+    eliminar: function eliminar(index) {
+      console.log(index);
+      this.bienes.splice(index, 1);
+      this.validarValor();
+    },
+    addEfectivo: function addEfectivo() {
+      this.validarValor();
+
+      var result2 = parseInt(this.inmueble.valor) / 2 + 1;
+      console.log(result2);
+
+      if (this.valorTotal >= result2) {
+        this.efectivo = false;
+      } else {
+        this.efectivo = true;
+        Vue.swal.fire("Ten en cuenta que si elijes ésta opción, solo podrás añadir dinero en efectivo, una vez hayas completado en el formulario más del 50% del valor de tu propiedad en bienes");
+      }
+    },
+    validarValor: function validarValor() {
+      if (this.bienes.length > 0) {
+        var result = this.bienes.map(function (x) {
+          return parseInt(x.valor, 10);
+        });
+
+        var reducer = function reducer(accumulator, currentValue) {
+          return accumulator + currentValue;
+        };
+
+        this.valorTotal = result.reduce(reducer);
+      } else {
+        this.valorTotal = 0;
+      }
+    }
+  }
+});
+
+/***/ }),
+/* 146 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "a",
+      {
+        staticClass: "btn",
+        attrs: {
+          href: "#",
+          "data-toggle": "modal",
+          "data-target": "#permutoModal"
+        }
+      },
+      [_vm._v("Editar datos de permuta")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "permutoModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-dialog-centered modal-lg" },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c(
+                "div",
+                { staticClass: "modal-body" },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "form-group main-group" },
+                    [
+                      _c("img", { attrs: { src: "/img/perfil-logo.png" } }),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "icono" }, [
+                        _vm._v("Valor de inmueble")
+                      ]),
+                      _vm._v(" "),
+                      _c("VueNumeric", {
+                        attrs: { currency: "$", separator: ".", disabled: "" },
+                        model: {
+                          value: _vm.inmueble.valor,
+                          callback: function($$v) {
+                            _vm.$set(_vm.inmueble, "valor", $$v)
+                          },
+                          expression: "inmueble.valor"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("h5", { staticClass: "text-center mt-4" }, [
+                    _vm._v("Editar Bienes")
+                  ]),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _vm._l(_vm.bienes, function(bien, index) {
+                    return _c(
+                      "div",
+                      { key: bien.id, staticClass: "row campos text-left" },
+                      [
+                        _c("div", { staticClass: "col-md-8" }, [
+                          _c("label", [
+                            _vm._v(
+                              "\n                Bien #" +
+                                _vm._s(index + 1) +
+                                "\n                "
+                            ),
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.eliminar(index)
+                                  }
+                                }
+                              },
+                              [_vm._v("Eliminar")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: bien.bien,
+                                expression: "bien.bien"
+                              }
+                            ],
+                            attrs: { type: "text" },
+                            domProps: { value: bien.bien },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(bien, "bien", $event.target.value)
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-md-4 text-left" },
+                          [
+                            _c("label", [_vm._v("Valor del bien")]),
+                            _vm._v(" "),
+                            _c("VueNumeric", {
+                              attrs: { currency: "$", separator: "." },
+                              model: {
+                                value: bien.valor,
+                                callback: function($$v) {
+                                  _vm.$set(bien, "valor", $$v)
+                                },
+                                expression: "bien.valor"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row total mt-4" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              return _vm.add()
+                            }
+                          }
+                        },
+                        [_vm._v("Agregar inmuebles")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              return _vm.addEfectivo()
+                            }
+                          }
+                        },
+                        [_vm._v("Efectivo")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", [_vm._v("Valor total:")]),
+                          _vm._v(" "),
+                          _c("VueNumeric", {
+                            attrs: {
+                              currency: "$",
+                              separator: ".",
+                              disabled: ""
+                            },
+                            model: {
+                              value: _vm.valorTotal,
+                              callback: function($$v) {
+                                _vm.valorTotal = $$v
+                              },
+                              expression: "valorTotal"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      !_vm.efectivo
+                        ? _c(
+                            "div",
+                            { staticClass: "form-group" },
+                            [
+                              _c("label", [_vm._v("Efectivo:")]),
+                              _vm._v(" "),
+                              _c("VueNumeric", {
+                                attrs: { currency: "$", separator: "." },
+                                model: {
+                                  value: _vm.inmueble.recibo_efectivo,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.inmueble,
+                                      "recibo_efectivo",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "inmueble.recibo_efectivo"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "f1-buttons col-md-12 text-right" },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn",
+                          attrs: { type: "button" },
+                          on: { click: _vm.updatePermuta }
+                        },
+                        [_vm._v("Actualizar")]
+                      )
+                    ]
+                  )
+                ],
+                2
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-789d903c", module.exports)
+  }
+}
+
+/***/ }),
+/* 147 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(148)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(150)
+/* template */
+var __vue_template__ = __webpack_require__(151)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
 Component.options.__file = "resources/js/perfil/detalle/component/Contactar.vue"
 
 /* hot reload */
@@ -94205,13 +95053,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 143 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(144);
+var content = __webpack_require__(149);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -94231,7 +95079,7 @@ if(false) {
 }
 
 /***/ }),
-/* 144 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -94245,11 +95093,20 @@ exports.push([module.i, "\ninput {\n  margin-top: 10px;\n}\ntextarea {\n  margin
 
 
 /***/ }),
-/* 145 */
+/* 150 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -94347,7 +95204,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 146 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -94493,6 +95350,25 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
+                    !_vm.enviando
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn",
+                            attrs: {
+                              type: "button",
+                              "data-dismiss": "modal",
+                              "aria-label": "Close"
+                            }
+                          },
+                          [
+                            _c("span", { attrs: { "aria-hidden": "true" } }, [
+                              _vm._v("Descartar")
+                            ])
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c(
                       "button",
                       {
@@ -94558,19 +95434,19 @@ if (false) {
 }
 
 /***/ }),
-/* 147 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(148)
+  __webpack_require__(153)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(150)
+var __vue_script__ = __webpack_require__(155)
 /* template */
-var __vue_template__ = __webpack_require__(151)
+var __vue_template__ = __webpack_require__(156)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -94609,13 +95485,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 148 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(149);
+var content = __webpack_require__(154);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -94635,7 +95511,7 @@ if(false) {
 }
 
 /***/ }),
-/* 149 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -94649,7 +95525,7 @@ exports.push([module.i, "\n.modal-content {\n  border-radius: 15px;\n  color: #0
 
 
 /***/ }),
-/* 150 */
+/* 155 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -94800,7 +95676,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 151 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -95059,15 +95935,15 @@ if (false) {
 }
 
 /***/ }),
-/* 152 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(153)
+var __vue_script__ = __webpack_require__(158)
 /* template */
-var __vue_template__ = __webpack_require__(154)
+var __vue_template__ = __webpack_require__(159)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -95106,7 +95982,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 153 */
+/* 158 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -95221,7 +96097,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 154 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -95346,15 +96222,15 @@ if (false) {
 }
 
 /***/ }),
-/* 155 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(156)
+var __vue_script__ = __webpack_require__(161)
 /* template */
-var __vue_template__ = __webpack_require__(157)
+var __vue_template__ = __webpack_require__(162)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -95393,7 +96269,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 156 */
+/* 161 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -95456,7 +96332,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 157 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -95502,7 +96378,7 @@ if (false) {
 }
 
 /***/ }),
-/* 158 */
+/* 163 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

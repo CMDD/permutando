@@ -377,6 +377,14 @@
                   <VueNumeric currency="$" separator="." v-model="bien.valor" :disabled="!editar"></VueNumeric>
                 </div>
               </div>
+              <div class="col-md-2">
+                <button
+                  v-if="editar"
+                  type="button"
+                  class="btn"
+                  @click="eliminarBien(bien.id)"
+                >Eliminar</button>
+              </div>
             </div>
             <div class="row">
               <div class="col-md-5">
@@ -393,6 +401,7 @@
                 </div>
               </div>
             </div>
+            <permuto-component :datos="form" :bienes2="bienes" v-if="editar"></permuto-component>
           </div>
         </div>
       </div>
@@ -424,7 +433,7 @@ export default {
   props: ["datos", "user"],
   data() {
     return {
-      publico: this.datos.publicar,
+      publico: parseInt(this.datos.publicar),
       actualizando: false,
       url: "",
       editar: false,
@@ -442,6 +451,12 @@ export default {
     this.getBienes();
   },
   methods: {
+    eliminarBien(id) {
+      axios.get("/api/eliminar-bien/" + id).then(res => {
+        Vue.swal("", "Bien eliminado correctamente", "success");
+        this.getBienes();
+      });
+    },
     permutando() {
       this.enviando = true;
       axios.post("/api/permutando", this.permutar).then(res => {

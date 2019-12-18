@@ -11,6 +11,7 @@ Vue.use(Router);
 Vue.component("lista-usuarios", require("./admin/Usuarios.vue"));
 Vue.component("login-component", require("./web/Login.vue"));
 Vue.component("lista-inmuebles", require("./admin/Inmueble.vue"));
+
 Vue.component(
     "example-component",
     require("./components/ExampleComponent.vue")
@@ -37,6 +38,10 @@ Vue.component("detalle-oficina", require("./perfil/detalle/Oficina.vue"));
 Vue.component("detalle-edificio", require("./perfil/detalle/Edificio.vue"));
 Vue.component("detalle-quinta", require("./perfil/detalle/Quinta.vue"));
 Vue.component("detalle-video", require("./perfil/detalle/component/Video.vue"));
+Vue.component(
+    "permuto-component",
+    require("./perfil/detalle/component/PermutoComponent.vue")
+);
 Vue.component(
     "detalle-contactar",
     require("./perfil/detalle/component/Contactar.vue")

@@ -8,6 +8,7 @@ use App\Inmueble;
 use App\Modo;
 use App\Zonas;
 use App\Construccion;
+use App\Bien;
 
 use Illuminate\Support\Collection as Collection;
 
@@ -291,5 +292,44 @@ class InmuebleController extends Controller
     $inmueble->save();
     return "Inmueble pausado correctamente";
   }
+
+  public function updatePermuta(Request $request){
+    // $inmueble = Inmueble::find($request[0]['inmueble_id']);
+
+
+        $contador = 0;
+        $contador2 = 0;
+            for ($i=0; $i < count($request->all()); $i++) { 
+                if (isset($request[$i]['id'])) {
+                    $bien = Bien::find($request[$i]['id']);
+                    $bien->bien = $request[$i]['bien'];
+                    $bien->valor = $request[$i]['valor'];
+                    $bien->save(); 
+                    $contador = $contador+1;
+                }else{
+                    $contador2 = count($request->all()) - $contador;
+
+                    for ($i=$contador; $i < count($request->all()); $i++) { 
+               
+                            $bien = new Bien();
+                            $bien->bien = $request[$i]['bien'];
+                            $bien->valor = $request[$i]['valor'];
+                            $bien->tipo = 'Recibo';
+                            $bien->inmueble_id = $request[0]['inmueble_id'];
+                            $bien->save(); 
+                            // $contador  = $contador+1;
+                        }
+                }
+            }
+
+           return   response ()->json(['inmueble' =>'hola','contador2'=>$contador2]);
+    }
+
+   
+      
+    
+
+
+   
  
 }

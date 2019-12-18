@@ -40,8 +40,11 @@ Route::get('mis-inmuebles/{id}','PerfilController@misInmuebles');
 Route::post('busco-index','Perfil\BuscoController@buscoIndex');
     // inmuebles
     Route::get('bienes/{id}','BienController@getBienes');
+    Route::get('eliminar-bien/{id}','BienController@eliminarBien');
     Route::post('bienes-tipo','BienController@getBienesTipo');
+    Route::post('editar-recibo-efectivo','BienController@editarReciboEfectivo');
     Route::post('editar-inmueble','InmuebleController@editar');
+    Route::post('update-permuta','InmuebleController@updatePermuta');
     Route::get('imagenes/{id}','BienController@getImagenes');
     Route::post('inmueble-estado','InmuebleController@estado');
     Route::get('delete-img/{img}/{id}','InmuebleController@deleteImage');

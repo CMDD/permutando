@@ -41,6 +41,15 @@
                   v-model="contacto.mensaje"
                   placeholder="Mensaje"
                 ></textarea>
+                <button
+                  v-if="!enviando"
+                  type="button"
+                  class="btn"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">Descartar</span>
+                </button>
                 <button type="submit" class="btn btn-enviar">
                   <span v-if="!enviando">Contactar</span>
                   <span v-else>Contactando...</span>

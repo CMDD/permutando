@@ -238,39 +238,40 @@ export default {
   }
 };
 
-$(document).ready(function() {
-  $(".inputfile").change(function() {
-    var input = this;
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        $(input)
-          .next()
-          .css("background-image", "url(" + e.target.result + ")");
-        $(input)
-          .parent()
-          .addClass("added");
-        $(input).prop("disabled", true);
-      };
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      $(input)
-        .parent()
-        .removeClass("added");
-      $(input).prop("disabled", false);
-    }
-  });
+// $(document).ready(function() {
+//   $(".inputfile").change(function() {
+//     var input = this;
+//     if (input.files && input.files[0]) {
+//       var reader = new FileReader();
+//       reader.onload = function(e) {
+//         $(input)
+//           .next()
+//           .css("background-image", "url(" + e.target.result + ")");
+//         $(input)
+//           .parent()
+//           .addClass("added");
+//         $(input).prop("disabled", true);
+//       };
+//       reader.readAsDataURL(input.files[0]);
+//     } else {
+//       $(input)
+//         .parent()
+//         .removeClass("added");
+//       $(input).prop("disabled", false);
+//     }
+//   });
 
-  $(document).on("click", ".edit-gallery .image.added .delete", function() {
-    var input = $(this).next();
-    input.val("").prop("disabled", false);
-    $(this)
-      .parent()
-      .removeClass("added");
-    input.next().css("background-image", "");
-    console.log(input);
-  });
-});
+//   $(document).on("click", ".edit-gallery .image.added .delete", function() {
+//     var input = $(this).next();
+//     input.val("").prop("disabled", false);
+//     $(this)
+//       .parent()
+//       .removeClass("added");
+//     input.next().css("background-image", "");
+//     console.log(input);
+//   });
+// });
+//
 </script>
 
 <style>
@@ -425,7 +426,7 @@ input {
 .edit-gallery .image.added .delete {
   display: block;
 }
-.edit-gallery .image:not(.added) .inputfile + label:before {
+/* .edit-gallery .image:not(.added) .inputfile + label:before {
   content: "+";
   position: absolute;
   left: 0;
@@ -442,7 +443,7 @@ input {
 }
 .edit-gallery .image:not(.added) .inputfile + label:hover:before {
   color: #e67319;
-}
+} */
 
 .video .form-group {
   flex-direction: column;

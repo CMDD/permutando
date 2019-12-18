@@ -45,7 +45,7 @@
         
         <script type="text/javascript" src="/js/perfil.js"></script>
         
-        <script type="text/javascript" src="/js/app.js?v=1.1"></script>
+        <script type="text/javascript" src="/js/app.js?v=1.2"></script>
         @stack('scripts')
         
         

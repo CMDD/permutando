@@ -191,14 +191,23 @@
 
               <div :class="'image' + (form.im3 !== null ? ' added':'' )">
                 <span v-if="editar" class="delete" @click="eliminar('im3',form.id)">&times;</span>
+
                 <input type="file" id="file_3" ref="im3" class="inputfile" @change="im3" />
+
                 <label
                   v-if="form.im3"
                   for="file_3"
                   v-bind:style="{ backgroundImage: 'url(' + '/' + form.im3+')' }"
                 ></label>
-                <label v-else for="file_3"></label>
+
+                <label
+                  v-if="preview3 != false"
+                  for="file_3"
+                  v-bind:style="{ backgroundImage: 'url('+ preview3+')' }"
+                ></label>
+                <label class="img333" v-if="preview3 === false" for="file_3"></label>
               </div>
+
               <div :class="'image' + (form.im4 !== null ? ' added':'' )">
                 <span v-if="editar" class="delete" @click="eliminar('im4',form.id)">&times;</span>
                 <input type="file" id="file_4" ref="im4" class="inputfile" @change="im4" />
@@ -243,7 +252,7 @@
                   class="video-link btn"
                   :href="form.video"
                 >Ver video del inmueble</a>
-                <!-- <detalle-video></detalle-video> -->
+                <!-- <detalle-video></detalle-video>-->
                 <p v-else>No tiene video disponible</p>
               </div>
             </div>
@@ -280,6 +289,14 @@
                   <VueNumeric currency="$" separator="." v-model="bien.valor" :disabled="!editar"></VueNumeric>
                 </div>
               </div>
+              <div class="col-md-2">
+                <button
+                  v-if="editar"
+                  type="button"
+                  class="btn"
+                  @click="eliminarBien(bien.id)"
+                >Eliminar</button>
+              </div>
             </div>
             <div class="row">
               <div class="col-md-5">
@@ -296,6 +313,7 @@
                 </div>
               </div>
             </div>
+            <permuto-component :datos="form" :bienes2="bienes" v-if="editar"></permuto-component>
           </div>
         </div>
       </div>
@@ -328,6 +346,7 @@ export default {
   props: ["datos", "user"],
   data() {
     return {
+      preview3: false,
       publico: parseInt(this.datos.publicar),
       actualizando: false,
       url: "",
@@ -345,6 +364,12 @@ export default {
     this.getBienes();
   },
   methods: {
+    eliminarBien(id) {
+      axios.get("/api/eliminar-bien/" + id).then(res => {
+        Vue.swal("", "Bien eliminado correctamente", "success");
+        this.getBienes();
+      });
+    },
     permutando() {
       this.enviando = true;
       axios.post("/api/permutando", this.permutar).then(res => {
@@ -353,12 +378,7 @@ export default {
     },
     edit() {
       this.editar = true;
-      Vue.swal.fire({
-        icon: "success",
-        title: "Ya puedes editar tu inmueble",
-        showConfirmButton: false,
-        timer: 1500
-      });
+      Vue.swal("", "Ya puedes editar tu inmueble", "info");
     },
     getBienes() {
       axios.get("/api/bienes/" + this.form.id).then(res => {
@@ -469,6 +489,7 @@ export default {
     im3(event) {
       console.log(event);
       this.form.im3 = this.$refs.im3.files[0];
+      this.preview3 = URL.createObjectURL(this.$refs.im3.files[0]);
     },
     im4(event) {
       console.log(event);

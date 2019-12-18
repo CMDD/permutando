@@ -60,11 +60,25 @@
                       placeholder="Correo electrónico"
                     />
                     <input
+                      type="email"
+                      required
+                      v-model="form.verifieldEmail"
+                      class="form-control mb-2"
+                      placeholder="Confirmar correo"
+                    />
+                    <input
                       type="password"
                       required
                       v-model="form.password"
                       class="form-control mb-2"
                       placeholder="Contraseña"
+                    />
+                    <input
+                      type="password"
+                      required
+                      v-model="form.verifieldPassword"
+                      class="form-control mb-2"
+                      placeholder="Confirmar contraseña"
                     />
                     <div class="tipo">
                       <span>¿Eres inmobiliario?</span>
@@ -113,6 +127,7 @@
                       class="form-control mb-2"
                       placeholder="Correo electrónico"
                     />
+
                     <input
                       type="password"
                       required
@@ -153,13 +168,19 @@ export default {
       }
     },
     registro() {
-      axios.post("registro", this.form).then(res => {
-        if (res.data == 200) {
-          window.location.href = this.to;
-        } else {
-          Vue.swal.fire("", "Verifica tus datos");
-        }
-      });
+      if (this.form.email != this.form.verifieldEmail) {
+        Vue.swal.fire("", "Los correos no son iguales!", "info");
+      } else if (this.form.password != this.form.verifieldPassword) {
+        Vue.swal.fire("", "Las contraseñas no son iguales!", "info");
+      } else {
+        axios.post("registro", this.form).then(res => {
+          if (res.data == 200) {
+            window.location.href = this.to;
+          } else {
+            Vue.swal.fire("", "Verifica tus datos");
+          }
+        });
+      }
     },
     login() {
       axios.post("autenticar", this.form).then(res => {

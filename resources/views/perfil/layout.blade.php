@@ -47,7 +47,7 @@
         
         <script type="text/javascript" src="/js/app.js?v=1.2"></script>
         @stack('scripts')
-        
+
         
     </body>
 </html>

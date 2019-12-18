@@ -487,7 +487,6 @@ export default {
       this.form.im2 = this.$refs.im2.files[0];
     },
     im3(event) {
-      console.log(event);
       this.form.im3 = this.$refs.im3.files[0];
       this.preview3 = URL.createObjectURL(this.$refs.im3.files[0]);
     },
@@ -695,7 +694,7 @@ input {
   background: #ccc;
 }
 .my-select select {
-  -webkit-appearance: button;
+  -webkit-appearance: none;
   -webkit-border-radius: 2px;
   -webkit-padding-end: 20px;
   -webkit-padding-start: 2px;

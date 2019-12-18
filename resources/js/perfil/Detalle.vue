@@ -237,41 +237,6 @@ export default {
     }
   }
 };
-
-// $(document).ready(function() {
-//   $(".inputfile").change(function() {
-//     var input = this;
-//     if (input.files && input.files[0]) {
-//       var reader = new FileReader();
-//       reader.onload = function(e) {
-//         $(input)
-//           .next()
-//           .css("background-image", "url(" + e.target.result + ")");
-//         $(input)
-//           .parent()
-//           .addClass("added");
-//         $(input).prop("disabled", true);
-//       };
-//       reader.readAsDataURL(input.files[0]);
-//     } else {
-//       $(input)
-//         .parent()
-//         .removeClass("added");
-//       $(input).prop("disabled", false);
-//     }
-//   });
-
-//   $(document).on("click", ".edit-gallery .image.added .delete", function() {
-//     var input = $(this).next();
-//     input.val("").prop("disabled", false);
-//     $(this)
-//       .parent()
-//       .removeClass("added");
-//     input.next().css("background-image", "");
-//     console.log(input);
-//   });
-// });
-//
 </script>
 
 <style>

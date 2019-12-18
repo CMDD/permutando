@@ -32,7 +32,7 @@
         display: none!important;
     }
     .accion-buscar select {
-        -webkit-appearance: button;
+        -webkit-appearance: none;
         -webkit-border-radius: 2px;
         -webkit-padding-end: 20px;
         -webkit-padding-start: 2px;
